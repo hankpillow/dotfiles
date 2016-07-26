@@ -1,6 +1,6 @@
 [[ -r ~/.bashrc ]] && . ~/.bashrc
 
-PS1='\[\e[0;36m\]┌─\[\e[1;37m\][\u@\h \j jobs]\[\e[0m\]\[\e[0;36m\]─\[\e[0;93m\](\w)\n\[\e[0;36m\]└─\[\e[1;32m\][\A]\[\e[0m\]\$ '
+#export PS1='\[\e[1;30m\]\t`if [ $? = 0 ]; then echo "\[\e[32m\] \u"; else echo "\[\e[31m\] \u"; fi`\[\e[0m\]@\h \j \w \n$ '
 
 # Prefer US English and use UTF-8
 export LC_ALL="en_US.UTF-8"
@@ -24,6 +24,7 @@ export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
 
+alias dm='docker-machine'
 alias reload='. ~/.bash_profile'
 alias l="ls -oGlahF"
 alias fs="stat -f \"%z bytes\""
@@ -51,13 +52,11 @@ function rsa-create(){
 	rsa-send-to-agent
 }
 
-function rsa-send-to-agent(){
+function github-push-ssh(){
 	eval "$(ssh-agent -s)"
 	ssh-add ~/.ssh/id_rsa
 }
 
-# Append to the Bash history file, rather than overwriting it
-shopt -s histappend
-
-# Autocorrect typos in path names when using `cd`
-shopt -s cdspell
+function docker-clear(){
+	docker rm -f "$(docker ps -a -q)"
+}
