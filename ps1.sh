@@ -30,11 +30,9 @@ BWHITE='\[\e[1;37m\]'
 BGWHITE='\[\e[1;37m\]'
 
 get_ps1(){
-	[[ "$?" -ne "1" ]] &&	LAST_STATUS="$RED!"
-	[[ "$?" -eq "1" ]] &&	LAST_STATUS="$GREEN>"
 	local BRANCH="$(__git_ps1)"
-	local DOCKER="$(__docker_machine_ps1)"
-	PS1="$MAGENTA\D{%T} \j $CYAN\w$WHITE${BRANCH}\n$YELLOW${DOCKER} ${BLUE}\u@\h ${LAST_STATUS}$WHITE "
+	local DOCKER="$(__docker_machine_ps1 | sed 's/\s//g')"
+	PS1="$CYAN\D{%T} ${BGMAGENTA}\j $WHITE\w$BGCYAN${BRANCH} \n$BGWHITE${DOCKER}$WHITE\u@\h $ "
+	#PS1="$DOCKER $ "
 }
-
 PROMPT_COMMAND=get_ps1

@@ -2,6 +2,7 @@
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 export HOME=`echo ~/`
+export WORKDIR=`echo ~/Documents`
 
 # ENV PATH
 export PATH="/usr/local/bin:$PATH"
