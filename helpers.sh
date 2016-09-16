@@ -3,7 +3,8 @@ alias gc="git commit"
 alias gf="git fetch --all --prune"
 alias gs="git status -s"
 
-alias ls='ls --color=auto'
+alias ls='ls -G'
+#alias ls='ls --color=auto'
 alias l="ls -olahF"
 
 alias ccal='cal | sed -e "s/ $(expr `date "+%d"` + 0) / $(printf "\033[32m$(expr `date "+%d"` + 0)\033[0m") /"'
