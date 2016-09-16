@@ -207,7 +207,7 @@ set statusline+=%{&ff} "file format
 "------------------------------------------------------------------------------
 
 "save
-noremap <silent><leader>s :w<cr>
+noremap <silent><leader>w :w<cr>
 
 "change explorer to file's directory
 noremap <leader>cd :lcd %:p:h<cr>
