@@ -114,23 +114,27 @@ filetype off
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
+
 "themes
 Plugin 'vim-scripts/summerfruit256.vim'
 Plugin 'reedes/vim-colors-pencil'
 Plugin 'morhetz/gruvbox'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'Lokaltog/vim-distinguished'
+
+"syntax
+Plugin 'Glench/Vim-Jinja2-Syntax'
+
 "all
 Plugin 'rking/ag.vim'
-Plugin 'Chun-Yang/vim-action-ag'
 Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rstacruz/sparkup'
-Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+
 call vundle#end()
 
 syntax on
@@ -192,6 +196,7 @@ set statusline+=\ %f
 set statusline+=\ @%{bufnr('%')} "buffer number
 set statusline+=\ [%{strlen(&ft)?&ft:'none'}] " file type
 set statusline+=\ %r "modified readonly filetype
+set statusline+=\ %{fugitive#statusline()}
 set statusline+=%=
 set statusline+=%(line:\ %l\/%L,\ col:\ %c%V%)
 set statusline+=\ %{strlen(&fenc)?&fenc:'none'}\  "file encoding

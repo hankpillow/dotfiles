@@ -9,3 +9,4 @@ then
 fi
 curl "https://raw.githubusercontent.com/hankpillow/dotfiles/master/vimrc" > $HOME/.vimrc
 vim +PluginInstall
+vim -u NONE -c "helptags vim-fugitive/doc" -c q
