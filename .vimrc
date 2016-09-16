@@ -18,12 +18,12 @@ augroup reload_vimrc
 augroup END
 
 augroup NetrwGroup
-	  autocmd! BufEnter * call NormalizeWidths()
+	autocmd! BufEnter * call NormalizeWidths()
 augroup END
 
 autocmd BufNewFile,BufRead *.njk set filetype=html syntax=jinja
 autocmd BufNewFile,BufRead *.{tag,ejs} set syntax=html filetype=html
-autocmd BufRead,BufNewFile *.md,gitcommit setlocal spell complete+=kspell
+
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown,tag,ejs setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -32,6 +32,10 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType vim,javascript,sh,python,xml,yml,yaml,json,html autocmd BufWritePre <buffer> call StripTrailingWhitespace()
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd Filetype gitcommit setlocal textwidth=72
+
+"in case of not having editorconfig on project
+autocmd FileType yaml,ruby,python,vim,bash,sh setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType html,javascript,xml,jsp setlocal ts=4 sts=4 sw=4 noexpandtab
 
 "-----------------------------------------------------------------------------
 " helpers
@@ -100,7 +104,6 @@ let g:netrw_liststyle=0         " thin (change to 3 for tree)
 let g:netrw_preview=1           " open previews vertically
 let g:netrw_use_errorwindow=0   " suppress error window
 let g:netrw_winsize=20          " preview winsize
-noremap <leader>e :Vexplore<cr>
 noremap <leader><tab> :call VexToggle("")<cr>
 
 "-----------------------------------------------------------------------------
@@ -118,6 +121,8 @@ Plugin 'morhetz/gruvbox'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'Lokaltog/vim-distinguished'
 "all
+Plugin 'rking/ag.vim'
+Plugin 'Chun-Yang/vim-action-ag'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'editorconfig/editorconfig-vim'
@@ -125,7 +130,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rstacruz/sparkup'
 Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-commentary'
 call vundle#end()
 
 syntax on
@@ -135,14 +140,16 @@ filetype plugin indent on
 "Set Set Set Set
 "===============================================================================
 
+set hidden "allow switching buffers without saving
 set title
 set history=1000
 set backspace=indent,eol,start
 set splitright "put vsplit to the right of current
 set splitbelow "put split window bottom of the current
 set mouse=a "auto enable mouse usage
+set mousefocus
 set mousehide "hide cursor while typing
-set pastetoggle=fa
+set pastetoggle=<f12>
 "search/highlight
 set hlsearch "highlight search
 set showmatch "show matching brackets/parentethesis
@@ -151,6 +158,7 @@ set smartcase
 set ignorecase
 
 "autocomplete menus
+set complete=.,w,b,t
 set wildmenu wildmode=full
 set wildignore+=.git,.svn,*.sw?,.DS_Store,node_modules,bower_components
 set omnifunc=syntaxcomplete#Complete
@@ -158,14 +166,9 @@ set omnifunc=syntaxcomplete#Complete
 "no autobackups at all
 set nobackup nowritebackup noswapfile
 
-"tabs, spaces, wrap and all indent
-set nowrap
-set tabstop=4
-set shiftwidth=4
-set noexpandtab "dont expand tabs into spaces
-set autoindent
 set virtualedit=onemore
-
+set nowrap
+set autoindent
 "------------------------------------------------------------------------------
 " theme
 "------------------------------------------------------------------------------
@@ -195,8 +198,11 @@ set statusline+=\ %{strlen(&fenc)?&fenc:'none'}\  "file encoding
 set statusline+=%{&ff} "file format
 
 "------------------------------------------------------------------------------
-" <leader> maps
+" maps
 "------------------------------------------------------------------------------
+
+"save
+noremap <silent><leader>s :w<cr>
 
 "change explorer to file's directory
 noremap <leader>cd :lcd %:p:h<cr>
@@ -214,19 +220,16 @@ noremap <leader>bo :vert sb<cr>
 noremap <leader>bd :bdelete<cr>
 
 "every replace starts with 'magic' flag
-noremap <leader>r :%s/\V
+noremap /r :%s:::gc<left><left><left><left>
 
 "every search starts with 'magic' flag
-nnoremap / /\V
+nnoremap // /\V
 
 "remove empty lines
 noremap <leader>em :g/^\s*$/d<cr>
 
-"------------------------------------------------------------------------------
-"<C> control maps
-"------------------------------------------------------------------------------
-
-noremap <silent><C-h> :set hlsearch!<cr>
+"toggle highlight search
+noremap <C-h> :set hlsearch!<cr>
 
 "change to insert mode and create a linebreak on carret's position
 noremap <C-o> i<cr>
@@ -234,30 +237,29 @@ noremap <C-o> i<cr>
 "duplicate current line
 noremap <C-d> yyp
 
-"moving around
-noremap <C-Right> :bnext<cr>
-noremap <C-Left> :bprev<cr>
+"buffer nav
+noremap <C-Right> :bnext!<cr>
+noremap <C-Left> :bprev!<cr>
 
-" auto complete
-imap <C-Space> <C-X><C-O>
-imap <C-Tab> <C-N>
-
-"------------------------------------------------------------------------------
-" arrow/move/etc maps
-"------------------------------------------------------------------------------
-
-"move as graphical way with arrow (good when wordwrapping)
-inoremap <Up> <C-o>gk
-inoremap <Down> <C-o>gj
-nnoremap <Up> gk
-nnoremap <Down> gj
+"graphical moving when in normal mode
+nnoremap j gj
+nnoremap k gk
 
 "------------------------------------------------------------------------------
 " plugin config
 "------------------------------------------------------------------------------
 
 "ctrlp
-nnoremap <leader>f :CtrlP<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>bu :CtrlPBuffer<cr>
 noremap <F5> :CtrlPClearCache<cr>
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+
+"ag
+nnoremap <leader>f :Ag! <space>
+let g:ag_working_path_mode='r'
+let g:vim_action_ag_escape_chars = '#%.^$*+?()[{\\|'
+if executable('ag')
+	set grepprg=ag\ --nogroup\ --nocolor
+	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+	let g:ctrlp_use_caching = 0
+endif
