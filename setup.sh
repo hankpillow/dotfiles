@@ -3,7 +3,7 @@ do
   if [[ -e $HOME$file ]]; then
     mv $HOME$file{,.bkp.$(date +%s)} -v
 	fi
-  curl -o "$home$file" "https://raw.githubusercontent.com/hankpillow/dotfiles/master/$file"
+  curl "https://raw.githubusercontent.com/hankpillow/dotfiles/master/$file" > "$home$file"
   #create an option for local copy
   #cp $file $HOME$file -v
 done <<- EOM
