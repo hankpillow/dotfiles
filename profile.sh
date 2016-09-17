@@ -1,3 +1,17 @@
+##
+## profile
+##
+
+alias ga="git add"
+alias gc="git commit"
+alias gf="git fetch --all --prune"
+alias gs="git status -s"
+
+alias l="ls -olahF"
+alias ccal='cal | sed -e "s/ $(expr `date "+%d"` + 0) / $(printf "\033[32m$(expr `date "+%d"` + 0)\033[0m") /"'
+alias vi='vim'
+alias reload='bash ~/.bashrc'
+
 if [ "$(uname)" == "Darwin" ]; then
   # Append to the Bash history file, rather than overwriting it
   shopt -s histappend
@@ -18,11 +32,12 @@ if [ "$(uname)" == "Darwin" ]; then
   alias ls='ls -G'
 
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+
   if [[ ! -z "$(type xclip)" ]];
   then
-    # works as pbcopy on strams
     xclip="xclip -selection c"
   fi
+
   alias ls='ls --color=auto'
   alias ya='yaourt'
 fi
