@@ -37,7 +37,6 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   then
     xclip="xclip -selection c"
   fi
-
   alias ls='ls --color=auto'
   alias ya='yaourt'
 fi
