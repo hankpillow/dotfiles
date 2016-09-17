@@ -209,6 +209,9 @@ set statusline+=%{&ff} "file format
 "save
 noremap <silent><leader>w :w<cr>
 
+"like quit
+noremap <leader>q :bdelete<cr>
+
 "change explorer to file's directory
 noremap <leader>cd :lcd %:p:h<cr>
 
@@ -220,9 +223,6 @@ noremap <Leader>= <C-w>=
 
 "split window vertically and loads the actual buffer
 noremap <leader>bo :vert sb<cr>
-
-"close current buffer without saving
-noremap <leader>bd :bdelete<cr>
 
 "every replace starts with 'magic' flag
 noremap /r :%s:::gc<left><left><left><left>
