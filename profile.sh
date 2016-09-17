@@ -1,6 +1,6 @@
-##
-## profile
-##
+#
+# profile.sh
+#
 
 alias ga="git add"
 alias gc="git commit"
@@ -58,3 +58,4 @@ git config --global diff.tool opendiff
 git config --global difftool.prompt false
 git config --global merge.tool opendiff
 git config --global merge.conflictstyle diff3
+

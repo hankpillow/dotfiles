@@ -1,4 +1,7 @@
-# Prefer US English and use UTF-8
+#
+# export.sh
+#
+
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 export HOME=`echo ~/`
@@ -20,3 +23,4 @@ export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
 
 export QT_SELECT=5
+

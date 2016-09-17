@@ -1,3 +1,6 @@
+#
+# ps1.sh
+#
 
 #REGULAR TEXT COLOR
 BLACK='\[\e[0;30m\]'
@@ -39,3 +42,4 @@ get_ps1(){
 	PS1="$CYAN\D{%T} ${BGMAGENTA}\j $WHITE\w$BGCYAN${BRANCH} \n$BGWHITE${DOCKER}$WHITE\u@\h $ "
 }
 PROMPT_COMMAND=get_ps1
+

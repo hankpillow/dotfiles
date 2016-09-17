@@ -1,4 +1,4 @@
-files=( "ps1.sh" "helpers.sh" "export.sh" "git-completion.bash" "git-prompt.bash" "docker-machine-prompt.bash" "docker-machine.bash" )
+files=( "ps1.sh" "helpers.sh" "profile.sh" "export.sh" "git-completion.bash" "git-prompt.bash" "docker-machine-prompt.bash" "docker-machine.bash" )
 bundle=""
 for file in "${files[@]}"
 do

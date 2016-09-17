@@ -218,12 +218,6 @@ noremap <leader>cd :lcd %:p:h<cr>
 "toggle word wrapping lines
 noremap <leader>ww :set wrap!<cr>
 
-"resize buffer equally
-noremap <Leader>= <C-w>=
-
-"split window vertically and loads the actual buffer
-noremap <leader>bo :vert sb<cr>
-
 "every replace starts with 'magic' flag
 noremap /r :%s:::gc<left><left><left><left>
 
@@ -232,6 +226,9 @@ nnoremap // /\V
 
 "remove empty lines
 noremap <leader>em :g/^\s*$/d<cr>
+"
+"remove multiples empty lines into a single one
+noremap <leader>cl :%!cat -s
 
 "toggle highlight search
 noremap <C-h> :set hlsearch!<cr>

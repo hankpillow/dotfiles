@@ -1,3 +1,7 @@
+#
+# helpers.sh
+#
+
 function setup-profile(){
   curl "https://raw.githubusercontent.com/hankpillow/dotfiles/master/setup-profile.sh" | bash
 }
@@ -24,3 +28,4 @@ function docker-clear(){
 function pacman-stop(){
   rm /var/lib/pacman/db.lck
 }
+
