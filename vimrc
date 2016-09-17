@@ -210,7 +210,7 @@ set statusline+=%{&ff} "file format
 noremap <silent><leader>w :w<cr>
 
 "like quit
-noremap <leader>q :bdelete<cr>
+noremap <leader>d :bdelete<cr>
 
 "change explorer to file's directory
 noremap <leader>cd :lcd %:p:h<cr>
