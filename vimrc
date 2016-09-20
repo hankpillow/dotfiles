@@ -192,15 +192,15 @@ set colorcolumn=80
 
 set laststatus=2
 set statusline=
-set statusline+=\ %f
-set statusline+=\ @%{bufnr('%')} "buffer number
-set statusline+=\ [%{strlen(&ft)?&ft:'none'}] " file type
-set statusline+=\ %r "modified readonly filetype
-set statusline+=\ %{fugitive#statusline()}
-set statusline+=%=
-set statusline+=%(line:\ %l\/%L,\ col:\ %c%V%)
-set statusline+=\ %{strlen(&fenc)?&fenc:'none'}\  "file encoding
-set statusline+=%{&ff} "file format
+set statusline +=\ %n                               "buffer number
+set statusline +=\ %{&ff}                           "file format
+set statusline +=\ %y                               "file type
+set statusline +=\ %<%F                             "full path
+set statusline +=\ %m                               "modified flag
+set statusline +=\ %{fugitive#statusline()}         "git branch
+set statusline +=\ %=                               "float right
+set statusline +=\ %(line:\ %l\/%L,\ col:\ %c%V%)   "line col info
+set statusline +=0x%04B                             "character under cursor
 
 "------------------------------------------------------------------------------
 " maps
@@ -257,7 +257,7 @@ noremap <F5> :CtrlPClearCache<cr>
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 "ag
-nnoremap <leader>f :Ag! <space>
+nnoremap <leader>f :Ag!
 let g:ag_working_path_mode='r'
 let g:vim_action_ag_escape_chars = '#%.^$*+?()[{\\|'
 if executable('ag')
