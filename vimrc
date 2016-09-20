@@ -207,7 +207,7 @@ set statusline+=%{&ff} "file format
 "------------------------------------------------------------------------------
 
 "save
-noremap <silent><leader>w :w<cr>
+noremap <leader>w :w<cr>
 
 "like quit
 noremap <leader>d :bdelete<cr>
