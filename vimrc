@@ -257,7 +257,7 @@ noremap <F5> :CtrlPClearCache<cr>
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 "ag
-nnoremap <leader>f :Ag! <space>
+nnoremap /f :Ag!
 let g:ag_working_path_mode='r'
 let g:vim_action_ag_escape_chars = '#%.^$*+?()[{\\|'
 if executable('ag')
@@ -265,3 +265,6 @@ if executable('ag')
 	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 	let g:ctrlp_use_caching = 0
 endif
+
+"fugitive
+
