@@ -190,17 +190,36 @@ set colorcolumn=80
 " status line
 "------------------------------------------------------------------------------
 
+function! Fenc()
+  if &fenc !~ "^$\|utf-8" || &bomb
+    return "[" . &fenc . (&bomb ? "-bom" : "" ) . "]"
+  else
+    return ""
+  endif
+endfunction
+
 set laststatus=2
 set statusline=
-set statusline+=\ %f
-set statusline+=\ @%{bufnr('%')} "buffer number
-set statusline+=\ [%{strlen(&ft)?&ft:'none'}] " file type
-set statusline+=\ %r "modified readonly filetype
-set statusline+=\ %{fugitive#statusline()}
-set statusline+=%=
-set statusline+=%(line:\ %l\/%L,\ col:\ %c%V%)
-set statusline+=\ %{strlen(&fenc)?&fenc:'none'}\  "file encoding
-set statusline+=%{&ff} "file format
+set statusline +=%m                           "modified flag
+set statusline +=\ %<%F                       "full path
+set statusline +=\ (%n)\                      "buffer number
+set statusline +=\ %{fugitive#statusline()}
+set statusline +=%=
+set statusline +=%y                           "file type
+set statusline +=\ %{Fenc()}\                 "file format
+set statusline +=%(\|\ %l\/%L\ :\ %c%V%)      "line and column
+set statusline +=\ \|\ 0x%04B\                "character under cursor
+
+"now set it up to change the status line based on mode
+if version >= 700
+  au InsertEnter * hi StatusLine ctermfg=green ctermbg=white
+  au InsertLeave * hi StatusLine ctermfg=none ctermbg=none
+endif
+
+" inactive window
+hi StatusLineNC ctermfg=240 ctermbg=240
+" active window
+hi StatusLine ctermfg=none ctermbg=none
 
 "------------------------------------------------------------------------------
 " maps
