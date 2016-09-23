@@ -213,12 +213,14 @@ set statusline +=\ \|\ 0x%04B\                "character under cursor
 
 "now set it up to change the status line based on mode
 if version >= 700
-  au InsertEnter * hi StatusLine ctermfg=green ctermbg=white
+  au InsertEnter * hi StatusLine ctermfg=10 ctermbg=none
   au InsertLeave * hi StatusLine ctermfg=none ctermbg=none
 endif
 
 " inactive window
-hi StatusLineNC ctermfg=240 ctermbg=240
+let bg = synIDattr(synIDtrans(hlID('Normal')), 'fg')
+hi StatusLineNC ctermfg=bg ctermbg=bg
+
 " active window
 hi StatusLine ctermfg=none ctermbg=none
 
@@ -248,7 +250,7 @@ nnoremap // /\V
 noremap <leader>em :g/^\s*$/d<cr>
 "
 "remove multiples empty lines into a single one
-noremap <leader>cl :%!cat -s
+noremap <leader>cl :%!cat -s<cr>
 
 "toggle highlight search
 noremap <C-h> :set hlsearch!<cr>
@@ -277,7 +279,7 @@ noremap <F5> :CtrlPClearCache<cr>
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 "ag
-nnoremap /f :Ag!
+nnoremap /f :Ag!<space>
 let g:ag_working_path_mode='r'
 let g:vim_action_ag_escape_chars = '#%.^$*+?()[{\\|'
 if executable('ag')
