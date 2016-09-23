@@ -173,6 +173,7 @@ set nobackup nowritebackup noswapfile
 set virtualedit=onemore
 set nowrap
 set autoindent
+
 "------------------------------------------------------------------------------
 " theme
 "------------------------------------------------------------------------------
