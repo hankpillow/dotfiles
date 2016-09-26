@@ -201,7 +201,7 @@ endfunction
 
 set laststatus=2
 set statusline=
-if winwidth(0) >= 65
+if winwidth(0) <= "70"
   set statusline +=\ %f
   set statusline +=\ (%n)
   set statusline +=%y
