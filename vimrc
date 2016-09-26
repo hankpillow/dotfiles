@@ -201,28 +201,24 @@ endfunction
 
 set laststatus=2
 set statusline=
-set statusline +=%m                           "modified flag
-set statusline +=\ %<%F                       "full path
-set statusline +=\ (%n)\                      "buffer number
-set statusline +=\ %{fugitive#statusline()}
-set statusline +=%=
-set statusline +=%y                           "file type
-set statusline +=\ %{Fenc()}\                 "file format
-set statusline +=%(\|\ %l\/%L\ :\ %c%V%)      "line and column
-set statusline +=\ \|\ 0x%04B\                "character under cursor
-
-"now set it up to change the status line based on mode
-if version >= 700
-  au InsertEnter * hi StatusLine ctermfg=10 ctermbg=none
-  au InsertLeave * hi StatusLine ctermfg=none ctermbg=none
+if winwidth(0) >= 65
+  set statusline +=\ %f
+  set statusline +=\ (%n)
+  set statusline +=%y
+  set statusline +=%{Fenc()}
+  set statusline +=%=
+  set statusline +=%l\/%c
+else
+  set statusline +=%m                           "modified flag
+  set statusline +=\ %<%F                       "full path
+  set statusline +=\ (%n)\                      "buffer number
+  set statusline +=\ %{fugitive#statusline()}
+  set statusline +=%=
+  set statusline +=%y                           "file type
+  set statusline +=\ %{Fenc()}\                 "file format
+  set statusline +=%(\|\ %l\/%L\ :\ %c%V%)      "line and column
+  set statusline +=\ \|\ 0x%04B\                "character under cursor
 endif
-
-" inactive window
-let bg = synIDattr(synIDtrans(hlID('Normal')), 'fg')
-hi StatusLineNC ctermfg=bg ctermbg=bg
-
-" active window
-hi StatusLine ctermfg=none ctermbg=none
 
 "------------------------------------------------------------------------------
 " maps
