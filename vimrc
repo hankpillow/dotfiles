@@ -1,5 +1,6 @@
-scriptencoding utf-8
-
+set encoding=utf-8
+set fenc=utf-8
+set termencoding=utf-8
 set shell=/bin/bash
 set runtimepath+=~/.vim/bundle/Vundle.vim/
 
@@ -144,20 +145,19 @@ filetype plugin indent on
 "Set Set Set Set
 "===============================================================================
 
-set hidden "allow switching buffers without saving
+set hidden
 set title
 set history=1000
 set backspace=indent,eol,start
-set splitright "put vsplit to the right of current
-set splitbelow "put split window bottom of the current
-set mouse=a "auto enable mouse usage
+set splitright
+set splitbelow
+set mouse=a
 set mousefocus
-set mousehide "hide cursor while typing
+set mousehide
 set pastetoggle=<f12>
-"search/highlight
-set hlsearch "highlight search
-set showmatch "show matching brackets/parentethesis
-set incsearch "find as you type
+set hlsearch
+set showmatch
+set incsearch
 set smartcase
 set ignorecase
 
@@ -200,25 +200,73 @@ function! Fenc()
 endfunction
 
 set laststatus=2
-set statusline=
-if winwidth(0) <= "70"
-  set statusline +=\ %f
-  set statusline +=\ (%n)
-  set statusline +=%y
-  set statusline +=%{Fenc()}
-  set statusline +=%=
-  set statusline +=%l\/%c
-else
-  set statusline +=%m                           "modified flag
-  set statusline +=\ %<%F                       "full path
-  set statusline +=\ (%n)\                      "buffer number
-  set statusline +=\ %{fugitive#statusline()}
-  set statusline +=%=
-  set statusline +=%y                           "file type
-  set statusline +=\ %{Fenc()}\                 "file format
-  set statusline +=%(\|\ %l\/%L\ :\ %c%V%)      "line and column
-  set statusline +=\ \|\ 0x%04B\                "character under cursor
-endif
+
+"file name
+hi User1 ctermfg=49 ctermbg=8
+"file readonly
+hi User2 ctermfg=9 ctermbg=8
+"modified
+hi User3 ctermfg=15 ctermbg=8 cterm=bold
+"ordinary text
+hi User4 ctermfg=6 ctermbg=8
+"inactive window
+hi User5 ctermfg=7 ctermbg=none
+
+function! Color(active, num, content)
+  if a:active
+    return '%' . a:num . '*' . a:content . '%*'
+  else
+    return a:content
+  endif
+endfunction
+
+function! Status(winnr)
+  let stat = ''
+  let active = winnr() == a:winnr
+  let buffer = winbufnr(a:winnr)
+
+  let modified = getbufvar(buffer, '&modified')
+  let readonly = getbufvar(buffer, '&ro')
+
+  let stat .= Color(1, 3, modified ? ' + ' : '')
+  if active
+    let stat .= Color(1, readonly ? 2 : 1, ' %f')
+  else
+    let stat .= Color(1, 5, ' %f')
+  endif
+
+  if winwidth(0) >= 70 && active
+    let stat .= Color(1, 4, ' @' . buffer)
+    if exists('*fugitive#head')
+      let head = fugitive#head()
+      if empty(head) && exists('*fugitive#detect') && !exists('b:git_dir')
+        call fugitive#detect(getcwd())
+        let head = fugitive#head()
+      endif
+      let stat .= Color(1, 4, ' (' . head . ')')
+    endif
+    let stat .= Color(1, 4, '%=')
+    let stat .= Color(1, 1, '%(%l,%c%V%)')
+    let stat .= Color(1, 4, ' %y')
+    let stat .= Color(1, 4, ' %{Fenc()}')
+    let stat .= Color(1, 4, ' 0x%04B')
+  else
+    let stat .= Color(1,5,'%=')
+  endif
+  return stat
+endfunction
+
+" thanks for from https://github.com/blaenk/dots/blob/9843177fa6155e843eb9e84225f458cd0205c969/vim/vimrc.ln#L49-L64
+function! SetStatus()
+  for nr in range(1, winnr('$'))
+    call setwinvar(nr, '&statusline', '%!Status('.nr.')')
+  endfor
+endfunction
+
+augroup status
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter,BufUnload * call SetStatus()
+augroup END
 
 "------------------------------------------------------------------------------
 " maps
