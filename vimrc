@@ -339,3 +339,4 @@ endif
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gd :Gvdiff<cr>
+
