@@ -272,6 +272,9 @@ augroup END
 " maps
 "------------------------------------------------------------------------------
 
+nnoremap E $
+nnoremap B ^
+
 "save
 noremap <leader>w :w<cr>
 
@@ -292,7 +295,7 @@ nnoremap // /\V
 
 "remove empty lines
 noremap <leader>em :g/^\s*$/d<cr>
-"
+
 "remove multiples empty lines into a single one
 noremap <leader>cl :%!cat -s<cr>
 
@@ -333,4 +336,6 @@ if executable('ag')
 endif
 
 "fugitive
-
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gd :Gvdiff<cr>
