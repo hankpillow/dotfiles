@@ -34,7 +34,7 @@ autocmd FileType vim,javascript,sh,python,xml,yml,yaml,json,html autocmd BufWrit
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd Filetype gitcommit setlocal textwidth=72
 
-"in case of not having editorconfig on project
+"in you don't have .editorconfig on your project
 autocmd FileType yaml,ruby,python,vim,bash,sh setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType html,javascript,xml,jsp setlocal ts=4 sts=4 sw=4 noexpandtab
 
