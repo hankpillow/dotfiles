@@ -135,6 +135,7 @@ Plugin 'rstacruz/sparkup'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
 
 call vundle#end()
 
