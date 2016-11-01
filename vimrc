@@ -298,20 +298,13 @@ nnoremap // /\V
 noremap <leader>em :g/^\s*$/d<cr>
 
 "remove multiples empty lines into a single one
-noremap <leader>cl :%!cat -s<cr>
-
-"toggle highlight search
-noremap <C-h> :set hlsearch!<cr>
+noremap <leader>ml :%!cat -s<cr>
 
 "change to insert mode and create a linebreak on carret's position
 noremap <C-o> i<cr>
 
 "duplicate current line
 noremap <C-d> yyp
-
-"buffer nav
-noremap <C-Right> :bnext!<cr>
-noremap <C-Left> :bprev!<cr>
 
 "graphical moving when in normal mode
 nnoremap j gj
@@ -324,7 +317,6 @@ nnoremap k gk
 "ctrlp
 nnoremap <leader>bu :CtrlPBuffer<cr>
 noremap <F5> :CtrlPClearCache<cr>
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 "ag
 nnoremap /f :Ag!<space>
@@ -332,7 +324,6 @@ let g:ag_working_path_mode='r'
 let g:vim_action_ag_escape_chars = '#%.^$*+?()[{\\|'
 if executable('ag')
 	set grepprg=ag\ --nogroup\ --nocolor
-	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 	let g:ctrlp_use_caching = 0
 endif
 
