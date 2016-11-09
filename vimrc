@@ -122,9 +122,13 @@ Plugin 'reedes/vim-colors-pencil'
 Plugin 'morhetz/gruvbox'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'Lokaltog/vim-distinguished'
+Plugin 'JulesWang/css.vim'
 
 "syntax
 Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mitsuhiko/vim-python-combined'
+Plugin 'vim-ruby/vim-ruby'
 
 "all
 Plugin 'rking/ag.vim'
@@ -284,9 +288,6 @@ noremap <leader>d :bdelete<cr>
 
 "change explorer to file's directory
 noremap <leader>cd :lcd %:p:h<cr>
-
-"toggle word wrapping lines
-noremap <leader>ww :set wrap!<cr>
 
 "every replace starts with 'magic' flag
 noremap /r :%s:::gc<left><left><left><left>
