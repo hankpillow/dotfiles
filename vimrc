@@ -18,10 +18,6 @@ augroup reload_vimrc
 	let @/ = ""
 augroup END
 
-augroup NetrwGroup
-	autocmd! BufEnter * call NormalizeWidths()
-augroup END
-
 autocmd BufNewFile,BufRead *.njk set filetype=html syntax=jinja
 autocmd BufNewFile,BufRead *.{tag,ejs} set syntax=html filetype=html
 
@@ -107,6 +103,10 @@ endf
 " let g:netrw_winsize=20          " preview winsize
 " noremap <leader><tab> :call VexToggle("")<cr>
 
+" augroup NetrwGroup
+" 	autocmd! BufEnter * call NormalizeWidths()
+" augroup END
+
 "-----------------------------------------------------------------------------
 " plugins setup
 "------------------------------------------------------------------------------
@@ -140,7 +140,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'mbbill/undotreep'
+Plugin 'mbbill/undotree'
 Plugin 'moll/vim-bbye'
 Plugin 'justinmk/vim-dirvish'
 
