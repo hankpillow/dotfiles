@@ -5,7 +5,7 @@ set shell=/bin/bash
 set runtimepath+=~/.vim/bundle/Vundle.vim/
 
 if &compatible
-	set nocompatible
+  set nocompatible
 endif
 
 "-----------------------------------------------------------------------------
@@ -13,9 +13,9 @@ endif
 "-----------------------------------------------------------------------------
 
 augroup reload_vimrc
-	autocmd!
-	autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
-	let @/ = ""
+  autocmd!
+  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
+  let @/ = ""
 augroup END
 
 autocmd BufNewFile,BufRead *.njk set filetype=html syntax=jinja
@@ -39,73 +39,30 @@ autocmd FileType html,javascript,xml,jsp setlocal ts=4 sts=4 sw=4 noexpandtab
 "-----------------------------------------------------------------------------
 
 fun! StripTrailingWhitespace()
-	let _s=@/
-	let l = line(".")
-	let c = col(".")
-	%s/\s\+$//e
-	let @/=_s
-	call cursor(l, c)
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  let @/=_s
+  call cursor(l, c)
 endf
 
 "-----------------------------------------------------------------------------
 " netrws (side bar)
 "------------------------------------------------------------------------------
 
-" fun! VexToggle(dir)
-" 	if exists("t:vex_buf_nr")
-" 		call VexClose()
-" 	else
-" 		call VexOpen(a:dir)
-" 	endif
-" endf
-
-" fun! VexOpen(dir)
-" 	execute "Vexplore " . a:dir
-" 	let t:vex_buf_nr = bufnr("%")
-" 	wincmd H
-" 	call VexSize(25)
-" endf
-
-" fun! VexClose()
-" 	let cur_win_nr = winnr()
-" 	let target_nr = (cur_win_nr == 1 ? winnr("#") : cur_win_nr)
-" 	1wincmd w
-" 	close
-" 	unlet t:vex_buf_nr
-" 	execute (target_nr - 1) . "wincmd w"
-" 	call NormalizeWidths()
-" endf
-
-" fun! VexSize(vex_width)
-" 	execute "vertical resize" . a:vex_width
-" 	set winfixwidth
-" 	call NormalizeWidths()
-" endf
-
-" fun! NormalizeWidths()
-" 	let eadir_pref = &eadirection
-" 	set eadirection=hor
-" 	set equalalways! equalalways!
-" 	let &eadirection = eadir_pref
-" endf
-
-" let g:netrw_altfile=1           " last edited file '#'
-" let g:netrw_alto=0              " open files on right
-" let g:netrw_altv=1              " open files on right
-" let g:netrw_banner=0            " no banner
-" let g:netrw_browse_split=4
-" let g:netrw_dirhistmax=100      " keep more history
-" let g:netrw_hide=1              " hide hidden files
-" let g:netrw_list_hide='\.git,.*\.DS_Store$'
-" let g:netrw_liststyle=0         " thin (change to 3 for tree)
-" let g:netrw_preview=1           " open previews vertically
-" let g:netrw_use_errorwindow=0   " suppress error window
-" let g:netrw_winsize=20          " preview winsize
-" noremap <leader><tab> :call VexToggle("")<cr>
-
-" augroup NetrwGroup
-" 	autocmd! BufEnter * call NormalizeWidths()
-" augroup END
+let g:netrw_altfile=1           " last edited file '#'
+let g:netrw_alto=0              " open files on right
+let g:netrw_altv=1              " open files on right
+let g:netrw_banner=0            " no banner
+let g:netrw_browse_split=4
+let g:netrw_dirhistmax=100      " keep more history
+let g:netrw_hide=1              " hide hidden files
+let g:netrw_list_hide='\.git,.*\.DS_Store$'
+let g:netrw_liststyle=0         " thin (change to 3 for tree)
+let g:netrw_preview=1           " open previews vertically
+let g:netrw_use_errorwindow=0   " suppress error window
+let g:netrw_winsize=20          " preview winsize
 
 "-----------------------------------------------------------------------------
 " plugins setup
@@ -327,8 +284,11 @@ nnoremap /f :Ag!<space>
 let g:ag_working_path_mode='r'
 let g:vim_action_ag_escape_chars = '#%.^$*+?()[{\\|'
 if executable('ag')
-	set grepprg=ag\ --nogroup\ --nocolor
-	let g:ctrlp_use_caching = 0
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_use_caching = 0
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -f -g ""'
+else
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 endif
 
 "fugitive
