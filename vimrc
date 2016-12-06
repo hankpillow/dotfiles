@@ -143,8 +143,8 @@ set autoindent
 " theme
 "------------------------------------------------------------------------------
 
-colorscheme gruvbox
-set background=dark
+colorscheme PaperColor "gruvbox
+set background=light "dark
 set relativenumber
 set list
 set listchars=tab:▸\ ,eol:•,trail:—
