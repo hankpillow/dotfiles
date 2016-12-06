@@ -336,3 +336,5 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gd :Gvdiff<cr>
 
+"undotree
+nnoremap <F3> :UndotreeToggle<cr>
