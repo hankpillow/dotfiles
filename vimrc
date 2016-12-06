@@ -51,61 +51,61 @@ fun! StripTrailingWhitespace()
 	call cursor(l, c)
 endf
 
-fun! VexToggle(dir)
-	if exists("t:vex_buf_nr")
-		call VexClose()
-	else
-		call VexOpen(a:dir)
-	endif
-endf
-
-fun! VexOpen(dir)
-	execute "Vexplore " . a:dir
-	let t:vex_buf_nr = bufnr("%")
-	wincmd H
-	call VexSize(25)
-endf
-
-fun! VexClose()
-	let cur_win_nr = winnr()
-	let target_nr = (cur_win_nr == 1 ? winnr("#") : cur_win_nr)
-	1wincmd w
-	close
-	unlet t:vex_buf_nr
-	execute (target_nr - 1) . "wincmd w"
-	call NormalizeWidths()
-endf
-
-fun! VexSize(vex_width)
-	execute "vertical resize" . a:vex_width
-	set winfixwidth
-	call NormalizeWidths()
-endf
-
-fun! NormalizeWidths()
-	let eadir_pref = &eadirection
-	set eadirection=hor
-	set equalalways! equalalways!
-	let &eadirection = eadir_pref
-endf
-
 "-----------------------------------------------------------------------------
 " netrws (side bar)
 "------------------------------------------------------------------------------
 
-let g:netrw_altfile=1           " last edited file '#'
-let g:netrw_alto=0              " open files on right
-let g:netrw_altv=1              " open files on right
-let g:netrw_banner=0            " no banner
-let g:netrw_browse_split=4
-let g:netrw_dirhistmax=100      " keep more history
-let g:netrw_hide=1              " hide hidden files
-let g:netrw_list_hide='\.git,.*\.DS_Store$'
-let g:netrw_liststyle=0         " thin (change to 3 for tree)
-let g:netrw_preview=1           " open previews vertically
-let g:netrw_use_errorwindow=0   " suppress error window
-let g:netrw_winsize=20          " preview winsize
-noremap <leader><tab> :call VexToggle("")<cr>
+" fun! VexToggle(dir)
+" 	if exists("t:vex_buf_nr")
+" 		call VexClose()
+" 	else
+" 		call VexOpen(a:dir)
+" 	endif
+" endf
+
+" fun! VexOpen(dir)
+" 	execute "Vexplore " . a:dir
+" 	let t:vex_buf_nr = bufnr("%")
+" 	wincmd H
+" 	call VexSize(25)
+" endf
+
+" fun! VexClose()
+" 	let cur_win_nr = winnr()
+" 	let target_nr = (cur_win_nr == 1 ? winnr("#") : cur_win_nr)
+" 	1wincmd w
+" 	close
+" 	unlet t:vex_buf_nr
+" 	execute (target_nr - 1) . "wincmd w"
+" 	call NormalizeWidths()
+" endf
+
+" fun! VexSize(vex_width)
+" 	execute "vertical resize" . a:vex_width
+" 	set winfixwidth
+" 	call NormalizeWidths()
+" endf
+
+" fun! NormalizeWidths()
+" 	let eadir_pref = &eadirection
+" 	set eadirection=hor
+" 	set equalalways! equalalways!
+" 	let &eadirection = eadir_pref
+" endf
+
+" let g:netrw_altfile=1           " last edited file '#'
+" let g:netrw_alto=0              " open files on right
+" let g:netrw_altv=1              " open files on right
+" let g:netrw_banner=0            " no banner
+" let g:netrw_browse_split=4
+" let g:netrw_dirhistmax=100      " keep more history
+" let g:netrw_hide=1              " hide hidden files
+" let g:netrw_list_hide='\.git,.*\.DS_Store$'
+" let g:netrw_liststyle=0         " thin (change to 3 for tree)
+" let g:netrw_preview=1           " open previews vertically
+" let g:netrw_use_errorwindow=0   " suppress error window
+" let g:netrw_winsize=20          " preview winsize
+" noremap <leader><tab> :call VexToggle("")<cr>
 
 "-----------------------------------------------------------------------------
 " plugins setup
@@ -140,6 +140,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'mbbill/undotreep'
+Plugin 'moll/vim-bbye'
+Plugin 'justinmk/vim-dirvish'
 
 call vundle#end()
 
@@ -284,7 +287,7 @@ nnoremap B ^
 noremap <leader>w :w<cr>
 
 "like quit
-noremap <leader>d :bdelete<cr>
+noremap <leader>d :Bdelete<cr>
 
 "change explorer to file's directory
 noremap <leader>cd :lcd %:p:h<cr>
