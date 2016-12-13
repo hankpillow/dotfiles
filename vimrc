@@ -124,20 +124,39 @@ set hlsearch
 set showmatch
 set incsearch
 set smartcase
+set smarttab
 set ignorecase
 
 "autocomplete menus
 set complete=.,w,b,t
-set wildmenu wildmode=full
-set wildignore+=.git,.svn,*.sw?,.DS_Store,node_modules,bower_components
+if has('wildmenu')
+  set wildmenu
+  set wildmode=longest:full,full
+endif
+
+if has('wildignore')
+set wildignore+=.DS_Store,node_modules,bower_components
+endif
 
 "no autobackups at all
 set nobackup nowritebackup noswapfile
-
-set virtualedit=onemore
+if has('virtualedit')
+  set virtualedit=block
+endif
 set nowrap
 set autoindent
 
+set shortmess+=A                      " ignore annoying swapfile messages
+set shortmess+=I                      " no splash screen
+set shortmess+=O                      " file-read message overwrites previous
+set shortmess+=T                      " truncate non-file messages in middle
+set shortmess+=W                      " don't echo "[w]"/"[written]" when writing
+set shortmess+=o                      " overwrite file-written messages
+set shortmess+=t                      " truncate file messages at start
+set lazyredraw                        " don't bother updating screen during macro playback
+if v:version > 703 || v:version == 703 && has('patch541')
+  set formatoptions+=j                " remove comment leader when joining comment lines
+endif
 "------------------------------------------------------------------------------
 " theme
 "------------------------------------------------------------------------------
@@ -147,10 +166,11 @@ set background=dark
 set relativenumber
 set list
 set listchars=tab:▸\ ,eol:•,trail:—
-set showbreak=↳
 set cursorline
 set colorcolumn=80
-
+if has('linebreak')
+  set showbreak='⤷ '
+endif
 "------------------------------------------------------------------------------
 " status line
 "------------------------------------------------------------------------------
