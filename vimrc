@@ -70,38 +70,38 @@ let g:netrw_winsize=20          " preview winsize
 
 filetype off
 
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
+call plug#begin('~/.vim/bundle')
 
 "themes
-Plugin 'vim-scripts/summerfruit256.vim'
-Plugin 'reedes/vim-colors-pencil'
-Plugin 'morhetz/gruvbox'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'Lokaltog/vim-distinguished'
-Plugin 'JulesWang/css.vim'
+Plug 'vim-scripts/summerfruit256.vim'
+Plug 'reedes/vim-colors-pencil'
+Plug 'morhetz/gruvbox'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'Lokaltog/vim-distinguished'
 
 "syntax
-Plugin 'Glench/Vim-Jinja2-Syntax'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mitsuhiko/vim-python-combined'
-Plugin 'vim-ruby/vim-ruby'
+Plug 'JulesWang/css.vim'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'mitsuhiko/vim-python-combined'
+Plug 'vim-ruby/vim-ruby'
 
 "all
-Plugin 'rking/ag.vim'
-Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'rstacruz/sparkup'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'mbbill/undotree'
-Plugin 'moll/vim-bbye'
-Plugin 'justinmk/vim-dirvish'
-
-call vundle#end()
+Plug 'mileszs/ack.vim'
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'rstacruz/sparkup'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'mbbill/undotree'
+Plug 'moll/vim-bbye'
+Plug 'justinmk/vim-dirvish'
+Plug 'wincent/command-t', {
+    \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
+    \ }
+call plug#end()
 
 syntax on
 filetype plugin indent on
@@ -130,7 +130,6 @@ set ignorecase
 set complete=.,w,b,t
 set wildmenu wildmode=full
 set wildignore+=.git,.svn,*.sw?,.DS_Store,node_modules,bower_components
-set omnifunc=syntaxcomplete#Complete
 
 "no autobackups at all
 set nobackup nowritebackup noswapfile
@@ -143,8 +142,8 @@ set autoindent
 " theme
 "------------------------------------------------------------------------------
 
-colorscheme PaperColor "gruvbox
-set background=light "dark
+colorscheme gruvbox
+set background=dark
 set relativenumber
 set list
 set listchars=tab:▸\ ,eol:•,trail:—
@@ -237,6 +236,8 @@ augroup END
 " maps
 "------------------------------------------------------------------------------
 
+noremap <F5> :so ~/.vimrc<cr>
+
 nnoremap E $
 nnoremap B ^
 
@@ -275,20 +276,13 @@ nnoremap k gk
 " plugin config
 "------------------------------------------------------------------------------
 
-"ctrlp
-nnoremap <leader>bu :CtrlPBuffer<cr>
-noremap <F5> :CtrlPClearCache<cr>
+" "commant-t
+nnoremap <C-p> :CommandT<cr>
 
-"ag
-nnoremap /f :Ag!<space>
-let g:ag_working_path_mode='r'
-let g:vim_action_ag_escape_chars = '#%.^$*+?()[{\\|'
+" "Ack
+nnoremap /f :Ack!<space>
 if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_use_caching = 0
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -f -g ""'
-else
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+  let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
 
 "fugitive
