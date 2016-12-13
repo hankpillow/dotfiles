@@ -3,15 +3,15 @@
 #
 
 function setup-profile(){
-  curl "https://raw.githubusercontent.com/hankpillow/dotfiles/master/setup-profile.sh" | bash
+  curl -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/hankpillow/dotfiles/master/setup-profile.sh" | bash
 }
 
 function setup-vim(){
-  curl "https://raw.githubusercontent.com/hankpillow/dotfiles/master/setup-vim.sh" | bash
+  curl -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/hankpillow/dotfiles/master/setup-vim.sh" | bash
 }
 
 function update-vim(){
-  curl "https://raw.githubusercontent.com/hankpillow/dotfiles/master/vimrc" > $HOME/.vimrc
+  curl -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/hankpillow/dotfiles/master/vimrc" > $HOME/.vimrc
 }
 
 function ip(){
@@ -32,4 +32,3 @@ function docker-clear(){
 function pacman-stop(){
   rm /var/lib/pacman/db.lck
 }
-

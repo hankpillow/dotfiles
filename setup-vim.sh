@@ -1,12 +1,8 @@
-if [[ ! -d $HOME/.vim/bundle ]];
-then
-	mkdir -p $HOME/.vim/bundle
-	git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-fi
 if [[ -e $HOME/.vimrc ]];
 then
   cp -v $HOME/.vimrc "$HOME/.vimrc.bkp-$(date +%s)"
 fi
-curl "https://raw.githubusercontent.com/hankpillow/dotfiles/master/vimrc" > $HOME/.vimrc
-vim +PluginInstall
+curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/hankpillow/dotfiles/master/vimrc" > $HOME/.vimrc
 vim -u NONE -c "helptags vim-fugitive/doc" -c q
+vim +PlugInstall
