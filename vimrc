@@ -1,8 +1,66 @@
+scriptencoding utf-8
+
+"===============================================================================
+"Set Set Set Set
+"===============================================================================
+
+set autoindent                         " maintain indent of current line
+set backspace=indent,eol,start         " allow unrestricted backspacing in insert mode
+set complete=.,w,b,t
+set cursorline
 set encoding=utf-8
 set fenc=utf-8
-set termencoding=utf-8
-set shell=/bin/bash
+set hidden
+set history=1000
+set hlsearch
+set ignorecase
+set incsearch
+set lazyredraw                        " don't bother updating screen during macro playback
+set list
+set listchars=tab:▸\ ,eol:•,trail:—
+set nobackup
+set noswapfile
+set nowrap
+set nowritebackup
+set pastetoggle=<f12>
+set relativenumber
 set runtimepath+=~/.vim/bundle/Vundle.vim/
+set shell=/bin/bash
+set shortmess+=A                      " ignore annoying swapfile messages
+set shortmess+=I                      " no splash screen
+set shortmess+=O                      " file-read message overwrites previous
+set shortmess+=T                      " truncate non-file messages in middle
+set shortmess+=W                      " don't echo "[w]"/"[written]" when writing
+set shortmess+=o                      " overwrite file-written messages
+set shortmess+=t                      " truncate file messages at start
+set showmatch
+set smartcase
+set smarttab
+set splitbelow
+set splitright
+set termencoding=utf-8
+set textwidth=80
+set title
+set whichwrap=b,h,l,s,<,>,[,],~       " allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
+set whichwrap=b,h,l,s,<,>,[,],~       " allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
+set wildcharm=<C-z>                   " substitue for 'wildchar' (<Tab>) in macros
+set wildmode=longest:full,full        " shell-like autocomplete to unambiguous portion
+
+if has('wildmenu')
+  set wildmenu
+endif
+
+if has('wildignore')
+  set wildignore+=.DS_Store,node_modules,bower_components
+endif
+
+if has('virtualedit')
+  set virtualedit=block               " allow cursor to move where there is no text in visual block mode
+endif
+
+if v:version > 703 || v:version == 703 && has('patch541')
+  set formatoptions+=j                " remove comment leader when joining comment lines
+endif
 
 if &compatible
   set nocompatible
@@ -28,12 +86,10 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType vim,javascript,sh,python,xml,yml,yaml,json,html autocmd BufWritePre <buffer> call StripTrailingWhitespace()
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd Filetype gitcommit setlocal textwidth=72
 
 "in you don't have .editorconfig on your project
 autocmd FileType yaml,ruby,python,vim,bash,sh setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType html,javascript,xml,jsp setlocal ts=4 sts=4 sw=4 noexpandtab
-
 "-----------------------------------------------------------------------------
 " helpers
 "-----------------------------------------------------------------------------
@@ -106,71 +162,22 @@ call plug#end()
 syntax on
 filetype plugin indent on
 
-"===============================================================================
-"Set Set Set Set
-"===============================================================================
-
-set hidden
-set title
-set history=1000
-set backspace=indent,eol,start
-set splitright
-set splitbelow
-set mouse=a
-set mousefocus
-set mousehide
-set pastetoggle=<f12>
-set hlsearch
-set showmatch
-set incsearch
-set smartcase
-set smarttab
-set ignorecase
-
-"autocomplete menus
-set complete=.,w,b,t
-if has('wildmenu')
-  set wildmenu
-  set wildmode=longest:full,full
-endif
-
-if has('wildignore')
-set wildignore+=.DS_Store,node_modules,bower_components
-endif
-
-"no autobackups at all
-set nobackup nowritebackup noswapfile
-if has('virtualedit')
-  set virtualedit=block
-endif
-set nowrap
-set autoindent
-
-set shortmess+=A                      " ignore annoying swapfile messages
-set shortmess+=I                      " no splash screen
-set shortmess+=O                      " file-read message overwrites previous
-set shortmess+=T                      " truncate non-file messages in middle
-set shortmess+=W                      " don't echo "[w]"/"[written]" when writing
-set shortmess+=o                      " overwrite file-written messages
-set shortmess+=t                      " truncate file messages at start
-set lazyredraw                        " don't bother updating screen during macro playback
-if v:version > 703 || v:version == 703 && has('patch541')
-  set formatoptions+=j                " remove comment leader when joining comment lines
-endif
 "------------------------------------------------------------------------------
 " theme
 "------------------------------------------------------------------------------
 
 colorscheme gruvbox
 set background=dark
-set relativenumber
-set list
-set listchars=tab:▸\ ,eol:•,trail:—
-set cursorline
-set colorcolumn=80
+
 if has('linebreak')
-  set showbreak='⤷ '
+  let &showbreak='⤷  '
 endif
+
+if exists('+colorcolumn')
+"  Highlight up to 255 columns (this is the current Vim max) beyond 'textwidth'
+  let &l:colorcolumn='+' . join(range(0, 254), ',+')
+endif
+
 "------------------------------------------------------------------------------
 " status line
 "------------------------------------------------------------------------------
