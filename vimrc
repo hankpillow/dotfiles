@@ -90,6 +90,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "in you don't have .editorconfig on your project
 autocmd FileType yaml,ruby,python,vim,bash,sh setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType html,javascript,xml,jsp setlocal ts=4 sts=4 sw=4 noexpandtab
+
 "-----------------------------------------------------------------------------
 " helpers
 "-----------------------------------------------------------------------------
@@ -162,6 +163,22 @@ call plug#end()
 syntax on
 filetype plugin indent on
 
+" "commant-t
+nnoremap <C-p> :CommandT<cr>
+
+" "Ack
+nnoremap /f :Ack!<space>
+if executable('ag')
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
+
+"fugitive
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gd :Gvdiff<cr>
+
+"undotree
+nnoremap <F3> :UndotreeToggle<cr>
 "------------------------------------------------------------------------------
 " theme
 "------------------------------------------------------------------------------
@@ -299,23 +316,3 @@ noremap <C-d> yyp
 nnoremap j gj
 nnoremap k gk
 
-"------------------------------------------------------------------------------
-" plugin config
-"------------------------------------------------------------------------------
-
-" "commant-t
-nnoremap <C-p> :CommandT<cr>
-
-" "Ack
-nnoremap /f :Ack!<space>
-if executable('ag')
-  let g:ackprg = 'ag --nogroup --nocolor --column'
-endif
-
-"fugitive
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gd :Gvdiff<cr>
-
-"undotree
-nnoremap <F3> :UndotreeToggle<cr>
