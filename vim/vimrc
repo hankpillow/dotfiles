@@ -177,6 +177,7 @@ nnoremap <leader>gc :Gcommit<cr>
 
 "undotree
 nnoremap <F3> :UndotreeToggle<cr>
+
 "------------------------------------------------------------------------------
 " theme
 "------------------------------------------------------------------------------
@@ -186,11 +187,6 @@ set background=dark
 
 if has('linebreak')
   let &showbreak='⤷  '
-endif
-
-if exists('+colorcolumn')
-"  Highlight up to 255 columns (this is the current Vim max) beyond 'textwidth'
-  let &l:colorcolumn='+' . join(range(0, 254), ',+')
 endif
 
 "------------------------------------------------------------------------------
