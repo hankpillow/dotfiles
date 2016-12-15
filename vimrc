@@ -163,11 +163,8 @@ call plug#end()
 syntax on
 filetype plugin indent on
 
-" "commant-t
-nnoremap <C-p> :CommandT<cr>
-
-" "Ack
-nnoremap /f :Ack!<space>
+"Ack
+nnoremap <leader>f :Ack!<space>
 if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
@@ -176,6 +173,7 @@ endif
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gd :Gvdiff<cr>
+nnoremap <leader>gc :Gcommit<cr>
 
 "undotree
 nnoremap <F3> :UndotreeToggle<cr>
