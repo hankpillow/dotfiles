@@ -1,0 +1,73 @@
+#https://raw.githubusercontent.com/wincent/wincent/c6bd3cb1aa3e876681b7263f54f58ba2877da29d/roles/dotfiles/files/.gitconfig
+[alias]
+	abbrev = !sh -c 'git rev-parse --short ${1-`echo HEAD`}' -
+	amend = commit --amend -v
+	both = diff HEAD
+	br = branch
+	branches = "for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ "
+	ci = commit -v
+	co = checkout
+	ft = fetch --all --prune
+	graph = log --graph --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
+	one = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
+	rollback = !sh -c 'git reset --merge HEAD~${1-1}' -
+	st = status -s
+	staged = diff --cached
+	tags = log --tags --simplify-by-decoration --pretty=\"format:%ai %d\"
+	unmerged = ls-files -u
+	unstage = reset HEAD --
+
+[branch]
+	autosetupmerge = always
+
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+
+[color "diff-highlight"]
+	oldHighlight = red bold 238
+	newHighlight = green bold 238
+
+[color "interactive"]
+	prompt = blue reverse
+
+[color "status"]
+	untracked = blue
+
+[diff]
+	algorithm = histogram
+
+[difftool]
+	prompt = false
+
+[grep]
+	lineNumber = true
+
+[help]
+	autocorrect = 2
+
+[log]
+	decorate = short
+
+[merge]
+	log = 1000
+
+[pager]
+	show-branch = true
+	status = true
+
+[push]
+	default = simple
+
+[rebase]
+	autosquash = true
+
+[status]
+	submodulesummary = true
+
+[user]
+	email = igor.p.almeida@gmail.com
+	name = Igor Almeida
