@@ -12,6 +12,7 @@
 	one = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
 	rollback = !sh -c 'git reset --merge HEAD~${1-1}' -
 	st = status -s
+	sts = status
 	staged = diff --cached
 	tags = log --tags --simplify-by-decoration --pretty=\"format:%ai %d\"
 	unmerged = ls-files -u
