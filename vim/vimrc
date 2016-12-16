@@ -142,6 +142,8 @@ nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gd :Gvdiff<cr>
 nnoremap <leader>gc :Gcommit<cr>
 
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
 "undotree
 nnoremap <F3> :UndotreeToggle<cr>
 
