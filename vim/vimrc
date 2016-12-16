@@ -58,51 +58,15 @@ if has('virtualedit')
   set virtualedit=block               " allow cursor to move where there is no text in visual block mode
 endif
 
-if v:version > 703 || v:version == 703 && has('patch541')
-  set formatoptions+=j                " remove comment leader when joining comment lines
-endif
-
 if &compatible
   set nocompatible
 endif
-
-"-----------------------------------------------------------------------------
-" auto groups
-"-----------------------------------------------------------------------------
 
 augroup reload_vimrc
   autocmd!
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
   let @/ = ""
 augroup END
-
-autocmd BufNewFile,BufRead *.njk set filetype=html syntax=jinja
-autocmd BufNewFile,BufRead *.{tag,ejs} set syntax=html filetype=html
-
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown,tag,ejs setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType vim,javascript,sh,python,xml,yml,yaml,json,html autocmd BufWritePre <buffer> call StripTrailingWhitespace()
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-"in you don't have .editorconfig on your project
-autocmd FileType yaml,ruby,python,vim,bash,sh setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType html,javascript,xml,jsp setlocal ts=4 sts=4 sw=4 noexpandtab
-
-"-----------------------------------------------------------------------------
-" helpers
-"-----------------------------------------------------------------------------
-
-fun! StripTrailingWhitespace()
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  %s/\s\+$//e
-  let @/=_s
-  call cursor(l, c)
-endf
 
 "-----------------------------------------------------------------------------
 " netrws (side bar)
@@ -169,6 +133,9 @@ if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
 
+"editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
 "fugitive
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
@@ -188,87 +155,6 @@ set background=dark
 if has('linebreak')
   let &showbreak='⤷  '
 endif
-
-"------------------------------------------------------------------------------
-" status line
-"------------------------------------------------------------------------------
-
-function! Fenc()
-  if &fenc !~ "^$\|utf-8" || &bomb
-    return "[" . &fenc . (&bomb ? "-bom" : "" ) . "]"
-  else
-    return ""
-  endif
-endfunction
-
-set laststatus=2
-
-"file name
-hi User1 ctermfg=49 ctermbg=8
-"file readonly
-hi User2 ctermfg=9 ctermbg=8
-"modified
-hi User3 ctermfg=15 ctermbg=8 cterm=bold
-"ordinary text
-hi User4 ctermfg=6 ctermbg=8
-"inactive window
-hi User5 ctermfg=7 ctermbg=none
-
-function! Color(active, num, content)
-  if a:active
-    return '%' . a:num . '*' . a:content . '%*'
-  else
-    return a:content
-  endif
-endfunction
-
-function! Status(winnr)
-  let stat = ''
-  let active = winnr() == a:winnr
-  let buffer = winbufnr(a:winnr)
-
-  let modified = getbufvar(buffer, '&modified')
-  let readonly = getbufvar(buffer, '&ro')
-
-  let stat .= Color(1, 3, modified ? ' + ' : '')
-  if active
-    let stat .= Color(1, readonly ? 2 : 1, ' %f')
-  else
-    let stat .= Color(1, 5, ' %f')
-  endif
-
-  if winwidth(0) >= 70 && active
-    let stat .= Color(1, 4, ' @' . buffer)
-    if exists('*fugitive#head')
-      let head = fugitive#head()
-      if empty(head) && exists('*fugitive#detect') && !exists('b:git_dir')
-        call fugitive#detect(getcwd())
-        let head = fugitive#head()
-      endif
-      let stat .= Color(1, 4, ' (' . head . ')')
-    endif
-    let stat .= Color(1, 4, '%=')
-    let stat .= Color(1, 1, '%(%l,%c%V%)')
-    let stat .= Color(1, 4, ' %y')
-    let stat .= Color(1, 4, ' %{Fenc()}')
-    let stat .= Color(1, 4, ' 0x%04B')
-  else
-    let stat .= Color(1,5,'%=')
-  endif
-  return stat
-endfunction
-
-" thanks for from https://github.com/blaenk/dots/blob/9843177fa6155e843eb9e84225f458cd0205c969/vim/vimrc.ln#L49-L64
-function! SetStatus()
-  for nr in range(1, winnr('$'))
-    call setwinvar(nr, '&statusline', '%!Status('.nr.')')
-  endfor
-endfunction
-
-augroup status
-  autocmd!
-  autocmd VimEnter,WinEnter,BufWinEnter,BufUnload * call SetStatus()
-augroup END
 
 "------------------------------------------------------------------------------
 " maps
