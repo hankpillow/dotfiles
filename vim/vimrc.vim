@@ -69,23 +69,6 @@ augroup reload_vimrc
 augroup END
 
 "-----------------------------------------------------------------------------
-" netrws (side bar)
-"------------------------------------------------------------------------------
-
-let g:netrw_altfile=1           " last edited file '#'
-let g:netrw_alto=0              " open files on right
-let g:netrw_altv=1              " open files on right
-let g:netrw_banner=0            " no banner
-let g:netrw_browse_split=4
-let g:netrw_dirhistmax=100      " keep more history
-let g:netrw_hide=1              " hide hidden files
-let g:netrw_list_hide='\.git,.*\.DS_Store$'
-let g:netrw_liststyle=0         " thin (change to 3 for tree)
-let g:netrw_preview=1           " open previews vertically
-let g:netrw_use_errorwindow=0   " suppress error window
-let g:netrw_winsize=20          " preview winsize
-
-"-----------------------------------------------------------------------------
 " plugins setup
 "------------------------------------------------------------------------------
 
@@ -130,8 +113,11 @@ filetype plugin indent on
 
 "Ack
 nnoremap <leader>f :Ack!<space>
-if executable('ag')
-  let g:ackprg = 'ag --nogroup --nocolor --column'
+
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+    let g:ackprg = 'rg --vimgrep --no-heading
 endif
 
 "editorconfig
