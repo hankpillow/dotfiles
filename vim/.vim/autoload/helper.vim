@@ -1,4 +1,4 @@
-function! helper:StripTrailingWhitespace()
+function! helper#StripTrailingWhitespace()
   let _s=@/
   let l = line(".")
   let c = col(".")
