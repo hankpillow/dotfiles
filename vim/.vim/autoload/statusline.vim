@@ -9,7 +9,7 @@ hi User4 ctermfg=6 ctermbg=8
 "inactive window
 hi User5 ctermfg=7 ctermbg=none
 
-function! statusline:Color(active, num, content)
+function! statusline#Color(active, num, content)
   if a:active
     return '%' . a:num . '*' . a:content . '%*'
   else
@@ -25,7 +25,7 @@ function! statusline#Fenc() abort
   endif
 endfunction
 
-function! stausline:Status(winnr)
+function! stausline#GetStatus(winnr)
   let stat = ''
   let active = winnr() == a:winnr
   let buffer = winbufnr(a:winnr)
@@ -33,11 +33,11 @@ function! stausline:Status(winnr)
   let modified = getbufvar(buffer, '&modified')
   let readonly = getbufvar(buffer, '&ro')
 
-  let stat .= statusline:Color(1, 3, modified ? ' + ' : '')
+  let stat .= statusline#Color(1, 3, modified ? ' + ' : '')
   if active
-    let stat .= statusline:Color(1, readonly ? 2 : 1, ' %f')
+    let stat .= statusline#Color(1, readonly ? 2 : 1, ' %f')
   else
-    let stat .= statusline:Color(1, 5, ' %f')
+    let stat .= statusline#Color(1, 5, ' %f')
   endif
 
   if winwidth(0) >= 70 && active
@@ -48,21 +48,21 @@ function! stausline:Status(winnr)
         call fugitive#detect(getcwd())
         let head = fugitive#head()
       endif
-      let stat .= statusline:Color(1, 4, ' (' . head . ')')
+      let stat .= statusline#Color(1, 4, ' (' . head . ')')
     endif
-    let stat .= statusline:Color(1, 4, '%=')
-    let stat .= statusline:Color(1, 1, '%(%l,%c%V%)')
-    let stat .= statusline:Color(1, 4, ' %y')
-    let stat .= statusline:Color(1, 4, ' %{statusline:Fenc()}')
-    let stat .= statusline:Color(1, 4, ' 0x%04B')
+    let stat .= statusline#Color(1, 4, '%=')
+    let stat .= statusline#Color(1, 1, '%(%l,%c%V%)')
+    let stat .= statusline#Color(1, 4, ' %y')
+    let stat .= statusline#Color(1, 4, ' %{statusline#Fenc()}')
+    let stat .= statusline#Color(1, 4, ' 0x%04B')
   else
-    let stat .= statusline:Color(1,5,'%=')
+    let stat .= statusline#Color(1,5,'%=')
   endif
   return stat
 endfunction
 
-function! statusline:SetStatus()
+function! statusline#SetStatus()
   for nr in range(1, winnr('$'))
-    call setwinvar(nr, '&statusline', '%!statusline:Status('.nr.')')
+    call setwinvar(nr, '&statusline', '%!statusline#GetStatus('.nr.')')
   endfor
 endfunction
