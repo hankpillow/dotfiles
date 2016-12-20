@@ -99,6 +99,7 @@ Plug 'reedes/vim-colors-pencil'
 Plug 'morhetz/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'Lokaltog/vim-distinguished'
+Plug 'nanotech/jellybeans.vim'
 
 "syntax
 Plug 'JulesWang/css.vim'

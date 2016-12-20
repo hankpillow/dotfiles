@@ -17,11 +17,11 @@ function! statusline:Color(active, num, content)
   endif
 endfunction
 
-function! statusline:Fenc()
-  if &fenc !~ "^$\|utf-8" || &bomb
-    return "[" . &fenc . (&bomb ? "-bom" : "" ) . "]"
+function! statusline#Fenc() abort
+  if strlen(&fenc) && &fenc !=# 'utf-8'
+    return ',' . &fenc
   else
-    return ""
+    return ''
   endif
 endfunction
 
