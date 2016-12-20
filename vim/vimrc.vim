@@ -152,7 +152,7 @@ nnoremap <F3> :UndotreeToggle<cr>
 " theme
 "------------------------------------------------------------------------------
 
-colorscheme gruvbox
+silent! colorscheme gruvbox
 set background=dark
 
 if has('linebreak')
@@ -198,4 +198,3 @@ noremap <C-d> yyp
 "graphical moving when in normal mode
 nnoremap j gj
 nnoremap k gk
-
