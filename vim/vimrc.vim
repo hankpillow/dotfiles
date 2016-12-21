@@ -119,7 +119,7 @@ if executable("rg")
     set grepformat="%f:%l:%c:%m,%f:%l:%m
     let g:ackprg="rg --vimgrep --no-heading"
 elseif executable("ag")
-    let g:ackprg="ag --vimgrep "
+    let g:ackprg="ag --vimgrep"
 endif
 
 "editorconfig
