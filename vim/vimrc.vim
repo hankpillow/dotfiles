@@ -47,7 +47,7 @@ if has('wildmenu')
 endif
 
 if has('wildignore')
-  set wildignore+=.DS_Store,**/node_modules,**/bower_components
+  set wildignore+=.DS_Store,*/node_modules/*,*/bower_components/*
 endif
 
 if has('virtualedit')
@@ -131,6 +131,9 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 "undotree
 nnoremap <F3> :UndotreeToggle<cr>
+
+"command-t
+let g:CommandTFileScanner = 'git'
 
 "------------------------------------------------------------------------------
 " theme
