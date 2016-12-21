@@ -24,7 +24,6 @@ set nowrap
 set nowritebackup
 set pastetoggle=<f12>
 set relativenumber
-set runtimepath+=~/.vim/bundle/Vundle.vim/
 set shell=/bin/bash
 set shortmess+=A                      " ignore annoying swapfile messages
 set shortmess+=I                      " no splash screen
@@ -39,9 +38,6 @@ set smarttab
 set splitbelow
 set splitright
 set termencoding=utf-8
-set textwidth=80
-set title
-set whichwrap=b,h,l,s,<,>,[,],~       " allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
 set whichwrap=b,h,l,s,<,>,[,],~       " allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
 set wildcharm=<C-z>                   " substitue for 'wildchar' (<Tab>) in macros
 set wildmode=longest:full,full        " shell-like autocomplete to unambiguous portion
@@ -51,7 +47,7 @@ if has('wildmenu')
 endif
 
 if has('wildignore')
-  set wildignore+=.DS_Store,node_modules,bower_components
+  set wildignore+=.DS_Store,**/node_modules,**/bower_components
 endif
 
 if has('virtualedit')
@@ -117,7 +113,7 @@ nnoremap <leader>f :Ack!<space>
 if executable("rg")
     set grepprg="rg --vimgrep --no-heading"
     set grepformat="%f:%l:%c:%m,%f:%l:%m
-    let g:ackprg="rg --vimgrep --no-heading"
+    let g:ackprg="rg --vimgrep --no-heading --hidden"
 elseif executable("ag")
     let g:ackprg="ag --vimgrep"
 endif
