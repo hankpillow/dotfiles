@@ -39,7 +39,7 @@ get_ps1(){
 	then
     DOCKER="$(__docker_machine_ps1 | sed 's/\s//g')"
 	fi
-	PS1="$CYAN\D{%T} ${BGMAGENTA}\j $WHITE\w$BGCYAN${BRANCH} \n$BGWHITE${DOCKER}$WHITE\u@\h $ "
+	PS1="$CYAN\D{%T} ${MAGENTA}\j $WHITE\w$CYAN${BRANCH} $BLUE${DOCKER}$WHITE\n\u@\h $ "
 }
 PROMPT_COMMAND=get_ps1
 
