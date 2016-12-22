@@ -155,9 +155,6 @@ noremap <F5> :so ~/.vimrc<cr>
 nnoremap E g_
 nnoremap B ^
 
-"split horizontal
-nnoremap <C-w><space> <C-w>s
-
 noremap <leader>w :w<cr>
 noremap <leader>d :Bdelete<cr>
 noremap <leader>cd :lcd %:p:h<cr>
