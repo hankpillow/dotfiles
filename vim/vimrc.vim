@@ -152,29 +152,23 @@ endif
 
 noremap <F5> :so ~/.vimrc<cr>
 
-nnoremap E $
+nnoremap E g_
 nnoremap B ^
 
-"save
+"split horizontal
+nnoremap <C-w><space> <C-w>s
+
 noremap <leader>w :w<cr>
-
-"like quit
 noremap <leader>d :Bdelete<cr>
-
-"change explorer to file's directory
 noremap <leader>cd :lcd %:p:h<cr>
-
-"every replace starts with 'magic' flag
 noremap /r :%s:::gc<left><left><left><left>
-
-"every search starts with 'magic' flag
 nnoremap // /\V
 
 "remove empty lines
-noremap <leader>em :g/^\s*$/d<cr>
+noremap <leader>re :call helper#RemoveEmptyLines()<cr>
 
-"remove multiples empty lines into a single one
-noremap <leader>ml :%!cat -s<cr>
+"strip multiples empty lines into a single empty line
+noremap <leader>se :call helper#SingleEmptyLines()<cr>
 
 "change to insert mode and create a linebreak on carret's position
 noremap <C-o> i<cr>

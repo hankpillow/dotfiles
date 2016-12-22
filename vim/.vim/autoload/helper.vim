@@ -1,3 +1,11 @@
+function! helper#RemoveEmptyLines()
+  g/^\s*$/d
+endfunction
+
+function! helper#SingleEmptyLines()
+  %!cat -s
+endfunction
+
 function! helper#StripTrailingWhitespace()
   let _s=@/
   let l = line(".")
