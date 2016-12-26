@@ -24,7 +24,6 @@ set nowrap
 set nowritebackup
 set pastetoggle=<f12>
 set relativenumber
-set runtimepath+=~/.vim/bundle/Vundle.vim/
 set shell=/bin/bash
 set shortmess+=A                      " ignore annoying swapfile messages
 set shortmess+=I                      " no splash screen
@@ -39,9 +38,6 @@ set smarttab
 set splitbelow
 set splitright
 set termencoding=utf-8
-set textwidth=80
-set title
-set whichwrap=b,h,l,s,<,>,[,],~       " allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
 set whichwrap=b,h,l,s,<,>,[,],~       " allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
 set wildcharm=<C-z>                   " substitue for 'wildchar' (<Tab>) in macros
 set wildmode=longest:full,full        " shell-like autocomplete to unambiguous portion
@@ -51,7 +47,7 @@ if has('wildmenu')
 endif
 
 if has('wildignore')
-  set wildignore+=.DS_Store,node_modules,bower_components
+  set wildignore+=.DS_Store,*/node_modules/*,*/bower_components/*
 endif
 
 if has('virtualedit')
@@ -67,23 +63,6 @@ augroup reload_vimrc
   autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
   let @/ = ""
 augroup END
-
-"-----------------------------------------------------------------------------
-" netrws (side bar)
-"------------------------------------------------------------------------------
-
-let g:netrw_altfile=1           " last edited file '#'
-let g:netrw_alto=0              " open files on right
-let g:netrw_altv=1              " open files on right
-let g:netrw_banner=0            " no banner
-let g:netrw_browse_split=4
-let g:netrw_dirhistmax=100      " keep more history
-let g:netrw_hide=1              " hide hidden files
-let g:netrw_list_hide='\.git,.*\.DS_Store$'
-let g:netrw_liststyle=0         " thin (change to 3 for tree)
-let g:netrw_preview=1           " open previews vertically
-let g:netrw_use_errorwindow=0   " suppress error window
-let g:netrw_winsize=20          " preview winsize
 
 "-----------------------------------------------------------------------------
 " plugins setup
@@ -130,8 +109,13 @@ filetype plugin indent on
 
 "Ack
 nnoremap <leader>f :Ack!<space>
-if executable('ag')
-  let g:ackprg = 'ag --nogroup --nocolor --column'
+
+if executable("rg")
+    set grepprg="rg --vimgrep --no-heading"
+    set grepformat="%f:%l:%c:%m,%f:%l:%m
+    let g:ackprg="rg --vimgrep --no-heading --hidden"
+elseif executable("ag")
+    let g:ackprg="ag --vimgrep"
 endif
 
 "editorconfig
@@ -147,6 +131,9 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 "undotree
 nnoremap <F3> :UndotreeToggle<cr>
+
+"command-t
+let g:CommandTFileScanner = 'git'
 
 "------------------------------------------------------------------------------
 " theme
@@ -165,29 +152,20 @@ endif
 
 noremap <F5> :so ~/.vimrc<cr>
 
-nnoremap E $
+nnoremap E g_
 nnoremap B ^
 
-"save
 noremap <leader>w :w<cr>
-
-"like quit
 noremap <leader>d :Bdelete<cr>
-
-"change explorer to file's directory
 noremap <leader>cd :lcd %:p:h<cr>
-
-"every replace starts with 'magic' flag
 noremap /r :%s:::gc<left><left><left><left>
-
-"every search starts with 'magic' flag
 nnoremap // /\V
 
 "remove empty lines
-noremap <leader>em :g/^\s*$/d<cr>
+noremap <leader>re :call helper#RemoveEmptyLines()<cr>
 
-"remove multiples empty lines into a single one
-noremap <leader>ml :%!cat -s<cr>
+"strip multiples empty lines into a single empty line
+noremap <leader>se :call helper#SingleEmptyLines()<cr>
 
 "change to insert mode and create a linebreak on carret's position
 noremap <C-o> i<cr>
