@@ -16,7 +16,6 @@ done
 
 # # bkp current version if exists but it's not a link
 if [ -e "$HOME/.vimrc" ]; then
-  echo "+ Backup actual $HOME/.vimrc"
   cp -v "$HOME/.vimrc" "$HOME/.vimrc.$(date +%s).bkp"
 fi
 
