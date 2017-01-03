@@ -124,6 +124,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 "fugitive
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gd :Gvdiff<cr>
 nnoremap <leader>gc :Gcommit<cr>
 
