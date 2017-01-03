@@ -12,6 +12,7 @@ alias tm='tmux'
 alias tn='tmux new -s'
 alias tk='tmux kill-session'
 alias ds='docker ps -l -q'
+alias doc='docker-compose'
 
 if [ "$(uname)" == "Darwin" ]; then
 
