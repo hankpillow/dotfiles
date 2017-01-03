@@ -10,6 +10,7 @@ alias create_rsa='ssh-keygen -t rsa -b 4096 -C "$1" && rsa-send-to-agent && eval
 alias tm='tmux'
 alias tn='tmux new -s'
 alias tk='tmux kill-session'
+alias doc='docker-compose'
 alias dl='docker ps -l -q'
 alias drm='docker rm -f "$(docker ps -a -q)"'
 
