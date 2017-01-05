@@ -153,14 +153,23 @@ endif
 
 noremap <F5> :so ~/.vimrc<cr>
 
+"last non empty char
 nnoremap E g_
 nnoremap B ^
 
 noremap <leader>w :w<cr>
 noremap <leader>d :Bdelete<cr>
 noremap <leader>cd :lcd %:p:h<cr>
-noremap /r :%s:::gc<left><left><left><left>
+
+"replace
+nnoremap /r :%s:::gc<left><left><left><left>
+
+"start simple search
 nnoremap // /\V
+
+"nav jumplist
+nnoremap ]j g,
+nnoremap [j g;
 
 "remove empty lines
 noremap <leader>re :call helper#RemoveEmptyLines()<cr>
