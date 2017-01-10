@@ -10,9 +10,8 @@ alias create_rsa='ssh-keygen -t rsa -b 4096 -C "$1" && rsa-send-to-agent && eval
 alias tm='tmux'
 alias tn='tmux new -s'
 alias tk='tmux kill-session'
-alias doc='docker-compose'
 alias dl='docker ps -l -q'
-alias drm='docker rm -f "$(docker ps -a -q)"'
+alias dcom='docker-compose'
 
 if [ "$(uname)" == "Darwin" ]; then
 
@@ -26,5 +25,6 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   alias ls='ls --color=auto'
   alias pacman_stop='rm /var/lib/pacman/db.lck'
   alias ya='yaourt'
+  alias refresh_keys='pacman-key --refresh-keys'
 
 fi

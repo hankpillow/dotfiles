@@ -4,5 +4,5 @@ set laststatus=2
 
 augroup status
   autocmd!
-"  autocmd VimEnter,WinEnter,BufWinEnter,BufUnload * call statusline#SetStatus()
+  autocmd VimEnter,WinEnter,BufWinEnter,BufUnload * call statusline#RefreshStatus()
 augroup END
