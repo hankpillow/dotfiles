@@ -180,9 +180,6 @@ noremap <leader>se :call helper#SingleEmptyLines()<cr>
 "change to insert mode and create a linebreak on carret's position
 noremap <C-o> i<cr>
 
-"duplicate current line
-noremap <C-d> yyp
-
 "graphical moving when in normal mode
 nnoremap j gj
 nnoremap k gk
