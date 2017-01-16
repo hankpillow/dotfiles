@@ -140,7 +140,7 @@ let g:CommandTFileScanner = 'git'
 " theme
 "------------------------------------------------------------------------------
 
-silent! colorscheme gruvbox
+silent! colorscheme distinguished
 set background=dark
 
 if has('linebreak')
