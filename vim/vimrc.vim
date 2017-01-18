@@ -50,10 +50,6 @@ if has('wildignore')
   set wildignore+=.DS_Store,*/node_modules/*,*/bower_components/*
 endif
 
-if has('virtualedit')
-  set virtualedit=block               " allow cursor to move where there is no text in visual block mode
-endif
-
 if &compatible
   set nocompatible
 endif
