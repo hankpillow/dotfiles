@@ -15,7 +15,6 @@ set history=1000
 set hlsearch
 set ignorecase
 set incsearch
-set lazyredraw                        " don't bother updating screen during macro playback
 set list
 set listchars=tab:▸\ ,eol:•,trail:—
 set nobackup
@@ -32,7 +31,6 @@ set splitbelow
 set splitright
 set termencoding=utf-8
 set whichwrap=b,h,l,s,<,>,[,],~       " allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
-set wildcharm=<C-z>                   " substitue for 'wildchar' (<Tab>) in macros
 set wildmode=longest:full,full        " shell-like autocomplete to unambiguous portion
 
 if has('wildmenu')
