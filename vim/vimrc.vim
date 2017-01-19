@@ -25,13 +25,6 @@ set nowritebackup
 set pastetoggle=<f12>
 set relativenumber
 set shell=/bin/bash
-set shortmess+=A                      " ignore annoying swapfile messages
-set shortmess+=I                      " no splash screen
-set shortmess+=O                      " file-read message overwrites previous
-set shortmess+=T                      " truncate non-file messages in middle
-set shortmess+=W                      " don't echo "[w]"/"[written]" when writing
-set shortmess+=o                      " overwrite file-written messages
-set shortmess+=t                      " truncate file messages at start
 set showmatch
 set smartcase
 set smarttab
@@ -48,10 +41,6 @@ endif
 
 if has('wildignore')
   set wildignore+=.DS_Store,*/node_modules/*,*/bower_components/*
-endif
-
-if has('virtualedit')
-  set virtualedit=block               " allow cursor to move where there is no text in visual block mode
 endif
 
 if &compatible
@@ -86,6 +75,7 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'mitsuhiko/vim-python-combined'
 Plug 'vim-ruby/vim-ruby'
+Plug 'wavded/vim-stylus'
 
 "all
 Plug 'mileszs/ack.vim'
