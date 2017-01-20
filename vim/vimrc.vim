@@ -82,6 +82,20 @@ filetype plugin indent on
 set backspace=indent,eol,start
 set complete=.,w,b,t
 
+augroup omnifuncs
+  autocmd!
+  autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,xhtml,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup end
+
+augroup reload_vimrc
+  autocmd!
+  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
+  let @/ = ""
+augroup END
+
 " allow switching from changed buffers
 set hidden
 
@@ -131,12 +145,6 @@ endif
 if &compatible
   set nocompatible
 endif
-
-augroup reload_vimrc
-  autocmd!
-  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
-  let @/ = ""
-augroup END
 
 " theme
 "------------------------------------------------------------------------------
@@ -207,4 +215,4 @@ autocmd BufNewFile,BufRead *.{bash} set filetype=sh syntax=sh
 autocmd BufNewFile,BufRead *.{njk} set filetype=jinja syntax=jinja
 autocmd BufNewFile,BufRead *.{tag,ejs} set filetype=html syntax=html
 
-autocmd FileType {javacript,html,python,ruby,sh,vim} BufWritePre <buffer> call helper#StripTrailingWhitespace()
+autocmd BufWritePre {javacript,html,python,ruby,sh,vim} call helper#StripTrailingWhitespace()
