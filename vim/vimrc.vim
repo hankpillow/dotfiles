@@ -1,61 +1,11 @@
 scriptencoding utf-8
-
-"===============================================================================
-"Set Set Set Set
-"===============================================================================
-
-set autoindent                         " maintain indent of current line
-set backspace=indent,eol,start         " allow unrestricted backspacing in insert mode
-set complete=.,w,b,t
-set cursorline
-set encoding=utf-8
-set fenc=utf-8
-set hidden
-set history=1000
-set hlsearch
-set ignorecase
-set incsearch
-set list
-set listchars=tab:▸\ ,eol:•,trail:—
-set nobackup
-set noswapfile
-set nowrap
-set nowritebackup
-set pastetoggle=<f12>
-set relativenumber
-set shell=/bin/bash
-set showmatch
-set smartcase
-set smarttab
-set splitbelow
-set splitright
-set termencoding=utf-8
-set whichwrap=b,h,l,s,<,>,[,],~       " allow <BS>/h/l/<Left>/<Right>/<Space>, ~ to cross line boundaries
-set wildmode=longest:full,full        " shell-like autocomplete to unambiguous portion
-
-if has('wildmenu')
-  set wildmenu
-endif
-
-if has('wildignore')
-  set wildignore+=.DS_Store,*/node_modules/*,*/bower_components/*
-endif
-
-if &compatible
-  set nocompatible
-endif
-
-augroup reload_vimrc
-  autocmd!
-  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
-  let @/ = ""
-augroup END
-
-"-----------------------------------------------------------------------------
-" plugins setup
-"------------------------------------------------------------------------------
+set fileencoding=utf-8
 
 filetype off
+"-----------------------------------------------------------------------------
+
+" plugins setup
+"------------------------------------------------------------------------------
 
 call plug#begin('~/.vim/bundle')
 
@@ -92,9 +42,6 @@ Plug 'wincent/command-t', {
     \ }
 call plug#end()
 
-syntax on
-filetype plugin indent on
-
 "Ack
 nnoremap <leader>f :Ack!<space>
 
@@ -123,19 +70,93 @@ nnoremap <F3> :UndotreeToggle<cr>
 
 "command-t
 let g:CommandTFileScanner = 'git'
-
 "------------------------------------------------------------------------------
+
+" user setting
+"------------------------------------------------------------------------------
+
+syntax enable
+filetype plugin indent on
+
+" allow unrestricted backspacing in insert mod
+set backspace=indent,eol,start
+set complete=.,w,b,t
+
+" allow switching from changed buffers
+set hidden
+
+" remember more
+set history=1000
+
+set mouse=a
+
+" make searching easier
+set hlsearch
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+
+"no autobackups at all
+set nobackup
+set noswapfile
+set nowrap
+set nowritebackup
+
+set pastetoggle=<f12>
+
+set shell=/bin/bash
+
+" allow editorconfig and others to handle spaces properly
+set smarttab
+
+set splitbelow
+set splitright
+
+
+if has('wildmenu')
+  set wildmode=longest:full,full        " shell-like autocomplete to unambiguous portion
+  set wildmenu
+endif
+
+if has('wildignore')
+  set wildignore+=.git,.svn
+  set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
+  set wildignore+=*.sw?
+  set wildignore+=.DS_Store
+  set wildignore+=node_modules,bower_components
+  let g:netrw_list_hide='.*\.git,.*\.DS_Store,.\/node_modules$'
+endif
+
+if &compatible
+  set nocompatible
+endif
+
+augroup reload_vimrc
+  autocmd!
+  autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
+  let @/ = ""
+augroup END
+
 " theme
 "------------------------------------------------------------------------------
 
 silent! colorscheme distinguished
 set background=dark
+set cursorline
+set title
+
+" show invisible
+set list
+set listchars=tab:▸\ ,eol:•,trail:—
+set number
+set relativenumber
 
 if has('linebreak')
   let &showbreak='⤷  '
 endif
-
 "------------------------------------------------------------------------------
+
 " maps
 "------------------------------------------------------------------------------
 
@@ -171,3 +192,19 @@ noremap <C-o> i<cr>
 "graphical moving when in normal mode
 nnoremap j gj
 nnoremap k gk
+"------------------------------------------------------------------------------
+
+" auto settings
+"------------------------------------------------------------------------------
+
+"defaults editor setting. better using editorconfig instead!
+autocmd FileType {javascript,html} set tabstop=4 sts=4 sw=4 noexpandtab
+autocmd FileType {python} set tabstop=8 sts=4 sw=4 expandtab
+autocmd FileType {ruby,sh,vim,yaml} set tabstop=2 sts=2 sw=2 expandtab
+
+" linking formats with filtypes
+autocmd BufNewFile,BufRead *.{bash} set filetype=sh syntax=sh
+autocmd BufNewFile,BufRead *.{njk} set filetype=jinja syntax=jinja
+autocmd BufNewFile,BufRead *.{tag,ejs} set filetype=html syntax=html
+
+autocmd FileType {javacript,html,python,ruby,sh,vim} BufWritePre <buffer> call helper#StripTrailingWhitespace()
