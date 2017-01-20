@@ -23,7 +23,6 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'mitsuhiko/vim-python-combined'
 Plug 'vim-ruby/vim-ruby'
-Plug 'wavded/vim-stylus'
 
 "all
 Plug 'mileszs/ack.vim'
@@ -216,6 +215,7 @@ autocmd FileType {ruby,sh,vim,yaml} set tabstop=2 sts=2 sw=2 expandtab
 " linking formats with filtypes
 autocmd BufNewFile,BufRead *.{bash} set filetype=sh syntax=sh
 autocmd BufNewFile,BufRead *.{njk} set filetype=jinja syntax=jinja
+autocmd BufNewFile,BufRead *.{styl,stylus} set filetype=css syntax=css
 autocmd BufNewFile,BufRead *.{tag,ejs} set filetype=html syntax=html
 
 autocmd BufWritePre {javacript,html,python,ruby,sh,vim} call helper#StripTrailingWhitespace()
