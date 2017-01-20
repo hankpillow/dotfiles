@@ -38,19 +38,19 @@ Plug 'mbbill/undotree'
 Plug 'moll/vim-bbye'
 Plug 'justinmk/vim-dirvish'
 Plug 'wincent/command-t', {
-    \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
-    \ }
+      \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
+      \ }
 call plug#end()
 
 "Ack
 nnoremap <leader>f :Ack!<space>
 
 if executable("rg")
-    set grepprg="rg --vimgrep --no-heading"
-    set grepformat="%f:%l:%c:%m,%f:%l:%m
-    let g:ackprg="rg --vimgrep --no-heading --hidden"
+  set grepprg="rg --vimgrep --no-heading"
+  set grepformat="%f:%l:%c:%m,%f:%l:%m
+  let g:ackprg="rg --vimgrep --no-heading --hidden"
 elseif executable("ag")
-    let g:ackprg="ag --vimgrep"
+  let g:ackprg="ag --vimgrep"
 endif
 
 "editorconfig
@@ -149,12 +149,15 @@ endif
 " theme
 "------------------------------------------------------------------------------
 
-silent! colorscheme distinguished
+silent! colorscheme PaperColor
+
 set background=dark
+
+highlight CursorLineNr cterm=bold
+
 set cursorline
 set title
 
-" show invisible
 set list
 set listchars=tab:▸\ ,eol:•,trail:—
 set number
