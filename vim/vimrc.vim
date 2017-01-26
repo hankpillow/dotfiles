@@ -135,7 +135,7 @@ endif
 if has('wildignore')
   set wildignore+=.git,.svn
   set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
-  set wildignore+=*.eot,*.ttf,*.woff,*.woff2,*.svg
+  set wildignore+=*.eot,*.ttf,*.woff,*.woff2,*.svg,*.ico
   set wildignore+=*.sw?
   set wildignore+=.DS_Store
   set wildignore+=node_modules,bower_components
