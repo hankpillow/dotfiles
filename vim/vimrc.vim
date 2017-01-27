@@ -81,8 +81,11 @@ filetype plugin indent on
 set backspace=indent,eol,start
 set complete=.,w,b,t
 
+" omnifuncs
+set ofu=syntaxcomplete#Complete
 augroup omnifuncs
   autocmd!
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,xhtml,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
@@ -196,13 +199,13 @@ noremap <leader>re :call helper#RemoveEmptyLines()<cr>
 
 "strip multiples empty lines into a single empty line
 noremap <leader>se :call helper#SingleEmptyLines()<cr>
-
 "change to insert mode and create a linebreak on carret's position
 noremap <C-o> i<cr>
 
 "graphical moving when in normal mode
 nnoremap j gj
 nnoremap k gk
+
 "------------------------------------------------------------------------------
 
 " auto settings
