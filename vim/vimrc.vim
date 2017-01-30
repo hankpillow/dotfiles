@@ -140,6 +140,7 @@ if has('wildignore')
   set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
   set wildignore+=*.eot,*.ttf,*.woff,*.woff2,*.svg,*.ico
   set wildignore+=*.sw?
+  set wildignore+=.nupkg,*.dll,*.exe
   set wildignore+=.DS_Store
   set wildignore+=node_modules,bower_components
   let g:netrw_list_hide='.*\.git,.*\.DS_Store,.\/node_modules$'
