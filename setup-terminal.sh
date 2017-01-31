@@ -7,7 +7,7 @@ echo '.gitconfig updated'
 
 if [[ -e $HOME/.tmux.conf ]];
 then
-  cp -v $HOME/.tmux.conf "$HOME/.tmux.conf.bkp-$(date +%s)"
+  cp -v "$HOME/.tmux.conf" "$HOME/.tmux.conf.$(date +%s).bkp"
 fi
 cat terminal/.tmux.conf > $HOME/.tmux.conf
 echo '.tmux.conf updated'
