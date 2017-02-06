@@ -218,8 +218,11 @@ autocmd FileType {javascript,html} set tabstop=4 sts=4 sw=4 noexpandtab
 autocmd FileType {python} set tabstop=8 sts=4 sw=4 expandtab
 autocmd FileType {ruby,sh,vim,yaml} set tabstop=2 sts=2 sw=2 expandtab
 
+autocmd BufNewFile,BufRead * if &diff | colorscheme distinguished | endif
+
 " linking formats with filtypes
 autocmd BufNewFile,BufRead *.{bash} set filetype=sh syntax=sh
+autocmd BufNewFile,BufRead *.{cshtml} set filetype=html syntax=html
 autocmd BufNewFile,BufRead *.{njk} set filetype=jinja syntax=jinja
 autocmd BufNewFile,BufRead *.{styl,stylus} set filetype=css syntax=css
 autocmd BufNewFile,BufRead *.{tag,ejs} set filetype=html syntax=html
