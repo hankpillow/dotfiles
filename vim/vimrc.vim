@@ -154,9 +154,8 @@ endif
 " theme
 "------------------------------------------------------------------------------
 
-silent! colorscheme PaperColor
-
-set background=dark
+silent! colorscheme peachpuff
+set background=light
 
 highlight CursorLineNr cterm=bold
 
