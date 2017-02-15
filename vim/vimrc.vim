@@ -186,7 +186,7 @@ noremap <leader>d :Bdelete<cr>
 noremap <leader>cd :lcd %:p:h<cr>
 
 "replace
-nnoremap /r :%s:::gc<left><left><left><left>
+nnoremap <leader>r :%s:::gc<left><left><left><left>
 
 "start simple search
 nnoremap // /\V
@@ -200,6 +200,7 @@ noremap <leader>re :call helper#RemoveEmptyLines()<cr>
 
 "strip multiples empty lines into a single empty line
 noremap <leader>se :call helper#SingleEmptyLines()<cr>
+
 "change to insert mode and create a linebreak on carret's position
 noremap <C-o> i<cr>
 
