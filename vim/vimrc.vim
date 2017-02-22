@@ -36,6 +36,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'moll/vim-bbye'
+Plug 'wincent/ferret'
+Plug 'wincent/terminus'
 Plug 'wincent/command-t', {
       \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
       \ }
@@ -67,6 +69,13 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 "command-t
 let g:CommandTFileScanner = 'git'
 let g:CommandTFileScanner = 'watchman'
+
+"terminus
+let g:TerminusInsertCursorShape = 0
+let g:TerminusNormalCursorShape = 0
+let g:TerminusReplaceCursorShape = 0
+let g:TerminusMouse = 0
+
 "------------------------------------------------------------------------------
 
 " user setting
@@ -127,7 +136,7 @@ set splitbelow
 set splitright
 
 set laststatus=2
-set showtabline=2
+set showtabline=1 "when tabs are being used
 set guioptions-=e
 
 if has('wildmenu')
