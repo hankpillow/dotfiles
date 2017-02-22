@@ -33,9 +33,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
-Plug 'mbbill/undotree'
+Plug 'tpope/vim-vinegar'
 Plug 'moll/vim-bbye'
-Plug 'justinmk/vim-dirvish'
 Plug 'wincent/command-t', {
       \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
       \ }
@@ -64,11 +63,9 @@ nnoremap <leader>gc :Gcommit<cr>
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
-"undotree
-nnoremap <F3> :UndotreeToggle<cr>
-
 "command-t
 let g:CommandTFileScanner = 'git'
+let g:CommandTFileScanner = 'watchman'
 "------------------------------------------------------------------------------
 
 " user setting
@@ -123,7 +120,6 @@ set pastetoggle=<f12>
 
 set shell=/bin/bash
 
-" allow editorconfig and others to handle spaces properly
 set smarttab
 
 set splitbelow
@@ -131,7 +127,7 @@ set splitright
 
 
 if has('wildmenu')
-  set wildmode=longest:full,full        " shell-like autocomplete to unambiguous portion
+  set wildmode=longest:full,ful
   set wildmenu
 endif
 
@@ -177,29 +173,18 @@ endif
 
 noremap <F5> :so ~/.vimrc<cr>
 
-"last non empty char
-nnoremap E g_
-nnoremap B ^
+noremap E g_
+noremap B ^
 
 noremap <leader>w :w<cr>
 noremap <leader>d :Bdelete<cr>
 noremap <leader>cd :lcd %:p:h<cr>
-
-"replace
-nnoremap <leader>r :%s:::gc<left><left><left><left>
-
-"start simple search
-nnoremap // /\V
+noremap <leader>r :%s:::gc<left><left><left><left>
+noremap <leader>/ /\V
 
 "nav jumplist
 nnoremap ]j g,
 nnoremap [j g;
-
-"remove empty lines
-noremap <leader>re :call helper#RemoveEmptyLines()<cr>
-
-"strip multiples empty lines into a single empty line
-noremap <leader>se :call helper#SingleEmptyLines()<cr>
 
 "change to insert mode and create a linebreak on carret's position
 noremap <C-o> i<cr>
