@@ -1,11 +1,9 @@
 ## personal dotfiles
 
-```sh
-curl https://raw.githubusercontent.com/hankpillow/dotfiles/master/setup-profile.sh | bash
-```
+Clone the repo, go to its folder and:
 
-## personal vimrc 
+1. `bash setup-vim.sh install` to install plugins and create/update ~/.vimrc file. (`install` is not required when you only need to update `.vimrc`)
 
-```sh
-curl https://raw.githubusercontent.com/hankpillow/dotfiles/master/setup-vim.sh | bash
-```
+2. `bash setup-terminal` to create/update .bash_profile, .tmux.conf and .gitconfig.
+
+> _a backup file with .<file>.<timestamp>.bkp will be created_
