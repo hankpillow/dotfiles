@@ -27,8 +27,8 @@ cp -v ./vim/vimrc.vim $HOME/.vimrc
 if [[ "$1" == "install" ]];
 then
     echo "+ Installing plugins"
-    vim -c PlugInstall -c q
-    vim -u NONE -c "helptags vim-fugitive/doc" -c q
+    vim -c PlugInstall -c qall
+    vim -u NONE -c "helptags vim-fugitive/doc" -c qall
 fi
 
 echo "Done!"

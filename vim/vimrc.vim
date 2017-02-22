@@ -19,7 +19,7 @@ Plug 'nanotech/jellybeans.vim'
 
 "syntax
 Plug 'JulesWang/css.vim'
-Plug 'Glench/Vim-Jinja2-Syntax'
+" Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'mitsuhiko/vim-python-combined'
 Plug 'vim-ruby/vim-ruby'
@@ -37,6 +37,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'moll/vim-bbye'
 Plug 'wincent/ferret'
+Plug 'wincent/loupe'
 Plug 'wincent/terminus'
 Plug 'wincent/command-t', {
       \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
@@ -75,8 +76,6 @@ nmap <leader>fw <Plug>(FerretAckWord)
 nmap <leader>ff <Plug>(FerretAck)
 " find and replace
 nmap <leader>fr <Plug>(FerretAcks)
-" normal Ack
-nmap <leader>f :Ack!<space>
 
 "command-t
 let g:CommandTFileScanner = 'git'
