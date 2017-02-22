@@ -44,15 +44,16 @@ Plug 'wincent/command-t', {
 call plug#end()
 
 "Ack
-nnoremap <leader>f :Ack!<space>
+" nnoremap <leader>f :Ack!<space>
 
-if executable("rg")
-  set grepprg="rg --vimgrep --no-heading"
-  set grepformat="%f:%l:%c:%m,%f:%l:%m
-  let g:ackprg="rg --vimgrep --no-heading --hidden"
-elseif executable("ag")
-  let g:ackprg="ag --vimgrep"
-endif
+" ferred is dealing with it
+" if executable("rg")
+"   set grepprg="rg --vimgrep --no-heading"
+"   set grepformat="%f:%l:%c:%m,%f:%l:%m
+"   let g:ackprg="rg --vimgrep --no-heading --hidden"
+" elseif executable("ag")
+"   let g:ackprg="ag --vimgrep"
+" endif
 
 "editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
@@ -65,6 +66,17 @@ nnoremap <leader>gd :Gvdiff<cr>
 nnoremap <leader>gc :Gcommit<cr>
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
+
+"ferret
+
+"find in folder/files the world under the cursor
+nmap <leader>fw <Plug>(FerretAckWord)
+"find in folder/files
+nmap <leader>ff <Plug>(FerretAck)
+" find and replace
+nmap <leader>fr <Plug>(FerretAcks)
+" normal Ack
+nmap <leader>f :Ack!<space>
 
 "command-t
 let g:CommandTFileScanner = 'git'
@@ -194,6 +206,7 @@ noremap <leader>d :Bdelete<cr>
 noremap <leader>cd :lcd %:p:h<cr>
 noremap <leader>r :%s:::gc<left><left><left><left>
 noremap <leader>/ /\V
+noremap <leader>cq :cclose<cr>
 
 "nav jumplist
 nnoremap ]j g,
