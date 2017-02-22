@@ -30,6 +30,7 @@ Plug 'nelstrom/vim-visual-star-search'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'rstacruz/sparkup'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-git'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
@@ -125,9 +126,12 @@ set smarttab
 set splitbelow
 set splitright
 
+set laststatus=2
+set showtabline=2
+set guioptions-=e
 
 if has('wildmenu')
-  set wildmode=longest:full,ful
+  set wildmode=longest:full,full
   set wildmenu
 endif
 
