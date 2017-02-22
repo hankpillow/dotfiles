@@ -6,4 +6,4 @@ Clone the repo, go to its folder and:
 
 2. `bash setup-terminal` to create/update .bash_profile, .tmux.conf and .gitconfig.
 
-> _a backup file with .<file>.<timestamp>.bkp will be created_
+> every update will first check and backup the old version at the same addin a trailing "#timestamp#.bkp"
