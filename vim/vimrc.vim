@@ -19,14 +19,12 @@ Plug 'nanotech/jellybeans.vim'
 
 "syntax
 Plug 'JulesWang/css.vim'
-" Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'mitsuhiko/vim-python-combined'
 Plug 'vim-ruby/vim-ruby'
 
 "all
 Plug 'mileszs/ack.vim'
-Plug 'nelstrom/vim-visual-star-search'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'rstacruz/sparkup'
 Plug 'tpope/vim-surround'
@@ -76,6 +74,9 @@ nmap <leader>fw <Plug>(FerretAckWord)
 nmap <leader>ff <Plug>(FerretAck)
 " find and replace
 nmap <leader>fr <Plug>(FerretAcks)
+
+"lope
+nmap <leader>h <Plug>(LoupeClearHighlight)
 
 "command-t
 let g:CommandTFileScanner = 'git'
