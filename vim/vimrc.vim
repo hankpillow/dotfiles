@@ -80,7 +80,6 @@ nmap <leader>h <Plug>(LoupeClearHighlight)
 
 "command-t
 let g:CommandTFileScanner = 'git'
-let g:CommandTFileScanner = 'watchman'
 
 "terminus
 let g:TerminusInsertCursorShape = 0

@@ -43,7 +43,7 @@ get_ps1(){
   fi
 
   # local DOCKER="$(__docker_machine_ps1 | sed 's/\s//g')"
-	PS1="${ST}⦁${BLUE}\D{%T} ${WHITE}\u ${BLUE}\j${BYELLOW}${BRANCH} ${GREEN}${PWD#"${PWD%/*/*}/"} ${WHITE}> \e[m"
+	PS1="${ST}⦁${BLUE}\D{%T} ${WHITE}\u ${BLUE}\j${BYELLOW}${BRANCH} ${GREEN}${PWD#"${PWD%/*/*}/"} ${WHITE}> "
 }
 PROMPT_COMMAND=get_ps1
 
