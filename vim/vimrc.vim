@@ -177,9 +177,14 @@ endif
 silent! colorscheme peachpuff
 set background=light
 
-highlight CursorLineNr cterm=bold
+highlight CursorLineNr cterm=bold ctermfg=white guifg=white
+highlight CursorLine cterm=NONE ctermbg=darkgray guibg=darkgray guifg=NONE ctermfg=NONE
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
 
-set cursorline
 set title
 
 set list
