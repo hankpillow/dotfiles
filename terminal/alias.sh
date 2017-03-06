@@ -11,9 +11,7 @@ alias tn='tmux new -s'
 alias tk='tmux kill-session'
 alias dl='docker ps -l -q'
 alias dcom='docker-compose'
-alias myip=$(curl icanhazip.com)
-alias ip0=$(ifconfig en0 | grep 'inet ' | awk '{print $2}')
-alias ip1=$(ifconfig en1 | grep 'inet ' | awk '{print $2}')
+alias myip='curl icanhazip.com'
 
 if [ "$(uname)" == "Darwin" ]; then
 
