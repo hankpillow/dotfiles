@@ -5,13 +5,15 @@
 alias l="ls -olahF"
 alias vi='vim'
 alias reload='bash ~/.bashrc'
-alias ip='ifconfig'
 alias create_rsa='ssh-keygen -t rsa -b 4096 -C "$1" && rsa-send-to-agent && eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
 alias tm='tmux'
 alias tn='tmux new -s'
 alias tk='tmux kill-session'
 alias dl='docker ps -l -q'
 alias dcom='docker-compose'
+alias myip=$(curl icanhazip.com)
+alias ip0=$(ifconfig en0 | grep 'inet ' | awk '{print $2}')
+alias ip1=$(ifconfig en1 | grep 'inet ' | awk '{print $2}')
 
 if [ "$(uname)" == "Darwin" ]; then
 
