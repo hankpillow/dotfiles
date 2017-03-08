@@ -22,6 +22,7 @@ Plug 'JulesWang/css.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mitsuhiko/vim-python-combined'
 Plug 'vim-ruby/vim-ruby'
+Plug 'waveded/vim-stylus'
 
 "all
 Plug 'mileszs/ack.vim'
@@ -32,7 +33,7 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
-plug 'justinmk/vim-dirvish'
+Plug 'justinmk/vim-dirvish'
 Plug 'moll/vim-bbye'
 Plug 'wincent/ferret'
 Plug 'wincent/loupe'
@@ -239,7 +240,7 @@ autocmd BufNewFile,BufRead * if &diff | colorscheme distinguished | endif
 autocmd BufNewFile,BufRead *.{bash} set filetype=sh syntax=sh
 autocmd BufNewFile,BufRead *.{cshtml} set filetype=html syntax=html
 autocmd BufNewFile,BufRead *.{njk} set filetype=jinja syntax=jinja
-autocmd BufNewFile,BufRead *.{styl,stylus} set filetype=css syntax=css
+autocmd BufNewFile,BufRead *.{styl,stylus} set filetype=stylus syntax=stylus
 autocmd BufNewFile,BufRead *.{tag,ejs} set filetype=html syntax=html
 
 autocmd BufWritePre {javacript,html,python,ruby,sh,vim} call helper#StripTrailingWhitespace()

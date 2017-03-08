@@ -15,9 +15,9 @@ echo '.tmux.conf updated'
 
 if [[ -e $HOME/.bash_profile ]];
 then
-  cp -v "$HOME/.bash_profiles" "$HOME/.bash_profiles.$(date +%s).bkp"
+  cp -v "$HOME/.bash_profile" "$HOME/.bash_profile.$(date +%s).bkp"
 fi
 
 cat terminal/autocomplete/* terminal/*.sh > $HOME/.bash_profile
-bash $HOME/.bash_profile
+bash $HOME/.bashrc
 echo 'terminal updated.'
