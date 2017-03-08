@@ -2,6 +2,14 @@ function! helper#RemoveEmptyLines()
   g/^\s*$/d
 endfunction
 
+function! helper#HexOff()
+  %!xxd -r
+endfunction
+
+function! helper#HexOn()
+  %!xxd
+endfunction
+
 function! helper#SingleEmptyLines()
   %!cat -s
 endfunction
