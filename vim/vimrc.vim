@@ -22,7 +22,7 @@ Plug 'JulesWang/css.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mitsuhiko/vim-python-combined'
 Plug 'vim-ruby/vim-ruby'
-Plug 'waveded/vim-stylus'
+Plug 'wavded/vim-stylus'
 
 "all
 Plug 'mileszs/ack.vim'
