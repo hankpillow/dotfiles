@@ -105,7 +105,7 @@ set ofu=syntaxcomplete#Complete
 augroup omnifuncs
   autocmd!
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType stylus,css,scss setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,xhtml,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
@@ -179,7 +179,7 @@ silent! colorscheme peachpuff
 set background=light
 
 highlight CursorLineNr cterm=bold ctermfg=white guifg=white
-highlight CursorLine cterm=NONE ctermbg=darkgray guibg=darkgray guifg=NONE ctermfg=NONE
+" highlight CursorLine cterm=NONE ctermbg=darkgray guibg=darkgray guifg=NONE ctermfg=NONE
 augroup CursorLine
   au!
   au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
