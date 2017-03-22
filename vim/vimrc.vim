@@ -175,8 +175,9 @@ endif
 " theme
 "------------------------------------------------------------------------------
 
-silent! colorscheme peachpuff
-set background=light
+" silent! colorscheme peachpuff
+silent! colorscheme distinguished
+set background=dark
 
 highlight CursorLineNr cterm=bold ctermfg=white guifg=white
 " highlight CursorLine cterm=NONE ctermbg=darkgray guibg=darkgray guifg=NONE ctermfg=NONE
