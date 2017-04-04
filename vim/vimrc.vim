@@ -27,7 +27,7 @@ Plug 'wavded/vim-stylus'
 "all
 Plug 'mileszs/ack.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'rstacruz/sparkup'
+Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-commentary'
