@@ -189,7 +189,6 @@ augroup END
 
 set title
 
-set list
 set listchars=tab:▸\ ,eol:•,trail:—
 set number
 set relativenumber
