@@ -1,4 +1,3 @@
-  cp -v "$HOME/.vimrc" "$HOME/.vimrc.$(date +%s).bkp"
 if [[ -e $HOME/.gitconfig ]];
 then
   cp -v "$HOME/.gitconfig" "$HOME/.gitconfig.$(date +%s).bkp"

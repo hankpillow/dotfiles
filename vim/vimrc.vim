@@ -239,7 +239,7 @@ autocmd BufNewFile,BufRead * if &diff | colorscheme distinguished | endif
 " linking formats with filtypes
 autocmd BufNewFile,BufRead *.{bash} set filetype=sh syntax=sh
 autocmd BufNewFile,BufRead *.{cshtml} set filetype=html syntax=html
-autocmd BufNewFile,BufRead *.{njk} set filetype=jinja syntax=jinja
+autocmd BufNewFile,BufRead *.{njk} set filetype=htmldjango syntax=jinja
 autocmd BufNewFile,BufRead *.{styl,stylus} set filetype=stylus syntax=stylus
 autocmd BufNewFile,BufRead *.{tag,ejs} set filetype=html syntax=html
 
