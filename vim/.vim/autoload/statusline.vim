@@ -46,7 +46,8 @@ function! statusline#GetStatus(winnr)
     "cursor coords
     let stat .= statusline#Color(2,'%(%l,%c%V%)')
     "filetype and file encoding
-    let stat .= statusline#Color(2,' %y %{strlen(&fenc)?&fenc:&enc}')
+    let stat .= statusline#Color(2,' %y %{strlen(&fenc)?&fenc:&enc} ')
+    let stat .= statusline#Color(2,' %{&bomb?"BOM":""}')
     "bytecode under cursor
     let stat .= statusline#Color(2,' 0x%04B')
 

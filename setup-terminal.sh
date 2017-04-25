@@ -18,5 +18,10 @@ then
 fi
 
 cat terminal/autocomplete/* terminal/*.sh > $HOME/.bash_profile
-bash $HOME/.bashrc
+if [[ -e $HOME/.bashrc ]];
+then
+  bash $HOME/.bashrc
+else
+  bash $HOME/.bash_profile
+fi
 echo 'terminal updated.'

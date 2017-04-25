@@ -1,5 +1,14 @@
-scriptencoding utf-8
-set fileencoding=utf-8
+" scriptencoding utf-8
+" set fileencoding=utf-8
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  "setglobal bomb
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
 
 filetype off
 "-----------------------------------------------------------------------------
@@ -224,6 +233,9 @@ noremap <C-o> i<cr>
 nnoremap j gj
 nnoremap k gk
 
+vnoremap // y/<C-R>"<CR>
+
+nnoremap <silent> coq :call helper#QuickFix_toggle()<cr>
 "------------------------------------------------------------------------------
 
 " auto settings
@@ -238,8 +250,8 @@ autocmd BufNewFile,BufRead * if &diff | colorscheme distinguished | endif
 
 " linking formats with filtypes
 autocmd BufNewFile,BufRead *.{bash} set filetype=sh syntax=sh
-autocmd BufNewFile,BufRead *.{cshtml} set filetype=html syntax=html
-autocmd BufNewFile,BufRead *.{njk} set filetype=htmldjango syntax=jinja
+autocmd BufNewFile,BufRead *.{cshtml} set filetype=html syntax=html bomb
+autocmd BufNewFile,BufRead *.{njk} set filetype=html syntax=htmldjango
 autocmd BufNewFile,BufRead *.{styl,stylus} set filetype=stylus syntax=stylus
 autocmd BufNewFile,BufRead *.{tag,ejs} set filetype=html syntax=html
 
