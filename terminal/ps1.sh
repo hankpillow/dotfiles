@@ -35,14 +35,14 @@ get_ps1 () {
 	local BRANCH="$(__git_ps1)"
 
   if [ $EXIT != 0 ]; then
-    ST=${BGRED}
+    ST=${RED}
   else
-    ST=${BGREEN}
+    ST=${GREEN}
   fi
 
   # local DOCKER="$(__docker_machine_ps1 | sed 's/\s//g')"
 	# PS1="${ST}⦁${BLUE}\D{%T} ${WHITE}\u ${BLUE}\j${BYELLOW}${BRANCH} ${GREEN}${PWD#"${PWD%/*/*}/"} ${WHITE}> "
 	# PS1='${ST}\D{%T} ${BLUE}\j${BYELLOW}${BRANCH} ${GREEN}\W ${WHITE}> '
-	export PS1="${ST}\D{%T} ${BGMAGENTA}\j ${BBLUE}\w${BYELLOW}${BRANCH}\n${RESET}> "
+	export PS1="${ST}\D{%T} ${BGCYAN}\j ${BBLUE}\w${BYELLOW}${BRANCH}\n${RESET}> "
 }
 PROMPT_COMMAND=get_ps1
