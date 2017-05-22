@@ -20,6 +20,7 @@ filetype off
 call plug#begin('~/.vim/bundle')
 
 "themes
+Plug 'google/vim-colorscheme-primary'
 Plug 'vim-scripts/summerfruit256.vim'
 Plug 'reedes/vim-colors-pencil'
 Plug 'morhetz/gruvbox'
