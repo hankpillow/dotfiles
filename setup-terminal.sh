@@ -1,11 +1,21 @@
-if [ "$(uname)" == "Darwin" ]; then
-  brew install bash-completion
-  curl -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > `brew --prefix`/etc/bash_completion.d/docker
+if [[ "$1" != "fast" ]]; then
 
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  curl -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > /etc/bash_completion.d/docker
+  if [ "$(uname)" == "Darwin" ]; then
+    brew install bash-completion
+    curl -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > `brew --prefix`/etc/bash_completion.d/docker
+
+  elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    curl -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > /etc/bash_completion.d/docker
+
+  fi
+
+  echo "update autocomplete tools..."
+  mkdir ./terminal/tmp
+  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > terminal/tmp/git-completion
+  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > terminal/tmp/git-prompt
 
 fi
+
 
 if [[ -e $HOME/.gitconfig ]];
 then
@@ -25,11 +35,6 @@ if [[ -e $HOME/.bash_profile ]];
 then
   cp -v "$HOME/.bash_profile" "$HOME/.bash_profile.$(date +%s).bkp"
 fi
-
-echo "update autocomplete tools..."
-mkdir ./terminal/tmp
-curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > terminal/tmp/git-completion
-curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > terminal/tmp/git-prompt
 
 cat terminal/tmp/* terminal/*.sh > $HOME/.bash_profile
 if [[ -e $HOME/.bashrc ]];

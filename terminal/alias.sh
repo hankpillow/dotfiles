@@ -11,6 +11,7 @@ alias tn='tmux new -s'
 alias ta='tmux attach '
 alias tk='tmux kill-session'
 alias dl='docker ps -l -q'
+alias dup='docker ps -f "stauts=running" -q'
 alias dcom='docker-compose'
 alias myip='curl icanhazip.com'
 
