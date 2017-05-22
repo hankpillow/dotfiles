@@ -1,5 +1,6 @@
 " scriptencoding utf-8
 " set fileencoding=utf-8
+
 if has("multi_byte")
   if &termencoding == ""
     let &termencoding = &encoding
@@ -34,35 +35,29 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'wavded/vim-stylus'
 
 "all
+Plug 'vim-airline/vim-airline'
 Plug 'mileszs/ack.vim'
 Plug 'editorconfig/editorconfig-vim'
+
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
+
 Plug 'justinmk/vim-dirvish'
+
 Plug 'moll/vim-bbye'
 Plug 'wincent/ferret'
+
 Plug 'wincent/loupe'
 Plug 'wincent/terminus'
+
 Plug 'wincent/command-t', {
       \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
       \ }
 call plug#end()
-
-"Ack
-" nnoremap <leader>f :Ack!<space>
-
-" ferred is dealing with it
-" if executable("rg")
-"   set grepprg="rg --vimgrep --no-heading"
-"   set grepformat="%f:%l:%c:%m,%f:%l:%m
-"   let g:ackprg="rg --vimgrep --no-heading --hidden"
-" elseif executable("ag")
-"   let g:ackprg="ag --vimgrep"
-" endif
 
 "editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
@@ -75,6 +70,8 @@ nnoremap <leader>gd :Gvdiff<cr>
 nnoremap <leader>gc :Gcommit<cr>
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" let g:airline_powerline_fonts = 1
 
 "ferret
 
@@ -185,8 +182,8 @@ endif
 "------------------------------------------------------------------------------
 
 " silent! colorscheme peachpuff
-silent! colorscheme distinguished
-set background=dark
+silent! colorscheme PaperColor
+set background=light
 
 highlight CursorLineNr cterm=bold ctermfg=white guifg=white
 " highlight CursorLine cterm=NONE ctermbg=darkgray guibg=darkgray guifg=NONE ctermfg=NONE
@@ -246,7 +243,8 @@ autocmd FileType {javascript,html,svg,css,stylus,htmldjango} set tabstop=2 sts=2
 autocmd FileType {python} set tabstop=8 sts=4 sw=4 expandtab
 autocmd FileType {ruby,sh,vim,yaml} set tabstop=2 sts=2 sw=2 expandtab
 
-autocmd BufNewFile,BufRead * if &diff | colorscheme distinguished | endif
+" specific theme for diff buffers
+" autocmd BufNewFile,BufRead * if &diff | colorscheme distinguished | endif
 
 " linking formats with filtypes
 autocmd BufNewFile,BufRead *.{bash} set filetype=sh syntax=sh
