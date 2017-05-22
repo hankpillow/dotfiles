@@ -14,6 +14,13 @@ if [[ "$1" != "fast" ]]; then
   curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > terminal/tmp/git-completion
   curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > terminal/tmp/git-prompt
 
+  if [[ -e $HOME/.bash_profile ]];
+  then
+    cp -v "$HOME/.bash_profile" "$HOME/.bash_profile.$(date +%s).bkp"
+  fi
+
+  cat terminal/tmp/* terminal/*.sh > $HOME/.bash_profile
+  rm -rf ./terminal/tmp
 fi
 
 
@@ -31,17 +38,10 @@ fi
 cat terminal/.tmux.conf > $HOME/.tmux.conf
 echo '.tmux.conf updated'
 
-if [[ -e $HOME/.bash_profile ]];
-then
-  cp -v "$HOME/.bash_profile" "$HOME/.bash_profile.$(date +%s).bkp"
-fi
-
-cat terminal/tmp/* terminal/*.sh > $HOME/.bash_profile
 if [[ -e $HOME/.bashrc ]];
 then
   bash $HOME/.bashrc
 else
   bash $HOME/.bash_profile
 fi
-rm -rf ./terminal/tmp
 echo 'terminal updated.'
