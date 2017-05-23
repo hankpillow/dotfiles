@@ -1,5 +1,15 @@
-scriptencoding utf-8
-set fileencoding=utf-8
+" scriptencoding utf-8
+" set fileencoding=utf-8
+
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  "setglobal bomb
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
 
 filetype off
 "-----------------------------------------------------------------------------
@@ -10,6 +20,7 @@ filetype off
 call plug#begin('~/.vim/bundle')
 
 "themes
+Plug 'google/vim-colorscheme-primary'
 Plug 'vim-scripts/summerfruit256.vim'
 Plug 'reedes/vim-colors-pencil'
 Plug 'morhetz/gruvbox'
@@ -22,37 +33,32 @@ Plug 'JulesWang/css.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mitsuhiko/vim-python-combined'
 Plug 'vim-ruby/vim-ruby'
+Plug 'wavded/vim-stylus'
 
 "all
+Plug 'vim-airline/vim-airline'
 Plug 'mileszs/ack.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'rstacruz/sparkup'
+
+Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
-plug 'justinmk/vim-dirvish'
+
+Plug 'justinmk/vim-dirvish'
+
 Plug 'moll/vim-bbye'
 Plug 'wincent/ferret'
+
 Plug 'wincent/loupe'
 Plug 'wincent/terminus'
+
 Plug 'wincent/command-t', {
       \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
       \ }
 call plug#end()
-
-"Ack
-" nnoremap <leader>f :Ack!<space>
-
-" ferred is dealing with it
-" if executable("rg")
-"   set grepprg="rg --vimgrep --no-heading"
-"   set grepformat="%f:%l:%c:%m,%f:%l:%m
-"   let g:ackprg="rg --vimgrep --no-heading --hidden"
-" elseif executable("ag")
-"   let g:ackprg="ag --vimgrep"
-" endif
 
 "editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
@@ -65,6 +71,8 @@ nnoremap <leader>gd :Gvdiff<cr>
 nnoremap <leader>gc :Gcommit<cr>
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" let g:airline_powerline_fonts = 1
 
 "ferret
 
@@ -104,7 +112,7 @@ set ofu=syntaxcomplete#Complete
 augroup omnifuncs
   autocmd!
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType stylus,css,scss setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,xhtml,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
@@ -174,11 +182,12 @@ endif
 " theme
 "------------------------------------------------------------------------------
 
-silent! colorscheme peachpuff
+" silent! colorscheme peachpuff
+silent! colorscheme PaperColor
 set background=light
 
 highlight CursorLineNr cterm=bold ctermfg=white guifg=white
-highlight CursorLine cterm=NONE ctermbg=darkgray guibg=darkgray guifg=NONE ctermfg=NONE
+" highlight CursorLine cterm=NONE ctermbg=darkgray guibg=darkgray guifg=NONE ctermfg=NONE
 augroup CursorLine
   au!
   au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
@@ -187,7 +196,6 @@ augroup END
 
 set title
 
-set list
 set listchars=tab:▸\ ,eol:•,trail:—
 set number
 set relativenumber
@@ -223,23 +231,27 @@ noremap <C-o> i<cr>
 nnoremap j gj
 nnoremap k gk
 
+vnoremap // y/<C-R>"<CR>
+
+nnoremap <silent> coq :call helper#QuickFix_toggle()<cr>
 "------------------------------------------------------------------------------
 
 " auto settings
 "------------------------------------------------------------------------------
 
 "defaults editor setting. better using editorconfig instead!
-autocmd FileType {javascript,html} set tabstop=4 sts=4 sw=4 noexpandtab
+autocmd FileType {javascript,html,svg,css,stylus,htmldjango} set tabstop=2 sts=2 sw=2 noexpandtab
 autocmd FileType {python} set tabstop=8 sts=4 sw=4 expandtab
 autocmd FileType {ruby,sh,vim,yaml} set tabstop=2 sts=2 sw=2 expandtab
 
-autocmd BufNewFile,BufRead * if &diff | colorscheme distinguished | endif
+" specific theme for diff buffers
+" autocmd BufNewFile,BufRead * if &diff | colorscheme distinguished | endif
 
 " linking formats with filtypes
 autocmd BufNewFile,BufRead *.{bash} set filetype=sh syntax=sh
-autocmd BufNewFile,BufRead *.{cshtml} set filetype=html syntax=html
-autocmd BufNewFile,BufRead *.{njk} set filetype=jinja syntax=jinja
-autocmd BufNewFile,BufRead *.{styl,stylus} set filetype=css syntax=css
+autocmd BufNewFile,BufRead *.{cshtml} set filetype=html syntax=html bomb
+autocmd BufNewFile,BufRead *.{njk} set filetype=html syntax=htmldjango
+autocmd BufNewFile,BufRead *.{styl,stylus} set filetype=stylus syntax=stylus
 autocmd BufNewFile,BufRead *.{tag,ejs} set filetype=html syntax=html
 
 autocmd BufWritePre {javacript,html,python,ruby,sh,vim} call helper#StripTrailingWhitespace()

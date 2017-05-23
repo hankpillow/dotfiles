@@ -22,3 +22,15 @@ function! helper#StripTrailingWhitespace()
   let @/=_s
   call cursor(l, c)
 endfunction
+
+function! helper#QuickFix_toggle()
+    for i in range(1, winnr('$'))
+        let bnum = winbufnr(i)
+        if getbufvar(bnum, '&buftype') == 'quickfix'
+            cclose
+            return
+        endif
+    endfor
+
+    copen
+endfunction
