@@ -9,9 +9,7 @@ endif
 
 filetype off
 
-if $TMUX == ''
-    set clipboard+=unnamed
-endif
+set clipboard+=unnamed
 
 "-----------------------------------------------------------------------------
 

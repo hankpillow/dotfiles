@@ -25,9 +25,11 @@ if [[ "$1" != "fast" ]]; then
 
   cat terminal/tmp/* terminal/*.sh > $HOME/.bash_profile
   rm -rf ./terminal/tmp
+  echo '.bash_profile updated.'
 
 else
   cat terminal/*.sh > $HOME/.bash_profile
+  echo '.bash_profile updated.'
 
 fi
 
