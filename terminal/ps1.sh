@@ -32,7 +32,11 @@ get_ps1 () {
   local BWHITE="\[\e[1;37m\]"
   local BGWHITE="\[\e[1;37m\]"
 
-	local BRANCH="$(__git_ps1)"
+	local BRANCH=""
+
+  if [ -n "$(type -t __git_ps1)" ] && [ "$(type -t __git_ps1)" = function ]; then
+    BRANCH="$(__git_ps1)"
+  fi
 
   if [ $EXIT != 0 ]; then
     ST=${RED}
