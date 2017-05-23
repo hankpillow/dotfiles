@@ -6,14 +6,22 @@ alias l="ls -olahF"
 alias vi='vim'
 alias reload='bash ~/.bashrc'
 alias create_rsa='ssh-keygen -t rsa -b 4096 -C "$1" && rsa-send-to-agent && eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
-alias tm='tmux'
+alias myip='curl icanhazip.com'
+
+#Tmux
 alias tn='tmux new -s'
 alias ta='tmux attach '
 alias tk='tmux kill-session'
-alias dlast='docker ps -l -q'
-alias drunning='docker ps -f "status=running" -q'
-alias dcom='docker-compose'
-alias myip='curl icanhazip.com'
+
+#Docker
+alias dlast='docker ps -l'
+alias dLast='docker ps -l -q'
+
+alias drunning='docker ps -f "status=running"'
+alias dRunning='docker ps -f "status=running" -q'
+
+alias dcomp='docker-compose'
+alias dps='docker ps'
 
 if [ "$(uname)" == "Darwin" ]; then
 
@@ -27,6 +35,6 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   alias ls='ls --color=auto'
   alias pacman_stop='rm /var/lib/pacman/db.lck'
   alias ya='yaourt'
-  alias refresh_keys='pacman-key --refresh-keys'
+  alias pacman_refresh_keys='pacman-key --refresh-keys'
 
 fi
