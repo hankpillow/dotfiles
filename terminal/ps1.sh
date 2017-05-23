@@ -32,7 +32,7 @@ get_ps1 () {
   local BWHITE="\[\e[1;37m\]"
   local BGWHITE="\[\e[1;37m\]"
 
-	local BRANCH=""
+  local BRANCH=""
 
   if [ -n "$(type -t __git_ps1)" ] && [ "$(type -t __git_ps1)" = function ]; then
     BRANCH="$(__git_ps1)"
@@ -45,8 +45,8 @@ get_ps1 () {
   fi
 
   # local DOCKER="$(__docker_machine_ps1 | sed 's/\s//g')"
-	# PS1="${ST}⦁${BLUE}\D{%T} ${WHITE}\u ${BLUE}\j${BYELLOW}${BRANCH} ${GREEN}${PWD#"${PWD%/*/*}/"} ${WHITE}> "
-	# PS1='${ST}\D{%T} ${BLUE}\j${BYELLOW}${BRANCH} ${GREEN}\W ${WHITE}> '
-	export PS1="${ST}\D{%T} ${BGCYAN}\j ${BBLUE}\w${BYELLOW}${BRANCH}\n${RESET}> "
+  # PS1="${ST}⦁${BLUE}\D{%T} ${WHITE}\u ${BLUE}\j${BYELLOW}${BRANCH} ${GREEN}${PWD#"${PWD%/*/*}/"} ${WHITE}> "
+  # PS1='${ST}\D{%T} ${BLUE}\j${BYELLOW}${BRANCH} ${GREEN}\W ${WHITE}> '
+  export PS1="${ST}\D{%T} ${BGCYAN}\j ${BBLUE}\w${BYELLOW}${BRANCH}\n${RESET}> "
 }
 PROMPT_COMMAND=get_ps1

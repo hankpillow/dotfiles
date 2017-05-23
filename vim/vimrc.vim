@@ -1,17 +1,18 @@
-" scriptencoding utf-8
-" set fileencoding=utf-8
-
 if has("multi_byte")
   if &termencoding == ""
     let &termencoding = &encoding
   endif
   set encoding=utf-8
   setglobal fileencoding=utf-8
-  "setglobal bomb
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 
 filetype off
+
+if $TMUX == ''
+    set clipboard+=unnamed
+endif
+
 "-----------------------------------------------------------------------------
 
 " plugins setup
