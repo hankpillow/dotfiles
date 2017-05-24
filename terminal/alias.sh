@@ -4,6 +4,7 @@
 
 alias l="ls -olahF"
 alias vi='vim'
+alias remove_bkp='rm -v ~/.*.bkp'
 alias reload='bash ~/.bash_profile'
 alias create_rsa='ssh-keygen -t rsa -b 4096 -C "$1" && rsa-send-to-agent && eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
 alias myip='curl icanhazip.com'
