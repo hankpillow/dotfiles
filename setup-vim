@@ -3,7 +3,7 @@
 # check for .vim at home and create if needed
 if [ ! -d $HOME/.vim ]; then mkdir -v $HOME/.vim; fi
 
-# # check .vim folders and create the missing ones
+# check .vim folders and create the missing ones
 echo "+ Checking a few folders on $HOME/.vim"
 for folder in $(find vim/.vim/* -type d); do
   f=$(basename $folder)
@@ -14,16 +14,15 @@ for folder in $(find vim/.vim/* -type d); do
   fi
 done
 
-# # bkp current version if exists but it's not a link
+# bkp current version if exists but it's not a link
 if [ -e "$HOME/.vimrc" ]; then
   cp -v "$HOME/.vimrc" "$HOME/.vimrc.$(date +%s).bkp"
 fi
 
-# # link vimrc
+# link vimrc
 echo "+ Updating $HOME/.vimrc"
 cp -v ./vim/vimrc.vim $HOME/.vimrc
 
-# first time here? get the vim-plug first
 if [[ "$1" == "install" ]];
 then
     echo "+ Installing plugins"

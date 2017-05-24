@@ -1,3 +1,12 @@
+#
+# bash_profile
+#
+
+if [[ -e $HOME/.bash_profile ]];
+then
+  cp -v "$HOME/.bash_profile" "$HOME/.bash_profile.$(date +%s).bkp"
+fi
+
 if [[ "$1" != "fast" ]]; then
 
   if [ "$(uname)" == "Darwin" ]; then
@@ -14,15 +23,19 @@ if [[ "$1" != "fast" ]]; then
   curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > terminal/tmp/git-completion
   curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > terminal/tmp/git-prompt
 
-  if [[ -e $HOME/.bash_profile ]];
-  then
-    cp -v "$HOME/.bash_profile" "$HOME/.bash_profile.$(date +%s).bkp"
-  fi
-
   cat terminal/tmp/* terminal/*.sh > $HOME/.bash_profile
   rm -rf ./terminal/tmp
+  echo '.bash_profile updated.'
+
+else
+  cat terminal/*.sh > $HOME/.bash_profile
+  echo '.bash_profile updated.'
+
 fi
 
+#
+# gitconfig
+#
 
 if [[ -e $HOME/.gitconfig ]];
 then
@@ -31,6 +44,10 @@ fi
 cat terminal/.gitconfig > $HOME/.gitconfig
 echo '.gitconfig updated'
 
+#
+# tmux
+#
+
 if [[ -e $HOME/.tmux.conf ]];
 then
   cp -v "$HOME/.tmux.conf" "$HOME/.tmux.conf.$(date +%s).bkp"
@@ -38,10 +55,5 @@ fi
 cat terminal/.tmux.conf > $HOME/.tmux.conf
 echo '.tmux.conf updated'
 
-if [[ -e $HOME/.bashrc ]];
-then
-  bash $HOME/.bashrc
-else
-  bash $HOME/.bash_profile
-fi
-echo 'terminal updated.'
+# reload the .bash_profile
+bash $HOME/.bash_profile
