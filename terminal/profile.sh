@@ -27,10 +27,3 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     xclip="xclip -selection c"
   fi
 fi
-
-if [[ -e $HOME/.bashrc ]];
-then
-  bash $HOME/.bashrc
-fi
-
-echo "bash_profile loaded!"
