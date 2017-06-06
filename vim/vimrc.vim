@@ -239,7 +239,7 @@ nnoremap <silent> coq :call helper#QuickFix_toggle()<cr>
 
 "defaults editor setting. better using editorconfig instead!
 autocmd FileType {javascript,html,svg,css,stylus,scss,htmldjango} set tabstop=2 sts=2 sw=2 noexpandtab
-autocmd FileType {python} set tabstop=8 sts=4 sw=4 expandtab
+autocmd FileType {python} set tabstop=4 sts=4 sw=4 expandtab
 autocmd FileType {ruby,sh,vim,yaml} set tabstop=2 sts=2 sw=2 expandtab
 
 " specific theme for diff buffers
