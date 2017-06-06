@@ -9,8 +9,6 @@ endif
 
 filetype off
 
-set clipboard+=unnamed
-
 "-----------------------------------------------------------------------------
 
 " plugins setup
@@ -229,6 +227,7 @@ noremap <C-o> i<cr>
 "graphical moving when in normal mode
 nnoremap j gj
 nnoremap k gk
+nnoremap Y y$
 
 vnoremap // y/<C-R>"<CR>
 
@@ -239,7 +238,7 @@ nnoremap <silent> coq :call helper#QuickFix_toggle()<cr>
 "------------------------------------------------------------------------------
 
 "defaults editor setting. better using editorconfig instead!
-autocmd FileType {javascript,html,svg,css,stylus,htmldjango} set tabstop=2 sts=2 sw=2 noexpandtab
+autocmd FileType {javascript,html,svg,css,stylus,scss,htmldjango} set tabstop=2 sts=2 sw=2 noexpandtab
 autocmd FileType {python} set tabstop=8 sts=4 sw=4 expandtab
 autocmd FileType {ruby,sh,vim,yaml} set tabstop=2 sts=2 sw=2 expandtab
 
