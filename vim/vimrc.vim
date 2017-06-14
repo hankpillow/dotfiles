@@ -251,4 +251,4 @@ autocmd BufNewFile,BufRead *.{njk} set filetype=html syntax=htmldjango
 autocmd BufNewFile,BufRead *.{styl,stylus} set filetype=stylus syntax=stylus
 autocmd BufNewFile,BufRead *.{tag,ejs} set filetype=html syntax=html
 
-autocmd BufWritePre {javascript,html,python,ruby,sh,vim} call helper#StripTrailingWhitespace()
+autocmd BufWritePre * call helper#StripTrailingWhitespace()
