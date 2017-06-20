@@ -7,60 +7,53 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 
-filetype off
-
-"-----------------------------------------------------------------------------
-
 " plugins setup
 "------------------------------------------------------------------------------
+
+filetype off
 
 call plug#begin('~/.vim/bundle')
 
 "themes
-Plug 'google/vim-colorscheme-primary'
 Plug 'vim-scripts/summerfruit256.vim'
 Plug 'reedes/vim-colors-pencil'
 Plug 'morhetz/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'Lokaltog/vim-distinguished'
 Plug 'nanotech/jellybeans.vim'
+Plug 'vim-airline/vim-airline'
 
 "syntax
+Plug 'tpope/vim-git'
 Plug 'JulesWang/css.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mitsuhiko/vim-python-combined'
 Plug 'vim-ruby/vim-ruby'
 Plug 'wavded/vim-stylus'
 
-"all
-Plug 'vim-airline/vim-airline'
-Plug 'mileszs/ack.vim'
-Plug 'editorconfig/editorconfig-vim'
+"utils and tools
+Plug 'editorconfig/editorconfig-vim' "https://github.com/editorconfig/editorconfig-vim
+Plug 'justinmk/vim-dirvish'  "navigate on dir inside a buffer
+Plug 'mattn/emmet-vim' "like html snipts  http://mattn.github.io/emmet-vim/
+Plug 'mhinz/vim-grepper' "search tool using ag/rg/git etc https://github.com/mhinz/vim-grepper/blob/master/doc/grepper.txt
+Plug 'moll/vim-bbye' "manage closing buffers properly https://github.com/moll/vim-bbye
 
-Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-git'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-commentary' "https://github.com/tpope/vim-commentary
+Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
+Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
+Plug 'tpope/vim-unimpaired' "https://github.com/tpope/vim-unimpaired
 
-Plug 'justinmk/vim-dirvish'
+Plug 'kien/ctrlp.vim' "https://github.com/kien/ctrlp.vim
 
-Plug 'moll/vim-bbye'
-Plug 'wincent/ferret'
-
-Plug 'wincent/loupe'
-Plug 'wincent/terminus'
-
-Plug 'wincent/command-t', {
-      \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
-      \ }
 call plug#end()
+
+"vim-bbye
+noremap <leader>d :Bdelete<cr>
 
 "editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-"fugitive
+" fugitive
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gr :Gread<cr>
@@ -69,34 +62,65 @@ nnoremap <leader>gc :Gcommit<cr>
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
-" let g:airline_powerline_fonts = 1
+"grepper
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
 
-"ferret
+nmap <leader>ff :Grepper -tool ag<cr>
+nmap <leader>fg :Grepper -tool git<cr>
+nmap <leader>fb :Grepper -buffers<cr>
+nnoremap <leader>fw :Grepper -cword -noprompt
 
-"find in folder/files the world under the cursor
-nmap <leader>fw <Plug>(FerretAckWord)
-"find in folder/files
-nmap <leader>ff <Plug>(FerretAck)
-" find and replace
-nmap <leader>fr <Plug>(FerretAcks)
+" ctrlp
+nnoremap <leader>t :CtrlP<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
 
-"lope
-nmap <leader>h <Plug>(LoupeClearHighlight)
-
-"command-t
-let g:CommandTFileScanner = 'git'
-
-"terminus
-let g:TerminusInsertCursorShape = 0
-let g:TerminusNormalCursorShape = 0
-let g:TerminusReplaceCursorShape = 0
-let g:TerminusMouse = 0
-
+"helper functions
 "------------------------------------------------------------------------------
+function! HelperRemoveEmptyLines()
+  g/^\s*$/d
+endfunction
+
+function! HelperMatches()
+  %s///n
+endfunction
+
+function! HelperHexOff()
+  %!xxd -r
+endfunction
+
+function! HelperHexOn()
+  %!xxd
+endfunction
+
+function! HelperSingleEmptyLines()
+  %!cat -s
+endfunction
+
+function! HelperStripTrailingWhitespace()
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+function! HelperQuickFixToggle()
+    for i in range(1, winnr('$'))
+        let bnum = winbufnr(i)
+        if getbufvar(bnum, '&buftype') == 'quickfix'
+            cclose
+            return
+        endif
+    endfor
+    copen
+endfunction
 
 " user setting
 "------------------------------------------------------------------------------
 
+set gdefault "substitute global by default
 syntax enable
 filetype plugin indent on
 
@@ -132,6 +156,7 @@ set mouse=a
 " make searching easier
 set hlsearch
 set ignorecase
+set infercase "https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
 set smartcase
 set incsearch
 set showmatch
@@ -183,8 +208,9 @@ endif
 silent! colorscheme PaperColor
 set background=light
 
-highlight CursorLineNr cterm=bold ctermfg=white guifg=white
-" highlight CursorLine cterm=NONE ctermbg=darkgray guibg=darkgray guifg=NONE ctermfg=NONE
+set synmaxcol=200 "https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
+
+"CursorLineNr only on active buffer
 augroup CursorLine
   au!
   au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
@@ -198,9 +224,9 @@ set number
 set relativenumber
 
 if has('linebreak')
+  set breakindent
   let &showbreak='⤷  '
 endif
-"------------------------------------------------------------------------------
 
 " maps
 "------------------------------------------------------------------------------
@@ -209,11 +235,15 @@ noremap <F5> :so ~/.vimrc<cr>
 
 noremap E g_
 noremap B ^
+nnoremap Y y$
+
+"allow dot work on selection as it would on normal
+xnoremap . :norm.<CR>
 
 noremap <leader>w :w<cr>
-noremap <leader>d :Bdelete<cr>
 noremap <leader>cd :lcd %:p:h<cr>
 noremap <leader>r :%s:::gc<left><left><left><left>
+noremap <leader>rl :cfdo %s/old/new | update
 noremap <leader>/ /\V
 noremap <leader>cq :cclose<cr>
 
@@ -225,14 +255,13 @@ nnoremap [j g;
 noremap <C-o> i<cr>
 
 "graphical moving when in normal mode
-nnoremap j gj
-nnoremap k gk
-nnoremap Y y$
+"https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
+nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 vnoremap // y/<C-R>"<CR>
 
-nnoremap <silent> coq :call helper#QuickFix_toggle()<cr>
-"------------------------------------------------------------------------------
+nnoremap <silent> coq :call HelperQuickFixToggle()<cr>
 
 " auto settings
 "------------------------------------------------------------------------------
@@ -251,4 +280,4 @@ autocmd BufNewFile,BufRead *.{njk} set filetype=html syntax=htmldjango
 autocmd BufNewFile,BufRead *.{styl,stylus} set filetype=stylus syntax=stylus
 autocmd BufNewFile,BufRead *.{tag,ejs} set filetype=html syntax=html
 
-autocmd BufWritePre * call helper#StripTrailingWhitespace()
+autocmd BufWritePre * call HelperStripTrailingWhitespace()
