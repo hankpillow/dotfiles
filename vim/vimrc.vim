@@ -242,10 +242,12 @@ xnoremap . :norm.<CR>
 
 noremap <leader>w :w<cr>
 noremap <leader>cd :lcd %:p:h<cr>
-noremap <leader>r :%s:::gc<left><left><left><left>
 noremap <leader>rf :cfdo %s/old/new | update
 noremap <leader>/ /\V
 noremap <leader>cq :cclose<cr>
+
+nnoremap <leader>r :%s///gc<left><left><left><left>
+vnoremap <leader>r :s///gc<left><left><left><left>
 
 "nav jumplist
 nnoremap ]j g,
