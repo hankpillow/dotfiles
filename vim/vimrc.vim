@@ -41,6 +41,7 @@ Plug 'moll/vim-bbye' "manage closing buffers properly https://github.com/moll/vi
 Plug 'tpope/vim-commentary' "https://github.com/tpope/vim-commentary
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
 Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
+Plug 'tpope/vim-abolish' "https://github.com/tpope/tpope-vim-abolish
 Plug 'tpope/vim-unimpaired' "https://github.com/tpope/vim-unimpaired
 
 Plug 'kien/ctrlp.vim' "https://github.com/kien/ctrlp.vim
