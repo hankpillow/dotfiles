@@ -206,7 +206,7 @@ endif
 
 " silent! colorscheme peachpuff
 silent! colorscheme PaperColor
-set background=light
+set background=dark
 
 set synmaxcol=200 "https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
 
