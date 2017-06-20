@@ -66,9 +66,9 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
 
-nmap <leader>ff :Grepper -tool ag<cr>
-nmap <leader>fg :Grepper -tool git<cr>
-nmap <leader>fb :Grepper -buffers<cr>
+nmap <leader>ff :Grepper -highlight -tool ag<cr>
+nmap <leader>fg :Grepper -highlight -tool git<cr>
+nmap <leader>fb :Grepper -highlight -buffers<cr>
 nnoremap <leader>fw :Grepper -cword -noprompt
 
 " ctrlp
