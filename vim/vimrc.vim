@@ -66,13 +66,23 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 nnoremap gs <plug>(GrepperOperator)
 xnoremap gs <plug>(GrepperOperator)
 
-nmap <leader>ff :Grepper -highlight<cr>
-nmap <leader>fb :Grepper -highlight -buffers<cr>
-nnoremap <leader>fw :Grepper -cword -noprompt
+nnoremap <leader>ff :Grepper -noopen -highlight<cr>
+nnoremap <leader>fb :Grepper -noopen -highlight -buffers<cr>
+nnoremap <leader>fw :Grepper -noopen -cword -noprompt<cr>
 
 " ctrlp
 nnoremap <leader>t :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v(\.git|node_modules|bower_components)',
+  \ }
+
+" Using rg is fast, we don't need to cache.
+let g:ctrlp_use_caching = 0
+
+" The match should be at the top of the list.
+let g:ctrlp_match_window_reversed = 0
 
 "helper functions
 "------------------------------------------------------------------------------
@@ -168,13 +178,11 @@ set showmatch
 "no autobackups at all
 set nobackup
 set noswapfile
-set nowrap
 set nowritebackup
 
+set nowrap
 set pastetoggle=<f12>
-
 set shell=/bin/bash
-
 set smarttab
 
 set splitbelow
@@ -184,22 +192,26 @@ set laststatus=2
 set showtabline=1 "when tabs are being used
 set guioptions-=e
 
-if has('wildmenu')
-  set wildmode=longest:full,full
-  set wildmenu
-endif
+set wildmode=longest:full,full
+set wildmenu
 
-if has('wildignore')
-  set wildignore+=.git,.svn
-  set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
-  set wildignore+=*.mp3,*.mpeg4,*.mp4,*.mov,*.flv,*.mkv,*.mov
-  set wildignore+=*.eot,*.ttf,*.woff,*.woff2,*.svg,*.ico
-  set wildignore+=*.sw?
-  set wildignore+=*.nupkg,*.dll,*.exe
-  set wildignore+=.DS_Store
-  set wildignore+=node_modules,bower_components
-  let g:netrw_list_hide='.*\.git,.*\.DS_Store,.\/node_modules$'
-endif
+"images
+set wildignore+=*.jpe?g,*.bmp,*.gif,*.png
+
+"sounds
+set wildignore+=*.mp3,*.mpeg4,*.mp4,*.mov,*.flv,*.mkv
+
+"fonts
+set wildignore+=*.eot,*.ttf,*.woff,*.woff2
+
+"comp and gem files
+set wildignore+=*.sw?,*.nupkg,*.dll,*.exe
+
+"system trash
+set wildignore+=.DS_Store,thumbs.db
+
+"versioning
+set wildignore+=.git/**,.svn/**
 
 if &compatible
   set nocompatible

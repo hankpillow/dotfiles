@@ -5,10 +5,11 @@
 	both = diff HEAD
 	br = branch
 	branches = "for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ "
+  ls = log --format=format:\"%C(yellow)%h%C(red)%d %C(reset)%s%C(blue) <%an>%C(reset)\"
 	ci = commit -v
 	co = checkout
 	ft = fetch --all --prune
-	graph = log --graph --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
+  graph = log --graph --format=format:\"%C(yellow)%h%C(red)%d%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)\"
 	one = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
 	rollback = !sh -c 'git reset --merge HEAD~${1-1}' -
 	st = status -s
@@ -19,9 +20,6 @@
 	unmerged = ls-files -u
 	unstage = reset HEAD --
 
-[branch]
-	autosetupmerge = always
-
 [color]
 	ui = auto
 	branch = auto
@@ -29,18 +27,16 @@
 	interactive = auto
 	status = auto
 
-[color "diff-highlight"]
-	oldHighlight = red bold 238
-	newHighlight = green bold 238
-
-[color "interactive"]
-	prompt = blue reverse
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
 
 [color "status"]
-	untracked = blue
-
-[diff]
-	algorithm = histogram
+	added = yellow
+	changed = green
+	untracked = cyan
 
 [difftool]
 	prompt = false
@@ -63,9 +59,6 @@
 
 [push]
 	default = simple
-
-[rebase]
-	autosquash = true
 
 [status]
 	submodulesummary = true

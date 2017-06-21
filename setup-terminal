@@ -11,7 +11,7 @@ then
   cp -v "$HOME/.bashrc" "$HOME/.bashrc.$(date +%s).bkp"
 fi
 
-if [[ "$1" != "fast" ]]; then
+if [[ "$1" == "install" ]]; then
 
   echo "update autocomplete tools..."
   mkdir ./terminal/tmp
