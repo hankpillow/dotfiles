@@ -57,18 +57,16 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 " fugitive
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gw :Gwrite<cr>
-nnoremap <leader>gr :Gread<cr>
 nnoremap <leader>gd :Gvdiff<cr>
 nnoremap <leader>gc :Gcommit<cr>
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
 "grepper
-nmap gs <plug>(GrepperOperator)
-xmap gs <plug>(GrepperOperator)
+nnoremap gs <plug>(GrepperOperator)
+xnoremap gs <plug>(GrepperOperator)
 
-nmap <leader>ff :Grepper -highlight -tool ag<cr>
-nmap <leader>fg :Grepper -highlight -tool git<cr>
+nmap <leader>ff :Grepper -highlight<cr>
 nmap <leader>fb :Grepper -highlight -buffers<cr>
 nnoremap <leader>fw :Grepper -cword -noprompt
 
@@ -78,6 +76,11 @@ nnoremap <leader>b :CtrlPBuffer<cr>
 
 "helper functions
 "------------------------------------------------------------------------------
+
+function! HelperLastSearch()
+  echo @/
+endfunction
+
 function! HelperRemoveEmptyLines()
   g/^\s*$/d
 endfunction
