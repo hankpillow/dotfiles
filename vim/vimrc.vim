@@ -63,15 +63,16 @@ nnoremap <leader>gc :Gcommit<cr>
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
 "grepper
-nnoremap gs <plug>(GrepperOperator)
-xnoremap gs <plug>(GrepperOperator)
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
 
 nnoremap <leader>ff :Grepper -noopen -highlight<cr>
 nnoremap <leader>fb :Grepper -noopen -highlight -buffers<cr>
 nnoremap <leader>fw :Grepper -noopen -cword -noprompt<cr>
 
 " ctrlp
-nnoremap <leader>t :CtrlP<cr>
+nnoremap <leader>t :execute "CtrlPTag " . expand("<cword>")<cr>
+nnoremap <leader>p :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
@@ -83,6 +84,8 @@ let g:ctrlp_use_caching = 0
 
 " The match should be at the top of the list.
 let g:ctrlp_match_window_reversed = 0
+
+let g:ctrlp_extensions = ['tag', 'buffertag']
 
 "helper functions
 "------------------------------------------------------------------------------
@@ -134,8 +137,12 @@ endfunction
 " user setting
 "------------------------------------------------------------------------------
 
+" set tags+=./tags
+
 set gdefault "substitute global by default
+
 syntax enable
+
 filetype plugin indent on
 
 " allow unrestricted backspacing in insert mod

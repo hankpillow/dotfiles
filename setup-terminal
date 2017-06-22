@@ -22,12 +22,12 @@ if [[ "$1" == "install" ]]; then
     brew install bash-completion
     curl -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > `brew --prefix`/etc/bash_completion.d/docker
     cat terminal/tmp/* terminal/*.sh > $HOME/.bash_profile
-    echo '.bash_profile updated.'
+    echo '+ .bash_profile updated.'
 
   elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     curl -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > /etc/bash_completion.d/docker
     cat terminal/tmp/* terminal/*.sh > $HOME/.bashrc
-    echo '.bashrc updated.'
+    echo '+ .bashrc updated.'
 
   fi
 
@@ -37,12 +37,12 @@ else
   if [ "$(uname)" == "Darwin" ]; then
     cat terminal/*.sh > $HOME/.bash_profile
     bash $HOME/.bash_profile
-    echo '.bash_profile updated.'
+    echo '+ .bash_profile updated.'
 
   elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     cat terminal/*.sh > $HOME/.bashrc
     bash $HOME/.bashrc
-    echo '.bashrc updated.'
+    echo '+ .bashrc updated.'
 
   fi
 
@@ -57,7 +57,7 @@ then
   cp -v "$HOME/.gitconfig" "$HOME/.gitconfig.$(date +%s).bkp"
 fi
 cat terminal/.gitconfig > $HOME/.gitconfig
-echo '.gitconfig updated'
+echo '+ .gitconfig updated'
 
 #
 # tmux
@@ -68,5 +68,16 @@ then
   cp -v "$HOME/.tmux.conf" "$HOME/.tmux.conf.$(date +%s).bkp"
 fi
 cat terminal/.tmux.conf > $HOME/.tmux.conf
-echo '.tmux.conf updated'
+echo '+ .tmux.conf updated'
+
+#
+# ctags
+#
+
+if [[ -e $HOME/.ctags ]];
+then
+  cp -v "$HOME/.ctags" "$HOME/.ctags.$(date +%s).bkp"
+fi
+cat terminal/.ctags > $HOME/.ctags
+echo '+ .ctags updated'
 

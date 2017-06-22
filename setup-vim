@@ -30,4 +30,4 @@ then
     vim -u NONE -c "helptags vim-fugitive/doc" -c qall
 fi
 
-echo "Done!"
+echo "thanks for flying vim!"
