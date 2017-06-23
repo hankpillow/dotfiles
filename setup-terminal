@@ -17,11 +17,11 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 fi
 
 backup ".gitconfig"
-cat terminal/.gitconfig > $HOME/.gitconfig
+cat config/gitconfig > $HOME/.gitconfig
 echo "+ .gitconfig updated"
 
 backup ".tmux.conf"
-cat terminal/.tmux.conf > $HOME/.tmux.conf
+cat config/tmux.conf > $HOME/.tmux.conf
 echo '+ .tmux.conf updated'
 
 backup ".ctags"
@@ -29,7 +29,7 @@ echo " downloading javacript ctags..."
 curl -# -L https://raw.githubusercontent.com/romainl/ctags-patterns-for-javascript/master/.ctags > $HOME/.ctags
 echo " downloading typescript ctags..."
 curl -# -L https://raw.githubusercontent.com/jb55/typescript-ctags/master/.ctags >> $HOME/.ctags
-cat terminal/.ctags >> $HOME/.ctags
+cat config/ctags >> $HOME/.ctags
 echo '+ .ctags updated'
 
 backup ".bash_profile"
@@ -40,10 +40,10 @@ if [[ "$1" == "install" ]]; then
   echo "# FULL INSTALATION"
 
   echo "# updating git completion script..."
-  mkdir ./terminal/tmp
+  mkdir ./profile/tmp
 
-  curl -# -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > terminal/tmp/git-completion
-  curl -# -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > terminal/tmp/git-prompt
+  curl -# -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > profile/tmp/git-completion
+  curl -# -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > profile/tmp/git-prompt
 
   if [ $TMP_OS == "Darwin" ]; then
 
@@ -58,13 +58,13 @@ if [[ "$1" == "install" ]]; then
 
   fi
 
-  cat terminal/tmp/* terminal/*.sh > $HOME/$TMP_PROFILE
-  rm -vrf ./terminal/tmp
+  cat ./profile/tmp/* ./profile/*.sh > $HOME/$TMP_PROFILE
+  rm -rf ./profile/tmp
 
 else
 
   echo "# FAST SETUP"
-  cat terminal/*.sh > $HOME/$TMP_PROFILE
+  cat profile/*.sh > $HOME/$TMP_PROFILE
 
 fi
 
