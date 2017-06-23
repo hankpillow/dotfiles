@@ -1,83 +1,73 @@
-#
-# bash_profile
-#
-
-if [[ -e $HOME/.bash_profile ]];
-then
-  cp -v "$HOME/.bash_profile" "$HOME/.bash_profile.$(date +%s).bkp"
-fi
-if [[ -e $HOME/.bashrc ]];
-then
-  cp -v "$HOME/.bashrc" "$HOME/.bashrc.$(date +%s).bkp"
-fi
-
-if [[ "$1" == "install" ]]; then
-
-  echo "update autocomplete tools..."
-  mkdir ./terminal/tmp
-  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > terminal/tmp/git-completion
-  curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > terminal/tmp/git-prompt
-
-  if [ "$(uname)" == "Darwin" ]; then
-    brew install bash-completion
-    curl -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > `brew --prefix`/etc/bash_completion.d/docker
-    cat terminal/tmp/* terminal/*.sh > $HOME/.bash_profile
-    echo '+ .bash_profile updated.'
-
-  elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    curl -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > /etc/bash_completion.d/docker
-    cat terminal/tmp/* terminal/*.sh > $HOME/.bashrc
-    echo '+ .bashrc updated.'
-
+function backup {
+  TARGET=$HOME/$1
+  if [[ -e $TARGET ]];
+  then
+    cp -v "$TARGET" "$TARGET.$(date +%s).bkp"
   fi
+}
 
-  rm -rf ./terminal/tmp
+if [ "$(uname)" == "Darwin" ]; then
+  TMP_PROFILE=".bash_profile"
+  TMP_OS="Mac"
 
-else
-  if [ "$(uname)" == "Darwin" ]; then
-    cat terminal/*.sh > $HOME/.bash_profile
-    bash $HOME/.bash_profile
-    echo '+ .bash_profile updated.'
-
-  elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    cat terminal/*.sh > $HOME/.bashrc
-    bash $HOME/.bashrc
-    echo '+ .bashrc updated.'
-
-  fi
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  TMP_PROFILE=".bashrc"
+  TMP_OS="Linux"
 
 fi
 
-#
-# gitconfig
-#
-
-if [[ -e $HOME/.gitconfig ]];
-then
-  cp -v "$HOME/.gitconfig" "$HOME/.gitconfig.$(date +%s).bkp"
-fi
+backup ".gitconfig"
 cat terminal/.gitconfig > $HOME/.gitconfig
-echo '+ .gitconfig updated'
+echo "+ .gitconfig updated"
 
-#
-# tmux
-#
-
-if [[ -e $HOME/.tmux.conf ]];
-then
-  cp -v "$HOME/.tmux.conf" "$HOME/.tmux.conf.$(date +%s).bkp"
-fi
+backup ".tmux.conf"
 cat terminal/.tmux.conf > $HOME/.tmux.conf
 echo '+ .tmux.conf updated'
 
-#
-# ctags
-#
-
-if [[ -e $HOME/.ctags ]];
-then
-  cp -v "$HOME/.ctags" "$HOME/.ctags.$(date +%s).bkp"
-fi
-cat terminal/.ctags > $HOME/.ctags
+backup ".ctags"
+echo " downloading javacript ctags..."
+curl -# -L https://raw.githubusercontent.com/romainl/ctags-patterns-for-javascript/master/.ctags > $HOME/.ctags
+echo " downloading typescript ctags..."
+curl -# -L https://raw.githubusercontent.com/jb55/typescript-ctags/master/.ctags >> $HOME/.ctags
+cat terminal/.ctags >> $HOME/.ctags
 echo '+ .ctags updated'
 
+backup ".bash_profile"
+backup ".bashrc"
+
+if [[ "$1" == "install" ]]; then
+
+  echo "# FULL INSTALATION"
+
+  echo "# updating git completion script..."
+  mkdir ./terminal/tmp
+
+  curl -# -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > terminal/tmp/git-completion
+  curl -# -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > terminal/tmp/git-prompt
+
+  if [ $TMP_OS == "Darwin" ]; then
+
+    echo "# updating docker completion script for mac..."
+    brew install bash-completion
+    curl -# -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > `brew --prefix`/etc/bash_completion.d/docker
+
+  elif [ "$TMP_OS" == "Linux" ]; then
+
+    echo "# updating docker completion script for linux..."
+    curl -# -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > /etc/bash_completion.d/docker
+
+  fi
+
+  cat terminal/tmp/* terminal/*.sh > $HOME/$TMP_PROFILE
+  rm -vrf ./terminal/tmp
+
+else
+
+  echo "# FAST SETUP"
+  cat terminal/*.sh > $HOME/$TMP_PROFILE
+
+fi
+
+echo "+ $TMP_PROFILE udpated."
+bash $HOME/$TMP_PROFILE
+echo "try running './remove_bkp' to cleanup *.bkp files at $HOME"
