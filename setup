@@ -1,3 +1,5 @@
+# vim: set syntax=sh
+
 function backup {
   TARGET=$HOME/$1
   if [[ -e $TARGET ]];
@@ -16,21 +18,46 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
 fi
 
+#-----
+
+echo "downloading junegunn/vim-plug vim plugin manager..."
+curl -# -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+backup ".vimrc"
+cat ./vim/vimrc.vim > $HOME/.vimrc
+echo "+ .vimrc updated"
+
+if [[ "$1" == "install" ]];
+then
+    echo "+ Installing plugins"
+    vim -c PlugInstall -c qall
+    vim -u NONE -c "helptags vim-fugitive/doc" -c qall
+fi
+
+#------
+
 backup ".gitconfig"
 cat config/gitconfig > $HOME/.gitconfig
 echo "+ .gitconfig updated"
+
+#------
 
 backup ".tmux.conf"
 cat config/tmux.conf > $HOME/.tmux.conf
 echo '+ .tmux.conf updated'
 
+#------
+
 backup ".ctags"
-echo " downloading javacript ctags..."
+echo "downloading javacript ctags..."
 curl -# -L https://raw.githubusercontent.com/romainl/ctags-patterns-for-javascript/master/.ctags > $HOME/.ctags
-echo " downloading typescript ctags..."
+
+echo "downloading typescript ctags..."
 curl -# -L https://raw.githubusercontent.com/jb55/typescript-ctags/master/.ctags >> $HOME/.ctags
+
 cat config/ctags >> $HOME/.ctags
 echo '+ .ctags updated'
+
+#-----
 
 backup ".bash_profile"
 backup ".bashrc"
