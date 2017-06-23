@@ -1,5 +1,3 @@
-# vim: set syntax=sh
-
 function backup {
   TARGET=$HOME/$1
   if [[ -e $TARGET ]];
