@@ -6,6 +6,9 @@ function backup {
   fi
 }
 
+TMP_PROFILE=""
+TMP_OS=""
+
 if [ "$(uname)" == "Darwin" ]; then
   TMP_PROFILE=".bash_profile"
   TMP_OS="Mac"
@@ -16,38 +19,42 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
 fi
 
-#-----
+#----- VIM SETUP
 
-echo "downloading junegunn/vim-plug vim plugin manager..."
-curl -# -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 backup ".vimrc"
 cat ./vim/vimrc.vim > $HOME/.vimrc
 echo "+ .vimrc updated"
 
 if [[ "$1" == "install" ]];
 then
+    echo "# VIM FULL INSTALL"
+    echo "downloading junegunn/vim-plug vim plugin manager..."
+    curl -# -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     echo "+ Installing plugins"
     vim -c PlugInstall -c qall
     vim -u NONE -c "helptags vim-fugitive/doc" -c qall
+    cd $HOME/.vim/bundle/tern_for_vim && npm install && cd -
 fi
 
-#------
+#------ GIT setup
 
 backup ".gitconfig"
 cat config/gitconfig > $HOME/.gitconfig
 echo "+ .gitconfig updated"
 
-#------
+#------ TMUX setup
 
 backup ".tmux.conf"
 cat config/tmux.conf > $HOME/.tmux.conf
 echo '+ .tmux.conf updated'
 
-#------
+#------ CTAGS
 
 backup ".ctags"
+echo "" > $HOME/.ctags
+
 echo "downloading javacript ctags..."
-curl -# -L https://raw.githubusercontent.com/romainl/ctags-patterns-for-javascript/master/.ctags > $HOME/.ctags
+curl -# -L https://raw.githubusercontent.com/winstonwolff/ctags-javascript-coffeescript/master/ctags.conf > $HOME/.ctags
 
 echo "downloading typescript ctags..."
 curl -# -L https://raw.githubusercontent.com/jb55/typescript-ctags/master/.ctags >> $HOME/.ctags
@@ -55,7 +62,7 @@ curl -# -L https://raw.githubusercontent.com/jb55/typescript-ctags/master/.ctags
 cat config/ctags >> $HOME/.ctags
 echo '+ .ctags updated'
 
-#-----
+#----- bashrc/bash_profile setup
 
 backup ".bash_profile"
 backup ".bashrc"

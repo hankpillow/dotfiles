@@ -32,6 +32,8 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'wavded/vim-stylus'
 
 "utils and tools
+Plug 'ternjs/tern_for_vim'
+Plug 'majutsushi/tagbar' "https://github.com/majutsushi/tagbar
 Plug 'editorconfig/editorconfig-vim' "https://github.com/editorconfig/editorconfig-vim
 Plug 'justinmk/vim-dirvish'  "navigate on dir inside a buffer
 Plug 'mattn/emmet-vim' "like html snipts  http://mattn.github.io/emmet-vim/
@@ -50,6 +52,11 @@ call plug#end()
 
 "vim-bbye
 noremap <leader>d :Bdelete<cr>
+
+"tern
+let g:tern_map_keys=1
+"show argument hints
+let g:tern_show_argument_hints='on_hold'
 
 "editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
@@ -71,7 +78,7 @@ nnoremap <leader>fb :Grepper -noopen -highlight -buffers<cr>
 nnoremap <leader>fw :Grepper -noopen -cword -noprompt<cr>
 
 " ctrlp
-nnoremap <leader>t :execute "CtrlPTag " . expand("<cword>")<cr>
+nnoremap <leader>t :CtrlPTag<cr>
 nnoremap <leader>p :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 let g:ctrlp_show_hidden = 1
