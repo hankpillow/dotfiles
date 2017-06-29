@@ -62,6 +62,11 @@ curl -# -L https://raw.githubusercontent.com/jb55/typescript-ctags/master/.ctags
 cat config/ctags >> $HOME/.ctags
 echo '+ .ctags updated'
 
+#----- link scripts
+
+ln -s $(pwd)/script/spider.sh /usr/local/bin/spider
+echo " + add command spider to /usr/local/bin"
+
 #----- bashrc/bash_profile setup
 
 backup ".bash_profile"
