@@ -7,7 +7,7 @@ BEGIN {
 
 /^--[[:digit:]]{4}/ {
   Index++
-  Pages[Index,1] = "-" # status code
+  Pages[Index,1] = "!" # status code
   Pages[Index,2] = $3 # url
   Pages[Index,3] = "-" # redirect location
   Pages[Index,4] = "-" # content-length
