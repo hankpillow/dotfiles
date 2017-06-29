@@ -6,6 +6,7 @@ DOMAIN=$(echo $REFERER | sed 's/^www//' | sed 's/^[0-9]//g' | sed 's/^\.//')
 AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0"
 DEPTH=1
 DRY=0
+APPEND=""
 
 bold=$(tput bold)
 normal=$(tput sgr0)
@@ -20,6 +21,7 @@ function help {
   echo -e " ${bold}--depth${normal}\tDefine how deep the crawler can go in (wget's -l param). Default is 1"
   echo -e " ${bold}--referer${normal}\tRequest Referer (wget's --referer param). Default is extrating referer from target URL"
   echo -e " ${bold}--dry${normal}  \tJust dump the command without calling it. Good to see/edit before calling"
+  echo -e " ${bold}--append${normal}  \tAppend whichever flag you want. good for unusual cases of ssl etc. ex: --append=\"--secure-protocol=TLSv1\""
 }
 
 for i in "$@"
@@ -41,6 +43,10 @@ do
 			DEPTH="${i#*=}"
 			shift
 			;;
+			--append=*)
+			APPEND="${i#*=}"
+			shift
+			;;
 			--referer=*)
 			REFERER="${i#*=}"
 			shift
@@ -57,14 +63,13 @@ then
   help
 
 else
-  CMD="wget --spider -r -l$DEPTH --no-check-certificate --max-redirect=10 --force-html -H -D$DOMAIN -nd -np -S --referer=http://$REFERER --user-agent=\"$AGENT\" $PAGE"
+  CMD="wget --spider -r -l$DEPTH --no-check-certificate --max-redirect=10 --force-html -H -D$DOMAIN -nd -np -S --referer=http://$REFERER --user-agent=\"$AGENT\" $APPEND $PAGE"
+  echo -e "${bold}Running:${normal}"
+  echo "$CMD"
 
   if [[ $DRY == 0 ]];
   then
     eval $CMD 2>&1
-  else
-    echo -e "${bold}Run:${normal}"
-    echo "$CMD"
   fi
 
 fi
