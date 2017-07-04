@@ -8,9 +8,6 @@ APPEND=""
 
 HEADER=" --header=\"User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36\""
 HEADER="$HEADER --header=\"Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no, akamai-x-get-request-id, akamai-x-get-nonces,akamai-x-get-client-ip,akamai-x-feo-trace\""
-HEADER="$HEADER --header=\"Accept-Encoding: gzip, deflate, br\""
-HEADER="$HEADER --header=\"Accept-Language: pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4\""
-HEADER="$HEADER --header=\"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8\""
 HEADER="$HEADER --header=\"Connection: keep-alive\""
 
 bold=$(tput bold)
