@@ -2,7 +2,7 @@ BEGIN {
   Index = 0
   print "# wget report filter"
   print "# report column pattern:"
-  print "# {Http-Status} {Url} {Location} {Content-Length} {Expires} {Last-Modified}"
+  print "# {Http-Status} {Url} {Location} {Content-Length} {Expires} {Last-Modified} {X-Cache} {X-Drupal-Cache}"
 }
 
 /^--[[:digit:]]{4}/ {
@@ -13,10 +13,20 @@ BEGIN {
   Pages[Index,4] = "-" # content-length
   Pages[Index,5] = "-" # expires data
   Pages[Index,6] = "-" # expires data
+  Pages[Index,7] = "-" # x-cache
+  Pages[Index,8] = "-" # x-cache
 }
 
 /[[:blank:]]HTTP\/[[:digit:]]/ {
   Pages[Index,1] = $2
+}
+
+/[[:blank:]]X-Drupal-Cache:/ {
+  Pages[Index,8] = $2
+}
+
+/[[:blank:]]X-Cache:/ {
+  Pages[Index,7] = $2
 }
 
 /[[:blank:]]Location/ {
@@ -43,6 +53,6 @@ BEGIN {
 
 END  {
   for (i = 0; i <= Index; i++)
-    print Pages[i,1],Pages[i,2],Pages[i,3],Pages[i,4],Pages[i,5],Pages[i,6]
+    print Pages[i,1],Pages[i,2],Pages[i,3],Pages[i,4],Pages[i,5],Pages[i,6],Pages[i,7],Pages[i,8]
 
 }
