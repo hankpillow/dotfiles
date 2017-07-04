@@ -2,7 +2,7 @@ BEGIN {
   Index = 0
   print "# wget report filter"
   print "# report column pattern:"
-  print "# {Http-Status} {Url} {Location} {Content-Length} {Expires} {Last-Modified} {X-Cache} {X-Drupal-Cache}"
+  print "# {1 Http-Status} {2 Url} {3 Location} {4 Content-Length} {5 Expires} {6 Last-Modified} {7 X-Cache} {8 X-Drupal-Cache}"
 }
 
 /^--[[:digit:]]{4}/ {
