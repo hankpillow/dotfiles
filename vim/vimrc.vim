@@ -70,12 +70,18 @@ nnoremap <leader>gc :Gcommit<cr>
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
 "grepper
-nmap gs <plug>(GrepperOperator)
-xmap gs <plug>(GrepperOperator)
+let g:grepper = {}
+let g:grepper.jump = 0
+let g:grepper.jump = 0
+let g:grepper.open = 1
+let g:grepper.tools = ['rg', 'git', 'ag', 'grep', 'ack']
 
-nnoremap <leader>ff :Grepper -noopen -highlight<cr>
-nnoremap <leader>fb :Grepper -noopen -highlight -buffers<cr>
-nnoremap <leader>fw :Grepper -noopen -cword -noprompt<cr>
+nmap gr <plug>(GrepperOperator)
+xmap gr <plug>(GrepperOperator)
+
+nnoremap <leader>ff :Grepper -highlight<cr>
+nnoremap <leader>fb :Grepper -highlight -buffers<cr>
+nnoremap <leader>fw :Grepper -cword -noprompt<cr>
 
 " ctrlp
 nnoremap <leader>t :CtrlPTag<cr>
