@@ -67,6 +67,9 @@ echo '+ .ctags updated'
 ln -s $(pwd)/script/spider.sh /usr/local/bin/spider
 echo " + add command spider to /usr/local/bin"
 
+ln -s $(pwd)/script/header.sh /usr/local/bin/header
+echo " + add command header to /usr/local/bin"
+
 #----- bashrc/bash_profile setup
 
 backup ".bash_profile"
