@@ -64,13 +64,13 @@ echo '+ .ctags updated'
 #----- linking scripts
 
 test ! -L /usr/local/bin/spider && ln -s $DIR/script/spider.sh /usr/local/bin/spider
-echo " + add command spider to /usr/local/bin"
+echo "+ add command spider to /usr/local/bin"
 
 test ! -L /usr/local/bin/headers && ln -s $DIR/script/header.sh /usr/local/bin/headers
-echo " + add command headers to /usr/local/bin"
+echo "+ add command headers to /usr/local/bin"
 
 test ! -L /usr/local/bin/setup-terminal && ln -s $DIR/setup.sh /usr/local/bin/setup-terminal
-echo " + add command setup-terminal to /usr/local/bin"
+echo "+ add command setup-terminal to /usr/local/bin"
 
 #----- bashrc/bash_profile setup
 
