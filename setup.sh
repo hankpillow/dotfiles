@@ -1,3 +1,8 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+INSTALL="$1"
+
 function backup {
   TARGET=$HOME/$1
   if [[ -e $TARGET ]];
@@ -22,18 +27,12 @@ fi
 #----- VIM SETUP
 
 backup ".vimrc"
-cat ./vim/vimrc.vim > $HOME/.vimrc
+cat ./vimrc.vim > $HOME/.vimrc
 echo "+ .vimrc updated"
 
-if [[ "$1" == "install" ]];
-then
-    echo "# VIM FULL INSTALL"
-    echo "downloading junegunn/vim-plug vim plugin manager..."
-    curl -# -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    echo "+ Installing plugins"
-    vim -c PlugInstall -c qall
-    vim -u NONE -c "helptags vim-fugitive/doc" -c qall
-    cd $HOME/.vim/bundle/tern_for_vim && npm install && cd -
+if [[ $INSTALL == "install" ]]; then
+  echo "# VIM FULL INSTALL"
+  cd $HOME/.vim/bundle/tern_for_vim && npm install && cd -
 fi
 
 #------ GIT setup
@@ -62,20 +61,23 @@ curl -# -L https://raw.githubusercontent.com/jb55/typescript-ctags/master/.ctags
 cat config/ctags >> $HOME/.ctags
 echo '+ .ctags updated'
 
-#----- link scripts
+#----- linking scripts
 
-ln -s $(pwd)/script/spider.sh /usr/local/bin/spider
+ln -s $DIR/script/spider.sh /usr/local/bin/spider
 echo " + add command spider to /usr/local/bin"
 
-ln -s $(pwd)/script/header.sh /usr/local/bin/header
+ln -s $DIR/script/header.sh /usr/local/bin/headers
 echo " + add command header to /usr/local/bin"
+
+ln -s $DIR/setup.sh /usr/local/bin/setup-terminal
+echo " + add command setup-terminal to /usr/local/bin"
 
 #----- bashrc/bash_profile setup
 
 backup ".bash_profile"
 backup ".bashrc"
 
-if [[ "$1" == "install" ]]; then
+if [[ $INSTALL == "install" ]]; then
 
   echo "# FULL INSTALATION"
 

@@ -2,6 +2,7 @@
 # alias.sh
 #
 
+alias sudo='sudo '
 alias l="ls -olahF"
 alias vi='vim'
 alias remove_bkp='rm -v ~/.*.bkp'
