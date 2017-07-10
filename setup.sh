@@ -44,7 +44,7 @@ echo "+ .gitconfig updated"
 #------ TMUX setup
 
 backup ".tmux.conf"
-cat config/tmux.conf > $HOME/.tmux.conf
+cat config/tmux > $HOME/.tmux.conf
 echo '+ .tmux.conf updated'
 
 #------ CTAGS

@@ -49,7 +49,7 @@ bind-key -Tcopy-mode-vi MouseDown1Pane send -X clear-selection
 
 # Use Vim style commands for copy and paste. See "Usage, copy and paste" above.
 unbind-key [
-bind-key v copy-mode
+bind-key space copy-mode
 unbind-key p
 bind-key p paste-buffer
 bind-key -Tcopy-mode-vi v send -X begin-selection
