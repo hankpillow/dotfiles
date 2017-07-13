@@ -27,7 +27,7 @@ fi
 #----- VIM SETUP
 
 backup ".vimrc"
-cat ./vimrc.vim > $HOME/.vimrc
+cat ./config/vim-{preinstall,plugin,helpers,settings,theme}.vim > $HOME/.vimrc
 echo "+ .vimrc updated"
 
 if [[ $INSTALL == "install" ]]; then

@@ -1,3 +1,4 @@
+# https://gist.github.com/spicycode/1229612
 # https://raw.githubusercontent.com/bluz71/dotfiles/master/tmux.conf
 
 #
@@ -40,6 +41,8 @@ set -g visual-activity off
 
 # Enable mouse support including pane focusing and selection support.
 set -g mouse on
+setw -g mode-mouse on
+
 unbind-key -Tcopy-mode-vi MouseDragEnd1Pane
 bind-key -Tcopy-mode-vi MouseDown1Pane send -X clear-selection
 
@@ -50,8 +53,10 @@ bind-key -Tcopy-mode-vi MouseDown1Pane send -X clear-selection
 # Use Vim style commands for copy and paste. See "Usage, copy and paste" above.
 unbind-key [
 bind-key space copy-mode
+
 unbind-key p
 bind-key p paste-buffer
+
 bind-key -Tcopy-mode-vi v send -X begin-selection
 # Copy tmux selection to system clipboard. Different mechanisms are needed for
 # Linux and Mac. Allow both Enter and 'y' (for yank) to signify end selection.
@@ -66,35 +71,33 @@ if-shell 'case "$OS" in *Linux*) true;; *) false;; esac' \
 # Key bindings
 #
 
+bind-key J resize-pane -D 5
+bind-key K resize-pane -U 5
+bind-key H resize-pane -L 5
+bind-key L resize-pane -R 5
+
+# Vim style pane selection
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
 # Reload tmux.conf via Prefix-r.
 bind-key r source-file ~/.tmux.conf \; display "Reloaded ~/.tmux.conf"
 
 # Nicer split window bindings.
 unbind-key %
-bind-key | split-window -h
 unbind-key '"'
+bind-key | split-window -h
 bind-key - split-window -v
-
-# Synchronize all panes in the current window.
-bind-key y setw synchronize-panes
-
-# Pane resizing.
-bind-key -r H resize-pane -L 15
-bind-key -r J resize-pane -D 15
-bind-key -r K resize-pane -U 15
-bind-key -r L resize-pane -R 15
-
-# Move panes around the current window. Use Prefix-q to list pane numbers.
-bind-key up swap-pane -D
-bind-key down swap-pane -U
 
 # detach client
 bind-key d detach
 bind-key C-d detach
 
-# Ctrl-Left/Right cycles thru windows (no prefix)
-bind-key -n "C-Left"  select-window -t :-
-bind-key -n "C-Right" select-window -t :+
+# Shift arrow to switch windows
+bind -n S-Left  previous-window
+bind -n S-Right next-window
 
 # kill current pane/window
 bind-key q confirm-before kill-pane
