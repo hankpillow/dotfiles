@@ -25,18 +25,17 @@ Plug 'wavded/vim-stylus'
 "utils and tools
 Plug 'kshenoy/vim-signature' "handle marks https://github.com/kshenoy/vim-signature
 Plug 'editorconfig/editorconfig-vim' "https://github.com/editorconfig/editorconfig-vim
-" Plug 'justinmk/vim-dirvish'  "navigate on dir inside a buffer
 Plug 'mattn/emmet-vim' "like html snipts  http://mattn.github.io/emmet-vim/
 Plug 'mhinz/vim-grepper' "search tool using ag/rg/git etc https://github.com/mhinz/vim-grepper/blob/master/doc/grepper.txt
 Plug 'moll/vim-bbye' "manage closing buffers properly https://github.com/moll/vim-bbye
 Plug 'rstacruz/sparkup' "https://github.com/rstacruz/sparkup
+Plug 'justinmk/vim-dirvish' "liket netrw and Nerdtree
 
 Plug 'tpope/vim-commentary' "https://github.com/tpope/vim-commentary
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
 Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
 Plug 'tpope/vim-abolish' "https://github.com/tpope/tpope-vim-abolish
 Plug 'tpope/vim-unimpaired' "https://github.com/tpope/vim-unimpaired
-
 Plug 'kien/ctrlp.vim' "https://github.com/kien/ctrlp.vim
 
 call plug#end()

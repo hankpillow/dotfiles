@@ -11,10 +11,6 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 
-let g:netrw_winsize = -28
-let g:netrw_liststyle = 3
-let g:netrw_sort_sequence = '[\/]$,*'
-
 syntax enable
 
 filetype plugin indent on
@@ -102,6 +98,7 @@ endif
 "------------------------------------------------------------------------------
 
 noremap <F5> :so ~/.vimrc<cr>
+noremap <leader>q :q
 
 noremap E g_
 noremap B ^

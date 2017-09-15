@@ -32,7 +32,6 @@ echo "+ .vimrc updated"
 
 if [[ $INSTALL == "install" ]]; then
   echo "# VIM FULL INSTALL"
-  cd $HOME/.vim/bundle/tern_for_vim && npm install && cd -
   vim +PlugUpdate +qall
 fi
 
