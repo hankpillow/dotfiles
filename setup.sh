@@ -33,6 +33,7 @@ echo "+ .vimrc updated"
 if [[ $INSTALL == "install" ]]; then
   echo "# VIM FULL INSTALL"
   cd $HOME/.vim/bundle/tern_for_vim && npm install && cd -
+  vim +PlugUpdate +qall
 fi
 
 #------ GIT setup
@@ -91,7 +92,10 @@ if [[ $INSTALL == "install" ]]; then
 
     echo "# updating docker completion script for mac..."
     brew install bash-completion
-    curl -# -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > `brew --prefix`/etc/bash_completion.d/docker
+    curl -L https://raw.githubusercontent.com/docker/compose/1.16.1/contrib/completion/bash/docker-compose -o /usr/local/etc/bash_completion.d/
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+      . $(brew --prefix)/etc/bash_completion
+    fi
 
   elif [ "$TMP_OS" == "Linux" ]; then
 
