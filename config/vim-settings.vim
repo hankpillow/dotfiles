@@ -11,7 +11,9 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 
-set gdefault "substitute global by default
+let g:netrw_winsize = -28
+let g:netrw_liststyle = 3
+let g:netrw_sort_sequence = '[\/]$,*'
 
 syntax enable
 

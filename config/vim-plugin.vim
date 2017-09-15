@@ -13,23 +13,19 @@ Plug 'morhetz/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'Lokaltog/vim-distinguished'
 Plug 'nanotech/jellybeans.vim'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
+Plug 'airblade/vim-gitgutter'
 
 "syntax
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-git'
-Plug 'JulesWang/css.vim'
-Plug 'pangloss/vim-javascript'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'mitsuhiko/vim-python-combined'
-Plug 'vim-ruby/vim-ruby'
 Plug 'wavded/vim-stylus'
 
 "utils and tools
 Plug 'kshenoy/vim-signature' "handle marks https://github.com/kshenoy/vim-signature
-Plug 'ternjs/tern_for_vim'
-Plug 'majutsushi/tagbar' "https://github.com/majutsushi/tagbar
 Plug 'editorconfig/editorconfig-vim' "https://github.com/editorconfig/editorconfig-vim
-Plug 'justinmk/vim-dirvish'  "navigate on dir inside a buffer
+" Plug 'justinmk/vim-dirvish'  "navigate on dir inside a buffer
 Plug 'mattn/emmet-vim' "like html snipts  http://mattn.github.io/emmet-vim/
 Plug 'mhinz/vim-grepper' "search tool using ag/rg/git etc https://github.com/mhinz/vim-grepper/blob/master/doc/grepper.txt
 Plug 'moll/vim-bbye' "manage closing buffers properly https://github.com/moll/vim-bbye
@@ -48,6 +44,10 @@ call plug#end()
 "vim-bbye
 noremap <leader>d :Bdelete<cr>
 
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+
 "tern
 let g:tern_map_keys=1
 "show argument hints
@@ -58,7 +58,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 " fugitive
 nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>ga :Gwrite<cr>
 nnoremap <leader>gd :Gvdiff<cr>
 nnoremap <leader>gc :Gcommit<cr>
 
@@ -82,9 +82,10 @@ nnoremap <leader>fw :Grepper -cword -noprompt<cr>
 nnoremap <leader>t :CtrlPTag<cr>
 nnoremap <leader>p :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
+
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v(\.git|node_modules|bower_components)',
+  \ 'dir':  '\v(\.git|node_modules|bower_components|.vscode|.cache)',
   \ }
 
 " Using rg is fast, we don't need to cache.
