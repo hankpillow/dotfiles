@@ -12,6 +12,7 @@ if [ ! -d "$HOME/workspace" ]; then
   mkdir -v $HOME/workspace
 fi
 export WORKSPACE=`echo $HOME/workspace`
+export WORKDIR=`echo $HOME/workspace`
 
 export EDITOR="vim"
 export MANPAGER="less -X"

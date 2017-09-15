@@ -13,8 +13,9 @@ set -g default-terminal "screen-256color"
 
 # Hack to get clipboard working again on Mac Sierra.
 # Read: https://github.com/tmux/tmux/issues/543
-if-shell '[[ "$OS" = "Darwin" ]]' \
-    'set -g default-command "reattach-to-user-namespace -l ${SHELL}"'
+# if-shell '[[ "$OS" = "Darwin" ]]' \
+    # 'set -g default-command "reattach-to-user-namespace -l ${SHELL}"'
+set-option -g default-command "reattach-to-user-namespace -l ${SHELL}"
 
 # Needed for CTRL-Left/Right to work.
 setw -g xterm-keys on
@@ -41,7 +42,6 @@ set -g visual-activity off
 
 # Enable mouse support including pane focusing and selection support.
 set -g mouse on
-setw -g mode-mouse on
 
 unbind-key -Tcopy-mode-vi MouseDragEnd1Pane
 bind-key -Tcopy-mode-vi MouseDown1Pane send -X clear-selection

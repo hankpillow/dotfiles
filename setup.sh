@@ -77,41 +77,22 @@ echo "+ add command setup-terminal to /usr/local/bin"
 backup ".bash_profile"
 backup ".bashrc"
 
-if [[ $INSTALL == "install" ]]; then
+echo "# downloading git-completion..."
+mkdir -v ./profile/tmp
 
-  echo "# FULL INSTALATION"
+curl -# -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > profile/tmp/git-completion
+curl -# -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > profile/tmp/git-prompt
 
-  echo "# updating git completion script..."
-  mkdir ./profile/tmp
+if [ $TMP_OS == "Linux" ]; then
 
-  curl -# -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > profile/tmp/git-completion
-  curl -# -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > profile/tmp/git-prompt
-
-  if [ $TMP_OS == "Darwin" ]; then
-
-    echo "# updating docker completion script for mac..."
-    brew install bash-completion
-    curl -L https://raw.githubusercontent.com/docker/compose/1.16.1/contrib/completion/bash/docker-compose -o /usr/local/etc/bash_completion.d/
-    if [ -f $(brew --prefix)/etc/bash_completion ]; then
-      . $(brew --prefix)/etc/bash_completion
-    fi
-
-  elif [ "$TMP_OS" == "Linux" ]; then
-
-    echo "# updating docker completion script for linux..."
-    curl -# -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > /etc/bash_completion.d/docker
-
-  fi
-
-  cat ./profile/tmp/* ./profile/*.sh > $HOME/$TMP_PROFILE
-  rm -rf ./profile/tmp
-
-else
-
-  echo "# FAST SETUP"
-  cat profile/*.sh > $HOME/$TMP_PROFILE
+  echo "# updating docker completion script for linux..."
+  curl -# -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > /etc/bash_completion.d/docker
 
 fi
+
+# concat completion tools with all profile's config
+cat ./profile/tmp/* ./profile/*.sh > $HOME/$TMP_PROFILE
+rm -rfv ./profile/tmp
 
 echo "+ $TMP_PROFILE udpated."
 bash $HOME/$TMP_PROFILE
