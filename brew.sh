@@ -21,6 +21,7 @@ brew $ACTION reattach-to-user-namespace \
   bash-completion \
   wget \
   vim \
+  mono \
   git-extras
 
 curl -L https://raw.githubusercontent.com/docker/compose/1.16.1/contrib/completion/bash/docker-compose > /usr/local/etc/bash_completion.d/docker-compose
