@@ -11,6 +11,7 @@ fi
 ACTION=${1:-"install"}
 
 brew $ACTION reattach-to-user-namespace \
+  fzf \
   python \
   tmux \
   the_silver_searcher \
@@ -28,5 +29,9 @@ curl -L https://raw.githubusercontent.com/docker/compose/1.16.1/contrib/completi
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
+fi
+
+if [ -f $(brew --prefix)/opt/fzf/install ]; then
+  $(brew --prefix)/opt/fzf/install
 fi
 

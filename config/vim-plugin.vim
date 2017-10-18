@@ -36,7 +36,9 @@ Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
 Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
 Plug 'tpope/vim-abolish' "https://github.com/tpope/tpope-vim-abolish
 Plug 'tpope/vim-unimpaired' "https://github.com/tpope/vim-unimpaired
-Plug 'kien/ctrlp.vim' "https://github.com/kien/ctrlp.vim
+Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+" Plug 'kien/ctrlp.vim' "https://github.com/kien/ctrlp.vim
 
 call plug#end()
 
@@ -77,20 +79,7 @@ nnoremap <leader>ff :Grepper -highlight<cr>
 nnoremap <leader>fb :Grepper -highlight -buffers<cr>
 nnoremap <leader>fw :Grepper -cword -noprompt<cr>
 
-" ctrlp
-nnoremap <leader>t :CtrlPTag<cr>
-nnoremap <leader>p :CtrlP<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
-
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v(\.git|node_modules|bower_components|.vscode|.cache)',
-  \ }
-
-" Using rg is fast, we don't need to cache.
-let g:ctrlp_use_caching = 0
-
-" The match should be at the top of the list.
-let g:ctrlp_match_window_reversed = 0
-
-let g:ctrlp_extensions = ['tag', 'buffertag']
+"fzf
+nmap <leader>f :Files<cr>
+nmap <leader>F :GFiles<cr>
+nmap <leader>b :Buffers<cr>

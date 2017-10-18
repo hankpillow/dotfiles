@@ -20,6 +20,8 @@ if [ "$(uname)" == "Darwin" ]; then
   set show-all-if-ambiguous on
   set completion-ignore-case on
 
+  [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
   if [[ ! -z "$(type xclip)" ]];
