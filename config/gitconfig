@@ -14,8 +14,8 @@
 	rollback = !sh -c 'git reset --merge HEAD~${1-1}' -
 	st = status -s
 	staged = diff --cached
-  tags = log --tags --simplify-by-decoration --pretty="format:%h %D"
-  tagss = log --tags --simplify-by-decoration --pretty="format:%aI %Cblue%h %Cgreen%d %Creset%ce - %s"
+  tags = log --tags --simplify-by-decoration --pretty=\"format:%h %D\"
+  tagss = log --tags --simplify-by-decoration --pretty=\"format:%aI %Cblue%h %Cgreen%d %Creset%ce - %s\"
 	unmerged = ls-files -u
 	unstage = reset HEAD --
 
