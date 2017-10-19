@@ -10,7 +10,7 @@ alias reload_profile='bash ~/.bash_profile'
 alias create_rsa='mkdir ~/.ssh && ssh-keygen -t rsa -b 4096 -C "$1" && rsa-send-to-agent && eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
 alias myip='curl icanhazip.com'
 alias ports='lsof -Pn -i4 | grep LISTEN'
-alias fzvim='vim $(fzf)'
+alias fvim='vim $(fzf)'
 
 # Tmux
 alias tn='tmux new -s'
