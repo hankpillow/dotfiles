@@ -20,7 +20,7 @@ export MANPAGER="less -X"
 export HISTSIZE=32768
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
-
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 export QT_SELECT=5
 
 # ENV PATH
