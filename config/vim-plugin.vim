@@ -7,14 +7,15 @@ filetype off
 call plug#begin('~/.vim/bundle')
 
 "themes
-Plug 'vim-scripts/summerfruit256.vim'
-Plug 'reedes/vim-colors-pencil'
-Plug 'morhetz/gruvbox'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'Lokaltog/vim-distinguished'
-Plug 'nanotech/jellybeans.vim'
-Plug 'itchyny/lightline.vim'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'morhetz/gruvbox'
+Plug 'nanotech/jellybeans.vim'
+Plug 'reedes/vim-colors-pencil'
+Plug 'vim-scripts/summerfruit256.vim'
 
 "syntax
 Plug 'sheerun/vim-polyglot'

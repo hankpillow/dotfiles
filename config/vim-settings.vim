@@ -46,7 +46,7 @@ set mouse=a
 
 " make searching easier
 set hlsearch
-set ignorecase
+" set ignorecase
 set infercase "https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
 set smartcase
 set incsearch
@@ -87,8 +87,11 @@ set wildignore+=*.sw?,*.nupkg,*.dll,*.exe
 "system trash
 set wildignore+=.DS_Store,thumbs.db
 
+"packages
+set wildignore+=node_modules/,bower_components/
+
 "versioning
-set wildignore+=.git/**,.svn/**
+set wildignore+=.git/,.svn/
 
 if &compatible
   set nocompatible
@@ -120,9 +123,6 @@ vnoremap <leader>r :s///gc<left><left><left><left>
 nnoremap ]j g,
 nnoremap [j g;
 
-"change to insert mode and create a linebreak on carret's position
-noremap <C-o> i<cr>
-
 "graphical moving when in normal mode
 "https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
 nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
@@ -139,14 +139,18 @@ nnoremap <silent> coq :call HelperQuickFixToggle()<cr>
 autocmd FileType {javascript,html,svg,css,stylus,sass,scss,htmldjango} set tabstop=2 sts=2 sw=2 noexpandtab
 autocmd FileType {json,python,ruby,sh,vim,yaml} set tabstop=2 sts=2 sw=2 expandtab
 
-" specific theme for diff buffers
-" autocmd BufNewFile,BufRead * if &diff | colorscheme distinguished | endif
-
-" linking formats with filtypes
+"forcing syntaxes
 autocmd BufNewFile,BufRead *.{bash} set filetype=sh syntax=sh
 autocmd BufNewFile,BufRead *.{cshtml} set filetype=html syntax=html bomb
 autocmd BufNewFile,BufRead *.{njk} set filetype=html syntax=htmldjango
 autocmd BufNewFile,BufRead *.{styl,stylus} set filetype=stylus syntax=stylus
 autocmd BufNewFile,BufRead *.{tag,ejs} set filetype=html syntax=html
+autocmd BufRead,BufNewFile *.{eslint,babel}rc set filetype=json
 
 autocmd BufWritePre * call HelperStripTrailingWhitespace()
+
+" https://github.com/rafaelrinaldi/dotfiles/blob/master/vimrc
+" Load config per project if `.lvimrc` is present
+if filereadable($PWD .'/.lvimrc')
+  source ./.lvimrc
+endif
