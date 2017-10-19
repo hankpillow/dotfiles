@@ -72,25 +72,12 @@ set guioptions-=e
 set wildmode=longest:full,full
 set wildmenu
 
-"images
 set wildignore+=*.jpe?g,*.bmp,*.gif,*.png
-
-"sounds
 set wildignore+=*.mp3,*.mpeg4,*.mp4,*.mov,*.flv,*.mkv
-
-"fonts
 set wildignore+=*.eot,*.ttf,*.woff,*.woff2
-
-"comp and gem files
 set wildignore+=*.sw?,*.nupkg,*.dll,*.exe
-
-"system trash
 set wildignore+=.DS_Store,thumbs.db
-
-"packages
 set wildignore+=node_modules/,bower_components/
-
-"versioning
 set wildignore+=.git/,.svn/
 
 if &compatible
