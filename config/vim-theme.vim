@@ -1,18 +1,18 @@
-
 " theme
 "------------------------------------------------------------------------------
 
 " silent! colorscheme peachpuff
 " silent! colorscheme PaperColor
 
-colorscheme seoul256
+" colorscheme seoul256-light
+" let g:seoul256_background = 255
+
+silent! colorscheme seoul256
 let g:seoul256_background = 236
-" set background=dark
+set background=dark
 
-highlight Comment cterm=italic gui=italic
-highlight CursorLineNr cterm=bold gui=bold
-
-set synmaxcol=200 "https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
+" https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
+set synmaxcol=200
 
 "CursorLineNr only on active buffer
 augroup CursorLine

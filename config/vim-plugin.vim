@@ -37,9 +37,8 @@ Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
 Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
 Plug 'tpope/vim-abolish' "https://github.com/tpope/tpope-vim-abolish
 Plug 'tpope/vim-unimpaired' "https://github.com/tpope/vim-unimpaired
-Plug 'junegunn/fzf', { 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-" Plug 'kien/ctrlp.vim' "https://github.com/kien/ctrlp.vim
+Plug 'junegunn/fzf', { 'do': './install --all' } "https://github.com/junegunn/fzf
+Plug 'junegunn/fzf.vim' "https://github.com/junegunn/fzf.vim
 
 call plug#end()
 
@@ -49,11 +48,6 @@ noremap <leader>d :Bdelete<cr>
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ }
-
-"tern
-let g:tern_map_keys=1
-"show argument hints
-let g:tern_show_argument_hints='on_hold'
 
 "editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
@@ -69,9 +63,14 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 "grepper
 let g:grepper = {}
 let g:grepper.jump = 0
-let g:grepper.jump = 0
 let g:grepper.open = 1
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep', 'ack']
+
+" GitGutter styling to use · instead of +/-
+let g:gitgutter_sign_added = '∙'
+let g:gitgutter_sign_modified = '∙'
+let g:gitgutter_sign_removed = '∙'
+let g:gitgutter_sign_modified_removed = '∙'
 
 nmap gr <plug>(GrepperOperator)
 xmap gr <plug>(GrepperOperator)
