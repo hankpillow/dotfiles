@@ -1,15 +1,17 @@
 " theme
 "------------------------------------------------------------------------------
 
-" silent! colorscheme peachpuff
-" silent! colorscheme PaperColor
-
-" colorscheme seoul256-light
-" let g:seoul256_background = 255
-
-silent! colorscheme seoul256
-let g:seoul256_background = 236
-set background=dark
+function! CheckBackground()
+	if &background == 'light'
+		" Range:   252 (darkest) ~ 256 (lightest)
+		silent! colorscheme seoul256-light
+		let g:seoul256_background = 255
+	else
+		" Range:   233 (darkest) ~ 239 (lightest)
+		silent! colorscheme seoul256
+		let g:seoul256_background = 234
+	endif
+endfunction
 
 " https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
 set synmaxcol=200

@@ -135,6 +135,7 @@ autocmd BufNewFile,BufRead *.{tag,ejs} set filetype=html syntax=html
 autocmd BufRead,BufNewFile *.{eslint,babel}rc set filetype=json
 
 autocmd BufWritePre * call HelperStripTrailingWhitespace()
+autocmd BufWritePre * call CheckBackground()
 
 " https://github.com/rafaelrinaldi/dotfiles/blob/master/vimrc
 " Load config per project if `.lvimrc` is present
