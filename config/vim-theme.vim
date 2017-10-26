@@ -8,8 +8,9 @@ function! s:statusline_expr()
   let fug = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
   let pos = '%(%l:%c%V%)-%P '
   let enc = '%{&fenc == "" ? &enc : &fenc}%{(exists("+bomb") && &bomb) ? ",bomb" : ""}'
+  let path = "%{@%}"
   let sep = '%='
-  return ' %F %<'.mod.ro.fug.sep.'/ '.ft.'/ '.pos.'/ '.enc
+  return mod.path.' %<'.ro.fug.sep.'/ '.ft.'/ '.pos.'/ '.enc
 endfunction
 let &statusline = s:statusline_expr()
 
