@@ -80,10 +80,6 @@ set wildignore+=.DS_Store,thumbs.db
 set wildignore+=node_modules/,bower_components/
 set wildignore+=.git/,.svn/
 
-if &compatible
-  set nocompatible
-endif
-
 " maps
 "------------------------------------------------------------------------------
 
