@@ -20,7 +20,7 @@ set backspace=indent,eol,start
 set complete=.,w,b,t
 
 " omnifuncs
-set ofu=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
 augroup omnifuncs
   autocmd!
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -47,7 +47,7 @@ set mouse=a
 " make searching easier
 set hlsearch
 " set ignorecase
-set infercase "https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
+" set infercase "https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
 set smartcase
 set incsearch
 set showmatch
