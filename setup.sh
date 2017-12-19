@@ -72,6 +72,9 @@ echo "+ add command headers to /usr/local/bin"
 test ! -L /usr/local/bin/setup-terminal && ln -s $DIR/setup.sh /usr/local/bin/setup-terminal
 echo "+ add command setup-terminal to /usr/local/bin"
 
+test ! -L /usr/local/bin/docker-logs && ln -s $DIR/docker-logs.sh /usr/local/bin/docker-logs
+echo "+ add command setup-terminal to /usr/local/bin"
+
 #----- bashrc/bash_profile setup
 
 backup ".bash_profile"

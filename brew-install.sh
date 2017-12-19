@@ -16,7 +16,6 @@ brew $ACTION reattach-to-user-namespace \
   tmux \
   the_silver_searcher \
   rg \
-  ag \
   jq \
   ctags \
   bash-completion \
