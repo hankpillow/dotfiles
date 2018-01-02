@@ -4,11 +4,13 @@
 
 alias sudo='sudo '
 alias l="ls -olahF"
+alias du="du -ach"
+alias mdir="mkdir -pv"
 alias vi='vim'
 alias remove_bkp='rm -v ~/.*.bkp'
 alias reload_profile='bash ~/.bash_profile'
 alias create_rsa='mkdir ~/.ssh && ssh-keygen -t rsa -b 4096 -C "$1" && rsa-send-to-agent && eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
-alias myip='curl icanhazip.com'
+alias myip="curl http://ipecho.net/plain; echo"
 alias ports='lsof -Pn -i4 | grep LISTEN'
 alias fvim='vim $(fzf)'
 
