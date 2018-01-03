@@ -20,8 +20,8 @@ alias ta='tmux attach '
 alias tk='tmux kill-session'
 
 # Docker
-alias dl='docker ps -f "status=running"-l -q'
-alias dL='docker ps -f "status=running"-l'
+alias dl='docker ps -f status=running -q'
+alias dL='docker ps -f status=running'
 
 alias drunning='docker ps -f "status=running"'
 alias dRunning='docker ps -f "status=running" -q'
