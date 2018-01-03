@@ -49,17 +49,17 @@ echo '+ .tmux.conf updated'
 
 #------ CTAGS
 
-backup ".ctags"
-echo "" > $HOME/.ctags
+# backup ".ctags"
+# echo "" > $HOME/.ctags
 
-echo "downloading javacript ctags..."
-curl -# -L https://raw.githubusercontent.com/winstonwolff/ctags-javascript-coffeescript/master/ctags.conf > $HOME/.ctags
+# echo "downloading javacript ctags..."
+# curl -# -L https://raw.githubusercontent.com/winstonwolff/ctags-javascript-coffeescript/master/ctags.conf > $HOME/.ctags
 
-echo "downloading typescript ctags..."
-curl -# -L https://raw.githubusercontent.com/jb55/typescript-ctags/master/.ctags >> $HOME/.ctags
+# echo "downloading typescript ctags..."
+# curl -# -L https://raw.githubusercontent.com/jb55/typescript-ctags/master/.ctags >> $HOME/.ctags
 
-cat config/ctags >> $HOME/.ctags
-echo '+ .ctags updated'
+# cat config/ctags >> $HOME/.ctags
+# echo '+ .ctags updated'
 
 #----- linking scripts
 
@@ -83,8 +83,8 @@ backup ".bashrc"
 echo "# downloading git-completion..."
 mkdir -v ./profile/tmp
 
-curl -# -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > profile/tmp/git-completion
-curl -# -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > profile/tmp/git-prompt
+curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > profile/tmp/git-completion
+curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > profile/tmp/git-prompt
 
 if [ $TMP_OS == "Linux" ]; then
 

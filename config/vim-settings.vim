@@ -84,7 +84,6 @@ set wildignore+=.git/,.svn/
 "------------------------------------------------------------------------------
 
 noremap <F5> :so ~/.vimrc<cr>
-noremap <leader>q :q
 
 noremap E g_
 noremap B ^
@@ -93,6 +92,7 @@ nnoremap Y y$
 "allow dot work on selection as it would on normal
 xnoremap . :norm.<CR>
 
+noremap <leader>q :q<cr>
 noremap <leader>w :w<cr>
 noremap <leader>cd :lcd %:p:h<cr>
 noremap <leader>rf :cfdo %s/old/new | update
