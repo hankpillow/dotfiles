@@ -41,7 +41,7 @@ augroup END
 
 set title
 
-set listchars=tab:▸\ ,eol:•,trail:—
+set listchars=tab:▸\ ,eol:•,trail:—,space:␣
 set number relativenumber
 
 if has('linebreak')
