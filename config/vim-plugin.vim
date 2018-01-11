@@ -80,6 +80,6 @@ nnoremap <leader>fb :Grepper -highlight -buffers<cr>
 nnoremap <leader>fw :Grepper -cword -noprompt<cr>
 
 "fzf
-nmap <leader>f :Files<cr>
-nmap <leader>F :GFiles<cr>
+nmap <leader>F :Files<cr>
+nmap <leader>f :GFiles<cr>
 nmap <leader>b :Buffers<cr>
