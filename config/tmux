@@ -57,14 +57,12 @@ bind-key space copy-mode
 unbind-key p
 bind-key p paste-buffer
 
-bind-key -Tcopy-mode-vi v send -X begin-selection
-# Copy tmux selection to system clipboard. Different mechanisms are needed for
-# Linux and Mac. Allow both Enter and 'y' (for yank) to signify end selection.
-# if-shell 'case "$OS" in *Linux*) true;; *) false;; esac' \
-#     'bind-key -Tcopy-mode-vi Enter send -X copy-pipe-and-cancel "xclip -selection primary -i -f | xclip -selection clipboard -i"' \
-#     'bind-key -Tcopy-mode-vi Enter send -X copy-pipe-and-cancel  "reattach-to-user-namespace pbcopy"' \
-#     'bind-key -Tcopy-mode-vi y send -X copy-pipe-and-cancel "xclip -selection primary -i -f | xclip -selection clipboard -i"' \
-#     'bind-key -Tcopy-mode-vi y send -X copy-pipe-and-cancel  "reattach-to-user-namespace pbcopy"'
+
+# Use v to trigger selection
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+
+# Use y to yank current selection
+bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
 
 #
 # Key bindings
@@ -91,7 +89,6 @@ bind-key | split-window -h -c "#{pane_current_path}"
 bind-key - split-window -v -c "#{pane_current_path}"
 
 # detach client
-bind-key d detach
 bind-key C-d detach
 
 # Shift arrow to switch windows
@@ -100,7 +97,6 @@ bind -n S-Right next-window
 
 # kill current pane/window
 bind-key q confirm-before kill-pane
-bind-key Q confirm-before kill-window
 
 # # new window
 bind-key C-n new-window -c "#{pane_current_path}"
