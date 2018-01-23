@@ -30,7 +30,7 @@ set background=dark
 call CheckBackground()
 
 " https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
-set synmaxcol=200
+" set synmaxcol=200
 
 "CursorLineNr only on active buffer
 augroup CursorLine
