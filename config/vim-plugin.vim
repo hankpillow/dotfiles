@@ -21,6 +21,7 @@ Plug 'vim-scripts/summerfruit256.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-git'
 Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'jelera/vim-javascript-syntax'
 Plug 'wavded/vim-stylus'
 
 "utils and tools

@@ -123,6 +123,7 @@ autocmd FileType {javascript,html,svg,css,stylus,sass,scss,htmldjango} set tabst
 autocmd FileType {json,python,ruby,sh,vim,yaml} set tabstop=2 sts=2 sw=2 expandtab
 
 "forcing syntaxes
+autocmd BufNewFile,BufRead *.{js,jsx} set filetype=javascript
 autocmd BufNewFile,BufRead *.{bash} set filetype=sh syntax=sh
 autocmd BufNewFile,BufRead *.{cshtml} set filetype=html syntax=html bomb
 autocmd BufNewFile,BufRead *.{njk} set filetype=html syntax=htmldjango
