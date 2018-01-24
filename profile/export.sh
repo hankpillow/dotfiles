@@ -2,6 +2,9 @@
 # export.sh
 #
 
+# https://stackoverflow.com/questions/5687446/bash-custom-ps1-with-nice-working-directory-path
+export PROMPT_DIRTRIM=2
+
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 export HOME=`echo ~/`
