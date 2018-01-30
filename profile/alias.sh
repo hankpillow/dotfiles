@@ -126,6 +126,7 @@ alias tk='tmux kill-session'
 
 # last running container ID
 alias drun='docker ps -f status=running -q'
+alias dlrun='docker ps -f status=running -q | head -1'
 
 # from https://github.com/tcnksm/docker-alias/blob/master/zshrc
 
