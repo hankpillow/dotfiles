@@ -11,6 +11,7 @@ fi
 ACTION=${1:-"install"}
 
 brew $ACTION reattach-to-user-namespace \
+  trash \
   fzf \
   python \
   tmux \
@@ -19,6 +20,7 @@ brew $ACTION reattach-to-user-namespace \
   jq \
   ctags \
   bash-completion \
+  httpie \
   wget \
   vim \
   mono \

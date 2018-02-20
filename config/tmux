@@ -89,7 +89,7 @@ bind-key | split-window -h -c "#{pane_current_path}"
 bind-key - split-window -v -c "#{pane_current_path}"
 
 # detach client
-bind-key C-d detach
+bind-key C-q detach
 
 # Shift arrow to switch windows
 bind -n S-Left  previous-window
