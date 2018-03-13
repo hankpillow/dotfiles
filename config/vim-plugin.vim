@@ -8,8 +8,8 @@ call plug#begin('~/.vim/bundle')
 
 "themes
 Plug 'Lokaltog/vim-distinguished'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'airblade/vim-gitgutter'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'airblade/vim-gitgutter'
 " Plug 'itchyny/lightline.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'morhetz/gruvbox'

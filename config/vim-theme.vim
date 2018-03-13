@@ -17,12 +17,12 @@ let &statusline = s:statusline_expr()
 function! CheckBackground()
 	if &background == 'light'
 		" Range:   252 (darkest) ~ 256 (lightest)
-		let g:seoul256_background = 255
-		silent! colorscheme seoul256-light
+		" let g:seoul256_background = 255
+		silent! colorscheme jellybeans
 	else
 		" Range:   233 (darkest) ~ 239 (lightest)
-		let g:seoul256_background = 234
-		silent! colorscheme seoul256
+		" let g:seoul256_background = 234
+		silent! colorscheme jellybeans
 	endif
 endfunction
 
