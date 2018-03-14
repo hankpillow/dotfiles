@@ -11,22 +11,21 @@ fi
 ACTION=${1:-"install"}
 
 brew $ACTION reattach-to-user-namespace \
-  trash \
-  fzf \
-  python \
-  tmux \
-  the_silver_searcher \
-  rg \
-  jq \
-  ctags \
   bash-completion \
+  ctags \
+  fd \
+  fzf \
+  git-extras \
   httpie \
-  wget \
-  vim \
+  jq \
   mono \
-  git-extras
-
-curl -L https://raw.githubusercontent.com/docker/compose/1.16.1/contrib/completion/bash/docker-compose > /usr/local/etc/bash_completion.d/docker-compose
+  python \
+  rg \
+  the_silver_searcher \
+  tmux \
+  trash \
+  vim \
+  wget
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion

@@ -39,16 +39,11 @@ Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
 Plug 'tpope/vim-abolish' "https://github.com/tpope/tpope-vim-abolish
 Plug 'tpope/vim-unimpaired' "https://github.com/tpope/vim-unimpaired
 Plug 'junegunn/fzf', { 'do': './install --all' } "https://github.com/junegunn/fzf
-Plug 'junegunn/fzf.vim' "https://github.com/junegunn/fzf.vim
 
 call plug#end()
 
 "vim-bbye
 noremap <leader>d :Bdelete<cr>
-
-" let g:lightline = {
-"       \ 'colorscheme': 'wombat',
-"       \ }
 
 "editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']

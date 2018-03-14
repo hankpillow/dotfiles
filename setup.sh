@@ -83,13 +83,16 @@ backup ".bashrc"
 echo "# downloading git-completion..."
 mkdir -v ./profile/tmp
 
-curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > profile/tmp/git-completion
-curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > profile/tmp/git-prompt
-
 if [ $TMP_OS == "Linux" ]; then
 
   echo "# updating docker completion script for linux..."
   curl -# -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > /etc/bash_completion.d/docker
+
+else
+
+  curl --silent -L https://raw.githubusercontent.com/docker/compose/1.16.1/contrib/completion/bash/docker-compose > /usr/local/etc/bash_completion.d/docker-compose
+  curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > profile/tmp/git-completion
+  curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > profile/tmp/git-prompt
 
 fi
 
