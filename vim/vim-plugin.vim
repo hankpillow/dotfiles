@@ -8,11 +8,9 @@ call plug#begin('~/.vim/bundle')
 
 "themes
 Plug 'Lokaltog/vim-distinguished'
-" Plug 'NLKNguyen/papercolor-theme'
-" Plug 'airblade/vim-gitgutter'
-" Plug 'itchyny/lightline.vim'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'junegunn/seoul256.vim'
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
 Plug 'nanotech/jellybeans.vim'
 Plug 'reedes/vim-colors-pencil'
 Plug 'vim-scripts/summerfruit256.vim'
@@ -60,7 +58,10 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 let g:grepper = {}
 let g:grepper.jump = 0
 let g:grepper.open = 1
+let g:grepper.switch = 1
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep', 'ack']
+let g:grepper.ag = {'grepprg' : 'ag --vimgrep -- '}
+let g:grepper.rg = {'grepprg' : 'rg -H --no-heading --vimgrep --hidden'}
 
 " GitGutter styling to use · instead of +/-
 let g:gitgutter_sign_added = '∙'

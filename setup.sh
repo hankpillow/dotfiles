@@ -27,7 +27,7 @@ fi
 #----- VIM SETUP
 
 backup ".vimrc"
-cat ./config/vim-{preinstall,plugin,helpers,settings,theme}.vim > $HOME/.vimrc
+cat ./vim/vim-{preinstall,plugin,helpers,settings,theme}.vim > $HOME/.vimrc
 echo "+ .vimrc updated"
 
 if [[ $INSTALL == "install" ]]; then
@@ -47,20 +47,6 @@ backup ".tmux.conf"
 cat config/tmux > $HOME/.tmux.conf
 echo '+ .tmux.conf updated'
 
-#------ CTAGS
-
-# backup ".ctags"
-# echo "" > $HOME/.ctags
-
-# echo "downloading javacript ctags..."
-# curl -# -L https://raw.githubusercontent.com/winstonwolff/ctags-javascript-coffeescript/master/ctags.conf > $HOME/.ctags
-
-# echo "downloading typescript ctags..."
-# curl -# -L https://raw.githubusercontent.com/jb55/typescript-ctags/master/.ctags >> $HOME/.ctags
-
-# cat config/ctags >> $HOME/.ctags
-# echo '+ .ctags updated'
-
 #----- linking scripts
 
 test ! -L /usr/local/bin/spider && ln -s $DIR/script/spider.sh /usr/local/bin/spider
@@ -68,9 +54,6 @@ echo "+ add command spider to /usr/local/bin"
 
 test ! -L /usr/local/bin/headers && ln -s $DIR/script/header.sh /usr/local/bin/headers
 echo "+ add command headers to /usr/local/bin"
-
-test ! -L /usr/local/bin/docker-logs && ln -s $DIR/script/docker-logs.sh /usr/local/bin/docker-logs
-echo "+ add command docker-logs to /usr/local/bin"
 
 test ! -L /usr/local/bin/setup-terminal && ln -s $DIR/setup.sh /usr/local/bin/setup-terminal
 echo "+ add command setup-terminal to /usr/local/bin"

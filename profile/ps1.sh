@@ -44,9 +44,7 @@ get_ps1 () {
     ST=${GREEN}
   fi
 
-  # local DOCKER="$(__docker_machine_ps1 | sed 's/\s//g')"
-  # PS1="${ST}⦁${BLUE}\D{%T} ${WHITE}\u ${BLUE}\j${BYELLOW}${BRANCH} ${GREEN}${PWD#"${PWD%/*/*}/"} ${WHITE}> "
-  # PS1='${ST}\D{%T} ${BLUE}\j${BYELLOW}${BRANCH} ${GREEN}\W ${WHITE}> '
-  export PS1="${ST}\D{%T} ${BGCYAN}\j ${BBLUE}\w${BYELLOW}${BRANCH}\n${RESET}> "
+  export PS1="${ST}\D{%T} ${CYAN}\j ${BLUE}\w${YELLOW}${BRANCH}\n${RESET}> "
 }
+
 PROMPT_COMMAND=get_ps1

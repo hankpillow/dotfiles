@@ -9,19 +9,16 @@ if [ "$(uname)" == "Darwin" ]; then
 	alias mac_refresh_camera='killall VDCAssistant'
 	alias mac_refresh_finder='killall Finder'
 	alias ccal='cal | sed -e "s/ $(expr `date "+%d"` + 0) / $(printf "\033[32m$(expr `date "+%d"` + 0)\033[0m") /"'
+  alias reload_profile='bash ~/.bash_profile'
 
-	# Linux (working on Arch)
+# Linux (working on Arch)
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
 	alias ls='ls --color=auto'
-	alias pacman_stop='rm /var/lib/pacman/db.lck'
-	alias ya='yaourt'
-	alias pacman_refresh_keys='pacman-key --refresh-keys'
 
 fi
 
 alias remove_bkp='rm -v ~/.*.bkp'
-alias reload_profile='bash ~/.bash_profile'
 
 alias cp='cp -iv'
 alias mv='mv -iv'
@@ -32,7 +29,7 @@ alias sudo='sudo '
 alias du="du -ach"
 alias vi='vim'
 alias dcomp='docker-compose'
-alias fvim='vim $(fzf)'
+alias fim='vim $(fzf)'
 
 alias create_rsa='mkdir ~/.ssh && ssh-keygen -t rsa -b 4096 -C "$1" && rsa-send-to-agent && eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
 
@@ -125,8 +122,8 @@ alias tk='tmux kill-session'
 # --------
 
 # last running container ID
-alias drun='docker ps -f status=running -q'
-alias dlrun='docker ps -f status=running -q | head -1'
+alias drunning='docker ps -f status=running -q'
+alias drun='docker ps -f status=running -q | head -1'
 
 # from https://github.com/tcnksm/docker-alias/blob/master/zshrc
 

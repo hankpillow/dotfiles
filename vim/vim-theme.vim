@@ -9,30 +9,27 @@ function! s:statusline_expr()
   let pos = '%(%l:%c%V%)-%P '
   let enc = '%{&fenc == "" ? &enc : &fenc}%{(exists("+bomb") && &bomb) ? ",bomb" : ""}'
   let path = "%{@%}"
+  let grepper = '%{grepper#statusline()}'
   let sep = '%='
-  return mod.path.' %<'.ro.fug.sep.'/ '.ft.'/ '.pos.'/ '.enc
+  return mod.path.' %<'.ro.fug.sep.' ('.grepper.') '.ft.' | '.pos.' | '.enc
 endfunction
 let &statusline = s:statusline_expr()
 
-function! CheckBackground()
-	if &background == 'light'
-		" Range:   252 (darkest) ~ 256 (lightest)
-		" let g:seoul256_background = 255
-		silent! colorscheme jellybeans
-	else
-		" Range:   233 (darkest) ~ 239 (lightest)
-		" let g:seoul256_background = 234
-		silent! colorscheme jellybeans
-	endif
-endfunction
+" function! CheckBackground()
+" 	if &background == 'light'
+" 		" Range:   252 (darkest) ~ 256 (lightest)
+" 		let g:seoul256_background = 255
+" 		silent! colorscheme seoul256
+" 	else
+" 		" Range:   233 (darkest) ~ 239 (lightest)
+" 		" let g:seoul256_background = 234
+" 		silent! colorscheme jellybeans
+" 	endif
+" endfunction
 
-set background=dark
-call CheckBackground()
+" set background=dark
+" call CheckBackground()
 
-" https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
-" set synmaxcol=200
-
-"CursorLineNr only on active buffer
 augroup CursorLine
   au!
   au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
@@ -46,6 +43,6 @@ set number relativenumber
 
 if has('linebreak')
   set breakindent
-  let &showbreak='⤷  '
+  let &showbreak='↳ '
 endif
 
