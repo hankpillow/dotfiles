@@ -37,6 +37,7 @@ Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
 Plug 'tpope/vim-abolish' "https://github.com/tpope/tpope-vim-abolish
 Plug 'tpope/vim-unimpaired' "https://github.com/tpope/vim-unimpaired
 Plug 'junegunn/fzf', { 'do': './install --all' } "https://github.com/junegunn/fzf
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -53,6 +54,7 @@ nnoremap <leader>gd :Gvdiff<cr>
 nnoremap <leader>gc :Gcommit<cr>
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
+
 
 "grepper
 let g:grepper = {}
@@ -90,3 +92,21 @@ nmap <leader>b :Buffers<cr>
 " https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+let g:user_emmet_settings = {
+  \  'php' : {
+  \    'extends' : 'html',
+  \    'filters' : 'c',
+  \  },
+  \  'cshtml' : {
+  \    'extends' : 'html',
+  \  },
+  \  'jsx' : {
+  \    'extends' : 'html',
+  \  },
+  \  'xml' : {
+  \    'extends' : 'html',
+  \  },
+  \  'haml' : {
+  \    'extends' : 'html',
+  \  },
+  \}
