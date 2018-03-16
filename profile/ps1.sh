@@ -55,7 +55,7 @@ get_ps1 () {
 
   # export PS1="${ST}\D{%T} ${CYAN}\j ${BLUE}\w${YELLOW}${BRANCH}\n${RESET}> "
   # export PS1="${ST}\D{%T} ${CYAN}\j${YELLOW}${BRANCH} ${BLUE}$(_pretty_home "$PWD" 100)\n${RESET}> "
-  export PS1="${WHITE}\j${YELLOW}${BRANCH} ${BLUE}$(_pretty_home "$PWD" 100)\n${WHITE}\D{%T} ${ST}> ${RESET}"
+  export PS1="${WHITE}\j${YELLOW}${BRANCH} ${BLUE}$(_pretty_home "$PWD" 50)\n${WHITE}\D{%T} ${ST}> ${RESET}"
 }
 
 PROMPT_COMMAND=get_ps1
