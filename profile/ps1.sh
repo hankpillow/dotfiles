@@ -44,7 +44,18 @@ get_ps1 () {
     ST=${GREEN}
   fi
 
-  export PS1="${ST}\D{%T} ${CYAN}\j ${BLUE}\w${YELLOW}${BRANCH}\n${RESET}> "
+	_pretty_home ()
+	{
+			local PRE= NAME="$1" LENGTH="$2";
+			[[ "$NAME" != "${NAME#$HOME/}" || -z "${NAME#$HOME}" ]] &&
+					PRE+='~' NAME="${NAME#$HOME}" LENGTH=$[LENGTH-1];
+			((${#NAME}>$LENGTH)) && NAME="/...${NAME:$[${#NAME}-LENGTH+4]}";
+			echo "$PRE$NAME"
+	}
+
+  # export PS1="${ST}\D{%T} ${CYAN}\j ${BLUE}\w${YELLOW}${BRANCH}\n${RESET}> "
+  # export PS1="${ST}\D{%T} ${CYAN}\j${YELLOW}${BRANCH} ${BLUE}$(_pretty_home "$PWD" 100)\n${RESET}> "
+  export PS1="${WHITE}\j${YELLOW}${BRANCH} ${BLUE}$(_pretty_home "$PWD" 100)\n${WHITE}\D{%T} ${ST}> ${RESET}"
 }
 
 PROMPT_COMMAND=get_ps1
