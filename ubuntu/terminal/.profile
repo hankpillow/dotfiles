@@ -18,14 +18,15 @@ fi
 
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
 #PATH="$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin"
 alias pbcopy="xclip -sel clip"
 export DOCKER_HOST='tcp://0.0.0.0:2375'
 
-
 # - Add Linuxbrew to your ~/.profile by running
-echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >>~/.profile
-echo 'export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"' >>~/.profile
-echo 'export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"' >>~/.profile
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+
 # - Add Linuxbrew to your PATH
 PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"

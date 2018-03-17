@@ -1,8 +1,7 @@
 #!/bin/bash
 
 
-# cp ubuntu/terminal/.profile ~/.profile
-# source ~/.profile
+cp -f ubuntu/terminal/.profile ~/.profile
 
 # brew
 if [ -z "$(command -v brew)" ]; then
@@ -13,12 +12,13 @@ fi
 if [ "$1" == "install"  ];
 then
 
-  # brew install \
-  #   gcc \
-  #   fzf
+  brew install \
+    gcc \
+    fzf
 
+  echo -e "\nset rtp+=/home/linuxbrew/.linuxbrew/opt/fzf\n" >> ~/.vimrc
   $(brew --prefix)/opt/fzf/install
 
 fi
 
-# echo -e "\nset rtp+=/home/linuxbrew/.linuxbrew/opt/fzf\n" >> ~/.vimrc
+source ~/.profile

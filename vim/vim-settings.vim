@@ -1,6 +1,7 @@
 
 " user setting
 "------------------------------------------------------------------------------
+set visualbell
 
 if has("multi_byte")
   if &termencoding == ""

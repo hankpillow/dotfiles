@@ -26,9 +26,10 @@ let &statusline = s:statusline_expr()
 " 		silent! colorscheme jellybeans
 " 	endif
 " endfunction
-
-" set background=dark
 " call CheckBackground()
+
+set background=dark
+silent! colorscheme seoul256
 
 augroup CursorLine
   au!
