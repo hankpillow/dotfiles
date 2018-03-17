@@ -1,0 +1,24 @@
+#!/bin/bash
+
+
+# cp ubuntu/terminal/.profile ~/.profile
+# source ~/.profile
+
+# brew
+if [ -z "$(command -v brew)" ]; then
+  echo 'Installing brew...'
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+fi
+
+if [ "$1" == "install"  ];
+then
+
+  # brew install \
+  #   gcc \
+  #   fzf
+
+  $(brew --prefix)/opt/fzf/install
+
+fi
+
+# echo -e "\nset rtp+=/home/linuxbrew/.linuxbrew/opt/fzf\n" >> ~/.vimrc
