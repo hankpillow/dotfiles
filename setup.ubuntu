@@ -1,24 +1,33 @@
 #!/bin/bash
 
+read -e -p "update .profile? [y/n]" r
+[ $r == "y" ] && cp -f ubuntu/terminal/.profile ~/.profile
 
-cp -f ubuntu/terminal/.profile ~/.profile
+read -e -p "(sudo) upgrade pt-get?[y/n]" r
+[ $r == "y" ] && apt-get upgrade --yes --force-yes --fix-missing
 
-# brew
-if [ -z "$(command -v brew)" ]; then
-  echo 'Installing brew...'
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-fi
+read -e -p "(sudo) install apt-get packs?[y/n]" r
+[ $r == "y" ] && apt-get install --yes --force-yes --fix-missing \
+   build-essential \
+   curl \
+   file \
+   git \
+   python-setuptools \
+   vim \
+   wget
 
-if [ "$1" == "install"  ];
-then
+read -e -p "install brew? [y/n]" r
+[ $r == "y" ] && curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh
 
-  brew install \
-    gcc \
-    fzf
+read -e -p "install brew packs? [y/n]" r
+[ $r == "y" ] && brew install gcc fzf && $(brew --prefix)/opt/fzf/install
 
-  echo -e "\nset rtp+=/home/linuxbrew/.linuxbrew/opt/fzf\n" >> ~/.vimrc
-  $(brew --prefix)/opt/fzf/install
-
-fi
+read -e -p "updade .vimrc with fzf? [y/n]" r
+[ $r == "y" ] && echo -e "\nset rtp+=/home/linuxbrew/.linuxbrew/opt/fzf\n" >> ~/.vimrc
 
 source ~/.profile
+
+# curl https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
+# sudo dpkg -i ripgrep_0.8.1_amd64.deb
+# curl https://github.com/sharkdp/fd/releases/download/v6.3.0/fd-musl_6.3.0_amd64.deb
+# sudo dpkg -i fd-musl_6.3.0_amd64.deb
