@@ -30,3 +30,16 @@ export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
 
 # - Add Linuxbrew to your PATH
 PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+
+export HISTSIZE=32768
+export HISTFILESIZE=$HISTSIZE
+export HISTCONTROL=ignoredups
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+export QT_SELECT=5
+
+# https://stackoverflow.com/questions/5687446/bash-custom-ps1-with-nice-working-directory-path
+export PROMPT_DIRTRIM=2
+
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US"
+
