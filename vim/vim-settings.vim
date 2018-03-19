@@ -132,6 +132,13 @@ autocmd BufRead,BufNewFile *.{eslint,babel}rc set filetype=json
 
 autocmd BufWritePre * call HelperStripTrailingWhitespace()
 
+aug quickfix_autoclose
+  au!
+  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+aug END
+" open the file and close
+autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+
 " https://github.com/rafaelrinaldi/dotfiles/blob/master/vimrc
 " Load config per project if `.lvimrc` is present
 if filereadable($PWD .'/.lvimrc')
