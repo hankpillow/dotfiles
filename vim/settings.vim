@@ -2,17 +2,14 @@
 " user setting
 "------------------------------------------------------------------------------
 
-if has("multi_byte")
-  if &termencoding == ""
-    let &termencoding = &encoding
-  endif
-  set encoding=utf-8
-  setglobal fileencoding=utf-8
-  set fileencodings=ucs-bom,utf-8,latin1
-endif
+" Remap the tab key to toggle current fold
+nnoremap <Space> za
 
-syntax enable
-filetype plugin indent on
+" Enable folding
+set foldenable
+set foldnestmax=10
+set foldlevelstart=10
+set foldmethod=indent
 
 " allow unrestricted backspacing in insert mod
 set backspace=indent,eol,start

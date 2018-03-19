@@ -90,8 +90,8 @@ nmap <leader>b :Buffers<cr>
 
 "emmet
 " https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
-let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+let g:user_emmet_install_global = 0
 let g:user_emmet_settings = {
   \  'php' : {
   \    'extends' : 'html',
@@ -110,3 +110,6 @@ let g:user_emmet_settings = {
   \    'extends' : 'html',
   \  },
   \}
+
+filetype plugin indent on
+syntax enable
