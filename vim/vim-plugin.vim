@@ -55,9 +55,10 @@ nnoremap <leader>gc :Gcommit<cr>
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
-
 "grepper
 let g:grepper = {}
+let g:grepper.highlight = 1
+let g:grepper.quickfix = 1
 let g:grepper.jump = 0
 let g:grepper.open = 1
 let g:grepper.switch = 1
@@ -67,7 +68,6 @@ let g:grepper.rg = {'grepprg' : 'rg -H --no-heading --vimgrep --hidden'}
 
 nnoremap <leader>ff :Grepper -highlight<cr>
 nnoremap <leader>fb :Grepper -highlight -buffers<cr>
-nnoremap <leader>fw :Grepper -cword -noprompt<cr>
 nmap gr <plug>(GrepperOperator)
 xmap gr <plug>(GrepperOperator)
 
