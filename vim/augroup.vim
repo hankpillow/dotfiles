@@ -9,13 +9,12 @@ augroup reload_vimrc
 augroup END
 
 " auto close quickfix when it's the only buffer that has left
-augroup quickfix_autoclose
+augroup quickfix_settings
   autocmd!
-  autocmd BufWinEnter quickfix nnoremap <silent> <buffer>
-        \   q :cclose<cr>:lclose<cr>
-  autocmd BufEnter * if (winnr('$') == 1 && &buftype ==# 'quickfix' ) |
-        \   bd|
-        \   q | endif
+  autocmd BufWinEnter quickfix nnoremap <silent> <buffer> <CR> <CR><C-W>p:cclose<cr>
+  autocmd BufWinEnter quickfix nnoremap <silent> <buffer> q :cclose<cr>
+  autocmd BufEnter * if (winnr('$') == 1 && &buftype ==# 'quickfix' ) | bd | q | endif
+  autocmd VimEnter,WinEnter,BufWinEnter quickfix setlocal nocursorline
 augroup end
 
 " Enable built in omni completion
