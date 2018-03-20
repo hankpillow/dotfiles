@@ -23,12 +23,77 @@ alias du="du -ach"
 alias vi='vim'
 alias dcomp='docker-compose'
 alias fim='vim $(fzf)'
-
-# some more ls aliases
 alias l='ls -FGlAhp'
-# alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+
+# --------
+# Networking
+
+alias netCons='lsof -i'
+alias myip='curl ifconfig.co'
+
+# --------
+# Tmux
+
+alias tn='tmux new -s'
+alias ta='tmux attach '
+alias tk='tmux kill-session'
+
+# --------
+# Docker
+
+alias drunn='docker ps -f status=running -q'
+alias drun='docker ps -f status=running -q | head -1'
+
+# from https://github.com/tcnksm/docker-alias/blob/master/zshrc
+
+# Get latest container ID
+alias dl="docker ps -l -q"
+
+# Get container process
+alias dps="docker ps"
+
+# Get process included stop container
+alias dpa="docker ps -a"
+
+# Get images
+alias di="docker images"
+
+# Get container IP
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+
+# Run deamonized container, e.g., $dkd base /bin/echo hello
+alias dkd="docker run -d -P"
+
+# Run interactive container, e.g., $dki base /bin/bash
+alias dki="docker run -i -t -P"
+
+# Execute interactive container, e.g., $dex base /bin/bash
+alias dex="docker exec -i -t"
+
+# Stop all containers
+dstop() { docker stop $(docker ps -a -q); }
+
+# Remove all containers
+drm() { docker rm $(docker ps -a -q); }
+
+# Stop and Remove all containers
+alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+
+# Remove all images
+dri() { docker rmi $(docker images -q); }
+
+# Dockerfile build, e.g., $dbu tcnksm/test
+dbu() { docker build -t=$1 .; }
+
+# Show all alias related docker
+# dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
+# original version wont whow functions
+dalias(){ cat ~/.bash_profile | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | grep -v "#" | sort;}
+
+# Bash into running container
+dbash() { docker exec -it $(docker ps -aqf "name=$2") bash; }
