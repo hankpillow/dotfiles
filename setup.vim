@@ -1,11 +1,12 @@
 #!/bin/bash
+# vim: ft=sh
 
-cat vim/vim-{preinstall,plugin,helpers,settings,theme}.vim > $HOME/.vimrc
-echo "+ .vimrc updated"
+[[ -f ~/.vimrc ]] && cp -v "$HOME.vimrc" "$HOME.vimrc.$(date +%s).bkp"
+cat vim/{preinstall,helpers,plugin,theme,settings,augroup}.vim > $HOME/.vimrc
 
-if [[ "$1" == "install" ]]; then
-  echo "# VIM FULL INSTALL"
+yes="^y|Y$"
+read -e -p "install plugins? [y/N]" install
+if [[ "$install" =~ $yes ]]; then
   vim +PlugUpdate +qall
   vim +PlugUpgrade +qall
 fi
-
