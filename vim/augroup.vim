@@ -10,8 +10,12 @@ augroup END
 
 " auto close quickfix when it's the only buffer that has left
 augroup quickfix_autoclose
-  au!
-  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+  autocmd!
+  autocmd BufWinEnter quickfix nnoremap <silent> <buffer>
+        \   q :cclose<cr>:lclose<cr>
+  autocmd BufEnter * if (winnr('$') == 1 && &buftype ==# 'quickfix' ) |
+        \   bd|
+        \   q | endif
 augroup end
 
 " Enable built in omni completion

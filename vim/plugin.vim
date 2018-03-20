@@ -58,7 +58,7 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 "grepper
 let g:grepper = {}
 let g:grepper.highlight = 1
-let g:grepper.quickfix = 0
+let g:grepper.quickfix = 1
 let g:grepper.jump = 0
 let g:grepper.open = 1
 let g:grepper.switch = 1

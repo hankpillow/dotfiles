@@ -1,0 +1,11 @@
+#!/bin/bash
+# vim: ft=sh
+
+backup ".vimrc"
+cat -v {preinstall, plugin, theme, settings, augroup, helpers,}.vim $HOME/.vimrc
+
+read -e -p "install plugins? [y/n]" install
+yes=" y|Y$"
+if [[ $install =~ $yes ]]; then
+  vim +PlugUpdate +qall
+fi

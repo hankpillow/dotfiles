@@ -20,6 +20,8 @@ set title
 set listchars=tab:▸\ ,eol:•,trail:—,space:␣
 set number relativenumber
 
+colorscheme elflord
+
 if has('linebreak')
   set breakindent
   let &showbreak='↳ '
