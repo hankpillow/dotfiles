@@ -17,6 +17,7 @@ if [[ $val =~ $yes ]]; then
   unset val
   read -e -p "(sudo) install apt-get packs? [y/n]" val
   [[ $val =~ $yes ]] && apt-get install --yes --force-yes --fix-missing \
+    gcc \
     build-essential \
     curl \
     file \

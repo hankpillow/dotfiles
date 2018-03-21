@@ -1,4 +1,5 @@
 #https://raw.githubusercontent.com/wincent/wincent/c6bd3cb1aa3e876681b7263f54f58ba2877da29d/roles/dotfiles/files/.gitconfig
+#http.postBuffer 1048576000
 [alias]
 	abbrev = !sh -c 'git rev-parse --short ${1-`echo HEAD`}' -
 	amend = commit --amend -v
