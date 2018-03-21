@@ -3,15 +3,9 @@
 #
 
 alias ls='ls -G'
-
 alias mac_refresh_camera='killall VDCAssistant'
 alias mac_refresh_finder='killall Finder'
-
 alias ccal='cal | sed -e "s/ $(expr `date "+%d"` + 0) / $(printf "\033[32m$(expr `date "+%d"` + 0)\033[0m") /"'
-
-alias reload_profile='bash ~/.bash_profile'
-alias remove_bkp='rm -v ~/.*.bkp'
-
 alias cp='cp -iv'
 alias mv='mv -iv'
 alias mkdir='mkdir -pv'
@@ -23,7 +17,6 @@ alias vi='vim'
 alias dcomp='docker-compose'
 alias fim='vim $(fzf)'
 
-alias create_rsa='mkdir ~/.ssh && ssh-keygen -t rsa -b 4096 -C "$1" && rsa-send-to-agent && eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa'
 
 # https://natelandau.com/my-mac-osx-bash_profile/
 
@@ -32,15 +25,10 @@ alias create_rsa='mkdir ~/.ssh && ssh-keygen -t rsa -b 4096 -C "$1" && rsa-send-
 #   ---------------------------
 
 alias netCons='lsof -i'                             # netCons:      Show all open TCP/IP sockets
-# alias lsock='sudo /usr/sbin/lsof -i -P'             # lsock:        Display open sockets
-# alias lsockU='sudo /usr/sbin/lsof -nP | grep UDP'   # lsockU:       Display only open UDP sockets
-# alias lsockT='sudo /usr/sbin/lsof -nP | grep TCP'   # lsockT:       Display only open TCP sockets
 alias myip='curl ifconfig.co'
-# alias ipInfo0='ipconfig getpacket en0'              # ipInfo0:      Get info on connections for en0
-# alias ipInfo1='ipconfig getpacket en1'              # ipInfo1:      Get info on connections for en1
-# alias openPorts='lsof -Pn -i4 | grep LISTEN'
-# alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
-# alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rules inc/ blocked IPs
+alias en0='ipconfig getpacket en0'              # ipInfo0:      Get info on connections for en0
+alias en1='ipconfig getpacket en1'              # ipInfo1:      Get info on connections for en1
+alias openPorts='lsof -Pn -i4 | grep LISTEN'
 
 #   extract:  Extract most know archives with one command
 #   ---------------------------------------------------------
@@ -67,7 +55,6 @@ extract () {
 
 # --------
 # Tmux
-# --------
 
 alias tn='tmux new -s'
 alias ta='tmux attach '
@@ -75,14 +62,12 @@ alias tk='tmux kill-session'
 
 # --------
 # Docker
-# --------
 
 # last running container ID
 alias drunning='docker ps -f status=running -q'
 alias drun='docker ps -f status=running -q | head -1'
 
 # from https://github.com/tcnksm/docker-alias/blob/master/zshrc
-
 # Get latest container ID
 alias dl="docker ps -l -q"
 

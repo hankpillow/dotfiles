@@ -1,0 +1,13 @@
+#!/bin/bash
+# vim: ft=sh
+
+if [[ -n "$1" ]]; then
+  echo "missing target email for creating this key"
+  exit 1
+fi
+
+echo mkdir -p ~/.ssh
+echo ssh-keygen -t rsa -b 4096 -C "$1"
+echo rsa-send-to-agent
+echo eval "$(ssh-agent -s)"
+echo ssh-add ~/.ssh/id_rsa'

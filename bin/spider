@@ -1,4 +1,6 @@
 #!/bin/bash
+# vim: ft=sh
+
 PAGE="$1"
 REFERER=$(echo $PAGE | sed 's/http:\/\///' | sed 's/\/.*//g' )
 DOMAIN=$(echo $REFERER | sed 's/^www//' | sed 's/^[0-9]//g' | sed 's/^\.//')

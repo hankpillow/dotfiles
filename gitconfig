@@ -1,21 +1,28 @@
 #https://raw.githubusercontent.com/wincent/wincent/c6bd3cb1aa3e876681b7263f54f58ba2877da29d/roles/dotfiles/files/.gitconfig
+
+[core]
+  editor = vim +start
+  whitespace = cr-at-eol
+  pager = diff-so-fancy | less --tabs=2 -RFX
+  ignorecase = false
+
 [alias]
 	abbrev = !sh -c 'git rev-parse --short ${1-`echo HEAD`}' -
 	amend = commit --amend -v
 	both = diff HEAD
 	br = branch
 	branches = "for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ "
-  ls = log --format=format:\"%C(yellow)%h%C(red)%d %C(reset)%s%C(blue) <%an>%C(reset)\"
+	ls = log --format=format:\"%C(yellow)%h%C(red)%d %C(reset)%s%C(blue) <%an>%C(reset)\"
 	ci = commit -v
 	co = checkout
 	ft = fetch --all --prune
-  graph = log --graph --format=format:\"%C(yellow)%h%C(red)%d%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)\"
+	graph = log --graph --format=format:\"%C(yellow)%h%C(red)%d%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)\"
 	one = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
 	rollback = !sh -c 'git reset --merge HEAD~${1-1}' -
 	st = status -s
 	staged = diff --cached
-  tags = log --tags --simplify-by-decoration --pretty=\"format:%h %D\"
-  tagss = log --tags --simplify-by-decoration --pretty=\"format:%aI %Cblue%h %Cgreen%d %Creset%ce - %s\"
+	tags = log --tags --simplify-by-decoration --pretty=\"format:%h %D\"
+	tagss = log --tags --simplify-by-decoration --pretty=\"format:%aI %Cblue%h %Cgreen%d %Creset%ce - %s\"
 	unmerged = ls-files -u
 	unstage = reset HEAD --
 
@@ -27,10 +34,10 @@
 	status = auto
 
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
+	meta = yellow
+	frag = cyan
+	old = red bold
+	new = green bold
 
 [color "status"]
 	added = yellow
@@ -39,6 +46,9 @@
 
 [difftool]
 	prompt = false
+
+[diff]
+	tool = vimdiff
 
 [grep]
 	lineNumber = true
