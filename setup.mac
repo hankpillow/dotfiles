@@ -23,7 +23,9 @@ read -e -p "export bin/* on /usr/local/bin path? [y/N]" value
 if [[ "$value" =~ $yes ]]; then
   for file in $(find bin -type f); do
     name=$(basename $file)
-    test ! -L "/usr/local/bin/$name" && ln -sv $file /usr/local/bin/$name
+    basepath=$(pwd -P $file)
+    fullpath="$basepath/$file"
+    test ! -L "/usr/local/bin/$name" && ln -sv $fullpath /usr/local/bin/$name
   done
 fi
 unset value
@@ -59,7 +61,7 @@ read -e -p "what shell would you like? [bash/fish]" value
 if [[ "$value" == "fish"  ]]; then
   #----- bashrc/bash_profile setup
 
-elif [[ "$value" === "bash"  ]];
+elif [[ "$value" === "bash"  ]]; then
   #----- bashrc/bash_profile setup
 
   [[ -f ~/.bash_profile ]] && cp -v ~/.bash_profile "$HOME/.bash_profile$(date +%s).bkp"
