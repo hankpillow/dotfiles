@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [[ ! -d ~/.config/fish/functions ]]; then
+  mkdir -p ~/.config/fish/functions
+fi
+
 if [[ -f ~/.config/fish/config.fish ]]; then
   cp -v ~/.config/fish/config.fish "$HOME/.config/fish/config.fish.$(date +%s).bkp"
 fi
@@ -9,5 +13,5 @@ if [[ ! -f ~/.config/fish/functions/fisher.fish ]]; then
   fisher fzf git_util
 fi
 
-cp -v config.fish ~/.config/fish/config.fish
+cp -v config/fish/config.fish ~/.config/fish/config.fish
 source ~/.config/fish/config.fish
