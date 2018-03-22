@@ -13,5 +13,6 @@ if [[ ! -f ~/.config/fish/functions/fisher.fish ]]; then
   fisher fzf git_util
 fi
 
-cp -v config/fish/config.fish ~/.config/fish/config.fish
+cp -v config/fish/fish_prompt.fish ~/.config/fish/functions/
+cp -v config/fish/config.fish ~/.config/fish/
 source ~/.config/fish/config.fish

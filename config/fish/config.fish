@@ -22,12 +22,27 @@ alias less="less -FSRXc"
 alias sudo="sudo "
 alias du="du -ach"
 alias vi="vim"
-alias dcomp="docker-compose"
-
 alias fim="vim (fzf)"
 
-#fisher
+## tmux
+alias tn="tmux new -s"
+alias ta="tmux attach "
+alias tk="tmux kill-session"
 
+## docker
+alias dcomp="docker-compose"
+alias drunning="docker ps -f status=running -q"
+alias drun="docker ps -f status=running -q | head -1"
+
+# from https://github.com/tcnksm/docker-alias/blob/master/zshrc
+alias dl="docker ps -l -q"
+alias dps="docker ps"
+alias dpa="docker ps -a"
+alias di="docker images"
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+alias dex="docker exec -i -t"
+
+#fisher
 ## fzf
 set -x FZF_COMPLETE 1
 set -x FZF_TMUX 1
