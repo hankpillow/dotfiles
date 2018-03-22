@@ -10,12 +10,12 @@ export LANG="en_US"
 export HOME=`echo ~/`
 
 # create a default workspace at user's HOME directory
-if [ ! -d "/workspace" ]; then
+if [ ! -d "$HOME/workspace" ]; then
   echo "creating workspace folder at "
   mkdir -v /workspace
 fi
-export WORKSPACE=`echo /workspace`
-export WORKDIR=`echo /workspace`
+export WORKSPACE=`echo $HOME/workspace`
+export WORKDIR=`echo $HOME/workspace`
 
 export EDITOR="vim"
 export MANPAGER="less -X"

@@ -1,4 +1,7 @@
 #!/bin/bash
 # vim: ft=sh
 
-chsh -s /bin/fish
+if [[ ! -n  "$(grep "fish" /etc/shells)" ]]; then
+  echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+fi
+chsh -s /usr/local/bin/fish
