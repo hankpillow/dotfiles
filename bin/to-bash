@@ -1,0 +1,4 @@
+#!/bin/bash
+# vim: ft=sh
+
+chsh -s /bin/bash
