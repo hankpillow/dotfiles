@@ -1,12 +1,11 @@
-#!/usr/local/bin/fish
+#!/usr/bin/env fish
 
-set -x LSCOLORS ExFxCxDxBxegedabagacad
-set -x LC_CTYPE en_US.UTF-8
+# set vars
+# set -x LSCOLORS ExFxCxDxBxegedabagacad
+# set -x LC_CTYPE en_US.UTF-8
 set -x EDITOR "vim -f"
 set -x GIT_EDITOR "vim -f"
-
-# $PATH equivalent
-set -U fish_user_paths /usr/local/bin
+set -x PATH /usr/local/bin $PATH
 
 # Aliases
 alias netCons="lsof -i"
@@ -25,7 +24,11 @@ alias du="du -ach"
 alias vi="vim"
 alias dcomp="docker-compose"
 
-function fim
-  vim (fzf)
-end
-funcsave fim
+alias fim="vim (fzf)"
+
+#fisher
+
+## fzf
+set -x FZF_COMPLETE 1
+set -x FZF_TMUX 1
+set -x FZF_DEFAULT_OPTS '--height 40% --reverse --border'
