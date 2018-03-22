@@ -61,15 +61,18 @@ read -e -p "what shell would you like? [bash/fish]" value
 if [[ "$value" == "fish"  ]]; then
   #----- bashrc/bash_profile setup
 
-elif [[ "$value" === "bash"  ]]; then
+  [[ ! -x "$(command -v brew)" ]] && echo "you need homebrew for it." && exit 1
+  brew install fish
+
+elif [[ "$value" == "bash"  ]]; then
   #----- bashrc/bash_profile setup
 
-  [[ -f ~/.bash_profile ]] && cp -v ~/.bash_profile "$HOME/.bash_profile$(date +%s).bkp"
+  [[ -f ~/.bash_profile ]] && cp -v ~/.bash_profile "$HOME/.bash_profile.$(date +%s).bkp"
 
   echo "# downloading bash completions for docker and git..."
   mkdir -v tmp
 
-  read -e -p "what shell would you like? [bash/fish]" autocomplete
+  read -e -p "install git completion? [y/N]" autocomplete
   if [[ "$autocomplete" =~ $yes ]]; then
     curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > tmp/git-completion
     curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > tmp/git-prompt
@@ -77,8 +80,10 @@ elif [[ "$value" === "bash"  ]]; then
   unset autocomplete
 
   cat tmp/* mac/* > ~/.bash_profile
-  rm -rfv tmp
+  rm -rf tmp
+
   [[ -L /usr/local/bin/remove-home-bkp ]] && echo "run 'remove-home-bkp' to cleanup dotfiles bkps at your home"
+
   source ~/.bash_profile
 fi
 unset value
