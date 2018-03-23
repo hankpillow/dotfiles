@@ -1,43 +1,26 @@
-# strongly based on omf/theme-default
 function fish_prompt
-  set -l last_command_status $status
-  set -l cwd
-
-  if test "$theme_short_path" = 'yes'
-    set cwd (basename (prompt_pwd))
-  else
-    set cwd (prompt_pwd)
-  end
-
-  set -l runningjobs (jobs | wc -l | grep -oh "[0-9]")
-  set -l ahead    "↑"
-  set -l behind   "↓"
-  set -l diverged "⥄ "
-  set -l dirty    "⨯"
-  set -l none     "◦"
-  set -l status_color (set_color green)
-
-  if test $last_command_status -ne 0
+  # current time
+  set -l last_status $status
+  if test $last_status -ne 0
     set status_color (set_color red -u)
-  end
-
-  echo -n -s (set_color cyan) $runningjobs
-
-  if git_is_repo
-    echo -n -s " " (set_color blue) $cwd (set_color normal)
-    echo -n -s " " (set_color yellow --bold) "(" (git_branch_name)
-
-    if git_is_touched
-      echo -n -s " " $dirty
-    else
-      echo -n -s " " (git_ahead $ahead $behind $diverged $none)
-    end
-
-    echo -n -s ")"
-
   else
-    echo -n -s " " (set_color blue) $cwd (set_color normal)
+    set status_color (set_color cyan)
+  end
+  echo -n -s $status_color (date '+%T') (set_color normal)
+
+  # jobs
+  set -l runningjobs (jobs | wc -l | grep -oh "[0-9]")
+  echo -n -s " " $runningjobs (set_color normal)
+
+  # working dir
+  set -l cwd (prompt_pwd)
+  echo -n -s " " (set_color green -u) $cwd "" (set_color normal)
+
+  # git branch
+  if git_is_repo
+    echo -n -s " " (set_color white -o) "(" (git_branch_name) ")"
   end
 
-  echo -n -s " " $status_color "\$" (set_color normal) " "
+  # done
+  echo -n -s (set_color normal) " "
 end

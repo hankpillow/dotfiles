@@ -1,8 +1,8 @@
 #!/usr/bin/env fish
 
 # set vars
-# set -x LSCOLORS ExFxCxDxBxegedabagacad
-# set -x LC_CTYPE en_US.UTF-8
+set -x LSCOLORS ExFxCxDxBxegedabagacad
+set -x LC_CTYPE en_US.UTF-8
 set -x EDITOR "vim -f"
 set -x GIT_EDITOR "vim -f"
 set -x PATH /usr/local/bin $PATH
