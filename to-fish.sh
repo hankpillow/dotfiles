@@ -1,1 +1,0 @@
-chsh -s /bin/fish

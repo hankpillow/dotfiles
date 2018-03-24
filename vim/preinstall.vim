@@ -15,3 +15,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
+if filereadable('/home/linuxbrew/.linuxbrew/opt/fzf')
+  set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
+endif

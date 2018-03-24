@@ -88,6 +88,9 @@ nmap <leader>F :Files<cr>
 nmap <leader>f :GFiles<cr>
 nmap <leader>b :Buffers<cr>
 
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+
 "emmet
 " https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
 autocmd FileType html,css EmmetInstall

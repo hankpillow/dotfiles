@@ -1,89 +1,91 @@
 #!/bin/bash
 # vim: ft=sh
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-INSTALL="$1"
+yes="^y|Y$"
 
-function backup {
-  TARGET=$HOME/$1
-  if [[ -e $TARGET ]];
-  then
-    cp -v "$TARGET" "$TARGET.$(date +%s).bkp"
-  fi
-}
-
-TMP_PROFILE=""
-TMP_OS=""
-
-if [ "$(uname)" == "Darwin" ]; then
-  TMP_PROFILE=".bash_profile"
-  TMP_OS="Mac"
-
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  TMP_PROFILE=".bashrc"
-  TMP_OS="Linux"
-
-fi
-
-#----- VIM SETUP
-
-backup ".vimrc"
-cat ./vim/vim-{preinstall,plugin,helpers,settings,theme}.vim > $HOME/.vimrc
-echo "+ .vimrc updated"
-
-if [[ $INSTALL == "install" ]]; then
-  echo "# VIM FULL INSTALL"
-  vim +PlugUpdate +qall
-fi
+#------ editorconfig
+read -e -p "update .editorconfig? [y/N]" value
+[[ "$value" =~ $yes ]] && cp -v editorconfig ~/.editorconfig
+unset value
 
 #------ GIT setup
-
-backup ".gitconfig"
-cat config/gitconfig > $HOME/.gitconfig
-echo "+ .gitconfig updated"
+read -e -p "update .gitconfig? [y/N]" value
+[[ "$value" =~ $yes ]] && bash setup.git
+unset value
 
 #------ TMUX setup
-
-backup ".tmux.conf"
-cat config/tmux > $HOME/.tmux.conf
-echo '+ .tmux.conf updated'
+read -e -p "update .tmux.conf [y/N]" value
+[[ "$value" =~ $yes ]] && bash setup.tmux
+unset value
 
 #----- linking scripts
-
-test ! -L /usr/local/bin/spider && ln -s $DIR/script/spider.sh /usr/local/bin/spider
-echo "+ add command spider to /usr/local/bin"
-
-test ! -L /usr/local/bin/headers && ln -s $DIR/script/header.sh /usr/local/bin/headers
-echo "+ add command headers to /usr/local/bin"
-
-test ! -L /usr/local/bin/setup-terminal && ln -s $DIR/setup.sh /usr/local/bin/setup-terminal
-echo "+ add command setup-terminal to /usr/local/bin"
-
-#----- bashrc/bash_profile setup
-
-backup ".bash_profile"
-backup ".bashrc"
-
-echo "# downloading git-completion..."
-mkdir -v ./profile/tmp
-
-if [ $TMP_OS == "Linux" ]; then
-
-  echo "# updating docker completion script for linux..."
-  curl -# -L https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > /etc/bash_completion.d/docker
-
-else
-
-  curl --silent -L https://raw.githubusercontent.com/docker/compose/1.16.1/contrib/completion/bash/docker-compose > /usr/local/etc/bash_completion.d/docker-compose
-  curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > profile/tmp/git-completion
-  curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > profile/tmp/git-prompt
-
+read -e -p "export bin/* on /usr/local/bin path? [y/N]" value
+if [[ "$value" =~ $yes ]]; then
+  for file in $(find bin -type f); do
+    name=$(basename $file)
+    basepath=$(pwd -P $file)
+    fullpath="$basepath/$file"
+    test ! -L "/usr/local/bin/$name" && ln -sv $fullpath /usr/local/bin/$name
+  done
 fi
+unset value
 
-# concat completion tools with all profile's config
-cat ./profile/tmp/* ./profile/*.sh > $HOME/$TMP_PROFILE
-rm -rfv ./profile/tmp
+#----- homebrew install packages
+read -e -p "install brew and core packages? [y/N]" value
+if [[ "$value" =~ $yes ]]; then
+  [[ ! -x "$(command -v brew)" ]] && /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew install \
+    reattach-to-user-namespace \
+    bash-completion \
+    ctags \
+    fd \
+    fzf \
+    git-extras \
+    httpie \
+    jq \
+    mono \
+    python \
+    rg \
+    the_silver_searcher \
+    tmux \
+    trash \
+    vim \
+    wget
 
-echo "+ $TMP_PROFILE udpated."
-bash $HOME/$TMP_PROFILE
-echo "try running './remove_bkp' to cleanup *.bkp files at $HOME"
+  [ -f $(brew --prefix)/etc/bash_completion ] &&  . $(brew --prefix)/etc/bash_completion
+  [ -f $(brew --prefix)/opt/fzf/install ] && $(brew --prefix)/opt/fzf/install
+fi
+unset value
+
+read -e -p "what shell would you like? [bash/fish]" value
+if [[ "$value" == "fish"  ]]; then
+  #----- bashrc/bash_profile setup
+
+  [[ ! -x "$(command -v brew)" ]] && echo "you need homebrew for it." && exit 1
+  brew install fish
+
+elif [[ "$value" == "bash"  ]]; then
+  #----- bashrc/bash_profile setup
+
+  [[ -f ~/.bash_profile ]] && cp -v ~/.bash_profile "$HOME/.bash_profile.$(date +%s).bkp"
+
+  echo "# downloading bash completions for docker and git..."
+  mkdir -v tmp
+
+  read -e -p "install git completion? [y/N]" autocomplete
+  if [[ "$autocomplete" =~ $yes ]]; then
+    curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > tmp/git-completion
+    curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > tmp/git-prompt
+  fi
+  unset autocomplete
+
+  cat tmp/* mac/* > ~/.bash_profile
+  rm -rf tmp
+
+  [[ -L /usr/local/bin/remove-home-bkp ]] && echo "run 'remove-home-bkp' to cleanup dotfiles bkps at your home"
+
+  source ~/.bash_profile
+fi
+unset value
+
+echo done

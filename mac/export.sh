@@ -11,8 +11,8 @@ export HOME=`echo ~/`
 
 # create a default workspace at user's HOME directory
 if [ ! -d "$HOME/workspace" ]; then
-  echo "creating workspace folder at $HOME"
-  mkdir -v $HOME/workspace
+  echo "creating workspace folder at "
+  mkdir -v /workspace
 fi
 export WORKSPACE=`echo $HOME/workspace`
 export WORKDIR=`echo $HOME/workspace`
