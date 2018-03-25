@@ -1,5 +1,4 @@
 #!/usr/bin/env fish
-
 # set vars
 set -x LSCOLORS ExFxCxDxBxegedabagacad
 set -x LC_CTYPE en_US.UTF-8
@@ -47,3 +46,9 @@ alias dex="docker exec -i -t"
 set -x FZF_COMPLETE 1
 set -x FZF_TMUX 1
 set -x FZF_DEFAULT_OPTS '--height 40% --reverse --border'
+
+# for fisher
+for file in ~/.config/fish/conf.d/*.fish
+  source $file
+end
+
