@@ -35,12 +35,8 @@ augroup cursosline
   autocmd WinLeave * setlocal nocursorline
 augroup END
 
-augroup filetypes
+augroup editorconfig
   autocmd!
-
-  "forcing ft for new formats
-  autocmd BufRead,BufNewFile *.eslint{.js,rc} set filetype=json
-  autocmd BufRead,BufNewFile *.babel{.js,rc} set filetype=json
 
   "remove white spaces
   autocmd BufWritePre *.{js,css,styl,scss,sass} call HelperStripTrailingWhitespace()
