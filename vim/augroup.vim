@@ -35,6 +35,13 @@ augroup cursosline
   autocmd WinLeave * setlocal nocursorline
 augroup END
 
+augroup js_only
+  autocmd!
+  autocmd FileType javascript setlocal foldmethod=syntax
+  set conceallevel=1
+  map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
+augroup END
+
 augroup editorconfig
   autocmd!
 

@@ -97,3 +97,5 @@ nnoremap <silent> coq :call HelperQuickFixToggle()<cr>
 if filereadable($PWD .'/.lvimrc')
   source ./.lvimrc
 endif
+
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
