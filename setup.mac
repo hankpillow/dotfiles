@@ -59,7 +59,7 @@ unset value
 
 read -e -p "what shell would you like? [bash/fish]" value
 if [[ "$value" == "fish"  ]]; then
-  #----- bashrc/bash_profile setup
+  #-----  fish
 
   [[ ! -x "$(command -v brew)" ]] && echo "you need homebrew for it." && exit 1
   brew install fish
