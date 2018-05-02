@@ -3,8 +3,10 @@
 # fisher
 if [[ ! -f ~/.config/fish/functions/fisher.fish ]]; then
   curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+  chmod 755 ~/.config/fish/functions/fisher.fish
 fi
-fisher fzf git_util
+
+fish ~/.config/fish/functions/fisher.fish fzf git_util
 
 if [[ ! -d ~/.config/fish/functions ]]; then
   mkdir -p ~/.config/fish/functions
