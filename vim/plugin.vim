@@ -16,21 +16,21 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'vim-scripts/summerfruit256.vim'
 
 "syntax
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-git'
 Plug 'pangloss/vim-javascript'
-Plug 'MaxMEllon/vim-jsx-pretty'
+" Plug 'MaxMEllon/vim-jsx-pretty'
 " Plug 'jelera/vim-javascript-syntax'
 Plug 'wavded/vim-stylus'
 
 "utils and tools
-Plug 'kshenoy/vim-signature' "handle marks https://github.com/kshenoy/vim-signature
-Plug 'editorconfig/editorconfig-vim' "https://github.com/editorconfig/editorconfig-vim
+Plug 'sgur/vim-editorconfig' "https://github.com/sgur/vim-editorconfig
 Plug 'mattn/emmet-vim' "html and css helpers  http://mattn.github.io/emmet-vim/
 Plug 'mhinz/vim-grepper' "search tool using ag/rg/git etc https://github.com/mhinz/vim-grepper/blob/master/doc/grepper.txt
 Plug 'moll/vim-bbye' "manage closing buffers properly https://github.com/moll/vim-bbye
-Plug 'airblade/vim-gitgutter' " handle git changes and show small signs https://github.com/airblade/vim-gitgutter
 Plug 'justinmk/vim-dirvish' "liket netrw and Nerdtree
+" Plug 'editorconfig/editorconfig-vim' "https://github.com/editorconfig/editorconfig-vim
+" Plug 'kshenoy/vim-signature' "handle marks https://github.com/kshenoy/vim-signature
+" Plug 'airblade/vim-gitgutter' " handle git changes and show small signs https://github.com/airblade/vim-gitgutter
 
 Plug 'tpope/vim-commentary' "https://github.com/tpope/vim-commentary
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
@@ -73,16 +73,16 @@ nmap gr <plug>(GrepperOperator)
 xmap gr <plug>(GrepperOperator)
 
 " GitGutter styling to use · instead of +/-
-let g:gitgutter_sign_added = '+'
-let g:gitgutter_sign_modified = '~'
-let g:gitgutter_sign_removed = '-'
-let g:gitgutter_sign_modified_removed = '!'
+" let g:gitgutter_sign_added = '+'
+" let g:gitgutter_sign_modified = '~'
+" let g:gitgutter_sign_removed = '-'
+" let g:gitgutter_sign_modified_removed = '!'
 
-let g:gitgutter_map_keys = 0
-let g:gitgutter_diff_args = '-w'
+" let g:gitgutter_map_keys = 0
+" let g:gitgutter_diff_args = '-w'
 
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
+" nmap ]h <Plug>GitGutterNextHunk
+" nmap [h <Plug>GitGutterPrevHunk
 
 "fzf
 nmap <leader>F :Files<cr>
@@ -94,7 +94,7 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 
 "emmet
 " https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
-autocmd FileType html,css EmmetInstall
+" autocmd FileType html,css EmmetInstall
 let g:user_emmet_install_global = 0
 let g:user_emmet_settings = {
   \  'php' : {

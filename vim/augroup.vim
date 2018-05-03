@@ -33,14 +33,14 @@ augroup cursosline
   autocmd!
   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   autocmd WinLeave * setlocal nocursorline
-augroup END
+augroup end
 
 augroup js_only
   autocmd!
   autocmd FileType javascript,javascript.jsx,jsx setlocal foldmethod=syntax
   set conceallevel=1
   map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
-augroup END
+augroup end
 
 augroup editorconfig
   autocmd!
@@ -49,8 +49,8 @@ augroup editorconfig
   autocmd BufWritePre *.{js,css,styl,scss,sass} call HelperStripTrailingWhitespace()
 
   "defaults editor setting. better using editorconfig instead!
-  autocmd FileType {json,python,ruby,sh,vim,yaml} set tabstop=2 sts=2 sw=2 expandtab
-  autocmd FileType {jsx,javascript.jsx,javascript,html,svg,css,stylus,sass,scss,htmldjango} set tabstop=2 sts=2 sw=2 noexpandtab
+  autocmd FileType {json} setlocal ft=javascript
+  autocmd FileType {json,python,ruby,sh,vim,yaml,jsx,js,html,svg,css,stylus,sass,scss,htmldjango} setlocal tabstop=2 sts=2 sw=2 noexpandtab
 augroup end
 
 " .Net validation
