@@ -30,7 +30,7 @@ read -e -p "install brew? [y/N]" val
 unset val
 
 read -e -p "install brew packs? [y/N]" val
-[[ $val =~ $yes ]] && brew install gcc fzf
+[[ $val =~ $yes ]] && brew install fzf
 $(brew --prefix)/opt/fzf/install
 unset val
 
@@ -44,25 +44,6 @@ read -e -p "(sudo) install fd? [y/N]" val
 [[ $val =~ $yes ]] && echo "curl -fL https://github.com/sharkdp/fd/releases/download/v6.3.0/fd-musl_6.3.0_amd64.deb" \
 && echo "dpkg -i fd-musl_6.3.0_amd64.deb" \
 && echo "rm -f fd-musl_6.3.0_amd64.deb"
-unset val
-
-read -e -p "(sudo) upgrade apt-get? [y/N]" val
-[[ $val =~ $yes ]] && apt-get upgrade --yes --force-yes --fix-missing
-unset val
-
-read -e -p "(sudo) install apt-get packs? [y/N]" val
-[[ $val =~ $yes ]] && apt-get install --yes --force-yes --fix-missing \
-gcc \
-python-pip \
-build-essential \
-curl \
-file \
-git \
-libnotify-bin \
-tmux\
-python-setuptools \
-vim \
-wget
 unset val
 
 read -e -p "what shell would you like? [bash/fish]" value

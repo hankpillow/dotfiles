@@ -16,6 +16,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'vim-scripts/summerfruit256.vim'
 
 "syntax
+Plug 'dag/vim-fish'
 Plug 'tpope/vim-git'
 Plug 'pangloss/vim-javascript'
 " Plug 'MaxMEllon/vim-jsx-pretty'

@@ -32,6 +32,11 @@ set history=1000
 " mouse for all
 set mouse=a
 
+" set shell=/bin/bash
+if &shell =~# 'fish$'
+	set shell=sh
+endif
+
 " make searching easier
 set hlsearch
 set smartcase
@@ -45,7 +50,6 @@ set nowritebackup
 
 set nowrap
 set pastetoggle=<f12>
-set shell=/bin/bash
 set smarttab
 
 set splitbelow
