@@ -11,6 +11,10 @@ set foldnestmax=10
 set foldlevelstart=10
 set foldmethod=indent
 
+" no visual errors at all
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
 " allow unrestricted backspacing in insert mod
 set backspace=indent,eol,start
 set complete=.,w,b,t
