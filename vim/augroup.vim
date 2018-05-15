@@ -53,6 +53,11 @@ augroup editorconfig
   autocmd FileType {json,python,ruby,sh,vim,yaml,jsx,js,html,svg,css,stylus,sass,scss,htmldjango} setlocal tabstop=2 sts=2 sw=2 noexpandtab
 augroup end
 
+augroup twig
+  autocmd!
+  autocmd FileType twig set ft=html
+augroup end
+
 " .Net validation
 augroup cshtml
   autocmd!
