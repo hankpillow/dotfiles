@@ -1,8 +1,8 @@
 function ls
 	switch (uname)
 		case Linux
-			command ls --color=auto
+			command ls --color=auto $argv
 		case Darwin
-			command ls -G
+			command ls -G $argv
 	end
 end
