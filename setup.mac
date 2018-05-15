@@ -3,21 +3,6 @@
 
 yes="^y|Y$"
 
-#------ editorconfig
-read -e -p "update .editorconfig? [y/N]" value
-[[ "$value" =~ $yes ]] && cp -v editorconfig ~/.editorconfig
-unset value
-
-#------ GIT setup
-read -e -p "update .gitconfig? [y/N]" value
-[[ "$value" =~ $yes ]] && bash setup.git
-unset value
-
-#------ TMUX setup
-read -e -p "update .tmux.conf [y/N]" value
-[[ "$value" =~ $yes ]] && bash setup.tmux
-unset value
-
 #----- homebrew install packages
 read -e -p "install brew and core packages? [y/N]" value
 if [[ "$value" =~ $yes ]]; then
@@ -27,6 +12,7 @@ if [[ "$value" =~ $yes ]]; then
     bash-completion \
     ctags \
     fd \
+    fish \
     fzf \
     git-extras \
     httpie \
@@ -45,31 +31,20 @@ if [[ "$value" =~ $yes ]]; then
 fi
 unset value
 
-read -e -p "what shell would you like? [bash/fish]" value
-if [[ "$value" == "fish"  ]]; then
-  #-----  fish
+#----- bashrc/bash_profile setup
 
-  [[ ! -x "$(command -v brew)" ]] && echo "you need homebrew for it." && exit 1
-  brew install fish
+echo "# downloading bash completions for docker and git..."
+mkdir -v tmp
 
-elif [[ "$value" == "bash"  ]]; then
-  #----- bashrc/bash_profile setup
-
-  echo "# downloading bash completions for docker and git..."
-  mkdir -v tmp
-
-  read -e -p "install git completion? [y/N]" autocomplete
-  if [[ "$autocomplete" =~ $yes ]]; then
-    curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > tmp/git-completion
-    curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > tmp/git-prompt
-  fi
-  unset autocomplete
-
-  cat tmp/* mac/* > ~/.bash_profile
-  rm -rf tmp
-
-  source ~/.bash_profile
+read -e -p "install git completion? [y/N]" autocomplete
+if [[ "$autocomplete" =~ $yes ]]; then
+curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > tmp/git-completion
+curl --silent -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > tmp/git-prompt
 fi
+unset autocomplete
 unset value
 
-echo done
+cat tmp/* mac/* > ~/.bash_profile
+rm -rf tmp
+
+source ~/.bash_profile

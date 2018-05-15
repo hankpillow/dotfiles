@@ -1,34 +1,16 @@
 #!/bin/bash
 # vim: ft=sh
 
+sudo add-apt-repository ppa:fish-shell/release-2
+
 yes="^y|Y$"
-
-#------ editorconfig
-read -e -p "update .editorconfig? [y/N]" value
-[[ "$value" =~ $yes ]] && cp -v editorconfig ~/.editorconfig
-unset value
-
-#------ GIT setup
-read -e -p "update .gitconfig? [y/N]" value
-[[ "$value" =~ $yes ]] && bash setup.git
-unset value
-
-#------ TMUX setup
-read -e -p "update .tmux.conf? [y/N]" value
-[[ "$value" =~ $yes ]] && bash setup.tmux
-unset value
-
-#------ VIM setup
-read -e -p "update .vimrc? [y/N]" value
-[[ "$value" =~ $yes ]] && bash setup.vim
-unset value
 
 read -e -p "install brew? [y/N]" val
 [[ $val =~ $yes ]] && curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh
 unset val
 
 read -e -p "install brew packs? [y/N]" val
-[[ $val =~ $yes ]] && brew install fzf
+[[ $val =~ $yes ]] && brew install fzf fish
 $(brew --prefix)/opt/fzf/install
 unset val
 
@@ -44,19 +26,4 @@ read -e -p "(sudo) install fd? [y/N]" val
 && echo "rm -f fd-musl_6.3.0_amd64.deb"
 unset val
 
-read -e -p "what shell would you like? [bash/fish]" value
-if [[ "$value" == "fish"  ]]; then
-  #----- fish
-
-  [[ ! -x "$(command -v brew)" ]] && echo "you need homebrew for it." && exit 1
-  brew install fish
-  bash setup.fish
-
-elif [[ "$value" == "bash"  ]]; then
-  #----- bashrc/bash_profile setup
-  echo to be done
-fi
-unset value
-
-sudo add-apt-repository ppa:fish-shell/release-2
 echo done
