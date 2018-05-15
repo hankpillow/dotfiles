@@ -17,6 +17,12 @@ alias vi='vim'
 alias dcomp='docker-compose'
 alias fim='vim $(fzf)'
 
+to_fish () {
+	if [[ ! -n  "$(grep "fish" /etc/shells)" ]]; then
+		echo "/usr/local/bin/fish" | sudo tee -a /etc/shells
+	fi
+	chsh -s /usr/local/bin/fish
+}
 
 # https://natelandau.com/my-mac-osx-bash_profile/
 

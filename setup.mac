@@ -18,18 +18,6 @@ read -e -p "update .tmux.conf [y/N]" value
 [[ "$value" =~ $yes ]] && bash setup.tmux
 unset value
 
-#----- linking scripts
-read -e -p "export bin/* on /usr/local/bin path? [y/N]" value
-if [[ "$value" =~ $yes ]]; then
-  for file in $(find bin -type f); do
-    name=$(basename $file)
-    basepath=$(pwd -P $file)
-    fullpath="$basepath/$file"
-    test ! -L "/usr/local/bin/$name" && ln -sv $fullpath /usr/local/bin/$name
-  done
-fi
-unset value
-
 #----- homebrew install packages
 read -e -p "install brew and core packages? [y/N]" value
 if [[ "$value" =~ $yes ]]; then
@@ -67,8 +55,6 @@ if [[ "$value" == "fish"  ]]; then
 elif [[ "$value" == "bash"  ]]; then
   #----- bashrc/bash_profile setup
 
-  [[ -f ~/.bash_profile ]] && cp -v ~/.bash_profile "$HOME/.bash_profile.$(date +%s).bkp"
-
   echo "# downloading bash completions for docker and git..."
   mkdir -v tmp
 
@@ -81,8 +67,6 @@ elif [[ "$value" == "bash"  ]]; then
 
   cat tmp/* mac/* > ~/.bash_profile
   rm -rf tmp
-
-  [[ -L /usr/local/bin/remove-home-bkp ]] && echo "run 'remove-home-bkp' to cleanup dotfiles bkps at your home"
 
   source ~/.bash_profile
 fi

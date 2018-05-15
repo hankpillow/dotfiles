@@ -1,8 +1,6 @@
 #!/bin/bash
 # vim: ft=sh
 
-sudo add-apt-repository ppa:fish-shell/release-2
-
 yes="^y|Y$"
 
 #------ editorconfig
@@ -60,4 +58,5 @@ elif [[ "$value" == "bash"  ]]; then
 fi
 unset value
 
+sudo add-apt-repository ppa:fish-shell/release-2
 echo done

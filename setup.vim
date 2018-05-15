@@ -1,7 +1,6 @@
 #!/bin/bash
 # vim: ft=sh
 
-[[ -f ~/.vimrc ]] && cp -v ~/.vimrc "$HOME/.vimrc.$(date +%s).bkp"
 cat vim/{preinstall,helpers,plugin,theme,settings,augroup}.vim > ~/.vimrc
 
 yes="^y|Y$"
