@@ -96,25 +96,25 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 "emmet
 " https://raw.githubusercontent.com/mattn/emmet-vim/master/TUTORIAL
 " autocmd FileType html,css EmmetInstall
-let g:user_emmet_install_global = 0
-let g:user_emmet_settings = {
-  \  'php' : {
-  \    'extends' : 'html',
-  \    'filters' : 'c',
-  \  },
-  \  'cshtml' : {
-  \    'extends' : 'html',
-  \  },
-  \  'jsx' : {
-  \    'extends' : 'html',
-  \  },
-  \  'xml' : {
-  \    'extends' : 'html',
-  \  },
-  \  'haml' : {
-  \    'extends' : 'html',
-  \  },
-  \}
+" let g:user_emmet_install_global = 0
+" let g:user_emmet_settings = {
+"   \  'php' : {
+"   \    'extends' : 'html',
+"   \    'filters' : 'c',
+"   \  },
+"   \  'cshtml' : {
+"   \    'extends' : 'html',
+"   \  },
+"   \  'jsx' : {
+"   \    'extends' : 'html',
+"   \  },
+"   \  'xml' : {
+"   \    'extends' : 'html',
+"   \  },
+"   \  'haml' : {
+"   \    'extends' : 'html',
+"   \  },
+"   \}
 
 filetype plugin indent on
 syntax enable
