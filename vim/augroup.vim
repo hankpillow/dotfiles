@@ -49,7 +49,6 @@ augroup editorconfig
   autocmd BufWritePre *.{js,css,styl,scss,sass} call HelperStripTrailingWhitespace()
 
   "defaults editor setting. better using editorconfig instead!
-  autocmd FileType {json} setlocal ft=javascript
   autocmd FileType {json,python,ruby,sh,vim,yaml,jsx,js,html,svg,css,stylus,sass,scss,htmldjango} setlocal tabstop=2 sts=2 sw=2 noexpandtab
 augroup end
 
