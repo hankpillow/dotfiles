@@ -2,6 +2,8 @@
 " user setting
 "------------------------------------------------------------------------------
 
+runtime macros/matchit.vim
+
 " Remap the tab key to toggle current fold
 nnoremap <Space> za
 
