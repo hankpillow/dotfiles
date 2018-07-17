@@ -1,10 +1,10 @@
 #https://raw.githubusercontent.com/wincent/wincent/c6bd3cb1aa3e876681b7263f54f58ba2877da29d/roles/dotfiles/files/.gitconfig
 
 [core]
-  editor = vim +start
-  whitespace = cr-at-eol
-  pager = diff-so-fancy | less --tabs=2 -RFX
-  ignorecase = true
+	editor = vim +start
+	whitespace = cr-at-eol
+	pager = diff-so-fancy | less -RFX
+	ignorecase = true
 
 [alias]
 	amend = commit --amend -v
