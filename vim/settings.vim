@@ -102,10 +102,7 @@ vnoremap // y/<C-R>"<CR>
 
 nnoremap <silent> coq :call HelperQuickFixToggle()<cr>
 
-" https://github.com/rafaelrinaldi/dotfiles/blob/master/vimrc
-" Load config per project if `.lvimrc` is present
-if filereadable($PWD .'/.lvimrc')
-  source ./.lvimrc
-endif
+" enable project speficific vimrc
+set exrc
 
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
