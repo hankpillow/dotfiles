@@ -1,18 +1,7 @@
 #!/bin/bash
 # vim: ft=sh
 
-sudo add-apt-repository ppa:fish-shell/release-2
-
 yes="^y|Y$"
-
-read -e -p "install brew? [y/N]" val
-[[ $val =~ $yes ]] && curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh
-unset val
-
-read -e -p "install brew packs? [y/N]" val
-[[ $val =~ $yes ]] && brew install fzf fish
-$(brew --prefix)/opt/fzf/install
-unset val
 
 read -e -p "(sudo) install ripgrep? [y/N]" val
 [[ $val =~ $yes ]] && echo "curl -fL https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb" \
@@ -20,10 +9,8 @@ read -e -p "(sudo) install ripgrep? [y/N]" val
 && echo "rm -f ripgrep_0.8.1_amd64.deb"
 unset val
 
-read -e -p "(sudo) install fd? [y/N]" val
-[[ $val =~ $yes ]] && echo "curl -fL https://github.com/sharkdp/fd/releases/download/v6.3.0/fd-musl_6.3.0_amd64.deb" \
-&& echo "dpkg -i fd-musl_6.3.0_amd64.deb" \
-&& echo "rm -f fd-musl_6.3.0_amd64.deb"
+read -e -p "(sudo) install fish? [y/N]" val
+[[ $val =~ $yes ]] && sudo add-apt-repository ppa:fish-shell/release-2
+&& sudo apt-get install fish  --fix-missing
 unset val
-
 echo done
