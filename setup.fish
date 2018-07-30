@@ -15,12 +15,3 @@ if [[ ! -f ~/.config/fish/functions/fisher.fish ]]; then
   curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
   chmod 755 ~/.config/fish/functions/fisher.fish
 fi
-
-#------ fzf plugins
-yes="^y|Y$"
-read -e -p "install fzf and git_util (required for prompt)? [y/N]" value
-[[ "$value" =~ $yes ]] && fish ~/.config/fish/functions/fisher.fish fzf git_util
-unset value
-
-
-
