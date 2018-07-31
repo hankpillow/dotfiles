@@ -20,7 +20,7 @@ set title
 set listchars=tab:▸\ ,eol:•,trail:—,space:␣
 set number relativenumber
 
-colorscheme elflord
+silent! colorscheme zenburn
 
 if has('linebreak')
   set breakindent

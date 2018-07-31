@@ -8,8 +8,9 @@ call plug#begin('~/.vim/bundle')
 
 "themes
 " Plug 'Lokaltog/vim-distinguished'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'junegunn/seoul256.vim'
+" Plug 'NLKNguyen/papercolor-theme'
+Plug 'jnurmine/Zenburn'
+" Plug 'junegunn/seoul256.vim'
 " Plug 'morhetz/gruvbox'
 Plug 'nanotech/jellybeans.vim'
 " Plug 'reedes/vim-colors-pencil'
@@ -19,8 +20,6 @@ Plug 'vim-scripts/summerfruit256.vim'
 Plug 'dag/vim-fish'
 Plug 'tpope/vim-git'
 Plug 'pangloss/vim-javascript'
-" Plug 'MaxMEllon/vim-jsx-pretty'
-" Plug 'jelera/vim-javascript-syntax'
 Plug 'wavded/vim-stylus'
 
 "utils and tools
@@ -29,10 +28,6 @@ Plug 'mattn/emmet-vim' "html and css helpers  http://mattn.github.io/emmet-vim/
 Plug 'mhinz/vim-grepper' "search tool using ag/rg/git etc https://github.com/mhinz/vim-grepper/blob/master/doc/grepper.txt
 Plug 'moll/vim-bbye' "manage closing buffers properly https://github.com/moll/vim-bbye
 Plug 'justinmk/vim-dirvish' "liket netrw and Nerdtree
-" Plug 'editorconfig/editorconfig-vim' "https://github.com/editorconfig/editorconfig-vim
-" Plug 'kshenoy/vim-signature' "handle marks https://github.com/kshenoy/vim-signature
-" Plug 'airblade/vim-gitgutter' " handle git changes and show small signs https://github.com/airblade/vim-gitgutter
-
 Plug 'tpope/vim-commentary' "https://github.com/tpope/vim-commentary
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
 Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround
