@@ -21,11 +21,10 @@ alias curlah='curl -I -X GET -H '\''Pragma: akamai-x-cache-on, akamai-x-cache-re
 alias wgeta='wget -S --header='\''Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces,akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no'\'''
 
 alias fim="fzf | vim -"
-alias netCons="lsof -i"
 alias myip="curl ifconfig.co"
 alias en0="ipconfig getpacket en1 | grep -h ip"
 alias en1="ipconfig getpacket en1 | grep -h ip"
-alias openPorts="lsof -Pn -i4 | grep LISTEN"
+alias ports="lsof -Pn -i4 | grep LISTEN"
 
 alias cp="cp -iv"
 alias mv="mv -iv"
@@ -36,7 +35,6 @@ alias less="less -FSRXc"
 alias sudo="sudo "
 alias du="du -ach"
 alias vi="vim"
-alias fim="vim (fzf)"
 
 ## tmux
 alias tn="tmux new -s"
