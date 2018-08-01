@@ -11,7 +11,6 @@ if [[ "$value" =~ $yes ]]; then
     reattach-to-user-namespace \
     bash-completion \
     ctags \
-    fd \
     fish \
     fzf \
     git-extras \
