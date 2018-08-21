@@ -42,6 +42,8 @@ augroup js_only
   map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 augroup end
 
+autocmd BufNewFile,BufRead *.json set ft=javascript
+
 augroup editorconfig
   autocmd!
 

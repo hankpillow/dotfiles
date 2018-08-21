@@ -19,6 +19,7 @@ Plug 'vim-scripts/summerfruit256.vim'
 "syntax
 Plug 'dag/vim-fish'
 Plug 'tpope/vim-git'
+Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 Plug 'wavded/vim-stylus'
 
