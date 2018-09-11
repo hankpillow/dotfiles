@@ -10,18 +10,19 @@
 	amend = commit --amend -v
 	br = branch
 	branches = "for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ "
-	ls = log --format=format:\"%C(yellow)%h%C(red)%d %C(reset)%s%C(blue) <%an>%C(reset)\"
 	ci = commit -v
 	co = checkout
 	ft = fetch --all --prune
 	graph = log --graph --format=format:\"%C(yellow)%h%C(red)%d%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)\"
 	in = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
-	st = status -s
+	ls = log --format=format:\"%C(yellow)%h%C(red)%d %C(reset)%s%C(blue) <%an>%C(reset)\"
+	st = status --short --branch
 	staged = diff --cached
 	tags = log --tags --simplify-by-decoration --pretty=\"format:%h %D\"
 	tagss = log --tags --simplify-by-decoration --pretty=\"format:%aI %Cblue%h %Cgreen%d %Creset%ce - %s\"
 	unmerged = ls-files -u
 	unstage = reset HEAD --
+  conflict = diff --name-only --diff-filter=U
 
 [color]
 	ui = auto
