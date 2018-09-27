@@ -6,6 +6,7 @@ set -xU LS_COLORS "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40
 set -xU EDITOR "vim -f"
 set -xU GIT_EDITOR "vim -f"
 set -xU LC_CTYPE "en_US.UTF-8"
+set -xU DISPLAY ":0"
 set -xU PATH $HOME/bin/ $PATH 
 set -xU PATH /usr/local/bin $PATH
 set -gx CLICOLOR 1
