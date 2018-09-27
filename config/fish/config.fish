@@ -18,7 +18,7 @@ alias curlah='curl -I -X GET -H '\''Pragma: akamai-x-cache-on, akamai-x-cache-re
 alias wgeta='wget -S --header='\''Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces,akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no'\'''
 alias trar='tar -cvzf'
 alias untar='tar -xvzf'
-alias pbcopy='xclip -sel clip'
+alias pbcopy='clip.exe'
 
 alias fim="fzf | vim -"
 alias myip="curl ifconfig.co"
