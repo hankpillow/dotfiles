@@ -23,7 +23,6 @@ fi
 PATH="/bin:/.local/bin:$PATH"
 
 #PATH="$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin"
-alias pbcopy="xclip -sel clip"
 export DOCKER_HOST='tcp://0.0.0.0:2375'
 
 # - Add Linuxbrew to your ~/.profile by running
