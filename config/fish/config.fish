@@ -26,6 +26,7 @@ alias en0="ipconfig getpacket en1 | grep -h ip"
 alias en1="ipconfig getpacket en1 | grep -h ip"
 alias ports="lsof -Pn -i4 | grep LISTEN"
 
+alias gr="cd (git rev-parse --show-toplevel)"
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias mkdir="mkdir -pv"
