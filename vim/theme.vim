@@ -21,7 +21,7 @@ set listchars=tab:▸\ ,eol:•,trail:—,space:␣
 set number relativenumber
 
 silent! colorscheme delek
-" silent! colorscheme zenburn
+hi StatusLine ctermbg=0 guibg=Black
 
 if has('linebreak')
   set breakindent
