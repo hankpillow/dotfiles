@@ -24,6 +24,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'wavded/vim-stylus'
 
 "utils and tools
+Plug 'gcmt/wildfire.vim' "https://github.com/gcmt/wildfire.vim/blob/master/README.md
 Plug 'sgur/vim-editorconfig' "https://github.com/sgur/vim-editorconfig
 Plug 'mattn/emmet-vim' "html and css helpers  http://mattn.github.io/emmet-vim/
 Plug 'mhinz/vim-grepper' "search tool using ag/rg/git etc https://github.com/mhinz/vim-grepper/blob/master/doc/grepper.txt
@@ -111,6 +112,15 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 "   \    'extends' : 'html',
 "   \  },
 "   \}
+
+" map <Enter> <Plug>(wildfire-fuel)
+" let g:wildfire_objects = {
+"       \ "*" : ["i'", 'i"', "i)", "i]", "i}"]
+"       \ }
+
+" cal wildfire#triggers#Add("<ENTER>", {
+"       \ "html,xml" : ["at", "it"],
+"       \ })
 
 filetype plugin indent on
 syntax enable

@@ -14,13 +14,14 @@ function! s:statusline_expr()
   return mod.path.' %<'.ro.fug.sep.' ('.grepper.') '.ft.' | '.pos.' | '.enc
 endfunction
 
-let &statusline = s:statusline_expr()
+let &statusline = winwidth(0)>80 ? s:statusline_expr() : '%t'
 
 set title
 set listchars=tab:▸\ ,eol:•,trail:—,space:␣
 set number relativenumber
 
-silent! colorscheme zenburn
+silent! colorscheme delek
+" silent! colorscheme zenburn
 
 if has('linebreak')
   set breakindent
