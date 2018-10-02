@@ -1,0 +1,8 @@
+set -g status-left-length 40
+set -g status-interval 30
+set -g status-bg 'colour236'
+set -g status-fg 'colour245'
+setw -g window-status-format '#[fg=colour236,bg=colour236]#[default] #I:#W #[fg=colour236,bg=colour236]'
+setw -g window-status-current-format '#[fg=colour236,bg=colour240]#[fg=colour32,bg=colour15] #[bold]#I:#W #F #[fg=colour240,bg=colour236]'
+set -g status-left '#[fg=green,bg=black] #S #[fg=colour148,bg=colour236]'
+set -g status-right ''
