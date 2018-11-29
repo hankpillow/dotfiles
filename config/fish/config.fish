@@ -9,6 +9,7 @@ set -xU LC_CTYPE "en_US.UTF-8"
 set -xU DISPLAY ":0"
 set -xU PATH $HOME/bin/ $PATH 
 set -xU PATH /usr/local/bin $PATH
+set -xU PATH /Users/igor.almeida/Library/Python/2.7/bin
 set -gx CLICOLOR 1
 set -gx TERM xterm-256color
 

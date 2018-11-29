@@ -35,33 +35,33 @@ augroup cursosline
   autocmd WinLeave * setlocal nocursorline
 augroup end
 
-augroup js_only
+augroup yaml_python_ruby
   autocmd!
+  autocmd FileType yaml setlocal list
+  autocmd FileType yml,yaml,ruby,python setlocal tabstop=2 sts=2 sw=2 expandtab
+augroup end
+
+augroup javascript
+  autocmd!
+  autocmd BufNewFile,BufRead *.json set ft=javascript
   autocmd FileType javascript,javascript.jsx,jsx setlocal foldmethod=syntax
+  autocmd FileType javascript,javascript.jsx,jsx call HelperStripTrailingWhitespace()
+  autocmd FileType javascript,javascript.jsx,jsx setlocal tabstop=2 sts=2 sw=2 expandtab
   set conceallevel=1
   map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 augroup end
 
-autocmd BufNewFile,BufRead *.json set ft=javascript
-
-augroup editorconfig
+augroup html
   autocmd!
-
-  "remove white spaces
-  autocmd BufWritePre *.{js,css,styl,scss,sass} call HelperStripTrailingWhitespace()
-
-  "defaults editor setting. better using editorconfig instead!
-  autocmd FileType {json,python,ruby,sh,vim,yaml,jsx,js,html,svg,css,stylus,sass,scss,htmldjango} setlocal tabstop=2 sts=2 sw=2 noexpandtab
+  autocmd FileType svg,twig,xhtml,xml set ft=html
+  autocmd FileType html,php setlocal tabstop=2 sts=2 sw=2 noexpandtab
+  autocmd FileType html,php,twig,xhtml,xml call HelperStripTrailingWhitespace()
 augroup end
 
-augroup twig
-  autocmd!
-  autocmd FileType twig set ft=html
-augroup end
-
-" .Net validation
 augroup cshtml
   autocmd!
   autocmd FileType cshtml set syntax=html bomb
+  autocmd FileType cshtml call HelperStripTrailingWhitespace()
+  autocmd FileType cshtml setlocal tabstop=2 sts=2 sw=2 expandtab
 augroup end
 
