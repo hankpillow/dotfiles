@@ -7,6 +7,7 @@ set -xU EDITOR "vim -f"
 set -xU GIT_EDITOR "vim -f"
 set -xU LC_CTYPE "en_US.UTF-8"
 set -xU DISPLAY ":0"
+set -xU DOCKER_HOST "tcp://0.0.0.0:2375"
 set -xU PATH $HOME/bin/ $PATH 
 set -xU PATH /usr/local/bin $PATH
 set -xU PATH /Users/igor.almeida/Library/Python/2.7/bin
@@ -21,6 +22,7 @@ alias wgeta='wget -S --header='\''Pragma: akamai-x-cache-on, akamai-x-cache-remo
 alias trar='tar -cvzf'
 alias untar='tar -xvzf'
 alias pbcopy='clip.exe'
+alias gb='git branch | grep "*" | sed "s/* //"'
 
 alias fim="fzf | vim -"
 alias myip="curl ifconfig.co"
