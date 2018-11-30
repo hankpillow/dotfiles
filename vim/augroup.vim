@@ -37,8 +37,8 @@ augroup end
 
 augroup yaml_python_ruby
   autocmd!
-  autocmd FileType yaml setlocal list
   autocmd FileType yml,yaml,ruby,python setlocal tabstop=2 sts=2 sw=2 expandtab
+  autocmd FileType yml,yaml,ruby,python call HelperStripTrailingWhitespace()
 augroup end
 
 augroup javascript
