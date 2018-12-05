@@ -10,9 +10,20 @@ set -xU DISPLAY ":0"
 set -xU DOCKER_HOST "tcp://0.0.0.0:2375"
 set -xU PATH $HOME/bin/ $PATH 
 set -xU PATH /usr/local/bin $PATH
-set -xU PATH /Users/igor.almeida/Library/Python/2.7/bin
 set -gx CLICOLOR 1
 set -gx TERM xterm-256color
+
+if [ (uname -a | grep -i "microsoft.*gnu\/linux") ]
+	set -gx VAGRANT_WSL_ENABLE_WINDOWS_ACCESS "1"
+	# set -gx VAGRANT_WSL_WINDOWS_ACCESS_USER - Override current Windows username
+	set -gx VAGRANT_WSL_DISABLE_VAGRANT_HOME "1"
+	set -gx VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH $HOME
+	set -gx PATH "/mnt/c/pf/Oracle/VirtualBox" $PATH
+	echo "wsl windows frank fish setup"
+else
+	echo "mac"
+	set -xU PATH $HOME/Library/Python/2.7/bin
+end
 
 # Aliases
 
