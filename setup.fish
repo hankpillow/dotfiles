@@ -14,4 +14,12 @@ if [[ ! -f "$HOME/.config/fish/functions/fisher.fish" ]]; then
 	echo -e "Run:\nfisher ls | fisher rm; and fisher git_util"
 fi
 
+chmod 700 ~/.ssh
+chmod 644 ~/.ssh/*.pub
+ls ~/.ssh/* | grep -v pub | xargs chmod 600
+
+# The .ssh folder: 700 (drwx------)
+# The public key: 644 (-rw-r--r--)
+# The private key: 600 (-rw-------)
+
 
