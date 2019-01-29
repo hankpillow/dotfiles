@@ -22,6 +22,7 @@ Plug 'tpope/vim-git'
 Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 Plug 'wavded/vim-stylus'
+Plug 'martinda/Jenkinsfile-vim-syntax'
 
 "utils and tools
 Plug 'gcmt/wildfire.vim' "https://github.com/gcmt/wildfire.vim/blob/master/README.md
