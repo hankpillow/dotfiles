@@ -21,6 +21,7 @@ if [ (uname -a | grep -i "microsoft.*gnu\/linux") ]
 	set -xU DOCKER_HOST "tcp://0.0.0.0:2375"
 	echo "wsl windows frank fish setup"
 else if [ (uname -a | grep -i "ubuntu") ]
+	set -gx PATH "$HOME/.local/bin" $PATH
 	echo "ubuntu"
 else
 	echo "mac"
