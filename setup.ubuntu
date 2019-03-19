@@ -1,16 +1,11 @@
 #!/bin/bash
 # vim: ft=sh
 
-yes="^y|Y$"
+curl -fL https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
+dpkg -i ripgrep_0.8.1_amd64.deb
+rm -f ripgrep_0.8.1_amd64.deb
 
-read -e -p "(sudo) install ripgrep? [y/N]" val
-[[ $val =~ $yes ]] && echo "curl -fL https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb" \
-&& echo "dpkg -i ripgrep_0.8.1_amd64.deb" \
-&& echo "rm -f ripgrep_0.8.1_amd64.deb"
-unset val
+add-apt-repository ppa:fish-shell/release-3
+apt-get install fish  --fix-missing
 
-read -e -p "(sudo) install fish? [y/N]" val
-[[ $val =~ $yes ]] && sudo add-apt-repository ppa:fish-shell/release-2
-&& sudo apt-get install fish  --fix-missing
-unset val
-echo done
+apt-get install xclip

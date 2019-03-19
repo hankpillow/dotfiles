@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir -p ~/.config/fish/functions
+mkdir -vp ~/.config/fish/functions
 # find ~/.config/fish/functions/*.fish | grep -v "fisher" | xargs rm -fv
 cp -v config/fish/functions/*.fish ~/.config/fish/functions/
 cp -v config/fish/config.fish ~/.config/fish/
@@ -11,7 +11,7 @@ chmod +x ~/.config/fish/functions/*.fish
 if [[ ! -f "$HOME/.config/fish/functions/fisher.fish" ]]; then
   curl --silent -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
   chmod 755 ~/.config/fish/functions/fisher.fish
-	echo -e "Run:\nfisher ls | fisher rm; and fisher git_util"
+  fisher add fishpkg/fish-git-util
 fi
 
 chmod 700 ~/.ssh
