@@ -35,13 +35,13 @@ augroup cursosline
   autocmd WinLeave * setlocal nocursorline
 augroup end
 
-augroup yaml_python_ruby
+augroup smell_python
   autocmd!
-  autocmd FileType yml,yaml,ruby,python,Jenkinsfile setlocal tabstop=2 sts=2 sw=2 expandtab
+  autocmd FileType yml,yaml,ruby,python setlocal tabstop=2 sts=2 sw=2 expandtab
   autocmd FileType yml,yaml,ruby,python call HelperStripTrailingWhitespace()
 augroup end
 
-augroup javascript
+augroup smell_javascript
   autocmd!
   autocmd BufNewFile,BufRead *.json set ft=javascript
   autocmd FileType javascript,javascript.jsx,jsx setlocal foldmethod=syntax
@@ -51,14 +51,14 @@ augroup javascript
   map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 augroup end
 
-augroup html
+augroup smell_html
   autocmd!
   autocmd FileType svg,twig,xhtml,xml set ft=html
   autocmd FileType html,php setlocal tabstop=2 sts=2 sw=2 noexpandtab
   autocmd FileType html,php,twig,xhtml,xml call HelperStripTrailingWhitespace()
 augroup end
 
-augroup cshtml
+augroup smell_cshtml
   autocmd!
   autocmd FileType cshtml set syntax=html bomb
   autocmd FileType cshtml call HelperStripTrailingWhitespace()

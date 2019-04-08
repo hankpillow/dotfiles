@@ -9,11 +9,13 @@ call plug#begin('~/.vim/bundle')
 "themes
 " Plug 'Lokaltog/vim-distinguished'
 " Plug 'NLKNguyen/papercolor-theme'
-Plug 'jnurmine/Zenburn'
 " Plug 'junegunn/seoul256.vim'
 " Plug 'morhetz/gruvbox'
-Plug 'nanotech/jellybeans.vim'
 " Plug 'reedes/vim-colors-pencil'
+" Plug 'aonemd/kuroi.vim'
+Plug 'jnurmine/Zenburn'
+Plug 'sheerun/vim-polyglot'
+Plug 'nanotech/jellybeans.vim'
 Plug 'vim-scripts/summerfruit256.vim'
 
 "syntax
