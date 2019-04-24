@@ -23,7 +23,7 @@ fi
 PATH="/bin:/.local/bin:$PATH"
 
 #PATH="$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin"
-export DOCKER_HOST='tcp://0.0.0.0:2375'
+#export DOCKER_HOST='tcp://0.0.0.0:2375'
 
 # - Add Linuxbrew to your ~/.profile by running
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"

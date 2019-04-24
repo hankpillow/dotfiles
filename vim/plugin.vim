@@ -14,17 +14,17 @@ call plug#begin('~/.vim/bundle')
 " Plug 'reedes/vim-colors-pencil'
 " Plug 'aonemd/kuroi.vim'
 Plug 'jnurmine/Zenburn'
-Plug 'sheerun/vim-polyglot'
 Plug 'nanotech/jellybeans.vim'
 Plug 'vim-scripts/summerfruit256.vim'
 
 "syntax
+Plug 'sheerun/vim-polyglot'
 Plug 'dag/vim-fish'
 Plug 'tpope/vim-git'
 Plug 'posva/vim-vue'
 Plug 'pangloss/vim-javascript'
 Plug 'wavded/vim-stylus'
-Plug 'martinda/Jenkinsfile-vim-syntax'
+" Plug 'martinda/Jenkinsfile-vim-syntax'
 
 "utils and tools
 Plug 'gcmt/wildfire.vim' "https://github.com/gcmt/wildfire.vim/blob/master/README.md

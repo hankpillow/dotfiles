@@ -41,12 +41,17 @@ augroup smell_python
   autocmd FileType yml,yaml,ruby,python call HelperStripTrailingWhitespace()
 augroup end
 
+augroup smell_java
+  au BufNewFile,BufRead *.gradle,Jenkinsfile setf groovy
+  autocmd FileType Jenkinsfile,gradle,groovy setlocal tabstop=2 sts=2 sw=2 expandtab
+augroup end
+
 augroup smell_javascript
   autocmd!
   autocmd BufNewFile,BufRead *.json set ft=javascript
-  autocmd FileType javascript,javascript.jsx,jsx setlocal foldmethod=syntax
-  autocmd FileType javascript,javascript.jsx,jsx call HelperStripTrailingWhitespace()
-  autocmd FileType javascript,javascript.jsx,jsx setlocal tabstop=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript,javascript.jsx,jsx,vim setlocal foldmethod=syntax
+  autocmd FileType javascript,javascript.jsx,jsx,vim call HelperStripTrailingWhitespace()
+  autocmd FileType javascript,javascript.jsx,jsx,vim setlocal tabstop=2 sts=2 sw=2 expandtab
   set conceallevel=1
   map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 augroup end
