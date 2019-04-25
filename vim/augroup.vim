@@ -17,17 +17,6 @@ augroup quickfix_settings
   autocmd VimEnter,WinEnter,BufWinEnter quickfix setlocal nocursorline
 augroup end
 
-" Enable built in omni completion
-augroup omnifuncs
-  autocmd!
-  autocmd FileType css,scss,stylus setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,xhtml,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript,jsx,javascript.jsx setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-augroup end
-
 " only activate for active window
 augroup cursosline
   autocmd!
@@ -37,6 +26,7 @@ augroup end
 
 augroup smell_python
   autocmd!
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType yml,yaml,ruby,python setlocal tabstop=2 sts=2 sw=2 expandtab
   autocmd FileType yml,yaml,ruby,python call HelperStripTrailingWhitespace()
 augroup end
@@ -44,11 +34,12 @@ augroup end
 augroup smell_javascript
   autocmd!
   autocmd BufNewFile,BufRead *.json set ft=javascript
-  autocmd FileType javascript,javascript.jsx,jsx setlocal foldmethod=syntax
-  autocmd FileType javascript,javascript.jsx,jsx call HelperStripTrailingWhitespace()
-  autocmd FileType javascript,javascript.jsx,jsx setlocal tabstop=2 sts=2 sw=2 expandtab
-  set conceallevel=1
+  autocmd FileType javascript,jsx setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType javascript,jsx setlocal foldmethod=syntax
+  autocmd FileType javascript,jsx call HelperStripTrailingWhitespace()
+  autocmd FileType javascript,jsx setlocal tabstop=2 sts=2 sw=2 expandtab
   map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
+  set conceallevel=1
 augroup end
 
 augroup smell_html
@@ -56,6 +47,9 @@ augroup smell_html
   autocmd FileType svg,twig,xhtml,xml set ft=html
   autocmd FileType html,php setlocal tabstop=2 sts=2 sw=2 noexpandtab
   autocmd FileType html,php,twig,xhtml,xml call HelperStripTrailingWhitespace()
+  autocmd FileType css,scss,stylus setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,xhtml,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup end
 
 augroup smell_cshtml

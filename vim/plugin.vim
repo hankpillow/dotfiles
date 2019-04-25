@@ -14,11 +14,11 @@ call plug#begin('~/.vim/bundle')
 " Plug 'reedes/vim-colors-pencil'
 " Plug 'aonemd/kuroi.vim'
 Plug 'jnurmine/Zenburn'
-Plug 'sheerun/vim-polyglot'
 Plug 'nanotech/jellybeans.vim'
 Plug 'vim-scripts/summerfruit256.vim'
 
 "syntax
+Plug 'sheerun/vim-polyglot'
 Plug 'dag/vim-fish'
 Plug 'tpope/vim-git'
 Plug 'posva/vim-vue'
