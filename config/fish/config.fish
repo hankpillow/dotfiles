@@ -14,8 +14,8 @@ set -gx TERM xterm-256color
 if [ (uname -a | grep -i "ubuntu") ]
 	echo "ubuntu"
 	set -gx PATH "$HOME/.local/bin" $PATH
+	set -gx PATH "$HOME/workspace/android-studio/bin" $PATH
 	export SDKMAN_DIR="/home/osboxes/.sdkman"
-	[[ -s "/home/osboxes/.sdkman/bin/sdkman-init.sh" ]] && source "/home/osboxes/.sdkman/bin/sdkman-init.sh"
 else
 	echo "mac"
 	set -xU PATH $HOME/Library/Python/2.7/bin
