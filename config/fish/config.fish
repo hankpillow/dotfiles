@@ -20,9 +20,9 @@ if [ (uname -a | grep -i "ubuntu") ]
 	set -gx PATH "$HOME/flutter/bin" $PATH
 	set -gx PATH "$ANDROID_HOME/tools/bin" $PATH
 	set -gx PATH "$ANDROID_HOME/platform-tools" $PATH
-
-# Fixes sdkmanager error with java versions higher than java 8
-export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
+	set -gx JAVA_HOME "/usr/lib/jvm/java-11-openjdk-amd64"
+	set -gx JAVA_OPTS "-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee"
+	# set -gx JAVA_OPTS ""
 else
 	echo "mac"
 	set -xU PATH $HOME/Library/Python/2.7/bin
