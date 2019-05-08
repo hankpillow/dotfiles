@@ -13,9 +13,16 @@ set -gx TERM xterm-256color
 
 if [ (uname -a | grep -i "ubuntu") ]
 	echo "ubuntu"
+	set -gx ANDROID_HOME "$HOME/Android/Sdk"
+	set -gx SDKMAN_DIR "/home/osboxes/.sdkman"
 	set -gx PATH "$HOME/.local/bin" $PATH
 	set -gx PATH "$HOME/workspace/android-studio/bin" $PATH
-	export SDKMAN_DIR="/home/osboxes/.sdkman"
+	set -gx PATH "$HOME/flutter/bin" $PATH
+	set -gx PATH "$ANDROID_HOME/tools/bin" $PATH
+	set -gx PATH "$ANDROID_HOME/platform-tools" $PATH
+
+# Fixes sdkmanager error with java versions higher than java 8
+export JAVA_OPTS='-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee'
 else
 	echo "mac"
 	set -xU PATH $HOME/Library/Python/2.7/bin
