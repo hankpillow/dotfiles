@@ -29,7 +29,7 @@ augroup omnifuncs
 augroup end
 
 " only activate for active window
-augroup cursosline
+augroup cursor_line
   autocmd!
   autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   autocmd WinLeave * setlocal nocursorline
@@ -37,8 +37,8 @@ augroup end
 
 augroup smell_python
   autocmd!
-  autocmd FileType yml,yaml,ruby,python setlocal tabstop=2 sts=2 sw=2 expandtab
-  autocmd FileType yml,yaml,ruby,python call HelperStripTrailingWhitespace()
+  autocmd FileType yml,fish,yaml,ruby,python setlocal tabstop=2 sts=2 sw=2 expandtab
+  autocmd FileType yml,fish,yaml,ruby,python call HelperStripTrailingWhitespace()
 augroup end
 
 augroup smell_java
@@ -48,10 +48,10 @@ augroup end
 
 augroup smell_javascript
   autocmd!
-  autocmd BufNewFile,BufRead *.json set ft=javascript
-  autocmd FileType javascript,javascript.jsx,jsx,vim setlocal foldmethod=syntax
-  autocmd FileType javascript,javascript.jsx,jsx,vim call HelperStripTrailingWhitespace()
-  autocmd FileType javascript,javascript.jsx,jsx,vim setlocal tabstop=2 sts=2 sw=2 expandtab
+  " autocmd BufNewFile,BufRead *.json set ft=javascript
+  autocmd FileType sh,javascript,json,javascript.jsx,jsx,vim setlocal foldmethod=syntax
+  autocmd FileType sh,javascript,json,javascript.jsx,jsx,vim call HelperStripTrailingWhitespace()
+  autocmd FileType sh,javascript,json,javascript.jsx,jsx,vim setlocal tabstop=2 sts=2 sw=2 expandtab
   set conceallevel=1
   map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
 augroup end

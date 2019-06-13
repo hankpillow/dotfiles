@@ -17,7 +17,8 @@ function fish_prompt
   echo -n -s " " (set_color green -u) $cwd "" (set_color normal)
 
   # git branch
-  if git_is_repo
+
+  if test -e  $HOME/.config/fish/functions/git_is_repo.fish && git_is_repo
     echo -n -s " " (set_color white -o) "(" (git_branch_name) ")"
   end
 

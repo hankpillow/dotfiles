@@ -18,7 +18,7 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'vim-scripts/summerfruit256.vim'
 
 "syntax
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'dag/vim-fish'
 Plug 'tpope/vim-git'
 Plug 'posva/vim-vue'

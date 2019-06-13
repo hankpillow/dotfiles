@@ -5,6 +5,7 @@
 	whitespace = cr-at-eol
 	pager = diff-so-fancy | less -RFX
 	ignorecase = true
+	fileMode = false
 
 [alias]
 	amend = commit --amend -v
@@ -22,7 +23,7 @@
 	tagss = log --tags --simplify-by-decoration --pretty=\"format:%aI %Cblue%h %Cgreen%d %Creset%ce - %s\"
 	unmerged = ls-files -u
 	unstage = reset HEAD --
-  conflict = diff --name-only --diff-filter=U
+	conflict = diff --name-only --diff-filter=U
 
 [color]
 	ui = auto
