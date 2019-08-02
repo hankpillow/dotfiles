@@ -3,7 +3,7 @@
 "------------------------------------------------------------------------------
 
 runtime macros/matchit.vim
-let mapleader = "ç"
+" let mapleader = "ç"
 
 " Remap the tab key to toggle current fold
 nnoremap <Space> za
