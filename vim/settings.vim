@@ -3,6 +3,7 @@
 "------------------------------------------------------------------------------
 
 runtime macros/matchit.vim
+let mapleader = "ç"
 
 " Remap the tab key to toggle current fold
 nnoremap <Space> za
@@ -35,9 +36,9 @@ set history=1000
 set mouse=a
 
 " set shell=/bin/bash
-if &shell =~# 'fish$'
-	set shell=sh
-endif
+" if &shell =~# 'fish$'
+" 	set shell=sh
+" endif
 
 " make searching easier
 set hlsearch

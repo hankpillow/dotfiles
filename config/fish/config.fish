@@ -1,42 +1,35 @@
 #!/usr/bin/env fish
+#
 
+if ! functions -q git_is_repo
+  echo install fish-git-util for better prompt
+  echo fisher add fishpkg/fish-git-util
+end
 
-# set -gx LSCOLORS gxfxcxdxbxegedabagacad
 set -xU EDITOR "vim -f"
 set -xU GIT_EDITOR "vim -f"
 set -xU LC_CTYPE "en_US.UTF-8"
 set -xU DISPLAY ":0"
-set -xU PATH $HOME/bin/ $PATH 
+set -xU PATH $HOME/bin/ $PATH
 set -xU PATH /usr/local/bin $PATH
 set -gx CLICOLOR 1
-set -gx TERM xterm-256color
+# set -gx TERM xterm-256color
 
 if [ (uname -a | grep -i "ubuntu") ]
-	echo "ubuntu"
-	set -gx ANDROID_HOME "$HOME/Android/Sdk"
-	set -gx SDKMAN_DIR "/home/osboxes/.sdkman"
-	set -gx PATH "$HOME/.local/bin" $PATH
-	set -gx PATH "$HOME/workspace/android-studio/bin" $PATH
-	set -gx PATH "$HOME/flutter/bin" $PATH
-	set -gx PATH "$ANDROID_HOME/tools/bin" $PATH
-	set -gx PATH "$ANDROID_HOME/platform-tools" $PATH
-	set -gx JAVA_HOME "/usr/lib/jvm/java-11-openjdk-amd64"
-	set -gx JAVA_OPTS "-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee"
-	# set -gx JAVA_OPTS ""
-else
-	echo "mac"
-	set -xU PATH $HOME/Library/Python/2.7/bin
+  echo "ubuntu"
+  set -gx PATH "$HOME/.local/bin" $PATH
 end
 
 # Aliases
-
 alias curla='curl -H '\''Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces,akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no'\'''
 alias curlah='curl -I -X GET -H '\''Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces,akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no'\'''
 alias wgeta='wget -S --header='\''Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces,akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no'\'''
 alias trar='tar -cvzf'
 alias untar='tar -xvzf'
-alias pbcopy='clip.exe'
+alias copy='xsel -ib'
+alias paste='xsel -b'
 alias gb='git branch | grep "*" | sed "s/* //"'
+alias open='xdg-open'
 
 alias fim="fzf | vim -"
 alias myip="curl ifconfig.co"
@@ -61,9 +54,9 @@ alias ta="tmux attach "
 alias tk="tmux kill-session"
 
 ## docker
-alias dcomp="docker-compose"
-alias drunning="docker ps -f status=running -q"
-alias drun="docker ps -f status=running -q | head -1"
+alias dc="docker-compose"
+alias drun="docker ps -f status=running -q"
+alias druns="docker ps -f status=running -q | head -1"
 
 # from https://github.com/tcnksm/docker-alias/blob/master/zshrc
 alias dl="docker ps -l -q"
@@ -72,6 +65,11 @@ alias dpa="docker ps -a"
 alias di="docker images"
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 alias dex="docker exec -i -t"
+
+#hugo static site builder
+#
+alias hugo="docker run -u hugo --rm -it -v $PWD:/src jguyomard/hugo-builder hugo"
+alias hugo-server="docker run -u hugo  --rm -it -v $PWD:/src -p 1313:1313 jguyomard/hugo-builder hugo server --bind 0.0.0.0"
 
 #fisher
 ## fzf
@@ -84,3 +82,12 @@ for file in ~/.config/fish/conf.d/*.fish
   source $file
 end
 
+# The .ssh folder: 700 (drwx------)
+chmod 700 ~/.ssh
+# The private key: 600 (-rw-------)
+chmod 644 ~/.ssh/*.pub
+# The public key: 644 (-rw-r--r--)
+ls ~/.ssh/* | grep -v pub | xargs chmod 600
+
+# newgrp docker
+# echo "force docker group do work without sudo"
