@@ -13,9 +13,10 @@ call plug#begin('~/.vim/bundle')
 " Plug 'morhetz/gruvbox'
 " Plug 'reedes/vim-colors-pencil'
 " Plug 'aonemd/kuroi.vim'
-Plug 'jnurmine/Zenburn'
-Plug 'nanotech/jellybeans.vim'
-Plug 'vim-scripts/summerfruit256.vim'
+" Plug 'jnurmine/Zenburn'
+Plug 'arcticicestudio/nord-vim'
+" Plug 'nanotech/jellybeans.vim'
+" Plug 'vim-scripts/summerfruit256.vim'
 
 "syntax
 " Plug 'sheerun/vim-polyglot'

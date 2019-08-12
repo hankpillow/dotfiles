@@ -20,7 +20,8 @@ set title
 set listchars=tab:▸\ ,eol:•,trail:—,space:␣
 set number relativenumber
 
-silent! colorscheme koehler
+silent! colorscheme nord
+" silent! colorscheme koehler
 hi StatusLine ctermbg=0 guibg=Black
 
 if has('linebreak')
