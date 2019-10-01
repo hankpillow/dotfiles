@@ -14,12 +14,11 @@ curl --silent "https://raw.githubusercontent.com/fish-shell/fish-shell/master/sh
 source fish-update-config.sh
 
 if [[ ! $(command -v fish) ]]; then
-  echo "# Install with sudo fish"
-  echo "sudo add-apt-repository ppa:fish-shell/release-3"
-  echo "sudo apt-get install fish --fix-missing"
-  exit 1
-else
-  echo type 'fish' and enjoy
+  sudo add-apt-repository ppa:fish-shell/release-3
+  sudo apt-get install fish --fix-missing
 fi
 
+fish
+fisher add fishpkg/fish-git-util
+fisher add jethrokuan/fzf
 
