@@ -70,8 +70,8 @@ alias dex="docker exec -i -t"
 
 #hugo static site builder
 #
-alias hugo="docker run -u hugo --rm -it -v $PWD:/src jguyomard/hugo-builder hugo"
-alias hugo-server="docker run -u hugo  --rm -it -v $PWD:/src -p 1313:1313 jguyomard/hugo-builder hugo server --bind 0.0.0.0"
+# alias hugo="docker run -u hugo --rm -it -v $PWD:/src jguyomard/hugo-builder hugo"
+# alias hugo-server="docker run -u hugo  --rm -it -v $PWD:/src -p 1313:1313 jguyomard/hugo-builder hugo server --bind 0.0.0.0"
 
 #fisher
 ## fzf
