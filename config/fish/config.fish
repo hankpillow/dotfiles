@@ -6,6 +6,8 @@ if ! functions -q git_is_repo
   echo fisher add fishpkg/fish-git-util
 end
 
+set -x MATCHPEDIA_TOKEN 1130f9234ce958e2e5ef057e773d74ee00
+
 set -xU EDITOR "vim -f"
 set -xU GIT_EDITOR "vim -f"
 set -xU LC_CTYPE "en_US.UTF-8"
