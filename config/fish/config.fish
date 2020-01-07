@@ -34,6 +34,8 @@ alias copy='xsel -ib'
 alias paste='xsel -b'
 alias gb='git branch | grep "*" | sed "s/* //"'
 alias open='xdg-open'
+alias myip4='dig @resolver1.opendns.com ANY myip.opendns.com +short -4'
+alias myip6='dig @resolver1.opendns.com ANY myip.opendns.com +short'
 
 alias fim="fzf | vim -"
 alias myip="curl ifconfig.co"
