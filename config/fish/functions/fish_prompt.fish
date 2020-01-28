@@ -19,7 +19,7 @@ function fish_prompt
   # git branch
 
   if test -e  $HOME/.config/fish/functions/git_is_repo.fish && git_is_repo
-    echo -n -s " " (set_color white -o) (git_branch_name) 
+    echo -n -s " " (set_color white -o) "(" (git_branch_name) ")"
   end
 
   # done

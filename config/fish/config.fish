@@ -26,7 +26,6 @@ end
 
 # Aliases
 alias curla='curl -H '\''Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces,akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no'\'''
-alias curlah='curl -I -X GET -H '\''Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces,akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no'\'''
 alias wgeta='wget -S --header='\''Pragma: akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-nonces,akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no'\'''
 alias trar='tar -cvzf'
 alias untar='tar -xvzf'
@@ -47,11 +46,11 @@ alias gr="cd (git rev-parse --show-toplevel)"
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias mkdir="mkdir -pv"
-alias ll="ls -hao"
+alias ll="ls -ha"
 alias l="ls -1"
 alias less="less -FSRXc"
 alias sudo="sudo "
-alias du="du -ach"
+alias duh="du -ach"
 alias vi="vim"
 
 ## tmux
