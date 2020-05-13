@@ -33,6 +33,8 @@ Plug 'sgur/vim-editorconfig' "https://github.com/sgur/vim-editorconfig
 Plug 'mattn/emmet-vim' "html and css helpers  http://mattn.github.io/emmet-vim/
 Plug 'mhinz/vim-grepper' "search tool using ag/rg/git etc https://github.com/mhinz/vim-grepper/blob/master/doc/grepper.txt
 Plug 'moll/vim-bbye' "manage closing buffers properly https://github.com/moll/vim-bbye
+"Plug 'justinmk/vim-dirvish' "liket netrw and Nerdtree
+"Plug 'preservim/nerdtree'
 Plug 'justinmk/vim-dirvish' "liket netrw and Nerdtree
 Plug 'tpope/vim-commentary' "https://github.com/tpope/vim-commentary
 Plug 'tpope/vim-fugitive' "https://github.com/tpope/vim-fugitive
@@ -49,12 +51,6 @@ noremap <leader>d :Bdelete<cr>
 
 "editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-
-" fugitive
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>ga :Gwrite<cr>
-nnoremap <leader>gd :Gvdiff<cr>
-nnoremap <leader>gc :Gcommit<cr>
 
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
