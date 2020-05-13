@@ -33,7 +33,6 @@ Plug 'sgur/vim-editorconfig' "https://github.com/sgur/vim-editorconfig
 Plug 'mattn/emmet-vim' "html and css helpers  http://mattn.github.io/emmet-vim/
 Plug 'mhinz/vim-grepper' "search tool using ag/rg/git etc https://github.com/mhinz/vim-grepper/blob/master/doc/grepper.txt
 Plug 'moll/vim-bbye' "manage closing buffers properly https://github.com/moll/vim-bbye
-"Plug 'justinmk/vim-dirvish' "liket netrw and Nerdtree
 "Plug 'preservim/nerdtree'
 Plug 'justinmk/vim-dirvish' "liket netrw and Nerdtree
 Plug 'tpope/vim-commentary' "https://github.com/tpope/vim-commentary
