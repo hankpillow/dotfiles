@@ -36,7 +36,7 @@ alias open='xdg-open'
 alias myip4='dig @resolver1.opendns.com ANY myip.opendns.com +short -4'
 alias myip6='dig @resolver1.opendns.com ANY myip.opendns.com +short'
 
-alias fim="fzf | vim -"
+alias fvim="vim (fzf)"
 alias myip="curl ifconfig.co"
 alias en0="ipconfig getpacket en1 | grep -h ip"
 alias en1="ipconfig getpacket en1 | grep -h ip"

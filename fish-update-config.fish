@@ -12,3 +12,4 @@ cp -v config/fish/functions/*.fish ~/.config/fish/functions/
 cp -v config/fish/config.fish ~/.config/fish/
 
 # Grant proper permissions
+echo "run 'fisher' to update plugins"
