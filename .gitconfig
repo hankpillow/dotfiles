@@ -9,7 +9,6 @@
 
 [alias]
 	amend = commit --amend -v
-	br = branch
 	branches = "for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ "
 	ci = commit -v
 	co = checkout
@@ -24,6 +23,7 @@
 	unmerged = ls-files -u
 	unstage = reset HEAD --
 	conflict = diff --name-only --diff-filter=U
+	addd = add --normalize -u
 
 [color]
 	ui = auto

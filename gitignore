@@ -1,9 +1,0 @@
-*.pyc
-*.sw[nop]
-.DS_Store
-.env
-.old
-.bkp
-.netrwhist
-Icon?
-*.log
