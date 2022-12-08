@@ -1,3 +1,7 @@
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 alias cp="cp -iv"
 alias dir='dir --color=auto'
@@ -20,7 +24,9 @@ alias myip="curl ifconfig.co"
 alias ports="lsof -Pn -i4 | grep LISTEN"
 alias ports="lsof -Pn -i4 | grep LISTEN"
 alias sudo="sudo "
-alias vi="vim"
+
+alias gpush='git push origin -u $(gb)'
+alias vi="nvim"
 
 #tmux
 alias tn="tmux new -s"
@@ -35,3 +41,10 @@ alias dl="docker ps -l -q"
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 alias dexec="docker exec -i -t"
 
+
+source /usr/lib/git-core/git-sh-prompt
+# user@host location\n (git branch) $prompt
+# PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\n$(__git_ps1 "(%s)") \$ '
+#
+# location (git_branc) $prompt
+PS1='\[\033[01;34m\]\w\[\033[00m\] $(__git_ps1 "(%s)") \$ '
