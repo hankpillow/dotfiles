@@ -36,14 +36,16 @@ set shiftwidth=2
 set showbreak=↪\
 set listchars=tab:▶\ ,extends:›,precedes:‹,nbsp:•,trail:•,eol:$
 set background=dark
+""" depend on gitsigns.nvim intalled
+set statusline+=%{get(b:,'gitsigns_status','')}
 colorscheme tokyonight-night
 
 """ maps
 """ ----------------------------------------------------------------- 
 
 noremap <F5> :so ~/.config/nvim/init.vim<cr>
-noremap <leader>q :q<cr>
-noremap <leader>Q :q!<cr>
+noremap <leader>q :Bdelete<cr>
+noremap <leader>Q :bufdo :Bdelete<cr>
 nnoremap <leader>s :w<cr>
 vnoremap <leader>s :w<cr>
 
@@ -80,6 +82,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 """ Format the file and stay in the same line
 nnoremap <A-F> gg=G''
+vnoremap <A-F> =
 
 """ Alt Shift up/down duplicate
 noremap <A-K> yyP

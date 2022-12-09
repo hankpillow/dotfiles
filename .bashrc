@@ -1,8 +1,3 @@
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
 alias cp="cp -iv"
 alias dir='dir --color=auto'
 alias duh="du -ach"
@@ -14,7 +9,7 @@ alias fvim="vim (fzf)"
 alias gb='git branch | grep "*" | sed "s/* //"'
 alias grep='grep --color=auto'
 alias l="ls -1a"
-alias ll="ls -lhaF"
+alias ll="ls -lah"
 alias mkdir="mkdir -pv"
 alias mv="mv -iv"
 alias myip4='dig @resolver1.opendns.com ANY myip.opendns.com +short -4'
@@ -41,10 +36,16 @@ alias dl="docker ps -l -q"
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 alias dexec="docker exec -i -t"
 
+# asdf initialization
+if [[ -d $HOME/.asdf ]]; 
+then
+	. $HOME/.asdf/asdf.sh
+	. $HOME/.asdf/completions/asdf.bash
+fi
 
 source /usr/lib/git-core/git-sh-prompt
 # user@host location\n (git branch) $prompt
 # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\n$(__git_ps1 "(%s)") \$ '
-#
 # location (git_branc) $prompt
 PS1='\[\033[01;34m\]\w\[\033[00m\] $(__git_ps1 "(%s)") \$ '
+

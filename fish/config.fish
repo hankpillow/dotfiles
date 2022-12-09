@@ -1,7 +1,3 @@
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 
 alias cp="cp -iv"
 alias dir='dir --color=auto'
@@ -13,8 +9,8 @@ alias en1="ipconfig getpacket en1 | grep -h ip"
 alias fvim="vim (fzf)"
 alias gb='git branch | grep "*" | sed "s/* //"'
 alias grep='grep --color=auto'
-alias l="ls -1a --color"
-alias ll="ls -lahg --color"
+alias l="ls -1a"
+alias ll="ls -lahg"
 alias mkdir="mkdir -pv"
 alias mv="mv -iv"
 alias myip4='dig @resolver1.opendns.com ANY myip.opendns.com +short -4'
@@ -38,3 +34,8 @@ alias druns="docker ps -f status=running -q | head -1"
 alias dl="docker ps -l -q"
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 alias dexec="docker exec -i -t"
+
+## start asdf
+source ~/.asdf/asdf.fish
+# needs this command too
+# mkdir -p ~/.config/fish/completions; and ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
