@@ -36,6 +36,7 @@ set shiftwidth=2
 set showbreak=↪\
 set listchars=tab:▶\ ,extends:›,precedes:‹,nbsp:•,trail:•,eol:$
 set background=dark
+
 """ depend on gitsigns.nvim intalled
 set statusline+=%{get(b:,'gitsigns_status','')}
 colorscheme tokyonight-night
@@ -44,8 +45,10 @@ colorscheme tokyonight-night
 """ ----------------------------------------------------------------- 
 
 noremap <F5> :so ~/.config/nvim/init.vim<cr>
-noremap <leader>q :Bdelete<cr>
-noremap <leader>Q :bufdo :Bdelete<cr>
+noremap <leader>q :q<cr>
+noremap <leader>Q :q!<cr>
+noremap <leader>d :Bdelete<cr>
+noremap <leader>D :bufdo :Bdelete<cr>
 nnoremap <leader>s :w<cr>
 vnoremap <leader>s :w<cr>
 

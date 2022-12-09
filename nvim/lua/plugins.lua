@@ -50,4 +50,8 @@ return require('packer').startup(function(use)
 
 	--- https://github.com/tpope/vim-unimpaired
 	use 'tpope/vim-unimpaired' 
+
+	-- https://github.com/junegunn/fzf.vim
+	use { 'junegunn/fzf', run = ":call fzf#install()" }
+	use { 'junegunn/fzf.vim' }
 end)
