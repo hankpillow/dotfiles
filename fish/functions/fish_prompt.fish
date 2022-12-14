@@ -8,5 +8,5 @@ function fish_prompt
 		printf '%s' (set_color red)(prompt_pwd) 
 	end
 	printf '%s' (set_color blue) (fish_git_prompt) 
-	printf '%s' (set_color normal) ' $ '
+	printf '%s\n' (set_color normal) '$ '
 end

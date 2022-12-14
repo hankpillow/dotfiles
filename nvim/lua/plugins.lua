@@ -10,13 +10,26 @@ return require('packer').startup(function(use)
 	use 'folke/tokyonight.nvim'
 	use 'arcticicestudio/nord-vim'
 
-	-- Load on an autocommand event
-	use {'andymass/vim-matchup', event = 'VimEnter'}
-
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-
 	use 'sheerun/vim-polyglot'
-
+	use 'moll/vim-bbye'--- manage closing buffers properly https://github.com/moll/vim-bbye 
+	use 'gcmt/wildfire.vim'--- https://github.com/gcmt/wildfire.vim/blob/master/README.md - select objects
+	use 'mhinz/vim-grepper'--- https://github.com/mhinz/vim-grepper/blob/master/doc/grepper.txt 
+	use 'tpope/vim-commentary'--- https://github.com/tpope/vim-commentary 
+	use 'tpope/vim-fugitive'---  https://github.com/tpope/vim-fugitive 
+	use 'tpope/vim-surround'--- https://github.com/tpope/vim-surround 
+	use 'tpope/vim-abolish'--- https://github.com/tpope/tpope-vim-abolish 
+	use 'tpope/vim-unimpaired'--- https://github.com/tpope/vim-unimpaired 
+	use 'matze/vim-move'--- https://github.com/matze/vim-move
+	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use { 'junegunn/fzf', run = ":call fzf#install()" } -- https://github.com/junegunn/fzf.vim
+	use { 'junegunn/fzf.vim' }
+	use 'nvim-tree/nvim-web-devicons'
+	use { 
+		'nvim-tree/nvim-tree.lua',
+		config = function()
+			require("nvim-tree").setup()
+		end
+	}
 	-- Use dependency and run lua function after load
 	-- https://github.com/lewis6991/gitsigns.nvim
 	use {
@@ -26,32 +39,7 @@ return require('packer').startup(function(use)
 		end
 	}
 
-	--- manage closing buffers properly https://github.com/moll/vim-bbye
-	use 'moll/vim-bbye' 
+	use 'neovim/nvim-lspconfig' 
+	use 'jose-elias-alvarez/null-ls.nvim'
 
-	--- https://github.com/gcmt/wildfire.vim/blob/master/README.md
-	-- With Wildfire you can quickly select the closest text object among a group of candidates. 
-	use 'gcmt/wildfire.vim' 
-
-	--- search tool using ag/rg/git etc https://github.com/mhinz/vim-grepper/blob/master/doc/grepper.txt
-	use 'mhinz/vim-grepper' 
-
-	--- https://github.com/tpope/vim-commentary
-	use 'tpope/vim-commentary' 
-
-	---  https://github.com/tpope/vim-fugitive
-	use 'tpope/vim-fugitive' 
-
-	--- https://github.com/tpope/vim-surround
-	use 'tpope/vim-surround' 
-
-	--- https://github.com/tpope/tpope-vim-abolish
-	use 'tpope/vim-abolish' 
-
-	--- https://github.com/tpope/vim-unimpaired
-	use 'tpope/vim-unimpaired' 
-
-	-- https://github.com/junegunn/fzf.vim
-	use { 'junegunn/fzf', run = ":call fzf#install()" }
-	use { 'junegunn/fzf.vim' }
 end)

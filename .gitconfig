@@ -1,14 +1,17 @@
-#https://raw.githubusercontent.com/wincent/wincent/c6bd3cb1aa3e876681b7263f54f58ba2877da29d/roles/dotfiles/files/.gitconfig
+
+[user]
+	name = Igor_Almeida
+	email = Igor_Almeida@Dell.com
 
 [core]
-	editor = vim +start
+	editor = vim
 	whitespace = cr-at-eol
-	pager = diff-so-fancy | less -RFX
 	ignorecase = true
 	fileMode = false
 
 [alias]
 	amend = commit --amend -v
+	br = branch
 	branches = "for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ "
 	ci = commit -v
 	co = checkout
@@ -23,7 +26,6 @@
 	unmerged = ls-files -u
 	unstage = reset HEAD --
 	conflict = diff --name-only --diff-filter=U
-	addd = add --normalize -u
 
 [color]
 	ui = auto
@@ -47,7 +49,7 @@
 	prompt = false
 
 [diff]
-	tool = vimdiff
+#	tool = vimdiff
 
 [grep]
 	lineNumber = true
@@ -67,10 +69,14 @@
 
 [push]
 	default = simple
+	recurseSubmodules = on-demand
+	autoSetupRemote = true
 
 [status]
 	submodulesummary = true
 
-[user]
-	email = igor.p.almeida@gmail.com
-	name = Igor Almeida
+[submodule]
+	recurse = true
+
+[http]
+	sslBackend = gnutls

@@ -10,7 +10,7 @@ alias fvim="vim (fzf)"
 alias gb='git branch | grep "*" | sed "s/* //"'
 alias grep='grep --color=auto'
 alias l="ls -1a"
-alias ll="ls -alhgp --color"
+alias ll="ls -alhp --color"
 alias mkdir="mkdir -pv"
 alias mv="mv -iv"
 alias myip4='dig @resolver1.opendns.com ANY myip.opendns.com +short -4'
