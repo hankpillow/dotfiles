@@ -1,11 +1,6 @@
 lua require('plugins')
 lua require('setup')
 
-" tree-sitter
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-set nofoldenable 
-
 """ settings
 """ ----------------------------------------------------------------- 
 let g:python3_host_prog = expand('/usr/bin/python3')
@@ -73,7 +68,9 @@ noremap <leader>d :Bdelete<CR>
 noremap <leader>D :bufdo :Bdelete<CR>
 
 nnoremap <leader>w :w<CR>
+nnoremap <leader>wq :wq<CR>
 vnoremap <leader>w :w<CR>
+vnoremap <leader>wq :wq<CR>
 
 noremap <leader>cd :lcd %:p:h<cr>
 
@@ -100,18 +97,6 @@ noremap ]b :bnext<CR>
 noremap ]j g,
 noremap [j g;
 
-" nnoremap <A-F> gg=G''
-""" Format the fil eand stay in the same line
-
-" LSP
-nnoremap <A-F> :lua vim.lsp.buf.formatting_sync()<cr> 
-nnoremap <C-SPACE> :lua vim.diagnostic.open_float()<CR>
-
-"" next/prev error
-nnoremap ]e :lua vim.diagnostic.goto_next()<CR>
-nnoremap [e :lua vim.diagnostic.goto_prev()<CR>
-imap <silent> <c-space> :lua vim.lsp.omnifunc()<CR>
-
 """ Alt Shift up/down duplicate
 noremap <A-K> yyP
 noremap <A-J> yyp
@@ -136,12 +121,11 @@ vnoremap // y/<C-R>"<CR>
 " noremap <C-P> :Files<CR>
 " noremap <C-b> :Buffers<CR>
 
-nnoremap <C-e> :NvimTreeFocus<CR>
-vnoremap <C-e> :NvimTreeFocus<CR>
-nnoremap <C-E> :NvimTreeClose<CR>
-vnoremap <C-E> :NvimTreeClose<CR>
-noremap <leader>e :NvimTreeToggle<CR>
-vnoremap <leader>e :NvimTreeToggle<CR>
+nnoremap <C-b> :NvimTreeToggle<CR>
+vnoremap <C-b> :NvimTreeToggle<CR>
+
+noremap <leader>b :NvimTreeFocus<CR>
+vnoremap <leader>b :NvimTreeFocus<CR>
 
 """ Grepping 
 " noremap <leader>g :Grepper<CR>
