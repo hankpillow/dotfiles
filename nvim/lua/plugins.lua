@@ -25,11 +25,11 @@ return require('packer').startup(function(use)
 	use 'nvim-telescope/telescope.nvim'
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-	use 'tpope/vim-fugitive'-- https://github.com/tpope/vim-fugitive 
 	-- use 'neovim/nvim-lspconfig' 
 	-- use 'kabouzeid/nvim-lspinstall'
 
 	-- use 'mhinz/vim-grepper'--- https://github.com/mhinz/vim-grepper/blob/master/doc/grepper.txt 
+	-- use 'tpope/vim-fugitive'-- https://github.com/tpope/vim-fugitive 
 	-- use 'junegunn/fzf.vim' 
 	-- use { 'junegunn/fzf', run = ":call fzf#install()" } -- https://github.com/junegunn/fzf.vim
 	-- telescopet
