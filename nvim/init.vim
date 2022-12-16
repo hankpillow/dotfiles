@@ -1,6 +1,11 @@
 lua require('plugins')
 lua require('setup')
 
+" tree-sitter
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set nofoldenable 
+
 """ settings
 """ ----------------------------------------------------------------- 
 let g:python3_host_prog = expand('/usr/bin/python3')
@@ -41,20 +46,20 @@ set showbreak=↪\
 set listchars=tab:▶\ ,extends:›,precedes:‹,nbsp:•,trail:•,eol:$
 
 function! s:statusline_expr()
-	let mod = "%{&modified ? '[+] ' : !&modifiable ? '[x] ' : ''}"
-	let ro  = "%{&readonly ? '[RO] ' : ''}"
-	let ft  = "%{len(&filetype) ? &filetype : ''}:%{len(&syntax) ? &syntax : ''} "
-	let fug = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
-	let pos = '%(%l,%c%) %P'
-	let enc = '%{&fenc == "" ? &enc : &fenc}%{(exists("+bomb") && &bomb) ? ",bomb" : ""}'
-	let path = "%{@%}"
-	let grepper = '%{grepper#statusline()}'
-	" let gitsign = '%{get(b:,'gitsigns_status','')}
-	let sep = '%='
-	return mod.path.' %<'.ro.fug.sep.' ('.grepper.') '.ft.' | '.pos.' | '.enc
+	let modified = "%{&modified ? '💾' : !&modifiable ? '🔒' : ''}"
+	let readonly  = "%{&readonly ? ' 🔎' : ''}"
+	let filetype  = "%{len(&filetype) ? &filetype.' ' : ''}"
+	let encoding = "%{&fenc == '' ? &enc : &fenc}"
+	let path = "%{pathshorten(expand('%f'),3)}"
+	let gitbranch = "%{get(b:,'gitsigns_head','')}"
+	let pos = '[%l,%c]'
+	let separator = '%='
+	return modified.readonly.path.separator.gitbranch.' '.filetype.' '.encoding.' '.pos.' '
 endfunction
 
 let &statusline = winwidth(0)>80 ? s:statusline_expr() : '%t'
+hi StatusLine ctermbg=0 guibg=Black
+set laststatus=2 
 
 """ maps
 """ ----------------------------------------------------------------- 
@@ -62,7 +67,7 @@ let &statusline = winwidth(0)>80 ? s:statusline_expr() : '%t'
 noremap <F5> :so ~/.config/nvim/init.vim<CR>
 
 noremap <leader>q :q<CR>
-noremap <leader>Q :q!<CR>
+noremap <leader>Q :qa!<CR>
 
 noremap <leader>d :Bdelete<CR>
 noremap <leader>D :bufdo :Bdelete<CR>
@@ -95,8 +100,17 @@ noremap ]b :bnext<CR>
 noremap ]j g,
 noremap [j g;
 
-""" Format the file and stay in the same line
-nnoremap <A-F> gg=G''
+" nnoremap <A-F> gg=G''
+""" Format the fil eand stay in the same line
+
+" LSP
+nnoremap <A-F> :lua vim.lsp.buf.formatting_sync()<cr> 
+nnoremap <C-SPACE> :lua vim.diagnostic.open_float()<CR>
+
+"" next/prev error
+nnoremap ]e :lua vim.diagnostic.goto_next()<CR>
+nnoremap [e :lua vim.diagnostic.goto_prev()<CR>
+imap <silent> <c-space> :lua vim.lsp.omnifunc()<CR>
 
 """ Alt Shift up/down duplicate
 noremap <A-K> yyP
@@ -118,15 +132,20 @@ nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 vnoremap // y/<C-R>"<CR>
 
 """ Open project file prompt
-noremap <C-p> :GFiles<CR>
-noremap <C-P> :Files<CR>
-noremap <C-b> :Buffers<CR>
-noremap - :NvimTreeToggle<CR>
-vnoremap - :NvimTreeToggle<CR>
+" noremap <C-p> :GFiles<CR>
+" noremap <C-P> :Files<CR>
+" noremap <C-b> :Buffers<CR>
+
+nnoremap <C-e> :NvimTreeFocus<CR>
+vnoremap <C-e> :NvimTreeFocus<CR>
+nnoremap <C-E> :NvimTreeClose<CR>
+vnoremap <C-E> :NvimTreeClose<CR>
+noremap <leader>e :NvimTreeToggle<CR>
+vnoremap <leader>e :NvimTreeToggle<CR>
 
 """ Grepping 
-noremap <leader>g :Grepper<CR>
-let g:grepper = { 'next_tool': '<leader>n' }
+" noremap <leader>g :Grepper<CR>
+" let g:grepper = { 'next_tool': '<leader>n' }
 
 """ * selects current word and stay there and send it to default copy area
 nnoremap * *N

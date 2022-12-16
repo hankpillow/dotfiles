@@ -10,10 +10,9 @@
 	fileMode = false
 
 [alias]
-	amend = commit --amend -v
-	br = branch
-	branches = "for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ "
-	ci = commit -v
+	amend = commit --amend -v -m
+	ci = commit -v -m
+	ca = !git add -A && git commit -m
 	co = checkout
 	ft = fetch --all --prune
 	graph = log --graph --format=format:\"%C(yellow)%h%C(red)%d%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)\"
@@ -25,7 +24,8 @@
 	tagss = log --tags --simplify-by-decoration --pretty=\"format:%aI %Cblue%h %Cgreen%d %Creset%ce - %s\"
 	unmerged = ls-files -u
 	unstage = reset HEAD --
-	conflict = diff --name-only --diff-filter=U
+	conflicts = diff --name-only --diff-filter=U
+	branches = "for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ "
 
 [color]
 	ui = auto
@@ -68,7 +68,7 @@
 	status = true
 
 [push]
-	default = simple
+	default = current
 	recurseSubmodules = on-demand
 	autoSetupRemote = true
 
