@@ -122,6 +122,7 @@ vnoremap // y/<C-R>"<CR>
 
 "" call git fugitive interactive git
 nnoremap <leader>gs <cmd>Git<cr>
+nnoremap <leader>gw <cmd>Gw<cr>
 
 """ * selects current word and stay there and send it to default copy area
 nnoremap * *N

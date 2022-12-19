@@ -3,6 +3,11 @@
 vim.g.loaded_netrw = 0
 vim.g.loaded_netrwPlugin = 0
 require("nvim-tree").setup({
+	update_focused_file = {
+		enable = true,
+		update_root = true,
+		-- ignore_list = {},
+	},
 	renderer = {
 		icons = {
 			show = {
@@ -17,8 +22,8 @@ require("nvim-tree").setup({
 )
 
 vim.cmd([[
-nnoremap <C-b> :NvimTreeToggle<CR>
-vnoremap <C-b> :NvimTreeToggle<CR>
+nnoremap - :NvimTreeToggle<CR>
+vnoremap - :NvimTreeToggle<CR>
 
 noremap <leader>b :NvimTreeFocus<CR>
 vnoremap <leader>b :NvimTreeFocus<CR>
