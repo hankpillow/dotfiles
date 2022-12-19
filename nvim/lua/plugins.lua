@@ -10,6 +10,8 @@ return require('packer').startup(function(use)
 	use 'folke/tokyonight.nvim'
 	use 'arcticicestudio/nord-vim'
 
+	use { "wbthomason/packer.nvim" }
+
 	use 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
 	use 'sheerun/vim-polyglot'
 	use 'moll/vim-bbye'--- manage closing buffers properly https://github.com/moll/vim-bbye 
@@ -21,16 +23,15 @@ return require('packer').startup(function(use)
 	use 'matze/vim-move'--- https://github.com/matze/vim-move
 	use 'nvim-tree/nvim-tree.lua' 
 	use 'lewis6991/gitsigns.nvim' -- https://github.com/lewis6991/gitsigns.nvim
+	use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+	use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+  use 'L3MON4D3/LuaSnip' -- Snippets plugin
 	use 'jose-elias-alvarez/null-ls.nvim'
+	use 'jose-elias-alvarez/typescript.nvim'
 	use 'nvim-telescope/telescope.nvim'
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-	use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
-	-- use 'neovim/nvim-lspconfig' 
-	-- use 'kabouzeid/nvim-lspinstall'
-
-	-- use 'mhinz/vim-grepper'--- https://github.com/mhinz/vim-grepper/blob/master/doc/grepper.txt 
-	-- use 'tpope/vim-fugitive'-- https://github.com/tpope/vim-fugitive 
-	-- use 'junegunn/fzf.vim' 
-	-- use { 'junegunn/fzf', run = ":call fzf#install()" } -- https://github.com/junegunn/fzf.vim
-	-- telescopet
+	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+	use 'tpope/vim-fugitive'-- https://github.com/tpope/vim-fugitive 
 end)

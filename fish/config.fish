@@ -35,7 +35,13 @@ alias dl="docker ps -l -q"
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 alias dexec="docker exec -i -t"
 
+## Exportiong other binaries to PATH
+set PATH /home/igor/workspace/lua-language-server/bin $PATH
+
 ## start asdf
 source ~/.asdf/asdf.fish
-# needs this command too
-# mkdir -p ~/.config/fish/completions; and ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
+if not test -f ~/.config/fish/completions/asdf.fish
+	mkdir -p ~/.config/fish/completions; 
+	ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
+end
+

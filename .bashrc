@@ -50,3 +50,5 @@ source /usr/lib/git-core/git-sh-prompt
 PS1='\[\033[01;34m\]\w\[\033[00m\] $(__git_ps1 "(%s)")\$ '
 
 . "$HOME/.cargo/env"
+
+alias luamake=/home/igor/workspace/lua-language-server/3rd/luamake/luamake

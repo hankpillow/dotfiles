@@ -1,4 +1,8 @@
 lua require('plugins')
+lua require('setup-explorer')
+lua require('setup-lsp')
+lua require('setup-telescope')
+lua require('setup-treesitter')
 lua require('setup')
 
 """ settings
@@ -116,20 +120,8 @@ nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 """ "on the page for more results
 vnoremap // y/<C-R>"<CR>
 
-""" Open project file prompt
-" noremap <C-p> :GFiles<CR>
-" noremap <C-P> :Files<CR>
-" noremap <C-b> :Buffers<CR>
-
-nnoremap <C-b> :NvimTreeToggle<CR>
-vnoremap <C-b> :NvimTreeToggle<CR>
-
-noremap <leader>b :NvimTreeFocus<CR>
-vnoremap <leader>b :NvimTreeFocus<CR>
-
-""" Grepping 
-" noremap <leader>g :Grepper<CR>
-" let g:grepper = { 'next_tool': '<leader>n' }
+"" call git fugitive interactive git
+nnoremap <leader>gs <cmd>Git<cr>
 
 """ * selects current word and stay there and send it to default copy area
 nnoremap * *N
