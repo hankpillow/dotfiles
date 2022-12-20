@@ -1,5 +1,4 @@
 -----------------------nvim-tree
--- https://github.com/nvim-tree/nvim-tree.lua#setup
 vim.g.loaded_netrw = 0
 vim.g.loaded_netrwPlugin = 0
 require("nvim-tree").setup({
@@ -11,15 +10,14 @@ require("nvim-tree").setup({
 	renderer = {
 		icons = {
 			show = {
-				file = false,
-				folder = false,
-				folder_arrow = false,
+				file = true,
+				folder = true,
+				folder_arrow = true,
 				git = true
 			}
 		}
 	}
-	}	
-)
+	})
 
 vim.cmd([[
 nnoremap - :NvimTreeToggle<CR>

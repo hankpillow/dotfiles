@@ -8,6 +8,7 @@ lua require('setup')
 """ settings
 """ ----------------------------------------------------------------- 
 let g:python3_host_prog = expand('/usr/bin/python3')
+let g:netrw_browsex_viewer= "xdg-open"
 
 set relativenumber
 
@@ -39,7 +40,7 @@ set shiftwidth=2
 """ ----------------------------------------------------------------- 
 
 set background=dark
-colorscheme tokyonight-night
+colorscheme rose-pine
 
 set showbreak=↪\
 set listchars=tab:▶\ ,extends:›,precedes:‹,nbsp:•,trail:•,eol:$
@@ -123,9 +124,15 @@ vnoremap // y/<C-R>"<CR>
 "" call git fugitive interactive git
 nnoremap <leader>gs <cmd>Git<cr>
 nnoremap <leader>gw <cmd>Gw<cr>
+nnoremap <leader>gb <cmd>Gitsigns toggle_current_line_blame<cr>
 
 """ * selects current word and stay there and send it to default copy area
 nnoremap * *N
 
 """ select word under cursor and make it ready to be replaced in that file
 noremap <F2> yviw*N:%s///g<left><left>
+
+noremap <A-F> :normal gg=Gg;<cr>
+vnoremap <A-F> :normal gg=Gg;<cr>
+
+

@@ -9,11 +9,11 @@ require('telescope').setup({
 })
 
 vim.cmd([[
-nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <C-p> <cmd>Telescope find_files previewer=false<cr>
 nnoremap <C-f> <cmd>Telescope live_grep<cr>
 nnoremap <A-P> <cmd>Telescope<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fc <cmd>Telescope commands<cr>
-nnoremap <leader>br <cmd>Telescope git_branches<cr>
+nnoremap <leader>br <cmd>Telescope git_branches previewer=false<cr>
 ]])
 

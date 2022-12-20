@@ -1,5 +1,18 @@
------------------------gitsigns
-require('gitsigns').setup()
+require("gitsigns").setup()
+require("trouble").setup {
+	icons = false
+}
+
+vim.cmd([[
+nnoremap <leader>xx <cmd>TroubleToggle<cr>
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+]])
+
+require'nvim-web-devicons'.setup {
+	color_icons = true;
+	default = true;
+}
 
 ------------------------null-ls
 local null_ls = require("null-ls")
@@ -14,6 +27,7 @@ null_ls.setup({
 		null_ls.builtins.diagnostics.fish,
 		null_ls.builtins.completion.tags,
 		null_ls.builtins.formatting.prettier,
+		null_ls.builtins.code_actions.gitsigns,
 		require("typescript.extensions.null-ls.code-actions"),
 	},
 })
