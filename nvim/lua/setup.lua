@@ -1,33 +1,16 @@
 require("gitsigns").setup()
-require("trouble").setup {
-	icons = false
-}
 
-vim.cmd([[
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
-nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
-nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
-]])
+require("trouble").setup()
 
-require'nvim-web-devicons'.setup {
+require("rose-pine").setup({
+	disable_italics = true
+})
+
+require("nvim-web-devicons").setup({
 	color_icons = true;
 	default = true;
-}
-
-------------------------null-ls
-local null_ls = require("null-ls")
-null_ls.setup({
-	debug = true,
-	sources = {
-		null_ls.builtins.code_actions.eslint_d,
-		null_ls.builtins.diagnostics.jsonlint,
-		null_ls.builtins.diagnostics.commitlint,
-		null_ls.builtins.diagnostics.eslint_d,
-		null_ls.builtins.diagnostics.shellcheck,
-		null_ls.builtins.diagnostics.fish,
-		null_ls.builtins.completion.tags,
-		null_ls.builtins.formatting.prettier,
-		null_ls.builtins.code_actions.gitsigns,
-		require("typescript.extensions.null-ls.code-actions"),
-	},
 })
+
+vim.cmd([[
+colorscheme rose-pine
+]])

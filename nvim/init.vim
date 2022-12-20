@@ -54,7 +54,7 @@ function! s:statusline_expr()
 	let gitbranch = "%{get(b:,'gitsigns_head','')}"
 	let pos = '[%l,%c]'
 	let separator = '%='
-	return modified.readonly.path.separator.gitbranch.' '.filetype.' '.encoding.' '.pos.' '
+	return modified.readonly.path.gitbranch.separator.' '.filetype.' '.encoding.' '.pos.' '
 endfunction
 
 let &statusline = winwidth(0)>80 ? s:statusline_expr() : '%t'
