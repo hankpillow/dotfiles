@@ -9,6 +9,7 @@ require'nvim-treesitter.configs'.setup {
 		"gitignore",
 		"html",
 		"javascript",
+		"help",
 		"json",
 		"lua",
 		"typescript",
@@ -18,14 +19,19 @@ require'nvim-treesitter.configs'.setup {
 	},
 	auto_install = true,
 	highlight = {
-		additional_vim_regex_highlighting = false,
 		enable = true
 	},
 	indent = {
 		enable = true
 	},
 	incremental_selection = {
-		enable = true
+		enable = true,
+		keymaps = {
+      init_selection = '<c-space>',
+      node_incremental = '<c-space>',
+      scope_incremental = '<c-s>',
+      node_decremental = '<c-backspace>',
+    },
 	},
 }
 vim.cmd([[

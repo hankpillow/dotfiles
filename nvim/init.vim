@@ -1,5 +1,6 @@
 lua require('plugins')
 lua require('setup-explorer')
+lua require('setup-statusline')
 lua require('setup-lsp')
 lua require('setup-telescope')
 lua require('setup-treesitter')
@@ -45,21 +46,21 @@ colorscheme rose-pine
 set showbreak=↪\
 set listchars=tab:▶\ ,extends:›,precedes:‹,nbsp:•,trail:•,eol:$
 
-function! s:statusline_expr()
-	let modified = "%{&modified ? '💾' : !&modifiable ? '🔒' : ''}"
-	let readonly  = "%{&readonly ? ' 🔎' : ''}"
-	let filetype  = "%{len(&filetype) ? &filetype.' ' : ''}"
-	let encoding = "%{&fenc == '' ? &enc : &fenc}"
-	let path = "%{pathshorten(expand('%f'),3)}"
-	let gitbranch = "%{get(b:,'gitsigns_head','')}"
-	let pos = '[%l,%c]'
-	let separator = '%='
-	return modified.readonly.path.gitbranch.separator.' '.filetype.' '.encoding.' '.pos.' '
-endfunction
+" function! s:statusline_expr()
+" 	let modified = "%{&modified ? '💾' : !&modifiable ? '🔒' : ''}"
+" 	let readonly  = "%{&readonly ? ' 🔎' : ''}"
+" 	let filetype  = "%{len(&filetype) ? &filetype.' ' : ''}"
+" 	let encoding = "%{&fenc == '' ? &enc : &fenc}"
+" 	let path = "%{pathshorten(expand('%f'),3)}"
+" 	let gitbranch = "%{get(b:,'gitsigns_head','')}"
+" 	let pos = '[%l,%c]'
+" 	let separator = '%='
+" 	return modified.readonly.path.gitbranch.separator.' '.filetype.' '.encoding.' '.pos.' '
+" endfunction
 
-let &statusline = winwidth(0)>80 ? s:statusline_expr() : '%t'
-hi StatusLine ctermbg=0 guibg=Black
-set laststatus=2 
+" let &statusline = winwidth(0)>80 ? s:statusline_expr() : '%t'
+" hi StatusLine ctermbg=0 guibg=Black
+" set laststatus=2 
 
 """ maps
 """ ----------------------------------------------------------------- 
@@ -111,11 +112,6 @@ vnoremap <A-J> yp
 """ start replace prompt
 nnoremap <leader>r :%s///gc<left><left><left><left>
 vnoremap <leader>r :s///gc<left><left><left><left>
-
-""" https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
-""" smart move inside multiline
-nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
-nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 
 """ "copy selection on visual mode and start searching
 """ "on the page for more results
