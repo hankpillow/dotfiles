@@ -132,5 +132,3 @@ nnoremap [z zk
 nnoremap ]z zj
 
 autocmd FileType {javascript,css,sass,scss,markdown,markdown.mdx,jsx,html,json,typescript} nnoremap<buffer><A-F> :silent !prettierd -w %:p<CR> update!
-autocmd FileType {javascript,css,sass,scss,markdown,markdown.mdx,jsx,html,json,typescript} nnoremap<buffer><A-f> :silent !eslint_d -w --fix %:p && prettierd -w %:p<CR> update!
-
