@@ -36,19 +36,24 @@ alias dl="docker ps -l -q"
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 alias dexec="docker exec -i -t"
 
+alias luamake=/home/igor/workspace/lua-language-server/3rd/luamake/luamake
+
 # asdf initialization
 if [[ -d $HOME/.asdf ]]; 
 then
-	. $HOME/.asdf/asdf.sh
-	. $HOME/.asdf/completions/asdf.bash
+	. "$HOME/.asdf/asdf.sh"
+	. "$HOME/.asdf/completions/asdf.bash"
 fi
 
+ . "$HOME/.cargo/env"
+
 source /usr/lib/git-core/git-sh-prompt
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/doc/fzf/examples/completion.bash
+
 # user@host location\n (git branch) $prompt
 # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\n$(__git_ps1 "(%s)") \$ '
 # location (git_branc) $prompt
 PS1='\[\033[01;34m\]\w\[\033[00m\] $(__git_ps1 "(%s)")\$ '
 
-. "$HOME/.cargo/env"
 
-alias luamake=/home/igor/workspace/lua-language-server/3rd/luamake/luamake

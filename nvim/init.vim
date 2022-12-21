@@ -74,7 +74,7 @@ nnoremap <leader>wq :wq<CR>
 vnoremap <leader>w :w<CR>
 vnoremap <leader>wq :wq<CR>
 
-nnoremap <leader>gs :wq<CR>
+nnoremap <leader>gs :Git<CR>
 
 noremap <leader>cd :lcd %:p:h<CR>
 
