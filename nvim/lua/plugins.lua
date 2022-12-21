@@ -35,7 +35,7 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-surround'--- https://github.com/tpope/vim-surround 
 	use 'tpope/vim-unimpaired'--- https://github.com/tpope/vim-unimpaired 
 	use 'tpope/vim-fugitive'-- https://github.com/tpope/vim-fugitive 
-	use 'matze/vim-move'--- https://github.com/matze/vim-move
+	use 'matze/vim-move'--- https://github.lukas-reineke/indent-blankline.nvimcom/matze/vim-move
 
 	-- UI
 

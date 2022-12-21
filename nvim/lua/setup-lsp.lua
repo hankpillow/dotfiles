@@ -39,7 +39,7 @@ local on_attach = function(client, bufnr)
 	end
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-	nmap('<A-F>', vim.lsp.buf.format, 'Format buffer')
+	-- nmap('<A-F>', vim.lsp.buf.format, 'Format buffer')
 	nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 	nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
 

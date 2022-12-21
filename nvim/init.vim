@@ -11,14 +11,18 @@ lua require('setup')
 """ ----------------------------------------------------------------- 
 let g:python3_host_prog = expand('/usr/bin/python3')
 let g:netrw_browsex_viewer= "xdg-open"
+
 set termguicolors
 
 set relativenumber
 
 """ folding
-set foldcolumn=1
-set foldmethod=syntax
-set nofoldenable	
+" set foldcolumn=1
+" set foldmethod=syntax
+" set nofoldenable	
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+" autocmd BufReadPost,FileReadPost * normal zR
 
 """ window splits
 set splitbelow
@@ -124,4 +128,9 @@ noremap <F2> yviw*N:%s///g<left><left>
 noremap <A-F> :normal gg=Gg;<CR>
 vnoremap <A-F> :normal gg=Gg;<CR>
 
+nnoremap [z zk
+nnoremap ]z zj
+
+autocmd FileType {javascript,css,sass,scss,markdown,markdown.mdx,jsx,html,json,typescript} nnoremap<buffer><A-f> :silent !prettier -w %:p<CR>
+autocmd FileType {javascript,css,sass,scss,markdown,markdown.mdx,jsx,html,json,typescript} nnoremap<buffer><A-l> :silent !eslint_d -w --fix %:p && prettier -w %:p<CR>
 

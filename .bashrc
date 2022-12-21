@@ -8,8 +8,8 @@ alias en1="ipconfig getpacket en1 | grep -h ip"
 alias fvim="vim (fzf)"
 alias gb='git branch | grep "*" | sed "s/* //"'
 alias grep='grep --color=auto'
-alias l="ls -1a"
-alias ll="ls -lah"
+alias l="ls -1a --color"
+alias ll="ls -lah --color"
 alias mkdir="mkdir -pv"
 alias mv="mv -iv"
 alias myip4='dig @resolver1.opendns.com ANY myip.opendns.com +short -4'
@@ -56,4 +56,5 @@ source /usr/share/doc/fzf/examples/completion.bash
 # location (git_branc) $prompt
 PS1='\[\033[01;34m\]\w\[\033[00m\] $(__git_ps1 "(%s)")\$ '
 
-
+echo welcome $USER
+cd $HOME
