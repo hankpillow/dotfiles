@@ -125,12 +125,12 @@ nnoremap * *N
 noremap <F2> yviw*N:%s///g<left><left>
 
 """ format document 
-noremap <A-F> :normal gg=Gg;<CR>
-vnoremap <A-F> :normal gg=Gg;<CR>
+noremap <A-F> gg=Gg;<CR>
+vnoremap <A-F> gg=Gg;<CR>
 
 nnoremap [z zk
 nnoremap ]z zj
 
-autocmd FileType {javascript,css,sass,scss,markdown,markdown.mdx,jsx,html,json,typescript} nnoremap<buffer><A-f> :silent !prettier -w %:p<CR>
-autocmd FileType {javascript,css,sass,scss,markdown,markdown.mdx,jsx,html,json,typescript} nnoremap<buffer><A-l> :silent !eslint_d -w --fix %:p && prettier -w %:p<CR>
+autocmd FileType {javascript,css,sass,scss,markdown,markdown.mdx,jsx,html,json,typescript} nnoremap<buffer><A-F> :silent !prettier -w %:p<CR> update!
+autocmd FileType {javascript,css,sass,scss,markdown,markdown.mdx,jsx,html,json,typescript} nnoremap<buffer><A-f> :silent !eslint_d -w --fix %:p && prettier -w %:p<CR> update!
 
