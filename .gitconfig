@@ -46,10 +46,10 @@
 	untracked = cyan
 
 [difftool]
-	prompt = false
+	tool = vscode
 
-[diff]
-#	tool = vimdiff
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
 
 [grep]
 	lineNumber = true

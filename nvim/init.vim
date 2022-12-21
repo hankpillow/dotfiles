@@ -4,12 +4,14 @@ lua require('setup-statusline')
 lua require('setup-lsp')
 lua require('setup-telescope')
 lua require('setup-treesitter')
+lua require('setup-gitsigns')
 lua require('setup')
 
 """ settings
 """ ----------------------------------------------------------------- 
 let g:python3_host_prog = expand('/usr/bin/python3')
 let g:netrw_browsex_viewer= "xdg-open"
+set termguicolors
 
 set relativenumber
 
@@ -39,12 +41,6 @@ set shiftwidth=2
 
 """ theme
 """ ----------------------------------------------------------------- 
-
-set background=dark
-colorscheme rose-pine
-
-set showbreak=↪\
-set listchars=tab:▶\ ,extends:›,precedes:‹,nbsp:•,trail:•,eol:$
 
 " function! s:statusline_expr()
 " 	let modified = "%{&modified ? '💾' : !&modifiable ? '🔒' : ''}"
@@ -78,7 +74,9 @@ nnoremap <leader>wq :wq<CR>
 vnoremap <leader>w :w<CR>
 vnoremap <leader>wq :wq<CR>
 
-noremap <leader>cd :lcd %:p:h<cr>
+nnoremap <leader>gs :wq<CR>
+
+noremap <leader>cd :lcd %:p:h<CR>
 
 """ to the end/start of the line
 noremap E g_
@@ -89,7 +87,6 @@ noremap <leader>cd :lcd %:p:h<CR>
 
 """ toggle
 noremap <leader>l :set list!<CR>
-noremap <leader>h :set nohlsearch!<CR>
 noremap <leader>; :set wrap!<CR>
 
 """ fold 
@@ -117,18 +114,14 @@ vnoremap <leader>r :s///gc<left><left><left><left>
 """ "on the page for more results
 vnoremap // y/<C-R>"<CR>
 
-"" call git fugitive interactive git
-nnoremap <leader>gs <cmd>Git<cr>
-nnoremap <leader>gw <cmd>Gw<cr>
-nnoremap <leader>gb <cmd>Gitsigns toggle_current_line_blame<cr>
-
 """ * selects current word and stay there and send it to default copy area
 nnoremap * *N
 
 """ select word under cursor and make it ready to be replaced in that file
 noremap <F2> yviw*N:%s///g<left><left>
 
-noremap <A-F> :normal gg=Gg;<cr>
-vnoremap <A-F> :normal gg=Gg;<cr>
+""" format document 
+noremap <A-F> :normal gg=Gg;<CR>
+vnoremap <A-F> :normal gg=Gg;<CR>
 
 

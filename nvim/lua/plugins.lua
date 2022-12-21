@@ -30,10 +30,9 @@ return require('packer').startup(function(use)
 	-- settings
 	use 'sheerun/vim-polyglot'
 	use 'moll/vim-bbye'--- manage closing buffers properly https://github.com/moll/vim-bbye 
-	use 'gcmt/wildfire.vim'--- https://github.com/gcmt/wildfire.vim/blob/master/README.md - select objects
+	-- use 'gcmt/wildfire.vim'--- https://github.com/gcmt/wildfire.vim/blob/master/README.md - select objects
 	use 'tpope/vim-commentary'--- https://github.com/tpope/vim-commentary 
 	use 'tpope/vim-surround'--- https://github.com/tpope/vim-surround 
-	use 'tpope/vim-abolish'--- https://github.com/tpope/tpope-vim-abolish 
 	use 'tpope/vim-unimpaired'--- https://github.com/tpope/vim-unimpaired 
 	use 'tpope/vim-fugitive'-- https://github.com/tpope/vim-fugitive 
 	use 'matze/vim-move'--- https://github.com/matze/vim-move
@@ -83,10 +82,7 @@ return require('packer').startup(function(use)
 	-- display lsp diagnostic
 	use 'folke/trouble.nvim' -- https://github.com/folke/trouble.nvim
 
-	-- use 'jose-elias-alvarez/null-ls.nvim'
-	-- use 'jose-elias-alvarez/typescript.nvim'
-
-	-- Git
+	-- Git decorations
 	use 'lewis6991/gitsigns.nvim' -- https://github.com/lewis6991/gitsigns.nvim
 
 	-- Fancier statusline

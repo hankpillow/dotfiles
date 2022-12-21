@@ -16,8 +16,7 @@ nnoremap <C-p> <cmd>Telescope find_files previewer=false<cr>
 nnoremap <C-f> <cmd>Telescope live_grep<cr>
 nnoremap <A-P> <cmd>Telescope<cr>
 nnoremap <leader>? <cmd>Telescope oldfiles<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fc <cmd>Telescope commands<cr>
+nnoremap <leader>fb <cmd>Telescope buffers previewer=false<cr>
 nnoremap <leader>br <cmd>Telescope git_branches previewer=false<cr>
 ]])
 

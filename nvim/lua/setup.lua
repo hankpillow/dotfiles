@@ -32,18 +32,6 @@ require('indent_blankline').setup {
   show_trailing_blankline_indent = false,
 }
 
--- Gitsigns
--- See `:help gitsigns.txt`
-require('gitsigns').setup {
-  signs = {
-    add = { text = '+' },
-    change = { text = '~' },
-    delete = { text = '_' },
-    topdelete = { text = '‾' },
-    changedelete = { text = '~' },
-  },
-}
-
 require("trouble").setup()
 vim.cmd([[
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
@@ -59,6 +47,10 @@ require("nvim-web-devicons").setup {
 require("rose-pine").setup {
   disable_italics = true
 }
+
 vim.cmd([[
-colorscheme rose-pine
+set background=dark
+colorscheme rose-pine 
+set showbreak=↪\
+set listchars=tab:▶\ ,extends:›,precedes:‹,nbsp:•,trail:•,eol:$
 ]])
