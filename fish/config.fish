@@ -40,10 +40,10 @@ if not test -f ~/.local/bin/fd
 end
 
 ## Exportiong other binaries to PATH
-set PATH /home/igor/workspace/lua-language-server/bin $PATH
+set PATH $HOME/workspace/lua-language-server/bin $PATH
 
 set -gx FZF_DEFAULT_OPTS "--height 40% --layout=reverse --border --inline-info"
-set -gx FZF_DEFAULT_COMMAND "fdfind --hidden -E .git  -E node_modules"
+set -gx FZF_DEFAULT_COMMAND "fdfind --hidden -E .git -E node_modules"
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
  
 mkdir -p ~/.config/fish/functions/
