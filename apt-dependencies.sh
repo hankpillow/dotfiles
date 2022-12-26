@@ -3,7 +3,7 @@ sudo apt-get update
 sudo apt-get -y install\
 	fzf fd-find ripgrep silversearcher-ag neovim\
 	python3-neovim  python3 python3-pip\
-	ninja-build make clang
+	ninja-build make clang vim zip curl wget
 
 pip install codespell
 
