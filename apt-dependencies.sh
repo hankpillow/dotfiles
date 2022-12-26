@@ -10,7 +10,7 @@ pip install codespell
 if [[ $(which node) ]];
 then
 	npm i -g node-gyp
-	npm i -g eslint_d @fsouza/prettierd tree-sitter-cli vscode-langservers-extracted
+	npm i -g eslint_d @fsouza/prettierd tree-sitter-cli vscode-langservers-extracted http-server
 fi
 
 echo install lua lsp https://github.com/sumneko/lua-language-server/wiki/Getting-Started#command-line
