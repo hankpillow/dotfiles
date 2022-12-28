@@ -7,27 +7,30 @@ table.insert(runtime_path, 'lua/?/init.lua')
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<leader><space>', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.diagnostic.config({virtual_text = false})
+vim.diagnostic.config({ virtual_text = false })
 
 -- Setup mason so it can manage external tooling
 local servers = {
 	'tsserver',
-	'sumneko_lua' ,
+	'sumneko_lua',
 	'angularls',
 	'bashls',
 	'cssls',
 	'dockerls',
+	'stylelint_lsp',
 	'eslint',
 	'html',
 	'marksman'
 }
+
 require('mason').setup()
 require('mason-lspconfig').setup {
-	ensure_installed = servers
+	ensure_installed = servers,
+	-- automatic_installation = true,
 }
 
 -- Use an on_attach function to only map the following keys
@@ -152,4 +155,3 @@ cmp.setup {
 		{ name = 'luasnip' },
 	},
 }
-

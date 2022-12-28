@@ -21,6 +21,7 @@ alias ports="lsof -Pn -i4 | grep LISTEN"
 alias ports="lsof -Pn -i4 | grep LISTEN"
 alias sudo="sudo "
 alias vi="nvim"
+alias job="echo (jobs|fzf) | awk '{print $1}' | fg"
 
 #tmux
 alias tn="tmux new -s"
@@ -34,6 +35,7 @@ alias druns="docker ps -f status=running -q | head -1"
 alias dl="docker ps -l -q"
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 alias dexec="docker exec -i -t"
+# alias job="echo go (jobs | fzf)"
 
 set -gx FZF_DEFAULT_OPTS "--height 40% --layout=reverse --border --inline-info"
 set -gx FZF_DEFAULT_COMMAND "fdfind --hidden -E .git -E node_modules"

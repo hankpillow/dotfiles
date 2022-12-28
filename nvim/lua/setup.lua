@@ -34,9 +34,8 @@ require('indent_blankline').setup {
 
 require("trouble").setup()
 vim.cmd([[
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
 nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
-nnoremap <leader>xd <cmd>TroubleToggle document_diagnostics<cr>
+nnoremap <leader>xx <cmd>TroubleToggle document_diagnostics<cr>
 ]])
 
 require("nvim-web-devicons").setup {
