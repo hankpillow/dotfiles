@@ -14,7 +14,8 @@ let g:netrw_browsex_viewer= "xdg-open"
 
 set termguicolors
 
-set relativenumber
+""" current line shows the line number but others relative
+set number relativenumber
 
 """ folding
 " set foldcolumn=1
@@ -131,4 +132,4 @@ vnoremap <A-F> gg=Gg;<CR>
 nnoremap [z zk
 nnoremap ]z zj
 
-autocmd FileType {javascript,css,sass,scss,markdown,markdown.mdx,jsx,html,json,typescript} nnoremap<buffer><A-F> :%!prettierd %:p<CR>
+" autocmd FileType {javascript,css,sass,scss,markdown,markdown.mdx,jsx,html,json,typescript} nnoremap<buffer><A-F> :%!prettierd %:p<CR>

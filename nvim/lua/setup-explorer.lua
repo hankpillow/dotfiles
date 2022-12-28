@@ -20,9 +20,10 @@ require("nvim-tree").setup({
 })
 
 vim.cmd([[
-nnoremap - :NvimTreeToggle<CR>
-vnoremap - :NvimTreeToggle<CR>
+""" open tree from current file
+nnoremap - :NvimTreeOpen %:p:h<cr>
+vnoremap - :NvimTreeOpen %:p:h<cr>
 
-noremap <leader>b :NvimTreeFocus<CR>
-vnoremap <leader>b :NvimTreeFocus<CR>
+nnoremap <C-b> :NvimTreeToggle<CR>
+vnoremap <C-b> :NvimTreeToggle<CR>
 ]])

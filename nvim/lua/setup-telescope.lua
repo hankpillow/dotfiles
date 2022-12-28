@@ -14,9 +14,9 @@ pcall(require('telescope').load_extension, 'fzf')
 vim.cmd([[
 nnoremap <C-p> <cmd>Telescope find_files previewer=false<cr>
 nnoremap <C-f> <cmd>Telescope live_grep<cr>
-nnoremap <C-b>fb <cmd>Telescope buffers previewer=false<cr>
-nnoremap <A-P> <cmd>Telescope commands<cr>
-nnoremap <leader>t <cmd>Telescope<cr>
+nnoremap <space><space> <cmd>Telescope buffers previewer=false<cr>
+nnoremap <A-C> <cmd>Telescope commands<cr>
+nnoremap <A-T> <cmd>Telescope<cr>
 nnoremap <space>? <cmd>Telescope oldfiles<cr>
 nnoremap <leader>br <cmd>Telescope git_branches previewer=false<cr>
 ]])
