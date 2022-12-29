@@ -100,17 +100,17 @@ end
 
 -- Turn on lsp status information
 require('fidget').setup()
-
-require('lspconfig').sumneko_lua.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		Lua = {
-			workspace = { checkThirdParty = false },
-			telemetry = { enable = false },
-		},
-	},
-}
+local lspconfig = require('lspconfig');
+-- lspconfig.sumneko_lua.setup {
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- 	settings = {
+-- 		Lua = {
+-- 			workspace = { checkThirdParty = false },
+-- 			telemetry = { enable = false },
+-- 		},
+-- 	},
+-- }
 
 -- luasnip setup
 local luasnip = require('luasnip')
