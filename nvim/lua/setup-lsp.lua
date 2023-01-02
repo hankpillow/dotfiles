@@ -30,7 +30,7 @@ local servers = {
 require('mason').setup()
 require('mason-lspconfig').setup {
 	ensure_installed = servers,
-	-- automatic_installation = true,
+	automatic_installation = true
 }
 
 -- Use an on_attach function to only map the following keys
@@ -100,17 +100,6 @@ end
 
 -- Turn on lsp status information
 require('fidget').setup()
-local lspconfig = require('lspconfig');
--- lspconfig.sumneko_lua.setup {
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- 	settings = {
--- 		Lua = {
--- 			workspace = { checkThirdParty = false },
--- 			telemetry = { enable = false },
--- 		},
--- 	},
--- }
 
 -- luasnip setup
 local luasnip = require('luasnip')
@@ -155,3 +144,10 @@ cmp.setup {
 		{ name = 'luasnip' },
 	},
 }
+
+require("trouble").setup()
+vim.cmd([[
+nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
+nnoremap <leader>xx <cmd>TroubleToggle document_diagnostics<cr>
+]])
+

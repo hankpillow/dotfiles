@@ -1,26 +1,13 @@
 [core]
-	editor = vim
-	whitespace = cr-at-eol
-	ignorecase = true
+	excludesfile = ~/.gitignore
+	editor = nvim
+	ignorecase = false
 	fileMode = false
 
-[alias]
-	amend = commit --amend -v -m
-	ci = commit -v -m
-	ca = !git add -A && git commit -m
-	co = checkout
-	ft = fetch --all --prune
-	graph = log --graph --format=format:\"%C(yellow)%h%C(red)%d%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)\"
-	in = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
-	ls = log --format=format:\"%C(yellow)%h%C(red)%d %C(reset)%s%C(blue) <%an>%C(reset)\"
-	st = status --short --branch
-	staged = diff --cached
-	tags = log --tags --simplify-by-decoration --pretty=\"format:%h %D\"
-	tagss = log --tags --simplify-by-decoration --pretty=\"format:%aI %Cblue%h %Cgreen%d %Creset%ce - %s\"
-	unmerged = ls-files -u
-	unstage = reset HEAD --
-	conflicts = diff --name-only --diff-filter=U
-	branches = "for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ "
+[push]
+	default = current
+	recurseSubmodules = on-demand
+	autoSetupRemote = true
 
 [color]
 	ui = auto
@@ -28,6 +15,33 @@
 	diff = auto
 	interactive = auto
 	status = auto
+	grep = auto
+	interactive = auto
+
+[alias]
+	amend = commit --amend -v -m
+	d = diff
+	co = checkout
+	ci = commit
+	ca = commit -a
+  ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+  pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
+	st = status --short --branch
+	br = branch
+	ba = branch -a
+	bm = branch --merged
+	bn = branch --no-merged
+	branches = "for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ "
+	ft = fetch --all --prune
+	ls = log --format=format:\"%C(yellow)%h%C(red)%d %C(reset)%s%C(blue) <%an>%C(reset)\"
+	graph = log --graph --format=format:\"%C(yellow)%h%C(red)%d%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)\"
+	in = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
+	staged = diff --cached
+	tags = log --tags --simplify-by-decoration --pretty=\"format:%h %D\"
+	tagss = log --tags --simplify-by-decoration --pretty=\"format:%aI %Cblue%h %Cgreen%d %Creset%ce - %s\"
+	unmerged = ls-files -u
+	unstage = reset HEAD --
+	conflict = diff --name-only --diff-filter=U
 
 [color "diff"]
 	meta = yellow
@@ -62,10 +76,6 @@
 	show-branch = true
 	status = true
 
-[push]
-	default = current
-	recurseSubmodules = on-demand
-	autoSetupRemote = true
 
 [status]
 	submodulesummary = true

@@ -1,6 +1,3 @@
--- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
-
--- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -9,7 +6,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.cmd [[packadd packer.nvim]]
 end
 
-return require('packer').startup(function(use)
+require("packer").startup(function(use)
 
 	-- common dependencies
 	use 'wbthomason/packer.nvim'
@@ -61,6 +58,8 @@ return require('packer').startup(function(use)
 		'hrsh7th/nvim-cmp',
 		requires = {
 			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-buffer',
+			'glepnir/lspsaga.nvim',
 			'L3MON4D3/LuaSnip',
 			'saadparwaiz1/cmp_luasnip'
 		},
@@ -75,6 +74,7 @@ return require('packer').startup(function(use)
 		requires = {
 			'williamboman/mason.nvim',
 			'williamboman/mason-lspconfig.nvim',
+			'jose-elias-alvarez/null-ls.nvim',
 			'j-hui/fidget.nvim',
 		},
 	}
@@ -92,7 +92,10 @@ return require('packer').startup(function(use)
 	use {
 		'nvim-telescope/telescope.nvim',
 		branch = '0.1.x',
-		requires = { 'nvim-lua/plenary.nvim' }
+		requires = { 
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope-file-browser.nvim'
+		}
 	}
 
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
@@ -101,6 +104,12 @@ return require('packer').startup(function(use)
 		run = 'make',
 		cond = vim.fn.executable 'make' == 1
 	}
+
+	use { 'numToStr/Comment.nvim',
+    requires = {
+      'JoosepAlviste/nvim-ts-context-commentstring'
+    }
+  }
 
 	if is_bootstrap then
 		require('packer').sync()
