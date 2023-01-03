@@ -1,3 +1,4 @@
+echo "env vars..."
 set fish_greeting ""
 set -gx FZF_DEFAULT_OPTS "--height 40% --layout=reverse --border --inline-info"
 set -gx FZF_DEFAULT_COMMAND "fdfind --hidden -E .git -E node_modules"
@@ -5,7 +6,13 @@ set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 set -gx TERM xterm-256color
 set -gx EDITOR nvim
 set -gx PATH node_modules/.bin $PATH
+# export lua lsp
+if test -f ~/workspace/lua-language-server/bin/lua-language-server
+	echo "env append lua-language-server..."
+	set -gx PATH ~/workspace/lua-language-server/bin $PATH
+end
 
+echo "alias..."
 alias cp "cp -iv"
 alias mv "mv -iv"
 alias mkdir "mkdir -pv"
@@ -35,33 +42,34 @@ alias job "echo (jobs|fzf) | awk '{print $1}' | fg"
 # alias ta "tmux attach "
 # alias tk "tmux kill-session"
 
+echo "exporting fzf key bindings..."
 mkdir -p ~/.config/fish/functions/
 echo fzf_key_bindings > ~/.config/fish/functions/fish_user_key_bindings.fish
 
 ## start asdf
 if not test -f ~/.config/fish/completions/asdf.fish
+	echo "complestions asdf..."
 	mkdir -p ~/.config/fish/completions; 
 	ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 end
 
 # export asdf
 if test -f ~/.asdf/asdf.fish
+	echo "alias asdf..."
 	source ~/.asdf/asdf.fish
 end
 
 # export fd
 if not test -f ~/.local/bin/fd 
+	echo "alias fd..."
 	and type -q fdfind
 	ln -s (which fdfind) ~/.local/bin/fd
 end
 
-# export lua lsp
-if test -f ~/workspace/lua-language-server/bin
-	set -gx PATH ~/workspace/lua-language-server/bin $PATH
-end
-
-
 # export catbat as bat
 if not test -f ~/.local/bin/bat
+	echo "alias bat..."
 	ln -s /usr/bin/batcat ~/.local/bin/bat
 end
+
+echo "done"

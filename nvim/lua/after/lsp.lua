@@ -1,12 +1,6 @@
--- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
+require('fidget').setup()
+require('luasnip')
 
--- Make runtime files discoverable to the server
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<leader><space>', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -30,7 +24,7 @@ local servers = {
 require('mason').setup()
 require('mason-lspconfig').setup {
 	ensure_installed = servers,
-	automatic_installation = true
+	automatic_installation = false
 }
 
 -- Use an on_attach function to only map the following keys
@@ -46,18 +40,22 @@ local on_attach = function(client, bufnr)
 		vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
 	end
 
-	function format_buffer()
+	local format_buffer = function()
+		local withNull = {
+			filter = function(client)
+				return client.name == "null-ls"
+			end
+		}
 		if vim.lsp.buf.format then
-			vim.lsp.buf.format()
+			vim.lsp.buf.format(withNull)
 		elseif vim.lsp.buf.formatting then
-			vim.lsp.buf.formatting()
+			vim.lsp.buf.formatting(withNull)
 		end
 	end
 
 	-- Enable completion triggered by <c-x><c-o>
 
 	nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
-
 	nmap('<A-F>', format_buffer, '[G]oto [D]efinition')
 	nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
 	nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -90,64 +88,92 @@ end
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+local lsp_config = require("lspconfig")
 
-for _, lsp in ipairs(servers) do
-	require('lspconfig')[lsp].setup {
-		on_attach = on_attach,
-		capabilities = capabilities,
-	}
-end
+lsp_config['tsserver'].setup {
+	on_attach = on_attach,
+	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+	cmd = { "typescript-language-server", "--stdio" },
+	capabilities = capabilities
+}
 
--- Turn on lsp status information
-require('fidget').setup()
-
--- luasnip setup
-local luasnip = require('luasnip')
-
--- nvim-cmp setup
-local cmp = require('cmp')
-cmp.setup {
-	snippet = {
-		expand = function(args)
-			luasnip.lsp_expand(args.body)
-		end,
-	},
-	mapping = cmp.mapping.preset.insert({
-		['<C-d>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<CR>'] = cmp.mapping.confirm {
-			behavior = cmp.ConfirmBehavior.Replace,
-			select = true,
+lsp_config['sumneko_lua'].setup {
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = {
+		Lua = {
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { 'vim' },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false
+			},
 		},
-		['<Tab>'] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			else
-				fallback()
-			end
-		end, { 'i', 's' }),
-		['<S-Tab>'] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif luasnip.jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, { 'i', 's' }),
-	}),
-	sources = {
-		{ name = 'nvim_lsp' },
-		{ name = 'luasnip' },
 	},
 }
 
-require("trouble").setup()
-vim.cmd([[
-nnoremap <leader>xw <cmd>TroubleToggle workspace_diagnostics<cr>
-nnoremap <leader>xx <cmd>TroubleToggle document_diagnostics<cr>
-]])
+lsp_config['angularls'].setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
 
+lsp_config['bashls'].setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+lsp_config['cssls'].setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+lsp_config['dockerls'].setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+lsp_config['stylelint_lsp'].setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+lsp_config['eslint'].setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+lsp_config['html'].setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+lsp_config['marksman'].setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+	vim.lsp.diagnostic.on_publish_diagnostics, {
+	underline = true,
+	update_in_insert = false,
+	virtual_text = { spacing = 4, prefix = "●" },
+	severity_sort = true,
+}
+)
+
+local null_ls = require("null-ls")
+null_ls.setup {
+	sources = {
+		null_ls.builtins.formatting.prettierd,
+		null_ls.builtins.formatting.stylelint,
+		null_ls.builtins.formatting.codespell,
+		null_ls.builtins.formatting.lua_format,
+		null_ls.builtins.diagnostics.codespell,
+		null_ls.builtins.diagnostics.stylelint,
+		null_ls.builtins.diagnostics.fish,
+		null_ls.builtins.diagnostics.eslint_d.with({
+			diagnostics_format = '[eslintd] #{m}\n(#{c})'
+		})
+	}
+}

@@ -7,7 +7,7 @@ vim.opt.number = true -- show current line number
 vim.opt.relativenumber = true -- show relative numbers to current line
 vim.opt.splitright = true -- default split is right
 vim.opt.hidden = true -- allow switching from changed buffers
-vim.nowrap = true 
+vim.opt.wrap = false
 vim.nobackup = true
 vim.noswapfile = true
 vim.nowritebackup = true
@@ -43,8 +43,6 @@ vim.opt.wildignore = {
     "indent.log",
     "*.pdf",
 }
--- vim.opt.foldmethod = 'expr'
--- vim.nofoldenable = true
 
 -- Global
 vim.g.python3_host_prog = vim.fn.expand("/usr/bin/python3")

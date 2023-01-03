@@ -1,14 +1,9 @@
 #!/bin/bash
 
-echo "...gitconfig"
-cp -v .gitconfig ~/
-cp -v .gitignore ~/
-
-echo "...bashrc"
+cp -vf .gitconfig ~/
+cp -vf .gitignore ~/
 cp -vf .bashrc ~/
-
-echo "...fish"
 rsync -rahv fish/ ~/.config/fish --exclude completions --exclude fish_variables
-
-echo "...nvim"
-rsync -rahv nvim/ ~/.config/nvim  --exclude plugin --exclude init.vim
+rsync -rahv --delete nvim/*.lua ~/.config/nvim  --exclude plugin 
+rsync -rahv --delete nvim/lua/*.lua ~/.config/nvim/lua  --exclude plugin
+rsync -rahv --delete nvim/lua/after/*.lua ~/.config/nvim/lua/after  --exclude plugin
