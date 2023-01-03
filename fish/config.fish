@@ -12,6 +12,11 @@ if test -f ~/workspace/lua-language-server/bin/lua-language-server
 	set -gx PATH ~/workspace/lua-language-server/bin $PATH
 end
 
+if test -f ~/.luarocks/lib/luarocks/rocks-5.3/luaformatter/scm-1/bin/lua-format
+	echo "env append luarocks..."
+	set -gx PATH ~/.luarocks/lib/luarocks/rocks-5.3/luaformatter/scm-1/bin $PATH
+end
+
 echo "alias..."
 alias cp "cp -iv"
 alias mv "mv -iv"

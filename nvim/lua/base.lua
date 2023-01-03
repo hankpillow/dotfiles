@@ -18,30 +18,14 @@ vim.opt.winblend = 0
 vim.opt.wildoptions = 'pum'
 vim.opt.pumblend = 5
 vim.opt.wildignore = {
-    "*.aux",
-    "*.lof",
-    "*.lot",
-    "*.fls",
-    "*.out",
-    "*.toc",
-    "*.fmt",
-    "*.fot",
-    "*.cb",
-    "*.cb2",
-    ".*.lb",
-    "__latex*",
-    "*.fdb_latexmk",
-    "*.synctex",
-    "*.synctex(busy)",
-    "*.synctex.gz",
-    "*.synctex.gz(busy)",
-    "*.pdfsync",
-    "*.bbl",
-    "*.bcf",
-    "*.blg",
-    "*.run.xml",
-    "indent.log",
     "*.pdf",
+    "*.jpeg",
+    "*.jpg",
+    "*.gif",
+    "*.png",
+    "*.tiff",
+    "*.webp",
+    "**/node_modules/**"
 }
 
 -- Global

@@ -7,30 +7,7 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.diagnostic.config({ virtual_text = false })
 
--- Setup mason so it can manage external tooling
-local servers = {
-	'tsserver',
-	'sumneko_lua',
-	'angularls',
-	'bashls',
-	'cssls',
-	'dockerls',
-	'stylelint_lsp',
-	'eslint',
-	'html',
-	'marksman'
-}
-
-require('mason').setup()
-require('mason-lspconfig').setup {
-	ensure_installed = servers,
-	automatic_installation = false
-}
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	local nmap = function(keys, func, desc)
