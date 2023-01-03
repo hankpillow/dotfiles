@@ -45,7 +45,10 @@ then
 	. "$HOME/.asdf/completions/asdf.bash"
 fi
 
+if [[ -d $HOME/.cargo ]]; 
+then
  . "$HOME/.cargo/env"
+fi
 
 source /usr/lib/git-core/git-sh-prompt
 source /usr/share/doc/fzf/examples/key-bindings.bash
