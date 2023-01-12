@@ -3,14 +3,14 @@ sudo apt-get update
 sudo apt-get -y install\
 	bat fzf fd-find ripgrep silversearcher-ag neovim\
 	python3-neovim  python3 python3-pip python3.8-venv\
-	build-essential libreadline-dev cmake\
+	build-essential libreadline-dev cmake awscli\
 	ninja-build make clang vim unzip zip curl wget
 
 pip install codespell
 
 if [[ $(which npm) ]];
 then
-	npm i -g node-gyp http-server stylelint eslint_d @fsouza/prettierd lua-format
+	npm i -g node-gyp http-server stylelint eslint lua-format typescript ts-node
 fi
 
 # mkdir -p ~/workspace

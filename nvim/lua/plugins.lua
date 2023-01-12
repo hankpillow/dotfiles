@@ -60,8 +60,6 @@ require("packer").startup(function(use)
 			'hrsh7th/cmp-nvim-lsp',
 			'hrsh7th/cmp-buffer',
 			'glepnir/lspsaga.nvim',
-			'L3MON4D3/LuaSnip',
-			'saadparwaiz1/cmp_luasnip'
 		},
 	}
 

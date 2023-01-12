@@ -1,5 +1,4 @@
 require('fidget').setup()
-require('luasnip')
 
 local opts = {noremap = true, silent = true}
 vim.keymap.set('n', '<leader><space>', vim.diagnostic.open_float, opts)
