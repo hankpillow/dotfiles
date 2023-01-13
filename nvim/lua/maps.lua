@@ -3,21 +3,18 @@ local e_opts = {noremap = true, expr = true}
 local s_opts = {noremap = true, silent = true}
 local se_opts = {noremap = true, silent = true, expr = true}
 
--- file
+-- Exit
 keymap.set('n', '<leader>q', ':q<CR>') -- quit
 keymap.set('n', '<leader>Q', ':qa!<CR>') -- quit without saving
 keymap.set('n', '<leader>w', ':w<CR>') -- write
 keymap.set('n', '<leader>wq', ':wq<CR>') -- write
-keymap.set('v', '<leader>w', ':w<CR>') -- write
-keymap.set('v', '<leader>wq', ':wq<CR>') -- write
 
 ---- utils
 keymap.set('n', '<F5>', ':source ~/.config/nvim/init.lua<CR>') -- reload nvim config
 keymap.set('n', '<leader>cd', ':lcd %:p:h<CR>') -- change current work dir to current file
-keymap.set('n', '<leader>gs', ':Git<CR>') -- open vim fugitive
 
 ---- insert
-keymap.set('i', '<C-BS>', '<C-w>') -- Delete previous word
+-- keymap.set('i', '<C-BS>', '<C-w>') -- Delete previous word
 keymap.set('i', '<C-Del>', '<C-o>dW') -- Delete next word
 
 ---- Move
@@ -81,8 +78,9 @@ keymap.set('n', '[z', 'zk') -- perv fold
 keymap.set('n', ']z', 'zj') -- next fold
 
 ---- Find & Replace
-keymap.set('n', '<leader>r', ':%s///gc<left><left><left><left>')
-keymap.set('x', '<leader>r', ':%s///gc<left><left><left><left>')
+keymap.set('n', '<leader>r', ':%s///gc<left><left><left>')
+keymap.set('x', '<leader>r', ':%s///gc<left><left><left>') -- visual and vblock
 -- keymap.set('v', '//', 'y/<C-R>\'<CR>') -- copy selection on visual mode and start searching
 keymap.set('n', '*', '*N') -- select current work and don't move to next match 
-keymap.set('n', '<F2>', 'yviw*N:%s///g<left><left>')
+keymap.set('x', '<F2>', 'y<ESC>/<C-r>"<CR>N') 
+-- keymap.set('n', '<F2>', 'yviw*N:%s///g<left><left>')

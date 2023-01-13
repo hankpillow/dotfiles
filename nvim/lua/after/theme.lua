@@ -20,3 +20,5 @@ colorscheme rose-pine
 set showbreak=↪\
 set listchars=tab:▶\ ,extends:›,precedes:‹,nbsp:•,trail:•,eol:$
 ]])
+
+vim.keymap.set('n', '<leader>gs', ':Git<CR>') -- open vim fugitive
