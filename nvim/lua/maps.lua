@@ -21,14 +21,16 @@ keymap.set('i', '<C-BS>', '<C-w>') -- Delete previous word
 keymap.set('i', '<C-Del>', '<C-o>dW') -- Delete next word
 
 ---- Move
-keymap.set('n', ']j', 'g,') -- prev jump list
-keymap.set('n', '[j', 'g;') -- next jump list
+keymap.set({'n', 'x'}, ']j', 'g,') -- prev jump list
+keymap.set({'n', 'x'}, '[j', 'g;') -- next jump list
+keymap.set('n', ']v', '\'>') -- jump to end of visual selection
+keymap.set('n', '[v', '\'<') -- jump to start of visual selection
 keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', e_opts)
 keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', e_opts)
-keymap.set('n', 'E', 'g_') -- end of line
-keymap.set('v', 'E', 'g_') -- end of line
-keymap.set('n', 'B', '^') -- start of line
-keymap.set('v', 'B', '^') -- start of line
+keymap.set({ 'n', 'x' }, 'E', 'g_') -- end of line
+keymap.set({'n', 'x'}, 'B', '^') -- start of line
+-- keymap.set('x', 'E', 'g_') -- end of line
+-- keymap.set('x', 'B', '^') -- start of line
 
 ---- Center cursor after traversing search
 keymap.set('n', 'n', 'nzz')
