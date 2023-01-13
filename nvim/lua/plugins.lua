@@ -2,7 +2,7 @@ local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nv
 local is_bootstrap = false
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	is_bootstrap = true
-	vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+	vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 	vim.cmd [[packadd packer.nvim]]
 end
 
@@ -25,14 +25,14 @@ require("packer").startup(function(use)
 	use 'nvim-tree/nvim-web-devicons' -- https://github.com/nvim-tree/nvim-web-devicons
 
 	-- settings
-	use 'sheerun/vim-polyglot'
-	use 'moll/vim-bbye'--- manage closing buffers properly https://github.com/moll/vim-bbye 
+	-- use 'sheerun/vim-polyglot'
+	use 'moll/vim-bbye' --- manage closing buffers properly https://github.com/moll/vim-bbye
 	-- use 'gcmt/wildfire.vim'--- https://github.com/gcmt/wildfire.vim/blob/master/README.md - select objects
-	use 'tpope/vim-commentary'--- https://github.com/tpope/vim-commentary 
-	use 'tpope/vim-surround'--- https://github.com/tpope/vim-surround 
-	use 'tpope/vim-unimpaired'--- https://github.com/tpope/vim-unimpaired 
-	use 'tpope/vim-fugitive'-- https://github.com/tpope/vim-fugitive 
-	use 'matze/vim-move'--- https://github.lukas-reineke/indent-blankline.nvimcom/matze/vim-move
+	-- use 'tpope/vim-commentary'--- https://github.com/tpope/vim-commentary
+	use 'tpope/vim-surround' --- https://github.com/tpope/vim-surround
+	use 'tpope/vim-unimpaired' --- https://github.com/tpope/vim-unimpaired
+	use 'tpope/vim-fugitive' -- git bridge: https://github.com/tpope/vim-fugitive
+	use 'matze/vim-move' --- move lines: https://github.lukas-reineke/indent-blankline.nvimcom/matze/vim-move
 
 	-- UI
 
@@ -53,18 +53,8 @@ require("packer").startup(function(use)
 		after = 'nvim-treesitter',
 	}
 
-	-- autocompelte
-	use {
-		'hrsh7th/nvim-cmp',
-		requires = {
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-buffer',
-			'glepnir/lspsaga.nvim',
-		},
-	}
-
 	-- file explorer
-	use 'nvim-tree/nvim-tree.lua'  -- https://github.com/nvim-tree/nvim-tree.lua
+	use 'nvim-tree/nvim-tree.lua' -- https://github.com/nvim-tree/nvim-tree.lua
 
 	-- LSP
 	use {
@@ -74,6 +64,10 @@ require("packer").startup(function(use)
 			'williamboman/mason-lspconfig.nvim',
 			'jose-elias-alvarez/null-ls.nvim',
 			'j-hui/fidget.nvim',
+			'hrsh7th/nvim-cmp',
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-buffer',
+			'glepnir/lspsaga.nvim',
 		},
 	}
 
@@ -90,7 +84,7 @@ require("packer").startup(function(use)
 	use {
 		'nvim-telescope/telescope.nvim',
 		branch = '0.1.x',
-		requires = { 
+		requires = {
 			'nvim-lua/plenary.nvim',
 			'nvim-telescope/telescope-file-browser.nvim'
 		}
@@ -103,11 +97,11 @@ require("packer").startup(function(use)
 		cond = vim.fn.executable 'make' == 1
 	}
 
-	use { 'numToStr/Comment.nvim',
-    requires = {
-      'JoosepAlviste/nvim-ts-context-commentstring'
-    }
-  }
+	-- use { 'numToStr/Comment.nvim',
+	-- 	requires = {
+	-- 		'JoosepAlviste/nvim-ts-context-commentstring'
+	-- 	}
+	-- }
 
 	if is_bootstrap then
 		require('packer').sync()

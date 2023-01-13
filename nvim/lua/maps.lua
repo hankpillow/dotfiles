@@ -1,7 +1,7 @@
 local keymap = vim.keymap
-local e_opts = {noremap = true, expr = true}
-local s_opts = {noremap = true, silent = true}
-local se_opts = {noremap = true, silent = true, expr = true}
+local e_opts = { noremap = true, expr = true }
+local s_opts = { noremap = true, silent = true }
+local se_opts = { noremap = true, silent = true, expr = true }
 
 -- Exit
 keymap.set('n', '<leader>q', ':q<CR>') -- quit
@@ -14,27 +14,23 @@ keymap.set('n', '<F5>', ':source ~/.config/nvim/init.lua<CR>') -- reload nvim co
 keymap.set('n', '<leader>cd', ':lcd %:p:h<CR>') -- change current work dir to current file
 
 ---- insert
--- keymap.set('i', '<C-BS>', '<C-w>') -- Delete previous word
 keymap.set('i', '<C-Del>', '<C-o>dW') -- Delete next word
 
 ---- Move
-keymap.set({'n', 'x'}, ']j', 'g,') -- prev jump list
-keymap.set({'n', 'x'}, '[j', 'g;') -- next jump list
+keymap.set({ 'n', 'x' }, ']j', 'g,') -- prev jump list
+keymap.set({ 'n', 'x' }, '[j', 'g;') -- next jump list
 keymap.set('n', ']v', '\'>') -- jump to end of visual selection
 keymap.set('n', '[v', '\'<') -- jump to start of visual selection
 keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', e_opts)
 keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', e_opts)
 keymap.set({ 'n', 'x' }, 'E', 'g_') -- end of line
-keymap.set({'n', 'x'}, 'B', '^') -- start of line
--- keymap.set('x', 'E', 'g_') -- end of line
--- keymap.set('x', 'B', '^') -- start of line
+keymap.set({ 'n', 'x' }, 'B', '^') -- start of line
 
 ---- Center cursor after traversing search
 keymap.set('n', 'n', 'nzz')
 keymap.set('n', 'N', 'Nzz')
-
----- Toggle fold (single level)
-keymap.set('n', '<Space>', 'foldlevel(".") ? "za" : "<Space>"')
+keymap.set("n", "<C-d>", "<C-d>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")
 
 ---- toggles
 keymap.set('n', '<leader>ts', '<cmd>setlocal spell!<CR>')
@@ -48,12 +44,10 @@ keymap.set('s', '<C-v>', '<BS>i<C-R>+')
 
 ---- Copy/yank
 -- yank and move to last position '> on visual
-keymap.set('n', 'Y', 'yy') -- yank entire line
-keymap.set('x', 'Y', 'yy') -- yank entire line
-keymap.set('n', 'yc', '\'+y') -- Always yank to clipboard
-keymap.set('x', 'yc', '\'+y') -- Always yank to clipboard
-keymap.set('n', '<C-p>', '"0p') -- paste from 0
-keymap.set('x', '<C-p>', '"0p') -- paste from 0
+keymap.set({ 'n', 'x' }, 'Y', 'yy') -- yank entire line
+keymap.set({ 'n', 'x' }, '<C-p>', '"0p') -- paste from 0
+keymap.set({ "n", "v" }, "<leader>y", [["+y]]) -- yank to clipboard
+keymap.set("n", "<leader>Y", [["+Y]]) -- yank line to clipboard
 
 ---- Duplicate
 keymap.set('n', '<A-K>', 'yyP')
@@ -66,7 +60,7 @@ keymap.set('v', 'J', 'j')
 keymap.set('v', 'K', 'k')
 
 ---- Indenting/Formatting
-keymap.set('n', '<A-F>', 'gg=G\'\'zz<Esc>') -- format document
+keymap.set('n', '<A-F>', vim.lsp.buf.format) -- format document
 keymap.set('n', '<M-]>', '>>')
 keymap.set('n', '<M-[>', '<<')
 
@@ -76,13 +70,13 @@ keymap.set('n', '<leader>D', ':bufdo :Bdelete<CR>') -- delete all buffers
 keymap.set('n', '[b', ':bprev<CR>') -- prev buffer
 keymap.set('n', ']b', ':bnext<CR>') -- next buffer
 
-keymap.set('n', '[z', 'zk') -- perv fold 
+keymap.set('n', '[z', 'zk') -- perv fold
 keymap.set('n', ']z', 'zj') -- next fold
 
 ---- Find & Replace
 keymap.set('n', '<leader>r', ':%s///gc<left><left><left>')
 keymap.set('x', '<leader>r', ':%s///gc<left><left><left>') -- visual and vblock
 -- keymap.set('v', '//', 'y/<C-R>\'<CR>') -- copy selection on visual mode and start searching
-keymap.set('n', '*', '*N') -- select current work and don't move to next match 
-keymap.set('x', '<F2>', 'y<ESC>/<C-r>"<CR>N') 
+keymap.set('n', '*', '*N') -- select current work and don't move to next match
+keymap.set('x', '<F2>', 'y<ESC>/<C-r>"<CR>N')
 -- keymap.set('n', '<F2>', 'yviw*N:%s///g<left><left>')

@@ -1,3 +1,11 @@
+vim.o.background = "dark"
+vim.opt.number = true -- show current line number
+vim.opt.relativenumber = true -- show relative numbers to current line
+vim.opt.listchars = "tab:▶ ,extends:›,precedes:‹,nbsp:•,trail:•,eol:$" -- define how to display invisible shar when list is active
+vim.opt.cursorline = true
+vim.opt.guicursor = ""
+vim.opt.termguicolors = true
+
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- `:help indent_blankline.txt`
 require('indent_blankline').setup {
@@ -15,10 +23,7 @@ require("rose-pine").setup {
 }
 
 vim.cmd([[
-set background=dark
 colorscheme rose-pine 
 set showbreak=↪\
-set listchars=tab:▶\ ,extends:›,precedes:‹,nbsp:•,trail:•,eol:$
 ]])
 
-vim.keymap.set('n', '<leader>gs', ':Git<CR>') -- open vim fugitive
