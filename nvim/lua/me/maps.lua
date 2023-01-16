@@ -8,6 +8,7 @@ keymap.set('n', '<leader>q', ':q!<CR>') -- quit
 keymap.set('n', '<leader>Q', ':qa!<CR>') -- quit without saving
 keymap.set('n', '<leader>w', ':w<CR>') -- write
 keymap.set('n', '<leader>wq', ':wq<CR>') -- write
+keymap.set('n', '<leader>wqa', ':wqa!<CR>') -- write
 keymap.set("n", "-", vim.cmd.Ex)
 
 ---- utils
@@ -77,6 +78,6 @@ keymap.set('n', '[b', ':bprev<CR>') -- prev buffer
 keymap.set('n', ']b', ':bnext<CR>') -- next buffer
 
 ---- Find & Replace
-keymap.set({'n', 'x'}, '<leader>r', ':%s///gc<left><left><left>')
+keymap.set({ 'n', 'x' }, '<leader>r', ':%s///gc<left><left><left>')
 keymap.set('n', '*', '*Nzz') -- select current work and don't move to next match
 keymap.set('x', '<F2>', 'y<ESC>/<C-r>"<CR>N')

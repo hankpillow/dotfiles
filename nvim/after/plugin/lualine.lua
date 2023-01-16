@@ -1,17 +1,17 @@
 -- See `:help lualine.txt`
 require('lualine').setup {
-  options = {
-    icons_enabled = false,
-    theme = 'auto',
-    component_separators = '|',
-    section_separators = '',
-    disabled_filetypes = {
-      winbar = {'packer', 'NVimTree'},
-      statuline = {'packer', 'NVimTree'}
+    options = {
+        icons_enabled = false,
+        theme = 'auto',
+        component_separators = '|',
+        section_separators = '',
+        disabled_filetypes = {
+            winbar = { 'packer', 'NVimTree' },
+            statuline = { 'packer', 'NVimTree' }
+        }
+    },
+    sections = {
+        lualine_b = { "branch" },
+        lualine_y = {}
     }
-  },
-  sections = {
-    lualine_b = { "branch" },
-    lualine_y = {}
-  }
 }
