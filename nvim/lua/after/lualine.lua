@@ -12,7 +12,7 @@ require('lualine').setup {
     }
   },
   sections = {
-    lualine_ = { "branch" },
+    lualine_b = { "branch" },
     lualine_y = {}
   }
 }

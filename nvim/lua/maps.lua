@@ -70,13 +70,7 @@ keymap.set('n', '<leader>D', ':bufdo :Bdelete<CR>') -- delete all buffers
 keymap.set('n', '[b', ':bprev<CR>') -- prev buffer
 keymap.set('n', ']b', ':bnext<CR>') -- next buffer
 
-keymap.set('n', '[z', 'zk') -- perv fold
-keymap.set('n', ']z', 'zj') -- next fold
-
 ---- Find & Replace
-keymap.set('n', '<leader>r', ':%s///gc<left><left><left>')
-keymap.set('x', '<leader>r', ':%s///gc<left><left><left>') -- visual and vblock
--- keymap.set('v', '//', 'y/<C-R>\'<CR>') -- copy selection on visual mode and start searching
-keymap.set('n', '*', '*N') -- select current work and don't move to next match
+keymap.set({'n', 'x'}, '<leader>r', ':%s///gc<left><left><left>')
+keymap.set('n', '*', '*Nzz') -- select current work and don't move to next match
 keymap.set('x', '<F2>', 'y<ESC>/<C-r>"<CR>N')
--- keymap.set('n', '<F2>', 'yviw*N:%s///g<left><left>')

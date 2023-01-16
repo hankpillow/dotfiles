@@ -13,16 +13,16 @@ require("packer").startup(function(use)
 	use 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
 
 	-- themes
-	use 'sonph/onehalf' -- https://github.com/sonph/onehalf/tree/master/vim
-	use 'chriskempson/base16-vim' -- https://github.com/chriskempson/base16-vim
-	use 'jnurmine/Zenburn' -- https://github.com/jnurmine/Zenburn
-	use 'sjl/badwolf' -- https://github.com/sjl/badwolf/
-	use 'rose-pine/neovim' -- https://github.com/rose-pine/neovim
-	use 'morhetz/gruvbox' -- https://github.com/morhetz/gruvbox
-	use 'folke/tokyonight.nvim'
-	use 'arcticicestudio/nord-vim'
-	use 'NLKNguyen/papercolor-theme' -- https://github.com/NLKNguyen/papercolor-theme
-	use 'nvim-tree/nvim-web-devicons' -- https://github.com/nvim-tree/nvim-web-devicons
+    use 'rose-pine/neovim' -- https://github.com/rose-pine/neovim
+    use 'nvim-tree/nvim-web-devicons' -- https://github.com/nvim-tree/nvim-web-devicons
+	--use 'sonph/onehalf' -- https://github.com/sonph/onehalf/tree/master/vim
+	--use 'chriskempson/base16-vim' -- https://github.com/chriskempson/base16-vim
+	--use 'jnurmine/Zenburn' -- https://github.com/jnurmine/Zenburn
+	--use 'sjl/badwolf' -- https://github.com/sjl/badwolf/
+	--use 'morhetz/gruvbox' -- https://github.com/morhetz/gruvbox
+	--use 'folke/tokyonight.nvim'
+	--use 'arcticicestudio/nord-vim'
+	--use 'NLKNguyen/papercolor-theme' -- https://github.com/NLKNguyen/papercolor-theme
 
 	-- settings
 	-- use 'sheerun/vim-polyglot'
