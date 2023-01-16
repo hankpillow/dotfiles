@@ -37,7 +37,7 @@ require("packer").startup(function(use)
 	-- UI
 
 	-- Add indentation guides even on blank lines
-	use 'lukas-reineke/indent-blankline.nvim'
+	-- use 'lukas-reineke/indent-blankline.nvim'
 
 	-- Highlight, edit, and navigate code
 	use {
