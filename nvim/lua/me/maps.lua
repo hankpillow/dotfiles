@@ -4,10 +4,11 @@ local s_opts = { noremap = true, silent = true }
 local se_opts = { noremap = true, silent = true, expr = true }
 
 -- Exit
-keymap.set('n', '<leader>q', ':q<CR>') -- quit
+keymap.set('n', '<leader>q', ':q!<CR>') -- quit
 keymap.set('n', '<leader>Q', ':qa!<CR>') -- quit without saving
 keymap.set('n', '<leader>w', ':w<CR>') -- write
 keymap.set('n', '<leader>wq', ':wq<CR>') -- write
+keymap.set("n", "-", vim.cmd.Ex)
 
 ---- utils
 keymap.set('n', '<F5>', ':source ~/.config/nvim/init.lua<CR>') -- reload nvim config
@@ -25,6 +26,11 @@ keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', e_opts)
 keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', e_opts)
 keymap.set({ 'n', 'x' }, 'E', 'g_') -- end of line
 keymap.set({ 'n', 'x' }, 'B', '^') -- start of line
+
+-- Editing
+keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up
+keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv") -- move line down
+keymap.set("n", "J", "mzJ`z") -- keep the cursor while joining lines
 
 ---- Center cursor after traversing search
 keymap.set('n', 'n', 'nzz')
@@ -46,8 +52,8 @@ keymap.set('s', '<C-v>', '<BS>i<C-R>+')
 -- yank and move to last position '> on visual
 keymap.set({ 'n', 'x' }, 'Y', 'yy') -- yank entire line
 keymap.set({ 'n', 'x' }, '<C-p>', '"0p') -- paste from 0
-keymap.set({ "n", "v" }, "<leader>y", [["+y]]) -- yank to clipboard
-keymap.set("n", "<leader>Y", [["+Y]]) -- yank line to clipboard
+keymap.set({ 's', 'v' }, "<leader>y", [["+y]]) -- yank to clipboard
+keymap.set('n', "<leader>Y", [["+Y]]) -- yank line to clipboard
 
 ---- Duplicate
 keymap.set('n', '<A-K>', 'yyP')
