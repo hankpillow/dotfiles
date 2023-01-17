@@ -49,8 +49,7 @@ keymap.set('n', '<leader>tp', '<F12>\'+P<F12>') -- toggle paste mode and paste f
 keymap.set('i', '<C-v>', '<C-R>+')
 keymap.set('s', '<C-v>', '<BS>i<C-R>+')
 
----- Copy/yank
--- yank and move to last position '> on visual
+-- yank/copy
 keymap.set({ 'n', 'x' }, 'Y', 'yy') -- yank entire line
 keymap.set({ 'n', 'x' }, '<C-p>', '"0p') -- paste from 0
 keymap.set({ 's', 'v' }, "<leader>y", [["+y]]) -- yank to clipboard
