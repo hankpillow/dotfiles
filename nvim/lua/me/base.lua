@@ -14,8 +14,8 @@ autocmd('TextYankPost', {
 
 -- Turn off paste mode when leaving insert
 autocmd("InsertLeave", {
-  pattern = '*',
-  command = "set nopaste"
+    pattern = '*',
+    command = "set nopaste"
 })
 
 vim.cmd('autocmd!')
@@ -51,7 +51,21 @@ vim.opt.incsearch = true
 --set incsearch
 --set showmatch
 
-vim.opt.clipboard:prepend { 'unnamed', 'unnamedplus' }
+vim.cmd([[
+let g:clipboard = {
+    \   'name': 'WslClipboard',
+    \   'copy': {
+    \      '+': 'clip.exe',
+    \      '*': 'clip.exe',
+    \    },
+    \   'paste': {
+    \      '+': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    \      '*': 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    \   },
+    \   'cache_enabled': 0,
+    \ }
+]])
+-- vim.opt.clipboard:prepend { 'unnamed', 'unnamedplus' }
 
 vim.opt.winblend = 0
 vim.opt.wildoptions = 'pum'
@@ -69,7 +83,7 @@ vim.opt.wildignore = {
 
 -- Global
 vim.g.python3_host_prog = vim.fn.expand("/usr/bin/python3")
-vim.g.netrw_browsex_viewer= "xdg-open"
+vim.g.netrw_browsex_viewer = "xdg-open"
 --vim.g.netrw_browsex_viewer="cmd.exe /C start"
 
 vim.g.netrw_browse_split = 0
