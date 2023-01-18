@@ -28,11 +28,11 @@ require("packer").startup(function(use)
     use 'tpope/vim-surround' --- https://github.com/tpope/vim-surround
     use 'tpope/vim-unimpaired' --- https://github.com/tpope/vim-unimpaired
     use 'tpope/vim-fugitive' -- git bridge: https://github.com/tpope/vim-fugitive
+    use 'tpope/vim-commentary'--- https://github.com/tpope/vim-commentary
     use 'mbbill/undotree' -- https://github.com/mbbill/undotree
     use 'folke/trouble.nvim' -- https://github.com/folke/trouble.nvim
     use 'nvim-tree/nvim-tree.lua' -- file explorer https://github.com/nvim-tree/nvim-tree.lua
     use 'nvim-lualine/lualine.nvim' -- https://github.com/nvim-lualine/lualine.nvim
-    use 'numToStr/Comment.nvim' -- https://github.com/numToStr/Comment.nvim
     use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }) -- https://github.com/nvim-treesitter/nvim-treesitter
     use {
         'nvim-telescope/telescope.nvim',
@@ -87,7 +87,6 @@ end)
 --	-- use 'sheerun/vim-polyglot'
 --	use 'moll/vim-bbye' --- manage closing buffers properly https://github.com/moll/vim-bbye
 --	-- use 'gcmt/wildfire.vim'--- https://github.com/gcmt/wildfire.vim/blob/master/README.md - select objects
---	-- use 'tpope/vim-commentary'--- https://github.com/tpope/vim-commentary
 --	use 'tpope/vim-surround' --- https://github.com/tpope/vim-surround
 --	use 'tpope/vim-unimpaired' --- https://github.com/tpope/vim-unimpaired
 --	use 'tpope/vim-fugitive' -- git bridge: https://github.com/tpope/vim-fugitive
