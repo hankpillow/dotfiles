@@ -4,6 +4,7 @@ require("rose-pine").setup {
 
 vim.cmd([[
 colorscheme rose-pine 
+set colorcolumn=100
 set showbreak=↪\
 set listchars=tab:»·,extends:›,precedes:‹,nbsp:•,trail:•,eol:$ 
 set background=dark

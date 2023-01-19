@@ -66,7 +66,11 @@ keymap.set('v', 'J', 'j')
 keymap.set('v', 'K', 'k')
 
 ---- Indenting/Formatting
-keymap.set('n', '<A-F>', vim.lsp.buf.format) -- format document
+keymap.set('n', '<A-F>', function()
+    print("format buffer...")
+    vim.lsp.buf.format()
+end
+) -- format document
 keymap.set('n', '<M-]>', '>>')
 keymap.set('n', '<M-[>', '<<')
 
@@ -77,6 +81,6 @@ keymap.set('n', '[b', ':bprev<CR>') -- prev buffer
 keymap.set('n', ']b', ':bnext<CR>') -- next buffer
 
 ---- Find & Replace
-keymap.set({ 'n', 'x' }, '<leader>r', ':%s///gc<left><left><left>')
+keymap.set('n', '<leader>r', ':%s///gc<left><left><left>')
 keymap.set('n', '*', '*Nzz') -- select current work and don't move to next match
 keymap.set('x', '<F2>', 'y<ESC>/<C-r>"<CR>N')

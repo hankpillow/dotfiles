@@ -1,24 +1,21 @@
+vim.cmd('autocmd!')
+
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-autocmd('TextYankPost', {
-    group = augroup('HighlightYank', {}),
-    pattern = '*',
+autocmd("TextYankPost", {
+    group = augroup("HighlightYank", {}),
+    pattern = "*",
     callback = function()
         vim.highlight.on_yank({
-            higroup = 'IncSearch',
+            higroup = "IncSearch",
             timeout = 40,
         })
     end,
 })
 
 -- Turn off paste mode when leaving insert
-autocmd("InsertLeave", {
-    pattern = '*',
-    command = "set nopaste"
-})
-
-vim.cmd('autocmd!')
+autocmd("InsertLeave", { pattern = "*", command = "set nopaste" })
 
 vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
@@ -33,7 +30,7 @@ vim.opt.smartindent = true
 
 vim.opt.splitright = true -- default split is right
 vim.opt.hidden = true -- allow switching from changed buffers
-
+vim.opt.scrolloff = 8 -- make 8 lines free at the bottom
 vim.opt.wrap = false -- dont wrap text by default
 
 -- vim.nobackup = true
