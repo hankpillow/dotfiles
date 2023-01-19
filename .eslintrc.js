@@ -1,4 +1,7 @@
 module.exports = {
+    "extends": [
+        "prettier"
+    ],
     "ecmaFeatures": {
         "modules": true,
         "jsx": true
