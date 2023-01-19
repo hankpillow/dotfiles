@@ -15,14 +15,6 @@ require("packer").startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
     use 'rose-pine/neovim' -- https://github.com/rose-pine/neovim
-    --use 'sonph/onehalf' -- https://github.com/sonph/onehalf/tree/master/vim
-    --use 'chriskempson/base16-vim' -- https://github.com/chriskempson/base16-vim
-    --use 'jnurmine/Zenburn' -- https://github.com/jnurmine/Zenburn
-    --use 'sjl/badwolf' -- https://github.com/sjl/badwolf/
-    --use 'morhetz/gruvbox' -- https://github.com/morhetz/gruvbox
-    --use 'folke/tokyonight.nvim'
-    --use 'arcticicestudio/nord-vim'
-    --use 'NLKNguyen/papercolor-theme' -- https://github.com/NLKNguyen/papercolor-theme
     use 'nvim-tree/nvim-web-devicons' -- https://github.com/nvim-tree/nvim-web-devicons
     use 'moll/vim-bbye' --- manage closing buffers properly https://github.com/moll/vim-bbye
     use 'tpope/vim-surround' --- https://github.com/tpope/vim-surround
@@ -71,92 +63,12 @@ require("packer").startup(function(use)
     }
 end)
 
---require("packer").startup(function(use)
---
---	-- themes
---	--use 'sonph/onehalf' -- https://github.com/sonph/onehalf/tree/master/vim
---	--use 'chriskempson/base16-vim' -- https://github.com/chriskempson/base16-vim
---	--use 'jnurmine/Zenburn' -- https://github.com/jnurmine/Zenburn
---	--use 'sjl/badwolf' -- https://github.com/sjl/badwolf/
---	--use 'morhetz/gruvbox' -- https://github.com/morhetz/gruvbox
---	--use 'folke/tokyonight.nvim'
---	--use 'arcticicestudio/nord-vim'
---	--use 'NLKNguyen/papercolor-theme' -- https://github.com/NLKNguyen/papercolor-theme
---
---	-- settings
---	-- use 'sheerun/vim-polyglot'
---	use 'moll/vim-bbye' --- manage closing buffers properly https://github.com/moll/vim-bbye
---	-- use 'gcmt/wildfire.vim'--- https://github.com/gcmt/wildfire.vim/blob/master/README.md - select objects
---	use 'tpope/vim-surround' --- https://github.com/tpope/vim-surround
---	use 'tpope/vim-unimpaired' --- https://github.com/tpope/vim-unimpaired
---	use 'tpope/vim-fugitive' -- git bridge: https://github.com/tpope/vim-fugitive
---	use 'matze/vim-move' --- move lines: https://github.lukas-reineke/indent-blankline.nvimcom/matze/vim-move
---
---	-- UI
---
---	-- Add indentation guides even on blank lines
---	-- use 'lukas-reineke/indent-blankline.nvim'
---
---	-- Highlight, edit, and navigate code
---	use {
---		'nvim-treesitter/nvim-treesitter',
---		run = function()
---			pcall(require('nvim-treesitter.install').update { with_sync = true })
---		end,
---
---	}
---	-- Additional text objects via treesitter
---	use {
---		'nvim-treesitter/nvim-treesitter-textobjects',
---		after = 'nvim-treesitter',
---	}
---
---	-- file explorer
---	use 'nvim-tree/nvim-tree.lua' -- https://github.com/nvim-tree/nvim-tree.lua
---
---	-- LSP
---	use {
---		'neovim/nvim-lspconfig',
---		requires = {
---			'williamboman/mason.nvim',
---			'williamboman/mason-lspconfig.nvim',
---			'jose-elias-alvarez/null-ls.nvim',
---			'j-hui/fidget.nvim',
---			'hrsh7th/nvim-cmp',
---			'hrsh7th/cmp-nvim-lsp',
---			'hrsh7th/cmp-buffer',
---			'glepnir/lspsaga.nvim',
---		},
---	}
---
---	-- display lsp diagnostic
---
---	-- Git decorations
---	use 'lewis6991/gitsigns.nvim' -- https://github.com/lewis6991/gitsigns.nvim
---
---	-- Fancier statusline
---	use 'nvim-lualine/lualine.nvim'
---
---	-- Fuzzy Finder (files, lsp, etc)
---	use {
---		'nvim-telescope/telescope.nvim',
---		branch = '0.1.x',
---		requires = {
---			'nvim-lua/plenary.nvim',
---			'nvim-telescope/telescope-file-browser.nvim'
---		}
---	}
---
---	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
---	use {
---		'nvim-telescope/telescope-fzf-native.nvim',
---		run = 'make',
---		cond = vim.fn.executable 'make' == 1
---	}
---
---	-- use { 'numToStr/Comment.nvim',
---	-- 	requires = {
---	-- 		'JoosepAlviste/nvim-ts-context-commentstring'
---	-- 	}
---	-- }
---end)
+-- Other cool themes to pick
+--use 'sonph/onehalf' -- https://github.com/sonph/onehalf/tree/master/vim
+--use 'chriskempson/base16-vim' -- https://github.com/chriskempson/base16-vim
+--use 'jnurmine/Zenburn' -- https://github.com/jnurmine/Zenburn
+--use 'sjl/badwolf' -- https://github.com/sjl/badwolf/
+--use 'morhetz/gruvbox' -- https://github.com/morhetz/gruvbox
+--use 'folke/tokyonight.nvim'
+--use 'arcticicestudio/nord-vim'
+--use 'NLKNguyen/papercolor-theme' -- https://github.com/NLKNguyen/papercolor-theme

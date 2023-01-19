@@ -2,27 +2,34 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
+vim.opt.signcolumn = "yes"
+
 lsp.ensure_installed({
     'tsserver',
     'sumneko_lua',
     'angularls',
     'bashls',
     'stylelint_lsp',
-    'cssls',
     'eslint',
 })
 
--- Fix Undefined global 'vim'
-lsp.configure('sumneko_lua', {
+lsp.configure("sumneko_lua", {
     settings = {
         Lua = {
             diagnostics = {
-                globals = { 'vim' }
+                globals = { "vim" }
             }
         }
     }
 })
 
+lsp.configure("stylelint_lsp", {
+    filetypes = { "css", "scss", "sass", "less" },
+})
+
+lsp.configure("angularls", {
+    autostart = false
+})
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -32,11 +39,6 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ["<C-Space>"] = cmp.mapping.complete(),
 })
-
--- disable completion with tab
--- this helps with copilot setup
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
     mapping = cmp_mappings
@@ -60,6 +62,11 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<C-h>", function() vim.diagnostic.open_float() end, opts)
     vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
     vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+    vim.keymap.set('n', '<A-F>', function()
+        print("format buffer...")
+        vim.lsp.buf.format({ async = true })
+    end
+    ) -- format document
 end)
 
 lsp.setup()

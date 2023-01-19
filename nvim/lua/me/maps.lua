@@ -65,12 +65,6 @@ keymap.set('x', '<A-J>', 'y :normal \'>p<cr>')
 keymap.set('v', 'J', 'j')
 keymap.set('v', 'K', 'k')
 
----- Indenting/Formatting
-keymap.set('n', '<A-F>', function()
-    print("format buffer...")
-    vim.lsp.buf.format()
-end
-) -- format document
 keymap.set('n', '<M-]>', '>>')
 keymap.set('n', '<M-[>', '<<')
 
