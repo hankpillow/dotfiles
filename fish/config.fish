@@ -6,6 +6,7 @@ set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 set -gx TERM xterm-256color
 set -gx EDITOR nvim
 set -gx PATH node_modules/.bin $PATH
+set -gx PATH ~/.local/bin $PATH
 # export lua lsp
 if test -f ~/workspace/lua-language-server/bin/lua-language-server
 	echo "env append lua-language-server..."
