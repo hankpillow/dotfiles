@@ -10,7 +10,7 @@ pip install codespell
 
 if [[ $(which npm) ]];
 then
-	npm i -g node-gyp http-server stylelint eslint lua-format typescript ts-node eslint-config-prettier
+	npm i -g node-gyp http-server
 fi
 
 # mkdir -p ~/workspace
