@@ -27,6 +27,10 @@ lsp.configure("stylelint_lsp", {
     filetypes = { "css", "scss", "sass", "less" },
 })
 
+lsp.configure("eslint", {
+    filetypes = { "json", "js", "jsx", "ts", "tsx", "html", "xml" }
+})
+
 lsp.configure("angularls", {
     autostart = false
 })
