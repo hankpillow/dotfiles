@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local nvim_lsp = require('lspconfig')
 
 lsp.preset("recommended")
 
@@ -11,6 +12,11 @@ lsp.ensure_installed({
     'bashls',
     'stylelint_lsp',
     'eslint',
+})
+
+lsp.configure('tsserver', {
+  root_dir = nvim_lsp.util.root_pattern("package.json"),
+  single_file_support = false,
 })
 
 lsp.configure("sumneko_lua", {
