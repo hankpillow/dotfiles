@@ -28,7 +28,8 @@ lsp.configure("stylelint_lsp", {
 })
 
 lsp.configure("eslint", {
-    filetypes = { "json", "js", "jsx", "ts", "tsx", "html", "xml" }
+    filetypes = { "json", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact",
+        "typescript.tsx" }
 })
 
 lsp.configure("angularls", {

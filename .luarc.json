@@ -2,5 +2,12 @@
     "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
     "Lua.diagnostics.disable": [
         "unused-local"
-    ]
+    ],
+    "Lua.diagnostics.neededFileStatus" :{
+        "codestyle-check": "All",
+    },
+    "Lua.format.defaultConfig":{
+        "indent_style":"tab",
+        "indent_size":"2"
+    }
 }
