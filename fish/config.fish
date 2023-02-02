@@ -34,6 +34,7 @@ alias en1 "ipconfig getpacket en1 | grep -h ip"
 alias ports "lsof -Pn -i4 | grep LISTEN"
 alias ports "lsof -Pn -i4 | grep LISTEN"
 alias sudo "sudo "
+alias open "explorer.exe"
 
 # program aliases
 alias vi "nvim"
