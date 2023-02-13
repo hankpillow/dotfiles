@@ -51,9 +51,8 @@ keymap.set('s', '<C-v>', '<BS>i<C-R>+')
 
 -- yank/copy
 keymap.set({ 'n', 'x' }, 'Y', 'yy') -- yank entire line
-keymap.set({ 'n', 'x' }, '<C-p>', '"0p') -- paste from 0
+keymap.set({ 'n', 'x' }, '<leader>p', '"0p') -- paste from 0
 keymap.set({ 's', 'v' }, "<leader>y", [["+y]]) -- yank to clipboard
-keymap.set('n', "<leader>Y", [["+Y]]) -- yank line to clipboard
 
 ---- Duplicate
 keymap.set('n', '<A-K>', 'yyP')
@@ -75,6 +74,8 @@ keymap.set('n', '[b', ':bprev<CR>') -- prev buffer
 keymap.set('n', ']b', ':bnext<CR>') -- next buffer
 
 ---- Find & Replace
-keymap.set('n', '<leader>r', ':%s///gc<left><left><left>')
+keymap.set('n', '<leader>r', [[:%s///gc<left><left><left>]])
+keymap.set('n', '<leader>R', [[:s///gc<left><left><left>]])
+keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 keymap.set('n', '*', '*Nzz') -- select current work and don't move to next match
 keymap.set('x', '<F2>', 'y<ESC>/<C-r>"<CR>N')
