@@ -1,4 +1,10 @@
-require("telescope").setup({
+local ok, plugin = pcall(require, 'telescope')
+if not ok then
+    print("missing telescope")
+    return
+end
+
+plugin.setup({
     file_ignore_patterns = {
         "node_modules",
         ".cache",
@@ -8,7 +14,7 @@ require("telescope").setup({
 })
 
 -- Enable telescope fzf native, if installed
-pcall(require("telescope").load_extension, "fzf")
+pcall(plugin.load_extension, "fzf")
 
 local builtin = require("telescope.builtin")
 

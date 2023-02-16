@@ -20,15 +20,16 @@ require("packer").startup(function(use)
     use 'tpope/vim-surround' --- https://github.com/tpope/vim-surround
     use 'tpope/vim-unimpaired' --- https://github.com/tpope/vim-unimpaired
     use 'tpope/vim-fugitive' -- git bridge: https://github.com/tpope/vim-fugitive
-    use 'tpope/vim-commentary'--- https://github.com/tpope/vim-commentary
+    use 'tpope/vim-commentary' --- https://github.com/tpope/vim-commentary
     use 'mbbill/undotree' -- https://github.com/mbbill/undotree
     use 'folke/trouble.nvim' -- https://github.com/folke/trouble.nvim
     use 'nvim-tree/nvim-tree.lua' -- file explorer https://github.com/nvim-tree/nvim-tree.lua
     use 'nvim-lualine/lualine.nvim' -- https://github.com/nvim-lualine/lualine.nvim
-    use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }) -- https://github.com/nvim-treesitter/nvim-treesitter
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- https://github.com/nvim-treesitter/nvim-treesitter
+    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' } -- https://github.com/sindrets/diffview.nvim
     use {
         'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
+        branch = '0.1.1',
         requires = {
             'nvim-lua/plenary.nvim',
             'nvim-telescope/telescope-file-browser.nvim'
@@ -42,6 +43,7 @@ require("packer").startup(function(use)
     }
     use {
         'VonHeikemen/lsp-zero.nvim',
+        branch = 'v1.x',
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },

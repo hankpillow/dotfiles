@@ -1,13 +1,23 @@
-local lsp = require("lsp-zero")
-local nvim_lsp = require('lspconfig')
+local iok, lsp = pcall(require, 'lsp-zero')
+if not iok then
+    print("missing lsp-zero")
+    return
+end
+
+local lok, nvim_lsp = pcall(require, 'lspconfig')
+if not lok then
+    print("missing lspconfig")
+    return
+end
 
 lsp.preset("recommended")
+
+lsp.nvim_workspace()
 
 vim.opt.signcolumn = "yes"
 
 lsp.ensure_installed({
     'tsserver',
-    'sumneko_lua',
     'angularls',
     'bashls',
     'stylelint_lsp',
@@ -15,15 +25,16 @@ lsp.ensure_installed({
 })
 
 lsp.configure('tsserver', {
-  root_dir = nvim_lsp.util.root_pattern("package.json"),
-  single_file_support = false,
+    root_dir = nvim_lsp.util.root_pattern("package.json"),
+    single_file_support = false,
 })
 
-lsp.configure("sumneko_lua", {
+-- Fix Undefined global 'vim'
+lsp.configure('lua_ls', {
     settings = {
         Lua = {
             diagnostics = {
-                globals = { "vim" }
+                globals = { 'vim' }
             }
         }
     }

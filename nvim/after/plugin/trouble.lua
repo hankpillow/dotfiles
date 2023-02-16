@@ -1,5 +1,11 @@
-require("trouble").setup({
-	mode = "document_diagnostics"
+local ok, plugin = pcall(require, 'trouble')
+if not ok then
+    print("missing trouble")
+    return
+end
+
+plugin.setup({
+    mode = "document_diagnostics"
 })
 
 vim.keymap.set('n', '<leader>xw', [[<cmd>TroubleToggle workspace_diagnostics<cr>]], {})
