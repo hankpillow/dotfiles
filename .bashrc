@@ -59,5 +59,7 @@ source /usr/share/doc/fzf/examples/completion.bash
 # location (git_branc) $prompt
 PS1='\[\033[01;34m\]\w\[\033[00m\] $(__git_ps1 "(%s)")\$ '
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 echo welcome $USER
 cd $HOME

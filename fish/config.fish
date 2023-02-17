@@ -1,6 +1,6 @@
 set fish_greeting ""
 set -gx FZF_DEFAULT_OPTS "--height 40% --layout=reverse --border --inline-info"
-set -gx FZF_DEFAULT_COMMAND "fdfind --hidden -E .git -E node_modules"
+set -gx FZF_DEFAULT_COMMAND "fd --hidden -E .git -E node_modules"
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 set -gx TERM xterm-256color
 set -gx EDITOR nvim
@@ -14,7 +14,6 @@ end
 
 set -gx DISPLAY_NUMBER "0.0"
 set -gx DISPLAY (grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):$DISPLAY_NUMBER
-echo display:$DISPLAY
 
 alias cp "cp -iv"
 alias mv "mv -iv"
@@ -41,9 +40,6 @@ alias vi "nvim"
 alias fim "nvim (fzf)"
 alias job "echo (jobs|fzf) | awk '{print $1}' | fg"
 
-mkdir -p ~/.config/fish/functions/
-echo fzf_key_bindings > ~/.config/fish/functions/fish_user_key_bindings.fish
-
 ## start asdf
 if not test -f ~/.config/fish/completions/asdf.fish
 	mkdir -p ~/.config/fish/completions; 
@@ -55,15 +51,7 @@ if test -f ~/.asdf/asdf.fish
 	source ~/.asdf/asdf.fish
 end
 
-# export fd
-if not test -f ~/.local/bin/fd 
-	and type -q fdfind
-	ln -s (which fdfind) ~/.local/bin/fd
-end
+mkdir -p ~/.config/fish/functions/
+echo fzf_key_bindings > ~/.config/fish/functions/fish_user_key_bindings.fish
 
-# export catbat as bat
-if not test -f ~/.local/bin/bat
-	ln -s /usr/bin/batcat ~/.local/bin/bat
-end
-
-echo "welcome $user"
+echo "welcome $user - $DISPLAY"

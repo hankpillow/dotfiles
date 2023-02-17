@@ -21,6 +21,7 @@ samples
 .bundle
 /vendor/bundle
 Gemfile.lock
+.cache
 node_modules
 fishd.*
 
