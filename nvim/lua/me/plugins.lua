@@ -13,8 +13,18 @@ local packer_bootstrap = ensure_packer()
 
 require("packer").startup(function(use)
     use 'wbthomason/packer.nvim'
-    use 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
+    -- themes
     use 'rose-pine/neovim' -- https://github.com/rose-pine/neovim
+    use 'sonph/onehalf' -- https://github.com/sonph/onehalf/tree/master/vim
+    use 'chriskempson/base16-vim' -- https://github.com/chriskempson/base16-vim
+    use 'jnurmine/Zenburn' -- https://github.com/jnurmine/Zenburn
+    use 'sjl/badwolf' -- https://github.com/sjl/badwolf/
+    use 'morhetz/gruvbox' -- https://github.com/morhetz/gruvbox
+    use 'folke/tokyonight.nvim'
+    use 'arcticicestudio/nord-vim'
+    use 'NLKNguyen/papercolor-theme' -- https://github.com/NLKNguyen/papercolor-theme
+    --
+    use 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
     use 'nvim-tree/nvim-web-devicons' -- https://github.com/nvim-tree/nvim-web-devicons
     use 'moll/vim-bbye' --- manage closing buffers properly https://github.com/moll/vim-bbye
     use 'tpope/vim-surround' --- https://github.com/tpope/vim-surround
@@ -27,14 +37,16 @@ require("packer").startup(function(use)
     use 'nvim-lualine/lualine.nvim' -- https://github.com/nvim-lualine/lualine.nvim
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } -- https://github.com/nvim-treesitter/nvim-treesitter
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' } -- https://github.com/sindrets/diffview.nvim
-    use {
-        'nvim-telescope/telescope.nvim',
-        branch = '0.1.1',
-        requires = {
-            'nvim-lua/plenary.nvim',
-            'nvim-telescope/telescope-file-browser.nvim'
-        }
-    }
+    use { 'junegunn/fzf', run = './install --bin', }
+    use { 'ibhagwan/fzf-lua' } -- https://github.com/ibhagwan/fzf-lua#installation
+    -- use {
+    --     'nvim-telescope/telescope.nvim',
+    --     branch = '0.1.1',
+    --     requires = {
+    --         'nvim-lua/plenary.nvim',
+    --         'nvim-telescope/telescope-file-browser.nvim'
+    --     }
+    -- }
     use {
         -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
         'nvim-telescope/telescope-fzf-native.nvim',
@@ -66,11 +78,3 @@ require("packer").startup(function(use)
 end)
 
 -- Other cool themes to pick
---use 'sonph/onehalf' -- https://github.com/sonph/onehalf/tree/master/vim
---use 'chriskempson/base16-vim' -- https://github.com/chriskempson/base16-vim
---use 'jnurmine/Zenburn' -- https://github.com/jnurmine/Zenburn
---use 'sjl/badwolf' -- https://github.com/sjl/badwolf/
---use 'morhetz/gruvbox' -- https://github.com/morhetz/gruvbox
---use 'folke/tokyonight.nvim'
---use 'arcticicestudio/nord-vim'
---use 'NLKNguyen/papercolor-theme' -- https://github.com/NLKNguyen/papercolor-theme
