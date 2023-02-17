@@ -51,8 +51,8 @@ then
 fi
 
 source /usr/lib/git-core/git-sh-prompt
-source /usr/share/doc/fzf/examples/key-bindings.bash
-source /usr/share/doc/fzf/examples/completion.bash
+source ~/.fzf/shell/key-bindings.bash
+source ~/.fzf/shell/completion.bash
 
 # user@host location\n (git branch) $prompt
 # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w\[\033[00m\]\n$(__git_ps1 "(%s)") \$ '
