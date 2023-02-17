@@ -1,8 +1,9 @@
 #!/bin/bash
 
-cp -fv .*rc ~/
-cp -fv git/* ~/
-cp -fv tmux/* ~/
+cp -f .*rc ~/
 
-rsync -rahv fish/ ~/.config/fish --exclude completions --exclude fish_variables
-rsync -rav --delete nvim/** ~/.config/nvim  
+rsync -ravh tmux/ ~/ 
+rsync -ravh git/ ~/ 
+
+rsync -ravh fish/ ~/.config/fish --exclude completions --exclude fish_variables
+rsync -ravh --delete nvim/** ~/.config/nvim  
