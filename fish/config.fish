@@ -40,6 +40,11 @@ alias vi "nvim"
 alias fim "nvim (fzf)"
 alias job "echo (jobs|fzf) | awk '{print $1}' | fg"
 
+alias tml "tmux ls"
+function tmc ; tmux new -s $argv; end
+function tma ; tmux attach-session -t \#$argv; end
+function tmk ; tmux kill-session -t \#$argv; end
+
 ## start asdf
 if not test -f ~/.config/fish/completions/asdf.fish
 	mkdir -p ~/.config/fish/completions; 
