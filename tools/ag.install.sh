@@ -11,7 +11,7 @@ VERSION="2.2.0"
 FILE="the_silver_searcher-${VERSION}.tar.gz"
 FILE_TAR="the_silver_searcher-${VERSION}.tar"
 AG_DIR="the_silver_searcher-${VERSION}"
-if [[ ! -f .cache/$FILE ]]
+if [[ ! -f $FILE ]]
 then
     echo "+ download $FILE"
     wget https://geoff.greer.fm/ag/releases/$FILE

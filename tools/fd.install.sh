@@ -9,7 +9,7 @@ cd .cache
 
 VERSION="8.6.0"
 FILE="fd-musl_${VERSION}_amd64.deb"
-if [[ ! -f .cache/$FILE ]]
+if [[ ! -f $FILE ]]
 then
     echo "+ download $FILE"
     wget "https://github.com/sharkdp/fd/releases/download/v${VERSION}/${FILE}"

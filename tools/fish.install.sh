@@ -11,7 +11,7 @@ cd .cache
 
 VERSION="3.6.0-1"
 FILE="fish_${VERSION}~focal_amd64.deb"
-if [[ ! -f .cache/$FILE ]]
+if [[ ! -f $FILE ]]
 then
     echo "+ download $FILE"
     wget "https://launchpad.net/~fish-shell/+archive/ubuntu/release-3/+files/$FILE"

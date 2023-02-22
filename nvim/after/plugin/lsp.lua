@@ -25,6 +25,7 @@ lsp.ensure_installed({
 })
 
 lsp.configure('tsserver', {
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "json" },
     root_dir = nvim_lsp.util.root_pattern("package.json"),
     single_file_support = false,
 })

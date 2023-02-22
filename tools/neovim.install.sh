@@ -9,9 +9,9 @@ cd .cache
 
 VERSION="0.8.3"
 FILE="nvim-linux64.deb"
-if [[ ! -f .cache/$FILE ]]
+if [[ ! -f $FILE ]]
 then
     echo "+ download $FILE"
-    wget "https://github.com/neovim/neovim/releases/download/v${VERSION}/$FILE"
+    echo wget "https://github.com/neovim/neovim/releases/download/v${VERSION}/$FILE"
 fi
-sudo dpkg -i $FILE
+sudo apt install ./$FILE
