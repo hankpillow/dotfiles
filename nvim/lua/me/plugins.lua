@@ -39,20 +39,6 @@ require("packer").startup(function(use)
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' } -- https://github.com/sindrets/diffview.nvim
     use { 'junegunn/fzf', run = './install --bin', }
     use { 'ibhagwan/fzf-lua' } -- https://github.com/ibhagwan/fzf-lua#installation
-    -- use {
-    --     'nvim-telescope/telescope.nvim',
-    --     branch = '0.1.1',
-    --     requires = {
-    --         'nvim-lua/plenary.nvim',
-    --         'nvim-telescope/telescope-file-browser.nvim'
-    --     }
-    -- }
-    use {
-        -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-        'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'make',
-        cond = vim.fn.executable 'make' == 1
-    }
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
@@ -76,5 +62,3 @@ require("packer").startup(function(use)
         }
     }
 end)
-
--- Other cool themes to pick

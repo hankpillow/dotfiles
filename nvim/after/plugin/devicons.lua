@@ -5,6 +5,6 @@ if not ok then
 end
 
 plugin.setup {
-    color_icons = true;
-    default = true;
+    color_icons = true,
+    default = true,
 }

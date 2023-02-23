@@ -1,10 +1,11 @@
 local iok, lsp = pcall(require, 'lsp-zero')
+local lok, lspconfig = pcall(require, 'lspconfig')
+
 if not iok then
     print("missing lsp-zero")
     return
 end
 
-local lok, nvim_lsp = pcall(require, 'lspconfig')
 if not lok then
     print("missing lspconfig")
     return
@@ -12,9 +13,6 @@ end
 
 lsp.preset("recommended")
 
-lsp.nvim_workspace()
-
-vim.opt.signcolumn = "yes"
 
 lsp.ensure_installed({
     'tsserver',
@@ -26,7 +24,7 @@ lsp.ensure_installed({
 
 lsp.configure('tsserver', {
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "json" },
-    root_dir = nvim_lsp.util.root_pattern("package.json"),
+    root_dir = lspconfig.util.root_pattern("package.json"),
     single_file_support = false,
 })
 
@@ -36,6 +34,13 @@ lsp.configure('lua_ls', {
         Lua = {
             diagnostics = {
                 globals = { 'vim' }
+            },
+            format = {
+                enable = true,
+                defaultConfig = {
+                    indent_style = "space",
+                    indent_size = "4"
+                }
             }
         }
     }
@@ -46,8 +51,7 @@ lsp.configure("stylelint_lsp", {
 })
 
 lsp.configure("eslint", {
-    filetypes = { "json", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact",
-        "typescript.tsx" }
+    filetypes = { "json", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
 })
 
 lsp.configure("angularls", {
@@ -81,19 +85,18 @@ lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "<A-H>", function() vim.lsp.buf.hover() end, opts)
-    vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set("n", "<C-h>", function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
     vim.keymap.set('n', '<A-F>', function()
         print("format buffer...")
-        vim.lsp.buf.format({ async = true })
+        vim.cmd [[LspZeroFormat]]
     end
-    ) -- format document
+    )
 end)
 
-lsp.setup()
-
+vim.opt.signcolumn = "yes"
 vim.diagnostic.config({
     virtual_text = false,
 })
+
+lsp.nvim_workspace()
+lsp.setup()
