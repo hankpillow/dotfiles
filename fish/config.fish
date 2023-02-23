@@ -40,8 +40,8 @@ alias vi "nvim"
 alias fim "nvim (fzf)"
 alias job "echo (jobs|fzf) | awk '{print $1}' | fg"
 
-alias tml "tmux ls"
-function tmc ; tmux new -s $argv; end
+function tml ; tmux ls; end
+function tmc ; tmux -2 new -s $argv; end
 function tma ; tmux attach-session -t $argv; end
 function tmk ; tmux kill-session -t $argv; end
 
