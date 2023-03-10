@@ -27,5 +27,5 @@ vim.keymap.set("n", "<space>?", function()
 end, opts)
 
 -- search
-vim.keymap.set("n", "<C-g>", plugin.grep, opts)
-vim.keymap.set("n", "<C-G>", plugin.grep_cword, opts)
+vim.keymap.set("n", "<leader>gw", plugin.grep_cword, opts)
+vim.keymap.set("n", "<C-g>", plugin.project, opts)
