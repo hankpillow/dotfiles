@@ -1,10 +1,9 @@
+-- https://github.com/ibhagwan/fzf-lua
 local ok, plugin = pcall(require, 'fzf-lua')
 if not ok then
     print("missing fzf-lua")
     return
 end
-
--- https://github.com/ibhagwan/fzf-lua
 
 local opts = { noremap = true, silent = true }
 local nopreview = { preview_opts = "hidden" }
@@ -26,6 +25,6 @@ vim.keymap.set("n", "<space>?", function()
     plugin.oldfiles(nopreview)
 end, opts)
 
--- search
+-- search (grep)
 vim.keymap.set("n", "<leader>gw", plugin.grep_cword, opts)
-vim.keymap.set("n", "<C-g>", plugin.project, opts)
+vim.keymap.set("n", "<C-g>", plugin.grep_project, opts)
