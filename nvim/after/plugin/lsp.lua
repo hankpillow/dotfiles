@@ -87,7 +87,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<A-H>", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<C-h>", function() vim.diagnostic.open_float() end, opts)
     vim.keymap.set('n', '<A-F>', function()
-        print("format buffer...")
+        print("lsp format")
         vim.cmd [[LspZeroFormat]]
     end
     )
