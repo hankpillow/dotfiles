@@ -86,11 +86,11 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "<A-H>", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<C-h>", function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set('n', '<A-F>', function()
-        print("lsp format")
-        vim.cmd [[LspZeroFormat]]
-    end
-    )
+    -- vim.keymap.set('n', '<A-F>', function()
+    --     print("lsp format")
+    --     vim.cmd [[LspZeroFormat]]
+    -- end
+    -- )
 end)
 
 vim.opt.signcolumn = "yes"
