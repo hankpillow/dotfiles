@@ -34,6 +34,7 @@ alias ports "lsof -Pn -i4 | grep LISTEN"
 alias ports "lsof -Pn -i4 | grep LISTEN"
 alias sudo "sudo "
 alias open "explorer.exe"
+alias ex "exa --long --git"
 
 # program aliases
 alias vi "nvim"
@@ -59,4 +60,4 @@ end
 mkdir -p ~/.config/fish/functions/
 echo fzf_key_bindings > ~/.config/fish/functions/fish_user_key_bindings.fish
 
-echo "welcome $user - $DISPLAY"
+echo "howdy $USER!"
