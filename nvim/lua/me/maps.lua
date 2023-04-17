@@ -1,3 +1,4 @@
+
 local keymap = vim.keymap
 local e_opts = { noremap = true, expr = true }
 local s_opts = { noremap = true, silent = true }
@@ -80,4 +81,13 @@ keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Lef
 keymap.set('n', '*', '*Nzz') -- select current work and don't move to next match
 keymap.set('x', '<F2>', 'y<ESC>/<C-r>"<CR>N')
 
-keymap.set('n', '<A-F>' , [[:silent %!prettier --stdin-filepath @%<CR>]])
+keymap.set('n', '<A-F>' , function()
+    local cursor = vim.api.nvim_win_get_cursor(0)    
+    local win = vim.api.nvim_tabpage_get_win(0)
+    local file = vim.fn.expand('%:p')
+    --- [[:silent %!prettier --stdin-filepath @%<CR>]]
+    vim.cmd("silent %! prettier --stdin-filepath " .. file)
+    vim.api.nvim_win_set_cursor(win, cursor)
+    print ("prettier format:" .. file)
+end
+)
