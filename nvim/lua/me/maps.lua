@@ -80,6 +80,7 @@ keymap.set('n', '<leader>R', [[:s///gc<left><left><left>]])
 keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 keymap.set('n', '*', '*Nzz') -- select current work and don't move to next match
 keymap.set('x', '<F2>', 'y<ESC>/<C-r>"<CR>N')
+keymap.set('n', '<F12>', 'gd') -- go to definition
 
 keymap.set('n', '<A-F>' , function()
     local cursor = vim.api.nvim_win_get_cursor(0)    
