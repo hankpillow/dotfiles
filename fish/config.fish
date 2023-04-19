@@ -4,7 +4,7 @@ set -gx FZF_DEFAULT_COMMAND "fd --hidden -E .git -E node_modules"
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 set -gx TERM xterm-256color
 set -gx EDITOR nvim
-set -gx PATH node_modules/.bin $PATH
+set -gx PATH ~/workspace/node_modules/.bin $PATH
 set -gx PATH ~/.local/bin $PATH
 
 # export lua lsp

@@ -22,10 +22,9 @@
 	amend = commit --amend -v -m
 	d = diff
 	co = checkout
-	ci = commit -m
+	ci = commit 
+	cm = commit -m
 	ca = commit -am
-    ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
-    pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
 	st = status --short --branch
 	br = branch
 	ba = branch -a
