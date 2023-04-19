@@ -1,3 +1,4 @@
+
 set fish_greeting ""
 set -gx FZF_DEFAULT_OPTS "--height 40% --layout=reverse --border --inline-info"
 set -gx FZF_DEFAULT_COMMAND "fd --hidden -E .git -E node_modules"
@@ -45,6 +46,17 @@ function tml ; tmux ls; end
 function tmc ; tmux -2 new -s $argv; end
 function tma ; tmux attach-session -t $argv; end
 function tmk ; tmux kill-session -t $argv; end
+
+function gtree
+    git co -b $argv
+    set -l slug (string replace -r -a '/' '-' $argv)
+    git worktree add -f "tree-$slug" $argv
+    cd "tree-$slug"
+    git submodule update --init
+    ln -s ../node_modules .
+    npm run build:tokens
+    echo "$slug ready!"
+end
 
 ## start asdf
 if not test -f ~/.config/fish/completions/asdf.fish
