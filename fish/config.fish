@@ -55,7 +55,7 @@ function gtree
     git submodule update --init
     ln -s ../node_modules .
     npm run build:tokens
-    echo "$slug ready!"
+    echo "$argv ready!"
 end
 
 ## start asdf
