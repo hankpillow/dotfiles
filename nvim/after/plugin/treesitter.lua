@@ -13,7 +13,6 @@ plugin.setup {
         "gitignore",
         "html",
         "javascript",
-        "help",
         "json",
         "lua",
         "typescript",
