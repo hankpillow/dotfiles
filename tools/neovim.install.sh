@@ -6,12 +6,6 @@ then
 fi
 
 cd .cache
-
-VERSION="0.8.3"
-FILE="nvim-linux64.deb"
-if [[ ! -f $FILE ]]
-then
-    echo "+ download $FILE"
-    echo wget "https://github.com/neovim/neovim/releases/download/v${VERSION}/$FILE"
-fi
-sudo apt install ./$FILE
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+sudo mv nvim.appimage /usr/loca/bin/nvim

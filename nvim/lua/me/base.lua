@@ -33,9 +33,6 @@ vim.opt.hidden = true -- allow switching from changed buffers
 vim.opt.scrolloff = 8 -- make 8 lines free at the bottom
 vim.opt.wrap = false -- dont wrap text by default
 
--- vim.nobackup = true
--- vim.noswapfile = true
--- vim.nowritebackup = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -43,10 +40,6 @@ vim.opt.undofile = true
 
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
---set hlsearch
---set smartcase
---set incsearch
---set showmatch
 
 vim.cmd([[
 let g:clipboard = {
@@ -81,7 +74,6 @@ vim.opt.wildignore = {
 -- Global
 vim.g.python3_host_prog = vim.fn.expand("/usr/bin/python3")
 vim.g.netrw_browsex_viewer = "xdg-open"
---vim.g.netrw_browsex_viewer="cmd.exe /C start"
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
