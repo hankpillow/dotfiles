@@ -1,4 +1,3 @@
-
 local keymap = vim.keymap
 local e_opts = { noremap = true, expr = true }
 local s_opts = { noremap = true, silent = true }
@@ -26,8 +25,8 @@ keymap.set('n', ']v', '\'>') -- jump to end of visual selection
 keymap.set('n', '[v', '\'<') -- jump to start of visual selection
 keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', e_opts)
 keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', e_opts)
-keymap.set({ 'n', 'x' }, 'E', 'g_') -- end of line
-keymap.set({ 'n', 'x' }, 'B', '^') -- start of line
+keymap.set({ 'n', 'x' }, 'E', 'g_', s_opts) -- end of line
+keymap.set({ 'n', 'x' }, 'B', '^', s_opts) -- start of line
 
 -- Editing
 keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up
@@ -82,13 +81,60 @@ keymap.set('n', '*', '*Nzz') -- select current work and don't move to next match
 keymap.set('x', '<F2>', 'y<ESC>/<C-r>"<CR>N')
 keymap.set('n', '<F12>', 'gd') -- go to definition
 
-keymap.set('n', '<A-F>' , function()
-    local cursor = vim.api.nvim_win_get_cursor(0)    
-    local win = vim.api.nvim_tabpage_get_win(0)
-    local file = vim.fn.expand('%:p')
-    --- [[:silent %!prettier --stdin-filepath @%<CR>]]
-    vim.cmd("silent %! prettier --stdin-filepath " .. file)
-    vim.api.nvim_win_set_cursor(win, cursor)
-    print ("prettier format:" .. file)
-end
-)
+-- keymap.set('n', '<A-F>' , function()
+--     local cursor = vim.api.nvim_win_get_cursor(0)    
+--     local win = vim.api.nvim_tabpage_get_win(0)
+--     local file = vim.fn.expand('%:p')
+--     if vim.lsp.buffer.server_ready()
+--     end
+--     --- [[:silent %!prettier --stdin-filepath @%<CR>]]
+--     -- vim.cmd("silent %! prettier --stdin-filepath " .. file)
+--     vim.cmd("normal gg=G")
+--     vim.api.nvim_win_set_cursor(win, cursor)
+--     print ("prettier format:" .. file)
+-- end
+-- )
+
+-- Create the key mapping
+keymap.set("n", "<A-F>", function()
+    -- Save the current cursor position
+    local save_cursor = vim.api.nvim_win_get_cursor(0)
+
+    -- Check if LSP is attached to current buffer
+    if vim.lsp.buf.server_ready() then
+        local success, result = pcall(vim.lsp.buf.format)
+        if success then
+            print("Formatted using LSP")
+            vim.api.nvim_win_set_cursor(0, save_cursor)
+            return
+        end
+        print("LSP formatting failed: " .. result)
+    end
+
+    -- Try to format using Prettier
+    if vim.fn.executable('prettier') == 1 then
+        local file = vim.fn.expand("%:p")
+        local result  = vim.fn.system("prettier --file-info " .. file)
+        local hasParser = string.match(result, 'inferredParser": ".*"')
+        if hasParser then
+            local check = vim.fn.system("prettier --check " .. file)
+            if string.match(check, "[error]:") then
+                print(vim.inspect(check))
+                return
+            end
+            vim.cmd("%! prettier --stdin-filepath " .. file)
+            vim.api.nvim_win_set_cursor(0, save_cursor)
+            print("Formatted using Prettier")
+            return
+        end
+    end
+
+    -- Use the built-in formatter as a last resort
+    print("Formatted using built-in formatter")
+    vim.cmd("normal! gg=G")
+
+    -- Restore cursor position
+    vim.api.nvim_win_set_cursor(0, save_cursor)
+
+end, { noremap = true })
+
