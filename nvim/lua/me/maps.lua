@@ -88,7 +88,18 @@ keymap.set("n", "<A-F>", function()
 
     -- Check if LSP is attached to current buffer
     if vim.lsp.buf.server_ready() then
-        local success, result = pcall(vim.lsp.buf.format)
+        local success, result = pcall(vim.lsp.buf.format, {
+            -- filter = function(client) return client.name ~= "tsserver" end
+            async=true,
+            formatting_options = {
+                tabSize = 2,
+                printWidth = 100,
+                insertSpace = false,
+                trimTrailingWhitespace = true,
+                insertFinalNewline  = true,
+                trimFinalNewlines = true
+            }
+        })
         if success then
             print("Formatted using LSP")
             vim.api.nvim_win_set_cursor(0, save_cursor)

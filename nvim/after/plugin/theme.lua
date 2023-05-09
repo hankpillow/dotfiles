@@ -16,6 +16,11 @@ set number
 set relativenumber 
 set cursorline 
 set termguicolors 
-colorscheme PaperColor
-set background=dark
+try
+    colorscheme PaperColor
+    set background=dark
+catch
+   colorscheme default 
+endtry
 ]])
+

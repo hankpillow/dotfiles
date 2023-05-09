@@ -1,4 +1,4 @@
-if not vim.fn.has('fugitive') then
+if vim.fn.exists(':Git') == 0 then
     print('missing fugitive')
     return
 end
