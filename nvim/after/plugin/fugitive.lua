@@ -5,7 +5,8 @@ end
 
 vim.cmd([[
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%y\ %(%l,%c%)\ %k%q
-nnoremap <leader>git :0G<CR>
+nnoremap <leader>gs :0G<CR>
+nnoremap <leader>gw :Gwrite
 nnoremap <leader>gps :! git push
 nnoremap <leader>gpl :! git pull<CR>
 ]])
