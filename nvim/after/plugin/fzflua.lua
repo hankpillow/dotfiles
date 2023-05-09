@@ -29,5 +29,5 @@ vim.keymap.set("n", "<space>?", function()
     plugin.oldfiles(nopreview)
 end, opts)
 
-vim.keymap.set("n", "<leader>gw", plugin.grep_cword, opts)
+vim.keymap.set("n", "<C-G>", plugin.grep_cword, opts)
 vim.keymap.set("n", "<C-g>", plugin.grep_project, opts)

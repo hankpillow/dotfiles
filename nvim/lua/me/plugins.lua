@@ -16,7 +16,6 @@ require("packer").startup(function(use)
     -- Basic
     use 'wbthomason/packer.nvim'
     use 'nvim-lua/plenary.nvim' -- https://github.com/nvim-lua/plenary.nvim
-    use 'nvim-treesitter/nvim-treesitter-context' -- https://github.com/nvim-treesitter/nvim-treesitter-context
     use { 
         'nvim-treesitter/nvim-treesitter', -- https://github.com/nvim-treesitter/nvim-treesitter
         run = function()
@@ -84,4 +83,5 @@ end)
 -- TO RETIRE
 -- use 'nvim-tree/nvim-tree.lua' -- file explorer https://github.com/nvim-tree/nvim-tree.lua
 -- use 'nvim-lualine/lualine.nvim' -- https://github.com/nvim-lualine/lualine.nvim
+-- use 'nvim-treesitter/nvim-treesitter-context' -- https://github.com/nvim-treesitter/nvim-treesitter-context
 
