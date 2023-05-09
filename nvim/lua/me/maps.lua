@@ -81,20 +81,6 @@ keymap.set('n', '*', '*Nzz') -- select current work and don't move to next match
 keymap.set('x', '<F2>', 'y<ESC>/<C-r>"<CR>N')
 keymap.set('n', '<F12>', 'gd') -- go to definition
 
--- keymap.set('n', '<A-F>' , function()
---     local cursor = vim.api.nvim_win_get_cursor(0)    
---     local win = vim.api.nvim_tabpage_get_win(0)
---     local file = vim.fn.expand('%:p')
---     if vim.lsp.buffer.server_ready()
---     end
---     --- [[:silent %!prettier --stdin-filepath @%<CR>]]
---     -- vim.cmd("silent %! prettier --stdin-filepath " .. file)
---     vim.cmd("normal gg=G")
---     vim.api.nvim_win_set_cursor(win, cursor)
---     print ("prettier format:" .. file)
--- end
--- )
-
 -- Create the key mapping
 keymap.set("n", "<A-F>", function()
     -- Save the current cursor position
