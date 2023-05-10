@@ -9,18 +9,21 @@
 -- end
 
 vim.cmd([[
-set colorcolumn=100
-set showbreak=↪\
-set listchars=tab:»·,extends:›,precedes:‹,nbsp:•,trail:•,eol:$ 
-set number 
-set relativenumber 
-set cursorline 
-set termguicolors 
 try
-    colorscheme PaperColor
-    set background=dark
+colorscheme PaperColor
+let g:PaperColor_Theme_Options = {
+\   'theme': {
+\     'default.dark': {
+\       'allow_bold' : 0,
+\       'allow_italic' : 0,
+\     }
+\   }
+\ }
 catch
-   colorscheme default 
+echo "PaperColor is not available"
+colorscheme default 
 endtry
+""" change color for folded lines
+highlight! link Folded Normal
+highlight Folded ctermbg=NONE guibg=NONE ctermfg=white guifg=white
 ]])
-
