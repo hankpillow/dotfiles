@@ -9,6 +9,17 @@ keymap.set('n', '<leader>Q', ':qa!<CR>') -- quit without saving
 keymap.set('n', '<leader>w', ':w<CR>') -- write
 keymap.set('n', '<leader>wq', ':wq<CR>') -- write
 keymap.set('n', '<leader>wqa', ':wqa!<CR>') -- write
+
+keymap.set('n', '<C-b>', function()
+    for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+        local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+        if filetype:match('netrw') then
+            vim.cmd(bufnr .. 'bwipeout!')
+            return
+        end
+    end
+    vim.cmd('Vex')
+end, { noremap = true, silent = true })
 keymap.set("n", "-", vim.cmd.Ex)
 
 ---- utils
@@ -86,6 +97,24 @@ keymap.set("n", "<A-F>", function()
     -- Save the current cursor position
     local save_cursor = vim.api.nvim_win_get_cursor(0)
 
+    -- Try to format using Prettier
+    if vim.fn.executable('prettier') == 1 then
+        local file = vim.fn.expand("%:p")
+        local result  = vim.fn.system("prettier --file-info " .. file)
+        local hasParser = string.match(result, 'inferredParser": ".*"')
+        if hasParser then
+            local check = vim.fn.system("prettier --check " .. file)
+            if string.match(check, "[error]:") then
+                print(vim.inspect(check))
+                return
+            end
+            vim.cmd("%! prettier --stdin-filepath " .. file)
+            vim.api.nvim_win_set_cursor(0, save_cursor)
+            print("Formatted using Prettier")
+            return
+        end
+    end
+
     -- Check if LSP is attached to current buffer
     if vim.lsp.buf.server_ready() then
         local success, result = pcall(vim.lsp.buf.format, {
@@ -106,24 +135,6 @@ keymap.set("n", "<A-F>", function()
             return
         end
         print("LSP formatting failed: " .. result)
-    end
-
-    -- Try to format using Prettier
-    if vim.fn.executable('prettier') == 1 then
-        local file = vim.fn.expand("%:p")
-        local result  = vim.fn.system("prettier --file-info " .. file)
-        local hasParser = string.match(result, 'inferredParser": ".*"')
-        if hasParser then
-            local check = vim.fn.system("prettier --check " .. file)
-            if string.match(check, "[error]:") then
-                print(vim.inspect(check))
-                return
-            end
-            vim.cmd("%! prettier --stdin-filepath " .. file)
-            vim.api.nvim_win_set_cursor(0, save_cursor)
-            print("Formatted using Prettier")
-            return
-        end
     end
 
     -- Use the built-in formatter as a last resort

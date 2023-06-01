@@ -58,48 +58,25 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "<A-H>", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<C-h>", function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set("n", "<C-.>", function() vim.lsp.buf.code_action() end, opts)
+    vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
 end)
 
 lsp.configure("angularls", {
     autostart = false
 })
 
-lsp.setup()
-
 vim.diagnostic.config({
     virtual_text = false,
 })
 
--- lsp.configure('tsserver', {
---     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx", "json" },
---     root_dir = lspconfig.util.root_pattern("package.json"),
---     single_file_support = false,
--- })
+lspconfig.stylelint_lsp.setup{
+    autostart = false,
+    filetypes = { "css", "html", "less", "sass"},
+}
 
--- -- Fix Undefined global 'vim'
--- lsp.configure('lua_ls', {
---     settings = {
---         Lua = {
---             diagnostics = {
---                 globals = { 'vim' }
---             },
---             format = {
---                 enable = true,
---                 defaultConfig = {
---                     indent_style = "space",
---                     indent_size = "4"
---                 }
---             }
---         }
---     }
--- })
+lsp.configure("eslint", {
+    filetypes = { "json", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
+})
 
--- lsp.configure("stylelint_lsp", {
---     filetypes = { "css", "scss", "sass", "less" },
--- })
 
--- lsp.configure("eslint", {
---     filetypes = { "json", "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
--- })
-
+lsp.setup()
