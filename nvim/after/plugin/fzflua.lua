@@ -6,6 +6,8 @@ if not ok then
     return
 end
 
+plugin.setup({'fzf-native'})
+
 local opts = { noremap = true, silent = true }
 local nopreview = { preview_opts = "hidden" }
 
@@ -29,5 +31,9 @@ vim.keymap.set("n", "<space>?", function()
     plugin.oldfiles(nopreview)
 end, opts)
 
-vim.keymap.set("n", "<C-G>", plugin.grep_cword, opts)
-vim.keymap.set("n", "<C-g>", plugin.grep_project, opts)
+vim.keymap.set("n", "<C-g>", plugin.live_grep_glob, opts)
+vim.keymap.set("v", "<C-g>", plugin.grep_visual, opts)
+
+vim.keymap.set({ "n", "v", "i" }, "<C-x><C-f>", function() 
+    require("fzf-lua").complete_path()
+end, { silent = true, desc = "Fuzzy complete path" })

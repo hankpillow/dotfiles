@@ -21,10 +21,11 @@
 -- \   }
 -- \ }
 -- colorscheme PaperColor
+-- base16-chalk
 
 vim.cmd([[
 try
-colorscheme base16-chalk
+colorscheme base16-darktooth
 catch
 colorscheme default 
 endtry
