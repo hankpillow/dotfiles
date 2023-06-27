@@ -37,6 +37,7 @@ require("packer").startup(function(use)
     use 'arcticicestudio/nord-vim' -- https://www.nordtheme.com/ports/vim
     use 'NLKNguyen/papercolor-theme' -- https://github.com/NLKNguyen/papercolor-theme
     use 'nvim-tree/nvim-web-devicons' -- https://github.com/nvim-tree/nvim-web-devicons
+    -- use 'sekke276/dark_flat.nvim'
 
     -- Helpers
     use 'moll/vim-bbye' --- manage closing buffers properly https://github.com/moll/vim-bbye

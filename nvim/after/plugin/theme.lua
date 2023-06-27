@@ -25,7 +25,7 @@
 
 vim.cmd([[
 try
-colorscheme base16-darktooth
+colorscheme base16-ashes
 catch
 colorscheme default 
 endtry
