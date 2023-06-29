@@ -1,8 +1,33 @@
+[include]
+    # depend on .gituser that has the definitions for [user]
+    path = ~/.gituser
+
 [core]
 	excludesfile = ~/.gitignore
 	editor = nvim
 	ignorecase = false
 	fileMode = false
+    pager = delta
+
+[alias]
+	amend = commit --amend -v -m
+	co = checkout
+	ci = commit 
+	cm = commit -m
+	ca = commit -am
+	st = status --short --branch
+	br = branch
+	branches = "for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ "
+	ft = fetch --all --prune
+	ls = log --format=format:\"%C(yellow)%h%C(red)%d %C(reset)%s%C(blue) <%an>%C(reset)\"
+	graph = log --graph --format=format:\"%C(yellow)%h%C(red)%d%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)\"
+	inline = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
+	staged = diff --cached
+	tags = log --tags --simplify-by-decoration --pretty=\"format:%h %D\"
+	tagss = log --tags --simplify-by-decoration --pretty=\"format:%aI %Cblue%h %Cgreen%d %Creset%ce - %s\"
+	unmerged = ls-files -u
+	unstage = reset HEAD --
+	conflicts = diff --name-only --diff-filter=U
 
 [push]
 	default = current
@@ -16,48 +41,24 @@
 	interactive = auto
 	status = auto
 	grep = auto
-	interactive = auto
 
-[alias]
-	amend = commit --amend -v -m
-	d = diff
-	co = checkout
-	ci = commit 
-	cm = commit -m
-	ca = commit -am
-	st = status --short --branch
-	br = branch
-	ba = branch -a
-	bm = branch --merged
-	bn = branch --no-merged
-	branches = "for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ "
-	ft = fetch --all --prune
-	ls = log --format=format:\"%C(yellow)%h%C(red)%d %C(reset)%s%C(blue) <%an>%C(reset)\"
-	graph = log --graph --format=format:\"%C(yellow)%h%C(red)%d%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)\"
-	in = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
-	staged = diff --cached
-	tags = log --tags --simplify-by-decoration --pretty=\"format:%h %D\"
-	tagss = log --tags --simplify-by-decoration --pretty=\"format:%aI %Cblue%h %Cgreen%d %Creset%ce - %s\"
-	unmerged = ls-files -u
-	unstage = reset HEAD --
-	conflict = diff --name-only --diff-filter=U
+[interactive]
+    diffFilter = delta --color-only
 
-[color "diff"]
-	meta = yellow
-	frag = cyan
-	old = red bold
-	new = green bold
+[delta]
+    # use n and N to move between diff sections
+    navigate = true
+    # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    light = false      
+    side-by-side = true
+    line-numbers = true
 
-[color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+[merge]
+    conflictstyle = diff3
+	log = 1000
 
-[difftool]
-	tool = vscode
-
-[difftool "vscode"]
-	cmd = code --wait --diff $LOCAL $REMOTE
+[diff]
+    colorMoved = default
 
 [grep]
 	lineNumber = true
@@ -68,13 +69,9 @@
 [log]
 	decorate = short
 
-[merge]
-	log = 1000
-
 [pager]
 	show-branch = true
 	status = true
-
 
 [status]
 	submodulesummary = true
