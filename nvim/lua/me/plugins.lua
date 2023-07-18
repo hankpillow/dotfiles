@@ -27,9 +27,10 @@ require("packer").startup(function(use)
     } 
 
     -- Themes
+    -- use 'chriskempson/base16-vim' -- https://github.com/chriskempson/base16-vim
     use 'rose-pine/neovim' -- https://github.com/rose-pine/neovim
     use 'sonph/onehalf' -- https://github.com/sonph/onehalf/tree/master/vim
-    use 'chriskempson/base16-vim' -- https://github.com/chriskempson/base16-vim
+    use  "zootedb0t/citruszest.nvim"  -- https://github.com/zootedb0t/citruszest.nvim
     use 'jnurmine/Zenburn' -- https://github.com/jnurmine/Zenburn
     use 'sjl/badwolf' -- https://github.com/sjl/badwolf/
     use 'morhetz/gruvbox' -- https://github.com/morhetz/gruvbox
@@ -44,16 +45,16 @@ require("packer").startup(function(use)
     use 'tpope/vim-surround' --- https://github.com/tpope/vim-surround
     use 'tpope/vim-unimpaired' --- https://github.com/tpope/vim-unimpaired
     use 'tpope/vim-commentary' --- https://github.com/tpope/vim-commentary
-    use 'mbbill/undotree' -- https://github.com/mbbill/undotree
+    use 'windwp/nvim-ts-autotag' -- https://github.com/windwp/nvim-ts-autotag
 
     -- GIT
     use { 'sindrets/diffview.nvim' } -- https://github.com/sindrets/diffview.nvim
     use { 'tpope/vim-fugitive' } -- git bridge: https://github.com/tpope/vim-fugitive
+    use { 'airblade/vim-gitgutter' } -- https://github.com/airblade/vim-gitgutter
 
     -- FZF
     use { 'junegunn/fzf', run = './install --bin', }
     use { 'ibhagwan/fzf-lua' } -- https://github.com/ibhagwan/fzf-lua#installation
-    use { 'airblade/vim-gitgutter' } -- https://github.com/airblade/vim-gitgutter
 
     -- LSP
     use {

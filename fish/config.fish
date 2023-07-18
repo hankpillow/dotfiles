@@ -52,10 +52,16 @@ function gtree
     set -l slug (string replace -r -a '/' '-' $argv)
     git worktree add -f "tree-$slug" $argv
     cd "tree-$slug"
+    echo "worktree $argv created!"
+end
+
+function gtree-init
     git submodule update --init
     ln -s ../node_modules .
+    cd src/core
+    ln -s ../../../src/core/node_modules/ node_modules
+    cd -
     npm run build:tokens
-    echo "$argv ready!"
 end
 
 ## start asdf
