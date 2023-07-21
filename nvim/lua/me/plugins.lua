@@ -28,6 +28,7 @@ require("packer").startup(function(use)
 
     -- Themes
     -- use 'chriskempson/base16-vim' -- https://github.com/chriskempson/base16-vim
+    -- use 'sekke276/dark_flat.nvim'
     use 'rose-pine/neovim' -- https://github.com/rose-pine/neovim
     use 'sonph/onehalf' -- https://github.com/sonph/onehalf/tree/master/vim
     use  "zootedb0t/citruszest.nvim"  -- https://github.com/zootedb0t/citruszest.nvim
@@ -38,7 +39,8 @@ require("packer").startup(function(use)
     use 'arcticicestudio/nord-vim' -- https://www.nordtheme.com/ports/vim
     use 'NLKNguyen/papercolor-theme' -- https://github.com/NLKNguyen/papercolor-theme
     use 'nvim-tree/nvim-web-devicons' -- https://github.com/nvim-tree/nvim-web-devicons
-    -- use 'sekke276/dark_flat.nvim'
+    use  "zootedb0t/citruszest.nvim"  -- https://github.com/zootedb0t/citruszest.nvim
+    use 'nvim-lualine/lualine.nvim' -- https://github.com/nvim-lualine/lualine.nvim
 
     -- Helpers
     use 'moll/vim-bbye' --- manage closing buffers properly https://github.com/moll/vim-bbye
@@ -48,13 +50,13 @@ require("packer").startup(function(use)
     use 'windwp/nvim-ts-autotag' -- https://github.com/windwp/nvim-ts-autotag
 
     -- GIT
-    use { 'sindrets/diffview.nvim' } -- https://github.com/sindrets/diffview.nvim
-    use { 'tpope/vim-fugitive' } -- git bridge: https://github.com/tpope/vim-fugitive
-    use { 'airblade/vim-gitgutter' } -- https://github.com/airblade/vim-gitgutter
+    use  'sindrets/diffview.nvim'  -- https://github.com/sindrets/diffview.nvim
+    use  'tpope/vim-fugitive'  -- git bridge: https://github.com/tpope/vim-fugitive
+    use  'airblade/vim-gitgutter'  -- https://github.com/airblade/vim-gitgutter
 
     -- FZF
     use { 'junegunn/fzf', run = './install --bin', }
-    use { 'ibhagwan/fzf-lua' } -- https://github.com/ibhagwan/fzf-lua#installation
+    use  'ibhagwan/fzf-lua'  -- https://github.com/ibhagwan/fzf-lua#installation
 
     -- LSP
     use {
@@ -84,6 +86,5 @@ end)
 
 -- TO RETIRE
 -- use 'nvim-tree/nvim-tree.lua' -- file explorer https://github.com/nvim-tree/nvim-tree.lua
--- use 'nvim-lualine/lualine.nvim' -- https://github.com/nvim-lualine/lualine.nvim
 -- use 'nvim-treesitter/nvim-treesitter-context' -- https://github.com/nvim-treesitter/nvim-treesitter-context
 

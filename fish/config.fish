@@ -53,6 +53,7 @@ function gtree
     git worktree add -f "tree-$slug" $argv
     cd "tree-$slug"
     echo "worktree $argv created!"
+    echo "-> gtree-init to setup links"
 end
 
 function gtree-init

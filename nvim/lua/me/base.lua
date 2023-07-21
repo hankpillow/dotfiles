@@ -96,6 +96,6 @@ let g:clipboard = {
 vim.cmd([[
 augroup MyAutoGroup
   autocmd!
-  autocmd BufRead,BufNewFile *.mdx setlocal filetype=markdown
+  autocmd BufRead,BufNewFile *.mdx setlocal filetype=jsx
 augroup END
 ]])
