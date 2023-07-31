@@ -1,12 +1,15 @@
+local ok, plugin = pcall(require, 'citruszest')
+if not ok then
+    print("missing citruszest")
+    return
+end
+
 vim.cmd([[
 try
 colorscheme citruszest
+echo "citruszest set"
 catch
-echo "failed to use custom colorscheme"
+echo "failed to set citruszest theme"
 colorscheme default 
 endtry
-
-""" change color for folded lines
-""" highlight! link Folded Normal
-""" highlight Folded ctermbg=NONE guibg=NONE ctermfg=white guifg=white
 ]])

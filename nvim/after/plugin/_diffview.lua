@@ -8,6 +8,7 @@ if not ok then
 end
 
 vim.keymap.set("n", "<leader>dv", vim.cmd.DiffviewOpen)
+vim.keymap.set("n", "<leader>dc", vim.cmd.DiffviewClose)
 
 -- https://github.com/sindrets/diffview.nvim
 plugin.setup({
