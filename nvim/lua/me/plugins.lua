@@ -39,7 +39,6 @@ require("packer").startup(function(use)
     use 'arcticicestudio/nord-vim' -- https://www.nordtheme.com/ports/vim
     use 'NLKNguyen/papercolor-theme' -- https://github.com/NLKNguyen/papercolor-theme
     use 'nvim-tree/nvim-web-devicons' -- https://github.com/nvim-tree/nvim-web-devicons
-    use  "zootedb0t/citruszest.nvim"  -- https://github.com/zootedb0t/citruszest.nvim
     use 'nvim-lualine/lualine.nvim' -- https://github.com/nvim-lualine/lualine.nvim
 
     -- Helpers

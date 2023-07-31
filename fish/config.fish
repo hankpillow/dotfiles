@@ -3,7 +3,8 @@ set fish_greeting ""
 set -gx FZF_DEFAULT_OPTS "--height 40% --layout=reverse --border --inline-info"
 set -gx FZF_DEFAULT_COMMAND "fd --hidden -E .git -E node_modules"
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-set -gx TERM xterm-256color
+set -gx TERM xterm
+# set -gx TERM screen-256color
 set -gx EDITOR nvim
 set -gx PATH ~/workspace/node_modules/.bin $PATH
 set -gx PATH ~/.local/bin $PATH
