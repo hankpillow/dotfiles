@@ -73,6 +73,8 @@ vim.opt.wildignore = { -- ignore these files when completing
     "*.gif",
     "*.png",
     "*.tiff",
+    "*.zip",
+    "*.tar",
     "*.webp",
     "**/node_modules/**"
 }

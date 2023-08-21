@@ -84,6 +84,5 @@ require("packer").startup(function(use)
 end)
 
 -- TO RETIRE
--- use 'nvim-tree/nvim-tree.lua' -- file explorer https://github.com/nvim-tree/nvim-tree.lua
 -- use 'nvim-treesitter/nvim-treesitter-context' -- https://github.com/nvim-treesitter/nvim-treesitter-context
 

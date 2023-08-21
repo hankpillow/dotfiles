@@ -7,7 +7,7 @@ end
 vim.cmd([[
 try
 colorscheme citruszest
-echo "citruszest set"
+highlight ColorColumn ctermbg=0 guibg=black
 catch
 echo "failed to set citruszest theme"
 colorscheme default 

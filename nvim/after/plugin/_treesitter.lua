@@ -52,7 +52,7 @@ if not ok then
 end
 
 require('nvim-ts-autotag').setup({
-    filetypes = { "html" , "xml", "mdx" },
+    filetypes = { "html" , "xml", "mdx", "htm", "jsx", "tsx" },
     enable = true,
     enable_rename = true,
     enable_close = true,

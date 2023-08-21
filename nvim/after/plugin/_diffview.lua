@@ -7,7 +7,7 @@ if not ok then
     return
 end
 
-vim.keymap.set("n", "<leader>dv", vim.cmd.DiffviewOpen)
+vim.keymap.set("n", "<leader>do", vim.cmd.DiffviewOpen)
 vim.keymap.set("n", "<leader>dc", vim.cmd.DiffviewClose)
 
 -- https://github.com/sindrets/diffview.nvim

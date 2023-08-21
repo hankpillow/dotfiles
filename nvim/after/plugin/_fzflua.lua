@@ -11,8 +11,12 @@ plugin.setup({'fzf-native'})
 local opts = { noremap = true, silent = true }
 local nopreview = { preview_opts = "hidden" }
 
-vim.keymap.set("n", "<c-k>", function()
+vim.keymap.set("n", "<C-k>", function()
     plugin.builtin()
+end, opts)
+
+vim.keymap.set("n", "<A-k>", function()
+    plugin.commands()
 end, opts)
 
 vim.keymap.set("n", "<C-p>", function()

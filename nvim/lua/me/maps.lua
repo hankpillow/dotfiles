@@ -11,6 +11,7 @@ keymap.set('n', '<leader>wq', ':wq<CR>') -- write
 keymap.set('n', '<leader>wqa', ':wqa!<CR>') -- write
 
 keymap.set('n', '<C-b>', function()
+    echo "default netrw"
     for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
         local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
         if filetype:match('netrw') then
@@ -19,7 +20,7 @@ keymap.set('n', '<C-b>', function()
         end
     end
     vim.cmd('Vex')
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = false })
 keymap.set("n", "-", vim.cmd.Ex)
 
 ---- utils
