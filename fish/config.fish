@@ -48,6 +48,14 @@ function tmc ; tmux -2 new -s $argv; end
 function tma ; tmux attach-session -t $argv; end
 function tmk ; tmux kill-session -t $argv; end
 
+function gpushv
+    git push -u origin (gb) --no-verify
+end
+
+function gpush
+    git push -u origin (gb)
+end
+
 function gtree
     git co -b $argv
     set -l slug (string replace -r -a '/' '-' $argv)

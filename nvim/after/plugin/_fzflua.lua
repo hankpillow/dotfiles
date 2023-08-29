@@ -20,7 +20,7 @@ vim.keymap.set("n", "<A-k>", function()
 end, opts)
 
 vim.keymap.set("n", "<C-p>", function()
-    plugin.git_files()
+    plugin.git_files(nopreview)
 end, opts)
 
 vim.keymap.set("n", "<A-p>", function()
