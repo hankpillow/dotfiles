@@ -86,9 +86,8 @@ keymap.set('n', '[b', ':bprev<CR>') -- prev buffer
 keymap.set('n', ']b', ':bnext<CR>') -- next buffer
 
 ---- Find & Replace
-keymap.set('n', '<leader>r', [[:%s///gc<left><left><left>]])
-keymap.set('n', '<leader>R', [[:s///gc<left><left><left>]])
-keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+keymap.set('n', '<leader>r', [[:.,$s///gcI<left><left><left><left>]])
+keymap.set("n", "<leader>rw", [[:.,$s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]])
 keymap.set('n', '*', '*Nzz') -- select current work and don't move to next match
 keymap.set('x', '<F2>', 'y<ESC>/<C-r>"<CR>N')
 -- keymap.set('n', '<F12>', 'gd') -- go to definition
