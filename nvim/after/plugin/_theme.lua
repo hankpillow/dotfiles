@@ -1,15 +1,15 @@
-local ok, plugin = pcall(require, 'citruszest')
-if not ok then
-    print("missing citruszest")
-    return
-end
+-- local ok, plugin = pcall(require, 'badwolf')
+-- if not ok then
+--     print("missing badwolf")
+--     return
+-- end
 
 vim.cmd([[
 try
-colorscheme citruszest
+colorscheme rose-pine
 highlight ColorColumn ctermbg=0 guibg=black
 catch
-echo "failed to set citruszest theme"
+echo "failed to set badwolf theme"
 colorscheme default 
 endtry
 ]])
