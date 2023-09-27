@@ -40,6 +40,9 @@ require("packer").startup(function(use)
     use 'NLKNguyen/papercolor-theme' -- https://github.com/NLKNguyen/papercolor-theme
     use 'nvim-tree/nvim-web-devicons' -- https://github.com/nvim-tree/nvim-web-devicons
     use 'nvim-lualine/lualine.nvim' -- https://github.com/nvim-lualine/lualine.nvim
+    use 'raphamorim/vim-rio' -- https://github.com/raphamorim/vim-rio
+    use 'zSnails/cityscape.nvim' -- https://github.com/zSnails/cityscape.nvim
+    use 'iagorrr/noctis-hc.nvim' -- https://github.com/iagorrr/noctis-hc.nvim
 
     -- Helpers
     use 'moll/vim-bbye' --- manage closing buffers properly https://github.com/moll/vim-bbye

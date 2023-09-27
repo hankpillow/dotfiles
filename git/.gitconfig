@@ -12,11 +12,14 @@
 [alias]
 	amend = commit --amend -v -m
 	co = checkout
-	ci = commit 
-	cm = commit -m
-	ca = commit -am
+	ci = commit  -m
+    cif = commit --no-verify -m
+	ca = commit -a -m
+	caf = commit --no-verify -a -m
 	st = status --short --branch
 	br = branch
+    pu = push -u origin HEAD
+    puf = push --no-verify -u origin HEAD
 	branches = "for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ "
 	ft = fetch --all --prune
 	ls = log --format=format:\"%C(yellow)%h%C(red)%d %C(reset)%s%C(blue) <%an>%C(reset)\"
