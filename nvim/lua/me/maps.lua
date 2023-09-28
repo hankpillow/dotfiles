@@ -39,6 +39,7 @@ keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', e_opts)
 keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', e_opts)
 keymap.set({ 'n', 'x' }, 'E', 'g_', s_opts) -- end of line
 keymap.set({ 'n', 'x' }, 'B', '^', s_opts) -- start of line
+keymap.set( 'n' , '<leader>o', 'i<CR><ESC>g;') --  insert new line below 
 
 -- Editing
 keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up
