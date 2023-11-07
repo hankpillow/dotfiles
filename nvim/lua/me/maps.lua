@@ -94,57 +94,56 @@ keymap.set('n', '*', '*Nzz') -- select current work and don't move to next match
 keymap.set('x', '<F2>', 'y<ESC>/<C-r>"<CR>N')
 -- keymap.set('n', '<F12>', 'gd') -- go to definition
 
--- Create the key mapping
-keymap.set("n", "<A-F>", function()
-    -- Save the current cursor position
-    local save_cursor = vim.api.nvim_win_get_cursor(0)
+-- keymap.set("n", "<A-F>", function()
+--     -- Save the current cursor position
+--     local save_cursor = vim.api.nvim_win_get_cursor(0)
 
-    -- Try to format using Prettier
-    if vim.fn.executable('prettier') == 1 then
-        local file = vim.fn.expand("%:p")
-        local result  = vim.fn.system("prettier --file-info " .. file)
-        local hasParser = string.match(result, 'inferredParser": ".*"')
-        if hasParser then
-            local check = vim.fn.system("prettier --check " .. file)
-            if string.match(check, "[error]:") then
-                print(vim.inspect(check))
-                return
-            end
-            vim.cmd("%! prettier --stdin-filepath " .. file)
-            vim.api.nvim_win_set_cursor(0, save_cursor)
-            print("Formatted using Prettier")
-            return
-        end
-    end
+--     -- Try to format using Prettier
+--     if vim.fn.executable('prettier') == 1 then
+--         local file = vim.fn.expand("%:p")
+--         local result  = vim.fn.system("prettier --file-info " .. file)
+--         local hasParser = string.match(result, 'inferredParser": ".*"')
+--         if hasParser then
+--             local check = vim.fn.system("prettier --check " .. file)
+--             if string.match(check, "[error]:") then
+--                 print(vim.inspect(check))
+--                 return
+--             end
+--             vim.cmd("%! prettier --stdin-filepath " .. file)
+--             vim.api.nvim_win_set_cursor(0, save_cursor)
+--             print("Formatted using Prettier")
+--             return
+--         end
+--     end
 
-    -- Check if LSP is attached to current buffer
-    if vim.lsp.buf.server_ready() then
-        local success, result = pcall(vim.lsp.buf.format, {
-            -- filter = function(client) return client.name ~= "tsserver" end
-            async=true,
-            formatting_options = {
-                tabSize = 2,
-                printWidth = 100,
-                insertSpace = false,
-                trimTrailingWhitespace = true,
-                insertFinalNewline  = true,
-                trimFinalNewlines = true
-            }
-        })
-        if success then
-            print("Formatted using LSP")
-            vim.api.nvim_win_set_cursor(0, save_cursor)
-            return
-        end
-        print("LSP formatting failed: " .. result)
-    end
+--     -- Check if LSP is attached to current buffer
+--     if vim.lsp.buf.server_ready() then
+--         local success, result = pcall(vim.lsp.buf.format, {
+--             -- filter = function(client) return client.name ~= "tsserver" end
+--             async=true,
+--             formatting_options = {
+--                 tabSize = 2,
+--                 printWidth = 100,
+--                 insertSpace = false,
+--                 trimTrailingWhitespace = true,
+--                 insertFinalNewline  = true,
+--                 trimFinalNewlines = true
+--             }
+--         })
+--         if success then
+--             print("Formatted using LSP")
+--             vim.api.nvim_win_set_cursor(0, save_cursor)
+--             return
+--         end
+--         print("LSP formatting failed: " .. result)
+--     end
 
-    -- Use the built-in formatter as a last resort
-    print("Formatted using built-in formatter")
-    vim.cmd("normal! gg=G")
+--     -- Use the built-in formatter as a last resort
+--     print("Formatted using built-in formatter")
+--     vim.cmd("normal! gg=G")
 
-    -- Restore cursor position
-    vim.api.nvim_win_set_cursor(0, save_cursor)
+--     -- Restore cursor position
+--     vim.api.nvim_win_set_cursor(0, save_cursor)
 
-end, { noremap = true })
+-- end, { noremap = true })
 

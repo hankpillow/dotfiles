@@ -61,6 +61,7 @@ require("packer").startup(function(use)
     use  'ibhagwan/fzf-lua'  -- https://github.com/ibhagwan/fzf-lua#installation
 
     -- LSP
+    use "stevearc/conform.nvim"  -- https://github.com/stevearc/conform.nvim
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',

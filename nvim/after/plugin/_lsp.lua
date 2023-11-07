@@ -1,9 +1,15 @@
 local iok, lsp = pcall(require, 'lsp-zero')
 local lok, lspconfig = pcall(require, 'lspconfig')
 local cok, cmp = pcall(require, 'cmp')
+local conk = pcall(require, 'conform')
 
 if not iok then
     print("missing lsp-zero")
+    return
+end
+
+if not conk then
+    print("missing conform")
     return
 end
 
@@ -60,6 +66,9 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<A-h>", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "<C-h>", vim.diagnostic.open_float, opts)
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+    -- vim.keymap.set("n", "<A-F>", function()
+    --     conform.format({ async = true, lsp_fallback = true })
+    -- end, opts)
 end)
 
 lsp.configure("angularls", {
