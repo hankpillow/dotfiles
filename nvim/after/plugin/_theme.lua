@@ -1,6 +1,6 @@
 vim.cmd([[
 try
-colorscheme gruvbox
+colorscheme noctishc
 highlight ColorColumn ctermbg=0 guibg=black
 catch
 echo "failed to set badwolf theme"
