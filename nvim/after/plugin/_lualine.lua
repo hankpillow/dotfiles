@@ -9,7 +9,7 @@ end
 plugin.setup {
     options = {
         icons_enabled = true,
-        theme = "rose-pine",
+        theme = "citruszest",
     },
     sections = {
         lualine_a = {'mode'},
