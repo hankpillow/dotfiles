@@ -5,16 +5,20 @@ if not ok then
 end
 
 -- https://github.com/stevearc/conform.nvim
+local frontend_code = { { "prettier", "eslint" } }
+local frontend_style = { { "prettier", "stylelint" } }
 plugin.setup({
     log_level = vim.log.levels.ALL,
     formatters_by_ft = {
-        javascript = { { "prettier" } },
-        typescript = { { "prettier" } },
-        typescriptreact = { { "prettier" } },
-        html = { { "prettier" } },
-        xml = { { "prettier" } },
-        scss = { { "prettier", "stylelint" } },
-        css = { { "prettier", "stylelint" } },
+        javascript = frontend_code,
+        typescript = frontend_code,
+        typescriptreact = frontend_code,
+        xml = frontend_code,
+        html = frontend_style,
+        scss = frontend_style,
+        css = frontend_style,
+        lua = {{ "stylua" }},
+        ["*"] = { { "codespell" } },
     },
     notify_on_error = true,
 })
@@ -22,18 +26,6 @@ plugin.setup({
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 vim.keymap.set({ "n", "v" }, "<A-F>", function()
-    plugin.format({ async = true, lsp_fallback = true, quiet = false })
-    -- local bufnr = vim.api.nvim_get_current_buf()
-    -- local formatters = plugin.list_formatters(bufnr)
-    -- print(vim.inspect(formatters))
-    -- print(formatters.name .. "--" .. formatters["name"])
-    -- print(type(formatters))
-    -- if formatters.name then
-    --     print("Formatting with " .. formatters.name)
-    --     -- plugin.format({ async = true, lsp_fallback = true, quiet = false })
-    -- else 
-    --     print("Formatting with vim defaults")
-    --     -- vim.cmd("normal! gg=G")
-    -- end
+    plugin.format({ async = true, lsp_fallback = false, quiet = false })
 end, { noremap = true, silent = false })
 

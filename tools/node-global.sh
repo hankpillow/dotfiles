@@ -2,5 +2,19 @@
 
 if [[ $(which npm) ]];
 then
-    npm i -g node-gyp http-server tree-sitter tree-sitter-cli neovim typescript typescript-language-server eslint prettier
+    npm i -g \
+        @angular/language-server\
+        @johnnymorganz/stylua-bin\
+        corepack\
+        eslint\
+        http-server\
+        jfrog-cli-v2-jf\
+        neovim\
+        node-gyp\
+        prettier\
+        tree-sitter-cli\
+        tree-sitter\
+        typescript-language-server\
+        typescript
 fi
+

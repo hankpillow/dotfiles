@@ -28,7 +28,7 @@ vim.keymap.set("n", "<A-p>", function()
 end, opts)
 
 vim.keymap.set("n", "<space><space>", function()
-    plugin.buffers()
+    plugin.buffers(nopreview)
 end, opts)
 
 vim.keymap.set("n", "<space>?", function()
@@ -38,3 +38,11 @@ end, opts)
 vim.keymap.set("n", "<C-g>", plugin.live_grep_glob, opts)
 vim.keymap.set("v", "<C-g>", plugin.grep_visual, opts)
 vim.keymap.set("v", "<leader>gw", plugin.grep_cWORD, opts)
+
+vim.keymap.set({ "n", "v",  "i" }, "<C-x><C-f>",
+    function()
+        require("fzf-lua").complete_file({
+            cmd = "rg --files",
+            winopts = { preview_opts = "hidden" }
+        })
+    end, { silent = true, desc = "Fuzzy complete file" })

@@ -66,14 +66,13 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<A-h>", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "<C-h>", vim.diagnostic.open_float, opts)
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-    -- vim.keymap.set("n", "<A-F>", function()
-    --     conform.format({ async = true, lsp_fallback = true })
-    -- end, opts)
 end)
 
 lsp.configure("angularls", {
-    autostart = false
+    autostart = true
 })
+
+lspconfig.lua_ls.setup {}
 
 vim.diagnostic.config({
     virtual_text = false,
