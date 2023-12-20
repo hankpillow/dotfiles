@@ -37,7 +37,7 @@ alias ports "lsof -Pn -i4 | grep LISTEN"
 alias sudo "sudo "
 alias open "explorer.exe"
 alias ex "exa --long --git -a"
-
+alias groot "cd (git rev-parse --show-toplevel)"
 # program aliases
 alias vi "nvim"
 alias fim "nvim (fzf)"

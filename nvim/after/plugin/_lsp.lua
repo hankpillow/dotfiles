@@ -33,6 +33,8 @@ lsp.ensure_installed({
 	"eslint",
 })
 
+local root_pattern = require("lspconfig.util").root_pattern
+
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
 	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
@@ -44,11 +46,15 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 cmp_mappings["<Tab>"] = nil
 cmp_mappings["<S-Tab>"] = nil
 
+vim.opt.signcolumn = "yes"
+vim.diagnostic.config({
+	virtual_text = false,
+})
+
 lsp.setup_nvim_cmp({
 	mapping = cmp_mappings,
 })
 
-vim.opt.signcolumn = "yes"
 lsp.set_preferences({
 	suggest_lsp_servers = false,
 	sign_icons = {
@@ -65,11 +71,17 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "<A-h>", vim.lsp.buf.hover, opts)
 	vim.keymap.set("n", "<C-h>", vim.diagnostic.open_float, opts)
 	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+	-- local active_clients = vim.lsp.get_active_clients()
+	-- if client.name == "angularls" then
+	-- 	for _, client_ in pairs(active_clients) do
+	-- 		-- stop tsserver if denols is already active
+	-- 		if client_.name == "tsserver" then
+	-- 			print("stopping tsserver in favor of angularls")
+	-- 			client_.stop()
+	-- 		end
+	-- 	end
+	-- end
 end)
-
-lsp.configure("angularls", {
-	autostart = true,
-})
 
 lspconfig.lua_ls.setup({
 	settings = {
@@ -88,16 +100,21 @@ lspconfig.lua_ls.setup({
 	},
 })
 
-vim.diagnostic.config({
-	virtual_text = false,
-})
-
 lspconfig.stylelint_lsp.setup({
 	autostart = false,
 	filetypes = { "css", "html", "less", "sass" },
 })
 
-lsp.configure("eslint", {
+lspconfig.angularls.setup({
+	autostart = true,
+	root_dir = root_pattern("angular.json"),
+	on_attach = function(client)
+		-- Avoid conflict with tsserver rename
+		client.server_capabilities.renameProvider = false
+	end,
+})
+
+lspconfig.eslint.setup({
 	filetypes = {
 		"json",
 		"javascript",
@@ -106,6 +123,26 @@ lsp.configure("eslint", {
 		"typescript",
 		"typescriptreact",
 		"typescript.tsx",
+	},
+})
+
+local function organize_imports()
+	local params = {
+		command = "_typescript.organizeImports",
+		arguments = { vim.api.nvim_buf_get_name(0) },
+		title = "",
+	}
+	vim.lsp.buf.execute_command(params)
+end
+
+lspconfig.tsserver.setup({
+	-- on_attach = on_attach,
+	-- capabilities = capabilities,
+	commands = {
+		OrganizeImports = {
+			organize_imports,
+			description = "Organize Imports",
+		},
 	},
 })
 
