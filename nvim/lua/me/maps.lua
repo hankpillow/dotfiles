@@ -45,7 +45,7 @@ keymap.set("n", "<leader>o", "i<CR><ESC>g;", { desc = "Create line break and ret
 keymap.set(
 	{ "n", "v" },
 	"<A-o>",
-	"i<cr><cr><Up>",
+	"i<CR><CR><Up>",
 	{ noremap = true, desc = "Insert line break at cursor and change to insert mode" }
 )
 
@@ -57,7 +57,7 @@ keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center cursor after traversing sea
 keymap.set("n", "*", "*Nzz", { desc = "Select next match and center line vertically" })
 
 ---- toggles
-keymap.set("n", "<leader>ts", "<cmd>setlocal spell!<CR>", { desc = "Toggle spell check" })
+keymap.set("n", "<leader>ts", ":set invspell<CR>", { desc = "Toggle spell check" })
 keymap.set("n", "<leader>tl", ":set list!<CR>", { desc = "Toggle list (invisible)" })
 keymap.set("n", "<leader>tw", ":set wrap!<CR>", { desc = "Toggle wrap" })
 keymap.set("n", "<leader>tp", "<F12>'+P<F12>", { desc = "Toggle paste mode" })
@@ -72,8 +72,8 @@ keymap.set("s", "<C-v>", "<BS>i<C-R>+", { desc = "Paste from system clipboard" }
 ---- duplicate
 keymap.set("n", "<A-K>", "yyP")
 keymap.set("n", "<A-J>", "yyp")
-keymap.set("x", "<A-K>", "y :normal P<cr>")
-keymap.set("x", "<A-J>", "y :normal '>p<cr>")
+keymap.set("x", "<A-K>", "y :normal P<CR>")
+keymap.set("x", "<A-J>", "y :normal '>p<CR>")
 
 ---- fix accidental line joining during visual block selection
 keymap.set("v", "J", "j")
@@ -92,7 +92,12 @@ keymap.set(
 	[[:.,$s///gcI<Left><Left><Left><Left><Left>]],
 	{ desc = "Find and replace text from current line to end of file" }
 )
-keymap.set("n", "<leader>R", [[:s///gcI<Left><Left><Left><Left><Left>]], { desc = "Find and replace" })
+keymap.set(
+	"n",
+	"<leader>R",
+	[[:s///gcI<Left><Left><Left><Left><Left>]],
+	{ desc = "Starts find and replace command that affects the current buffer" }
+)
 keymap.set(
 	"v",
 	"<leader>r",

@@ -29,6 +29,10 @@ vim.g.netrw_banner = 0 -- disable the netrw banner
 vim.o.foldmethod = "indent" -- Set the foldmethod to indent
 vim.o.foldlevelstart = 99 -- Set the foldlevelstart to 99
 
+-- https://vimtricks.com/p/vim-spell-check/
+-- vim.opt.spelllang = 'en_us'
+-- vim.opt.spell = true
+
 vim.opt.background = "dark" -- set dark background
 vim.opt.backup = false -- disable backups
 vim.opt.colorcolumn = {100} -- highlight the 100th column
