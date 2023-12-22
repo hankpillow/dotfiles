@@ -34,8 +34,8 @@ vim.keymap.set("n", "<space>?", function()
 	plugin.oldfiles({ preview_opts = "hidden" })
 end, opts)
 
-vim.keymap.set("n", "<C-g>", plugin.live_grep_glob, opts)
-vim.keymap.set("v", "<C-g>", plugin.grep_visual, opts)
+-- vim.keymap.set("n", "<C-g>", plugin.live_grep_glob, opts)
+-- vim.keymap.set("v", "<C-g>", plugin.grep_visual, opts)
 
 vim.keymap.set({ "n", "v", "i" }, "<C-x><C-f>", function()
 	require("fzf-lua").complete_file({
