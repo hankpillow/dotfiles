@@ -58,8 +58,6 @@ require("packer").startup(function(use)
 	-- FZF
 	use({ "junegunn/fzf", run = "./install --bin" })
 	use("ibhagwan/fzf-lua") -- https://github.com/ibhagwan/fzf-lua#installation
-	use({ "nvim-pack/nvim-spectre" }) -- https://github.com/nvim-pack/nvim-spectre
-	use({ "mhinz/vim-grepper" }) -- https://github.com/mhinz/vim-grepper/wiki/using-the-commands
 
 	-- LSP
 	use("stevearc/conform.nvim") -- https://github.com/stevearc/conform.nvim
@@ -90,3 +88,5 @@ end)
 
 -- TO RETIRE
 -- use 'nvim-treesitter/nvim-treesitter-context' -- https://github.com/nvim-treesitter/nvim-treesitter-context
+-- use({ "nvim-pack/nvim-spectre" }) -- https://github.com/nvim-pack/nvim-spectre
+-- use({ "mhinz/vim-grepper" }) -- https://github.com/mhinz/vim-grepper/wiki/using-the-commands
