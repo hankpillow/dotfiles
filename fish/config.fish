@@ -79,5 +79,3 @@ end
 
 mkdir -p ~/.config/fish/functions/
 echo fzf_key_bindings > ~/.config/fish/functions/fish_user_key_bindings.fish
-
-echo "Howdy $USER!"
