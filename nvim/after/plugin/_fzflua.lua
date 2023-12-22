@@ -6,10 +6,9 @@ if not ok then
 	return
 end
 
-plugin.setup({ "fzf-native" })
+plugin.setup({ "fzf.vim" })
 
 local opts = { noremap = true, silent = true }
-local nopreview = { preview_opts = "hidden" }
 
 vim.keymap.set("n", "<C-k>", function()
 	plugin.builtin()
@@ -20,19 +19,19 @@ vim.keymap.set("n", "<A-k>", function()
 end, opts)
 
 vim.keymap.set("n", "<C-p>", function()
-	plugin.git_files(nopreview)
+	plugin.git_files({ resume = true, preview_opts = "hidden" })
 end, opts)
 
 vim.keymap.set("n", "<A-p>", function()
-	plugin.files(nopreview)
+	plugin.files({ resume = true, preview_opts = "hidden" })
 end, opts)
 
 vim.keymap.set("n", "<space><space>", function()
-	plugin.buffers(nopreview)
+	plugin.buffers({ preview_opts = "hidden" })
 end, opts)
 
 vim.keymap.set("n", "<space>?", function()
-	plugin.oldfiles(nopreview)
+	plugin.oldfiles({ preview_opts = "hidden" })
 end, opts)
 
 vim.keymap.set("n", "<C-g>", plugin.live_grep_glob, opts)
