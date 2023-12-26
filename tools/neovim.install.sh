@@ -7,6 +7,6 @@ fi
 
 cd .cache
 rm -f nvim.appimage
-curl -LO https://github.com/neovim/neovim/releases/download/v0.9.1/nvim.appimage
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
-sudo mv nvim.appimage /usr/bin/nvim
+sudo mv nvim.appimage /usr/local/bin/nvim
