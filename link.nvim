@@ -3,13 +3,9 @@
 if [ ! -L ~/config.nvim/init.lua ]; then
     unlink ~/.config/nvim/init.lua
 fi
-if [ ! -L ~/config.nvim/after ]; then
-    unlink ~/.config/nvim/after
-fi
 if [ ! -L ~/config.nvim/lua ]; then
     unlink ~/.config/nvim/lua
 fi
 
 ln -s $PWD/nvim/init.lua ~/.config/nvim/init.lua
-ln -s $PWD/nvim/after ~/.config/nvim/after
 ln -s $PWD/nvim/lua ~/.config/nvim/lua
