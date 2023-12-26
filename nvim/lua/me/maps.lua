@@ -81,10 +81,6 @@ keymap.set("v", "K", "k")
 keymap.set("n", "<M-]>", ">>")
 keymap.set("n", "<M-[>", "<<")
 
----- Buffer
-keymap.set("n", "<leader>d", ":Bdelete<CR>", { desc = "Delete current buffer" })
-keymap.set("n", "<leader>D", ":bufdo :Bdelete<CR>", { desc = "Delete all buffers" })
-
 ---- Find & Replace
 keymap.set(
 	"n",

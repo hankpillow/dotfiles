@@ -23,16 +23,10 @@ vim.cmd('autocmd!')
 vim.g.python3_host_prog = vim.fn.expand("/usr/bin/python3") -- set Python3 interpreter path
 vim.g.netrw_browsex_viewer = "xdg-open" -- set default file browser on Linux
 -- vim.g.netrw_browse_split = 0 -- open file browser in a new tab instead of a split
-vim.g.netrw_banner = 0 -- disable the netrw banner
 -- vim.g.netrw_winsize = 15 -- set the file browser window size
-
+vim.g.netrw_banner = 0 -- disable the netrw banner
 vim.o.foldmethod = "indent" -- Set the foldmethod to indent
 vim.o.foldlevelstart = 99 -- Set the foldlevelstart to 99
-
--- https://vimtricks.com/p/vim-spell-check/
--- vim.opt.spelllang = 'en_us'
--- vim.opt.spell = true
-
 vim.opt.background = "dark" -- set dark background
 vim.opt.backup = false -- disable backups
 vim.opt.colorcolumn = {100} -- highlight the 100th column
