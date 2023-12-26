@@ -31,8 +31,6 @@ keymap.set({ "n", "x" }, "]j", "g,") -- prev jump list
 keymap.set({ "n", "x" }, "[j", "g;") -- next jump list
 keymap.set("n", "]v", "'>") -- jump to end of visual selection
 keymap.set("n", "[v", "'<") -- jump to start of visual selection
-keymap.set("n", "j", 'v:count == 0 ? "gj" : "j"', e_opts)
-keymap.set("n", "k", 'v:count == 0 ? "gk" : "k"', e_opts)
 keymap.set({ "n", "x" }, "E", "g_", s_opts) -- end of line
 keymap.set({ "n", "x" }, "B", "^", s_opts) -- start of line
 
@@ -106,3 +104,36 @@ keymap.set(
 	[[:.,$s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]],
 	{ desc = "Replace word from current line to end of file" }
 )
+
+-- Quickfix window
+function QuickfixMapping()
+	vim.bo.modifiable = true
+	vim.api.nvim_buf_set_keymap(
+		0,
+		"n",
+		"<leader>w",
+		":cgetbuffer<CR>:cclose<CR>:copen<CR>",
+		{ noremap = true, silent = true, desc = "Save the changes in the quickfix window" }
+	)
+
+	vim.api.nvim_buf_set_keymap(
+		0,
+		"n",
+		"<leader>r",
+		":cdo s/// \\| update<C-Left><C-Left><Left><Left><Left>",
+		{ noremap = true, silent = true, desc = "Begin the search and replace" }
+	)
+end
+
+-- Set up autocmd group
+vim.cmd([[
+  augroup quickfix_group
+    autocmd!
+    
+    " Use custom keybindings for quickfix filetype
+    autocmd FileType qf lua QuickfixMapping()
+
+    " Add the errorformat to be able to update the quickfix list
+    autocmd FileType qf setlocal errorformat+=%f\|%l\ col\ %c\|%m
+  augroup END
+]])
