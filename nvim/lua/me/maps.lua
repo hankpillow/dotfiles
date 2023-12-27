@@ -1,5 +1,4 @@
 local keymap = vim.keymap
-local e_opts = { noremap = true, expr = true }
 local s_opts = { noremap = true, silent = true }
 
 -- Exit
@@ -9,22 +8,11 @@ keymap.set("n", "<leader>w", ":w<CR>") -- write
 keymap.set("n", "<leader>wq", ":wq<CR>") -- write
 keymap.set("n", "<leader>wqa", ":wqa!<CR>") -- write
 
-keymap.set("n", "<C-b>", function()
-	for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
-		local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
-		if filetype:match("netrw") then
-			vim.cmd(bufnr .. "bwipeout!")
-			return
-		end
-	end
-	vim.cmd("Vex")
-end, { noremap = true, silent = false })
-keymap.set("n", "-", vim.cmd.Ex)
-
 ---- utils
-keymap.set("n", "<F5>", ":source ~/.config/nvim/init.lua<CR>", { desc = "Refresh neovim config" })
+-- keymap.set("n", "<F5>", ":source ~/.config/nvim/init.lua<CR>", { desc = "Refresh neovim config" })
 keymap.set("n", "<leader>cd", ":lcd %:p:h<CR>", { desc = "Change local path to files path" })
 keymap.set("n", "<leader>cw", ":lcd %:p:h<CR>", { desc = "Change local path to workspace directory" })
+keymap.set("n", "-", vim.cmd.Ex, {desc = "Open netrw"})
 
 ---- Move
 keymap.set({ "n", "x" }, "]j", "g,") -- prev jump list
@@ -105,35 +93,3 @@ keymap.set(
 	{ desc = "Replace word from current line to end of file" }
 )
 
--- Quickfix window
-function QuickfixMapping()
-	vim.bo.modifiable = true
-	vim.api.nvim_buf_set_keymap(
-		0,
-		"n",
-		"<leader>w",
-		":cgetbuffer<CR>:cclose<CR>:copen<CR>",
-		{ noremap = true, silent = true, desc = "Save the changes in the quickfix window" }
-	)
-
-	vim.api.nvim_buf_set_keymap(
-		0,
-		"n",
-		"<leader>r",
-		":cdo s/// \\| update<C-Left><C-Left><Left><Left><Left>",
-		{ noremap = true, silent = true, desc = "Begin the search and replace" }
-	)
-end
-
--- Set up autocmd group
-vim.cmd([[
-  augroup quickfix_group
-    autocmd!
-    
-    " Use custom keybindings for quickfix filetype
-    autocmd FileType qf lua QuickfixMapping()
-
-    " Add the errorformat to be able to update the quickfix list
-    autocmd FileType qf setlocal errorformat+=%f\|%l\ col\ %c\|%m
-  augroup END
-]])

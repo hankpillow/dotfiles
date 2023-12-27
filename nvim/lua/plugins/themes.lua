@@ -12,6 +12,13 @@ return {
 	"zSnails/cityscape.nvim", -- https://github.com/zSnails/cityscape.nvim
 	"iagorrr/noctis-hc.nvim", -- https://github.com/iagorrr/noctis-hc.nvim
 	{
+		"goolord/alpha-nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("alpha").setup(require("alpha.themes.startify").config)
+		end,
+	},
+	{
 		"zootedb0t/citruszest.nvim",
 		config = function()
 			vim.cmd([[

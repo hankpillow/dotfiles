@@ -16,6 +16,24 @@ return {
 			vim.keymap.set("n", "<F10>", vim.cmd.GitGutterPreviewHunk, { desc = "Preview git changes" })
 		end,
 	},
+	{
+		"romainl/vim-qf", -- https://github.com/romainl/vim-qf"}
+		config = function()
+			vim.keymap.set(
+				"n",
+				"<leader>oq",
+				"<Glug>(qf_qf_toggle)",
+				{ desc = "Toggle quickfix window", noremap = true }
+			)
+		end,
+	},
+	{
+		"tpope/vim-markdown", -- https://github.com/tpope/vim-markdown,
+		config = function()
+            vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh' }
+		end,
+	},
+	"tpope/vim-eunuch", -- https://github.com/tpope/vim-eunuch
 	"tpope/vim-commentary", -- https://github.com/tpope/vim-commentary
 	"tpope/vim-surround", -- https://github.com/tpope/vim-surround
 	"tpope/vim-unimpaired", -- https://github.com/tpope/vim-unimpaired
@@ -24,7 +42,7 @@ return {
 		config = function()
 			vim.cmd([[
             set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%y\ %(%l,%c%)\ %k%q
-            nnoremap <leader>gs :0G<CR>
+            nnoremap <leader>gs :G<CR>
             nnoremap <leader>gw :Gwrite<CR>
             ]])
 		end,

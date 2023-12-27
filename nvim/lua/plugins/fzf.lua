@@ -19,11 +19,11 @@ return {
 			end, opts)
 
 			vim.keymap.set("n", "<C-p>", function()
-				fzf.git_files({ resume = true, preview_opts = "hidden" })
+				fzf.git_files({ preview_opts = "hidden" })
 			end, opts)
 
 			vim.keymap.set("n", "<A-p>", function()
-				fzf.files({ resume = true, preview_opts = "hidden" })
+				fzf.files({ preview_opts = "hidden" })
 			end, opts)
 
 			vim.keymap.set("n", "<space><space>", function()
