@@ -125,6 +125,8 @@ return {
 				},
 			})
 
+            lspconfig.pyright.setup {}
+
 			local function organize_imports()
 				local params = {
 					command = "_typescript.organizeImports",
