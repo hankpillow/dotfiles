@@ -3,26 +3,15 @@ return {
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v2.x",
 		dependencies = {
-			"neovim/nvim-lspconfig",
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			"hrsh7th/nvim-cmp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"saadparwaiz1/cmp_luasnip",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-nvim-lua",
-			"folke/trouble.nvim",
-			"L3MON4D3/LuaSnip",
-			"rafamadriz/friendly-snippets",
+			"neovim/nvim-lspconfig", -- https://github.com/neovim/nvim-lspconfig
+			"hrsh7th/nvim-cmp", -- https://github.com/hrsh7th/nvim-cmp
 		},
 		config = function()
 			local lsp = require("lsp-zero")
 			local lspconfig = require("lspconfig")
-			local cmp = require("cmp")
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			lsp.preset("recommended")
-
 			lsp.ensure_installed({
 				"tsserver",
 				"angularls",
@@ -31,26 +20,25 @@ return {
 				"eslint",
 			})
 
-			local root_pattern = require("lspconfig.util").root_pattern
+			-- local cmp = require("cmp")
+			-- local cmp_select = { behavior = cmp.SelectBehavior.Select }
+			-- local cmp_mappings = lsp.defaults.cmp_mappings({
+			-- 	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+			-- 	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+			-- 	["<CR>"] = cmp.mapping.confirm({ select = true }),
+			-- 	-- ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+			-- 	["<C-Space>"] = cmp.mapping.complete(),
+			-- 	["<Tab>"] = nil,
+			-- 	["<S-Tab>"] = nil,
+			-- })
 
-			local cmp_select = { behavior = cmp.SelectBehavior.Select }
-			local cmp_mappings = lsp.defaults.cmp_mappings({
-				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-				["<C-y>"] = cmp.mapping.confirm({ select = true }),
-				["<C-Space>"] = cmp.mapping.complete(),
-			})
-
-			cmp_mappings["<Tab>"] = nil
-			cmp_mappings["<S-Tab>"] = nil
+			-- lsp.setup_nvim_cmp({
+			-- 	mapping = cmp_mappings,
+			-- })
 
 			vim.opt.signcolumn = "yes"
 			vim.diagnostic.config({
 				virtual_text = false,
-			})
-
-			lsp.setup_nvim_cmp({
-				mapping = cmp_mappings,
 			})
 
 			lsp.set_preferences({
@@ -82,6 +70,7 @@ return {
 			end)
 
 			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -93,20 +82,22 @@ return {
 						workspace = {
 							-- Make the server aware of Neovim runtime files
 							library = vim.api.nvim_get_runtime_file("", true),
-                            checkThirdParty = false
+							checkThirdParty = false,
 						},
 					},
 				},
 			})
 
 			lspconfig.stylelint_lsp.setup({
+				capabilities = capabilities,
 				autostart = false,
 				filetypes = { "css", "html", "less", "sass" },
 			})
 
 			lspconfig.angularls.setup({
+				capabilities = capabilities,
 				autostart = true,
-				root_dir = root_pattern("angular.json"),
+				root_dir = require("lspconfig.util").root_pattern("angular.json"),
 				on_attach = function(client)
 					-- Avoid conflict with tsserver rename
 					client.server_capabilities.renameProvider = false
@@ -114,6 +105,7 @@ return {
 			})
 
 			lspconfig.eslint.setup({
+				capabilities = capabilities,
 				filetypes = {
 					"json",
 					"javascript",
@@ -125,7 +117,7 @@ return {
 				},
 			})
 
-            lspconfig.pyright.setup {}
+			lspconfig.pyright.setup({})
 
 			local function organize_imports()
 				local params = {
@@ -137,8 +129,7 @@ return {
 			end
 
 			lspconfig.tsserver.setup({
-				-- on_attach = on_attach,
-				-- capabilities = capabilities,
+				capabilities = capabilities,
 				commands = {
 					OrganizeImports = {
 						organize_imports,

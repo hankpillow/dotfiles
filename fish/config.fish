@@ -43,6 +43,10 @@ alias vi "nvim"
 alias fim "nvim (fzf)"
 alias job "echo (jobs|fzf) | awk '{print $1}' | fg"
 
+# python setup
+alias python "python3"
+alias pip "pip3"
+
 function tml ; tmux ls; end
 function tmc ; tmux -2 new -s $argv; end
 function tma ; tmux attach-session -t $argv; end
