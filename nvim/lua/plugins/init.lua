@@ -30,7 +30,7 @@ return {
 	{
 		"tpope/vim-markdown", -- https://github.com/tpope/vim-markdown,
 		config = function()
-            vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh' }
+			vim.g.markdown_fenced_languages = { "html", "python", "bash=sh" }
 		end,
 	},
 	"tpope/vim-eunuch", -- https://github.com/tpope/vim-eunuch

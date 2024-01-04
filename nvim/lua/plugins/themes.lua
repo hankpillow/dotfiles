@@ -1,14 +1,10 @@
 return {
 	"rose-pine/neovim", -- https://github.com/rose-pine/neovim
-	"sonph/onehalf", -- https://github.com/sonph/onehalf/tree/master/vim
-	"jnurmine/Zenburn", -- https://github.com/jnurmine/Zenburn
 	"sjl/badwolf", -- https://github.com/sjl/badwolf/
 	"morhetz/gruvbox", -- https://github.com/morhetz/gruvbox
 	"folke/tokyonight.nvim", -- https://github.com/folke/tokyonight.nvim
-	"arcticicestudio/nord-vim", -- https://www.nordtheme.com/ports/vim
 	"NLKNguyen/papercolor-theme", -- https://github.com/NLKNguyen/papercolor-theme
 	"nvim-tree/nvim-web-devicons", -- https://github.com/nvim-tree/nvim-web-devicons
-	"raphamorim/vim-rio", -- https://github.com/raphamorim/vim-rio
 	"zSnails/cityscape.nvim", -- https://github.com/zSnails/cityscape.nvim
 	"iagorrr/noctis-hc.nvim", -- https://github.com/iagorrr/noctis-hc.nvim
 	{
@@ -55,3 +51,7 @@ return {
 		end,
 	},
 }
+-- "sonph/onehalf", -- https://github.com/sonph/onehalf/tree/master/vim
+-- "jnurmine/Zenburn", -- https://github.com/jnurmine/Zenburn
+-- "arcticicestudio/nord-vim", -- https://www.nordtheme.com/ports/vim
+-- "raphamorim/vim-rio", -- https://github.com/raphamorim/vim-rio

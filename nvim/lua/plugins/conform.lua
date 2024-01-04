@@ -4,7 +4,7 @@ return {
 	config = function()
 		local frontend_code = { { "prettier", "eslint" } }
 		local frontend_style = { { "prettier", "stylelint" } }
-        local conform = require("conform")
+		local conform = require("conform")
 		conform.setup({
 			log_level = vim.log.levels.ALL,
 			formatters_by_ft = {
@@ -16,7 +16,8 @@ return {
 				scss = frontend_style,
 				css = frontend_style,
 				lua = { { "stylua" } },
-				["*"] = { { "codespell" } },
+				python = { { "black" } },
+				-- ["*"] = { { "codespell" } },
 			},
 			notify_on_error = true,
 		})

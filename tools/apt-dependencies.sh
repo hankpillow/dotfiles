@@ -7,4 +7,4 @@ sudo apt-get -y install\
 	libpcre3-dev liblzma-dev pkg-config xdg-utils ninja-build \
 	make clang vim unzip zip curl wget libfuse2
 
-pip install codespell
+pip install codespell git+https://github.com/psf/black 
