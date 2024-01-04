@@ -12,7 +12,18 @@ keymap.set("n", "<leader>wqa", ":wqa!<CR>") -- write
 -- keymap.set("n", "<F5>", ":source ~/.config/nvim/init.lua<CR>", { desc = "Refresh neovim config" })
 keymap.set("n", "<leader>cd", ":lcd %:p:h<CR>", { desc = "Change local path to files path" })
 keymap.set("n", "<leader>cw", ":lcd %:p:h<CR>", { desc = "Change local path to workspace directory" })
-keymap.set("n", "-", vim.cmd.Ex, {desc = "Open netrw"})
+keymap.set("n", "-", vim.cmd.Ex, { desc = "Open netrw" })
+keymap.set("n", "<F8>", function()
+	if vim.bo.filetype == "python" then
+		vim.cmd([[!python %]])
+    elseif vim.bo.filetype == "javascript" then
+        vim.cmd([[!node %]])
+    elseif vim.bo.filetype == "sh" then
+        vim.cmd([[!bash %]])
+    elseif vim.bo.filetype == "fish" then
+        vim.cmd([[!fish %]])
+	end
+end, { noremap = true, silent = true, desc = "Execute current file according to filetype" })
 
 ---- Move
 keymap.set({ "n", "x" }, "]j", "g,") -- prev jump list
