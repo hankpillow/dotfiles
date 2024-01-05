@@ -17,12 +17,12 @@ return {
 		end,
 	},
 	{
-		"romainl/vim-qf", -- https://github.com/romainl/vim-qf"}
+		"romainl/vim-qf", -- https://github.com/romainl/vim-qf"
 		config = function()
 			vim.keymap.set(
 				"n",
-				"<leader>oq",
-				"<Glug>(qf_qf_toggle)",
+				"<leader>tq",
+				"<Plug>(qf_qf_toggle)",
 				{ desc = "Toggle quickfix window", noremap = true }
 			)
 		end,
@@ -33,7 +33,6 @@ return {
 			vim.g.markdown_fenced_languages = { "html", "python", "bash=sh" }
 		end,
 	},
-	"tpope/vim-eunuch", -- https://github.com/tpope/vim-eunuch
 	"tpope/vim-commentary", -- https://github.com/tpope/vim-commentary
 	"tpope/vim-surround", -- https://github.com/tpope/vim-surround
 	"tpope/vim-unimpaired", -- https://github.com/tpope/vim-unimpaired

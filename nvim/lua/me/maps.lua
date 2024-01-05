@@ -16,12 +16,12 @@ keymap.set("n", "-", vim.cmd.Ex, { desc = "Open netrw" })
 keymap.set("n", "<F8>", function()
 	if vim.bo.filetype == "python" then
 		vim.cmd([[!python %]])
-    elseif vim.bo.filetype == "javascript" then
-        vim.cmd([[!node %]])
-    elseif vim.bo.filetype == "sh" then
-        vim.cmd([[!bash %]])
-    elseif vim.bo.filetype == "fish" then
-        vim.cmd([[!fish %]])
+	elseif vim.bo.filetype == "javascript" then
+		vim.cmd([[!node %]])
+	elseif vim.bo.filetype == "sh" then
+		vim.cmd([[!bash %]])
+	elseif vim.bo.filetype == "fish" then
+		vim.cmd([[!fish %]])
 	end
 end, { noremap = true, silent = true, desc = "Execute current file according to filetype" })
 
@@ -103,6 +103,32 @@ keymap.set(
 	[[:.,$s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]],
 	{ desc = "Replace word from current line to end of file" }
 )
+keymap.set("n", "<F5>", function()
+	local root_markers = { "package.json" } -- todo: componser and other
+	local commands = {}
+	for _, marker in ipairs(root_markers) do
+		local marker_file = vim.fn.findfile(marker, vim.fn.expand("%:p:h") .. ";")
+		if #marker_file > 0 then
+			local root = vim.fn.fnamemodify(marker_file, ":p:h") .. "/" .. marker
+			local pkgString = vim.fn.system({ "cat", root })
+			local pkgJson = vim.json.decode(pkgString)
+			commands = {}
+			for k in pairs(pkgJson.scripts) do
+				table.insert(commands, "npm run " .. k)
+			end
+			break
+		end
+	end
+	if next(commands) == nil then
+		print("No script to run for package.json")
+	else
+		require("fzf-lua").fzf_exec(commands, {
+			complete = function(selected)
+				vim.api.nvim_exec("!" .. selected[1], false)
+			end,
+		})
+	end
+end, { noremap = true, silent = true, desc = "List npm scripts" })
 
 -- Insert mode handy maps
 -- CTRL-W    delete word to the left of cursor

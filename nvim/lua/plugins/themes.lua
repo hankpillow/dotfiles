@@ -3,15 +3,23 @@ return {
 	"sjl/badwolf", -- https://github.com/sjl/badwolf/
 	"morhetz/gruvbox", -- https://github.com/morhetz/gruvbox
 	"folke/tokyonight.nvim", -- https://github.com/folke/tokyonight.nvim
-	"NLKNguyen/papercolor-theme", -- https://github.com/NLKNguyen/papercolor-theme
-	"nvim-tree/nvim-web-devicons", -- https://github.com/nvim-tree/nvim-web-devicons
 	"zSnails/cityscape.nvim", -- https://github.com/zSnails/cityscape.nvim
 	"iagorrr/noctis-hc.nvim", -- https://github.com/iagorrr/noctis-hc.nvim
+	"NLKNguyen/papercolor-theme", -- https://github.com/NLKNguyen/papercolor-theme
+	{
+		"nvim-tree/nvim-web-devicons", -- https://github.com/nvim-tree/nvim-web-devicons
+		config = function()
+			require("nvim-web-devicons").setup({
+				color_icons = true,
+				default = true,
+			})
+		end,
+	},
 	{
 		"goolord/alpha-nvim", -- https://github.com/goolord/alpha-nvim
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			require("alpha").setup(require("alpha.themes.startify").config)
+            require("alpha").setup(require("alpha.themes.startify").config)
 		end,
 	},
 	{
