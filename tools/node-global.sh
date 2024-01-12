@@ -9,6 +9,7 @@ then
         eslint\
         http-server\
         jfrog-cli-v2-jf\
+        vscode-langservers-extracted\
         neovim\
         node-gyp\
         prettier\
