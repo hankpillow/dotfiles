@@ -2,23 +2,23 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
 function _G.MyFold()
-    return '...' .. vim.fn.getline(vim.v.foldstart)
+	return "..." .. vim.fn.getline(vim.v.foldstart)
 end
 
 autocmd("TextYankPost", {
-    group = augroup("HighlightYank", {}),
-    pattern = "*",
-    callback = function()
-        vim.highlight.on_yank({
-            higroup = "IncSearch",
-            timeout = 40,
-        })
-    end,
+	group = augroup("HighlightYank", {}),
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "IncSearch",
+			timeout = 40,
+		})
+	end,
 })
 
 autocmd("InsertLeave", { pattern = "*", command = "set nopaste" })
 
-vim.cmd('autocmd!')
+vim.cmd("autocmd!")
 
 vim.g.python3_host_prog = vim.fn.expand("/usr/bin/python3") -- set Python3 interpreter path
 vim.g.netrw_browsex_viewer = "xdg-open" -- set default file browser on Linux
@@ -29,13 +29,13 @@ vim.o.foldmethod = "indent" -- Set the foldmethod to indent
 vim.o.foldlevelstart = 99 -- Set the foldlevelstart to 99
 vim.opt.background = "dark" -- set dark background
 vim.opt.backup = false -- disable backups
-vim.opt.colorcolumn = {100} -- highlight the 100th column
+vim.opt.colorcolumn = { 100 } -- highlight the 100th column
 vim.opt.cursorline = true -- highlight the current line
-vim.opt.encoding = 'utf-8' -- set encoding to UTF-8
+vim.opt.encoding = "utf-8" -- set encoding to UTF-8
 vim.opt.expandtab = true -- convert tabs to spaces
-vim.opt.fileencoding = 'utf-8' -- set file encoding to UTF-8
-vim.opt.fillchars:append({fold = " "}) -- Append a space character to the fold fill character
-vim.opt.foldtext = 'v:lua.MyFold()' -- Set the foldtext to the MyFold function in Lua
+vim.opt.fileencoding = "utf-8" -- set file encoding to UTF-8
+vim.opt.fillchars:append({ fold = " " }) -- Append a space character to the fold fill character
+vim.opt.foldtext = "v:lua.MyFold()" -- Set the foldtext to the MyFold function in Lua
 vim.opt.hidden = true -- allow hidden buffers
 vim.opt.hlsearch = true -- highlight search results
 vim.opt.incsearch = true -- show search results incrementally
@@ -55,31 +55,31 @@ vim.opt.tabstop = 4 -- set tabstop to 4 spaces
 vim.opt.termguicolors = true -- enable truecolor support
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir" -- set undo directory
 vim.opt.undofile = true -- enable undo file
-vim.opt.wildoptions = 'pum' -- enable popup menu for file completion
+vim.opt.wildoptions = "pum" -- enable popup menu for file completion
 vim.opt.winblend = 0 -- disable window blending
 vim.opt.wrap = false -- disable line wrapping
 vim.opt.listchars = { -- show non-printable characters
-    tab = "»·",
-    extends = "›",
-    precedes = "‹",
-    nbsp = "•",
-    trail = "•",
-    eol = "$"
+	tab = "»·",
+	extends = "›",
+	precedes = "‹",
+	nbsp = "•",
+	trail = "•",
+	eol = "$",
 }
 vim.opt.wildignore = { -- ignore these files when completing
-    "*.pdf",
-    "*.jpeg",
-    "*.jpg",
-    "*.gif",
-    "*.png",
-    "*.tiff",
-    "*.zip",
-    "*.tar",
-    "*.webp",
-    "**/node_modules/**"
+	"*.pdf",
+	"*.jpeg",
+	"*.jpg",
+	"*.gif",
+	"*.png",
+	"*.tiff",
+	"*.zip",
+	"*.tar",
+	"*.webp",
+	"**/node_modules/**",
+	"**/cache/**",
 }
-vim.scriptencoding = 'utf-8' -- set script encoding to UTF-8
-
+vim.scriptencoding = "utf-8" -- set script encoding to UTF-8
 vim.cmd([[ 
 let g:clipboard = {
 \   'name': 'WslClipboard',
@@ -94,6 +94,10 @@ let g:clipboard = {
 \   'cache_enabled': 0,
 \ }
 ]])
+
+if vim.fn.executable("rg") == 1 then
+	vim.o.grepprg = "rg --vimgrep --smart-case"
+end
 
 vim.cmd([[
 augroup MyAutoGroup

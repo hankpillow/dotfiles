@@ -7,6 +7,7 @@ return {
 			"hrsh7th/cmp-path", -- https://github.com/hrsh7th/cmp-path
 			"hrsh7th/cmp-buffer", -- http://github.com/hrsh7th/cmp-buffer
 			"hrsh7th/cmp-cmdline", -- https://github.com/hrsh7th/cmp-cmdline
+			"hrsh7th/cmp-copilot", -- https://github.com/hrsh7th/cmp-copilot
 			"L3MON4D3/LuaSnip", -- https://github.com/L3MON4D3/LuaSnip
 		},
 		config = function()
@@ -14,10 +15,11 @@ return {
 
 			cmp.setup({
 				sources = {
-					{ name = "nvim_lua" },
+                    { name = "copilot" },
 					{ name = "nvim_lsp" },
-					{ name = "path" },
 					{ name = "buffer" },
+					{ name = "nvim_lua" },
+					{ name = "path" },
 				},
 				snippet = {
 					expand = function(args)
