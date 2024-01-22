@@ -6,7 +6,17 @@ return {
 		config = function()
 			local fzf = require("fzf-lua")
 
-			fzf.setup({ "fzf.vim" })
+			fzf.setup({
+				"fzf.vim",
+				grep = {
+					multiprocess = true,
+					-- debug = true,
+				},
+				live_grep = {
+					multiprocess = true,
+					-- debug = true,
+				},
+			})
 
 			local opts = { noremap = true, silent = true }
 			local no_hidden = { preview_opts = "hidden" }

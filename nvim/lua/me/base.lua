@@ -95,13 +95,13 @@ let g:clipboard = {
 \ }
 ]])
 
-if vim.fn.executable("rg") == 1 then
-	vim.o.grepprg = "rg --vimgrep --smart-case"
-end
-
 vim.cmd([[
 augroup MyAutoGroup
   autocmd!
   autocmd BufRead,BufNewFile *.mdx setlocal filetype=jsx
+augroup END
+augroup quickfix_group
+    autocmd!
+    autocmd filetype qf setlocal errorformat+=%f\|%l\ col\ %c\|%m
 augroup END
 ]])

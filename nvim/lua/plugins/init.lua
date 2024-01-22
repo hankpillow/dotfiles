@@ -8,15 +8,6 @@ return {
 		end,
 	},
 	{
-		"airblade/vim-gitgutter", -- https://github.com/airblade/vim-gitgutter
-		config = function()
-			vim.keymap.set("n", "<leader>tgg", vim.cmd.GitGutterToggle, { desc = "Toggle gitgutter" })
-			vim.keymap.set("n", "]h", vim.cmd.GitGutterNextHunk, { desc = "Prev git change" })
-			vim.keymap.set("n", "[h", vim.cmd.GitGutterPrevHunk, { desc = "Next git change" })
-			vim.keymap.set("n", "<F10>", vim.cmd.GitGutterPreviewHunk, { desc = "Preview git changes" })
-		end,
-	},
-	{
 		"romainl/vim-qf", -- https://github.com/romainl/vim-qf"
 		config = function()
 			vim.keymap.set(
@@ -25,12 +16,6 @@ return {
 				"<Plug>(qf_qf_toggle)",
 				{ desc = "Toggle quickfix window", noremap = true }
 			)
-		end,
-	},
-	{
-		"tpope/vim-markdown", -- https://github.com/tpope/vim-markdown,
-		config = function()
-			vim.g.markdown_fenced_languages = { "html", "python", "bash=sh" }
 		end,
 	},
 	"tpope/vim-commentary", -- https://github.com/tpope/vim-commentary

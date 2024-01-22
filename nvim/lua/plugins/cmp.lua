@@ -15,7 +15,7 @@ return {
 
 			cmp.setup({
 				sources = {
-                    { name = "copilot" },
+					{ name = "copilot" },
 					{ name = "nvim_lsp" },
 					{ name = "buffer" },
 					{ name = "nvim_lua" },
@@ -35,6 +35,7 @@ return {
 					["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
 					["<C-Space>"] = cmp.mapping.complete(),
+					["<Enter>"] = nil,
 					["<Tab>"] = nil,
 					["<S-Tab>"] = nil,
 				}),
