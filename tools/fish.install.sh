@@ -17,3 +17,9 @@ then
     wget "https://launchpad.net/~fish-shell/+archive/ubuntu/release-3/+files/$FILE"
 fi
 sudo dpkg -i $FILE
+
+#starship
+curl -sS https://starship.rs/install.sh | sh
+
+#starship nerdfonts theme
+starship preset nerd-font-symbols -o ~/.config/starship.toml
