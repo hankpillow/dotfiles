@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# if [ ! -L ~/config/nvim/init.lua ]; then
-#     unlink ~/.config/nvim/init.lua
-# fi
+if [ -f ~/.config/fish/config.fish ] || [ -L ~/.config/fish/config.fish ]; then
+    echo "~/.config/fish/config.fish already exist!" 
+    exit 1
+fi
 
-ln -s $PWD/fish/config.fish ~/.config/fish/config.fish
+mkdir -p ~/.config/fish
+ln -vs $PWD/fish/config.fish ~/.config/fish/config.fish

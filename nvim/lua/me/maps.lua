@@ -9,8 +9,12 @@ keymap.set("n", "<leader>wq", ":wq<CR>") -- write
 keymap.set("n", "<leader>wqa", ":wqa!<CR>") -- write
 
 ---- utils
-keymap.set("n", "<leader>cd", ":lcd %:p:h<CR>", { desc = "Me: Me: Change local path to files path" })
-keymap.set("n", "<leader>cw", ":lcd %:p:h<CR>", { desc = "Me: Change local path to workspace directory" })
+keymap.set("n", "<leader>cd", ":lcd %:p:h<CR>", { desc = "Me: Me: Change path to files path" })
+keymap.set("n", "<leader>cw", function()
+	local root = vim.lsp.buf.list_workspace_folders()[1]
+    print("Changing path to:" .. root)
+	vim.cmd(":lcd " .. root)
+end, { desc = "Me: Change path to workspace directory" })
 keymap.set("n", "-", vim.cmd.Ex, { desc = "Me: Open netrw" })
 keymap.set("n", "<F8>", function()
 	if vim.bo.filetype == "python" then

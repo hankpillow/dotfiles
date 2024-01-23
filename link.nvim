@@ -1,11 +1,10 @@
 #!/bin/bash
 
-if [ ! -L ~/config.nvim/init.lua ]; then
-    unlink ~/.config/nvim/init.lua
-fi
-if [ ! -L ~/config.nvim/lua ]; then
-    unlink ~/.config/nvim/lua
+if [ -L ~/.config/nvim/init.lua ] | [ -d ~/.config/nvim/lua ] ; then
+    echo "~/.config/nvim/init.lua or ~/.config/nvim/lua already exist!" 
+    exit 1
 fi
 
-ln -s $PWD/nvim/init.lua ~/.config/nvim/init.lua
-ln -s $PWD/nvim/lua ~/.config/nvim/lua
+mkdir -p ~/.config/nvim
+ln -vs $PWD/nvim/init.lua ~/.config/nvim/init.lua
+ln -vs $PWD/nvim/lua ~/.config/nvim/lua

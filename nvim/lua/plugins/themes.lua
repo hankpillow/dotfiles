@@ -9,10 +9,10 @@ return {
 		end,
 	},
 	{
-		"goolord/alpha-nvim", -- https://github.com/goolord/alpha-nvim
+		"goolord/alpha-nvim", -- https://github.com/goolord/alpha-nvim (start window)
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-            require("alpha").setup(require("alpha.themes.startify").config)
+			require("alpha").setup(require("alpha.themes.startify").config)
 		end,
 	},
 	{
@@ -22,11 +22,13 @@ return {
 				options = {
 					icons_enabled = true,
 					theme = "rose-pine",
+					section_separators = "",
+					component_separators = "",
 				},
 				sections = {
-					lualine_a = { "mode" },
+					lualine_a = { "mode", "branch" },
 					lualine_b = { { "filename", path = 1 } },
-					lualine_c = { "branch" },
+					lualine_c = {},
 					lualine_x = {},
 					lualine_y = { "location" },
 					lualine_z = { "encoding", { "filetype", icons_enabled = false } },
@@ -43,20 +45,20 @@ return {
 		end,
 	},
 	{
-        "rose-pine/neovim", -- https://github.com/rose-pine/neovim
-        config = function()
+		"rose-pine/neovim", -- https://github.com/rose-pine/neovim
+		config = function()
 			vim.cmd([[
             colorscheme rose-pine-main
             ]])
-        end
-    },
+		end,
+	},
 	{
 		"zootedb0t/citruszest.nvim",
 		-- config = function()
 		-- 	vim.cmd([[
-            -- colorscheme citruszest
-            -- highlight ColorColumn ctermbg=0 guibg=black
-            -- ]])
+		-- colorscheme citruszest
+		-- highlight ColorColumn ctermbg=0 guibg=black
+		-- ]])
 		-- end,
 	}, -- https://github.com/zootedb0t/citruszest.nvim
 	"sjl/badwolf", -- https://github.com/sjl/badwolf/
