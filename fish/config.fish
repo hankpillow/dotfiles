@@ -25,8 +25,8 @@ alias duh "du -ach"
 alias g git
 alias gb 'git branch | grep "*" | sed "s/* //"'
 alias grep "grep --color=auto"
-alias l "ls -1a"
-alias ll "exa --long --git -a"
+alias l "exa -1a"
+alias ll "exa --icons --git -lau"
 # alias ll "ls -alhp --color"
 alias myip4 "dig @resolver1.opendns.com ANY myip.opendns.com +short -4"
 alias myip6 "dig @resolver1.opendns.com ANY myip.opendns.com +short"
@@ -70,7 +70,7 @@ function gtree-init
     npm run build:tokens
 end
 
-## start asdf
+## config asdf autocomplete
 if not test -f ~/.config/fish/completions/asdf.fish
 	mkdir -p ~/.config/fish/completions; 
 	ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
@@ -80,6 +80,9 @@ end
 if test -f ~/.asdf/asdf.fish
 	source ~/.asdf/asdf.fish
 end
+
+# start starship as promp
+starship init fish | source
 
 mkdir -p ~/.config/fish/functions/
 echo fzf_key_bindings > ~/.config/fish/functions/fish_user_key_bindings.fish

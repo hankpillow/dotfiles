@@ -1,11 +1,4 @@
 return {
-	"rose-pine/neovim", -- https://github.com/rose-pine/neovim
-	"sjl/badwolf", -- https://github.com/sjl/badwolf/
-	"morhetz/gruvbox", -- https://github.com/morhetz/gruvbox
-	"folke/tokyonight.nvim", -- https://github.com/folke/tokyonight.nvim
-	"zSnails/cityscape.nvim", -- https://github.com/zSnails/cityscape.nvim
-	"iagorrr/noctis-hc.nvim", -- https://github.com/iagorrr/noctis-hc.nvim
-	"NLKNguyen/papercolor-theme", -- https://github.com/NLKNguyen/papercolor-theme
 	{
 		"nvim-tree/nvim-web-devicons", -- https://github.com/nvim-tree/nvim-web-devicons
 		config = function()
@@ -23,21 +16,12 @@ return {
 		end,
 	},
 	{
-		"zootedb0t/citruszest.nvim",
-		config = function()
-			vim.cmd([[
-            colorscheme citruszest
-            highlight ColorColumn ctermbg=0 guibg=black
-            ]])
-		end,
-	}, -- https://github.com/zootedb0t/citruszest.nvim
-	{
 		"nvim-lualine/lualine.nvim", -- https://github.com/nvim-lualine/lualine.nvim
 		config = function()
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
-					theme = "citruszest",
+					theme = "rose-pine",
 				},
 				sections = {
 					lualine_a = { "mode" },
@@ -58,6 +42,29 @@ return {
 			})
 		end,
 	},
+	{
+        "rose-pine/neovim", -- https://github.com/rose-pine/neovim
+        config = function()
+			vim.cmd([[
+            colorscheme rose-pine-main
+            ]])
+        end
+    },
+	{
+		"zootedb0t/citruszest.nvim",
+		-- config = function()
+		-- 	vim.cmd([[
+            -- colorscheme citruszest
+            -- highlight ColorColumn ctermbg=0 guibg=black
+            -- ]])
+		-- end,
+	}, -- https://github.com/zootedb0t/citruszest.nvim
+	"sjl/badwolf", -- https://github.com/sjl/badwolf/
+	"morhetz/gruvbox", -- https://github.com/morhetz/gruvbox
+	"folke/tokyonight.nvim", -- https://github.com/folke/tokyonight.nvim
+	"zSnails/cityscape.nvim", -- https://github.com/zSnails/cityscape.nvim
+	"iagorrr/noctis-hc.nvim", -- https://github.com/iagorrr/noctis-hc.nvim
+	"NLKNguyen/papercolor-theme", -- https://github.com/NLKNguyen/papercolor-theme
 }
 -- "sonph/onehalf", -- https://github.com/sonph/onehalf/tree/master/vim
 -- "jnurmine/Zenburn", -- https://github.com/jnurmine/Zenburn
