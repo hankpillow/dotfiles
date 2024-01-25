@@ -47,9 +47,19 @@ return {
 	{
 		"rose-pine/neovim", -- https://github.com/rose-pine/neovim
 		config = function()
-			vim.cmd([[
-            colorscheme rose-pine-main
-            ]])
+			require("rose-pine").setup({
+				variant = "main", -- auto, main, moon, or dawn
+				dark_variant = "moon", -- main, moon, or dawn
+				dim_inactive_windows = false,
+				extend_background_behind_borders = true,
+
+				styles = {
+					bold = true,
+					italic = false,
+					transparency = false,
+				},
+			})
+			vim.cmd("colorscheme rose-pine")
 		end,
 	},
 	{
