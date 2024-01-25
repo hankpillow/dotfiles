@@ -8,6 +8,7 @@ set -gx TERM xterm
 set -gx EDITOR nvim
 set -gx PATH ~/workspace/node_modules/.bin $PATH
 set -gx PATH ~/.local/bin $PATH
+set -gx PATH ~/.cargo/bin $PATH
 
 # export lua lsp
 if test -f ~/workspace/lua-language-server/bin/lua-language-server
@@ -82,7 +83,11 @@ if test -f ~/.asdf/asdf.fish
 end
 
 # start starship as promp
-starship init fish | source
+if type -q starship
+    starship init fish | source
+else
+    echo "install starship for better prompt"
+end
 
 mkdir -p ~/.config/fish/functions/
 echo fzf_key_bindings > ~/.config/fish/functions/fish_user_key_bindings.fish
