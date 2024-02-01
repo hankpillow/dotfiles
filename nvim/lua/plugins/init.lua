@@ -23,9 +23,9 @@ return {
 	"tpope/vim-unimpaired", -- https://github.com/tpope/vim-unimpaired
 	{
 		"tpope/vim-fugitive", -- https://github.com/tpope/vim-fugitive
+		-- set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%y\ %(%l,%c%)\ %k%q
 		config = function()
 			vim.cmd([[
-            set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%y\ %(%l,%c%)\ %k%q
             nnoremap <leader>gs :G<CR>
             nnoremap <leader>gw :Gwrite<CR>
             ]])

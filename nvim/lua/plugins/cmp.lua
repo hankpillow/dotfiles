@@ -1,3 +1,10 @@
+local has_words_before = function()
+	if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+		return false
+	end
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+end
 return {
 	{
 		"hrsh7th/nvim-cmp",
@@ -7,19 +14,38 @@ return {
 			"hrsh7th/cmp-path", -- https://github.com/hrsh7th/cmp-path
 			"hrsh7th/cmp-buffer", -- http://github.com/hrsh7th/cmp-buffer
 			"hrsh7th/cmp-cmdline", -- https://github.com/hrsh7th/cmp-cmdline
-			"hrsh7th/cmp-copilot", -- https://github.com/hrsh7th/cmp-copilot
 			"L3MON4D3/LuaSnip", -- https://github.com/L3MON4D3/LuaSnip
+			"zbirenbaum/copilot.lua", -- https://github.com/zbirenbaum/copilot.lua
+			"zbirenbaum/copilot-cmp", -- https://github.com/zbirenbaum/copilot-cmp
 		},
 		config = function()
-			local cmp = require("cmp")
+			-- Copilot setup
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+				filetypes = {
+					["*"] = false,
+					javascript = true,
+					typescript = true,
+					python = true,
+					lua = true,
+					sh = true,
+					markdown = true,
+					html = true,
+					css = true,
+					scss = true,
+				},
+			})
 
+			require("copilot_cmp").setup()
+			local cmp = require("cmp")
 			cmp.setup({
 				sources = {
-					{ name = "copilot" },
-					{ name = "nvim_lsp" },
-					{ name = "buffer" },
-					{ name = "nvim_lua" },
-					{ name = "path" },
+					{ name = "copilot", group_index = 2 },
+					{ name = "nvim_lsp", group_index = 2 },
+					{ name = "buffer", group_index = 2 },
+					{ name = "path", group_index = 2 },
+					{ name = "nvim_lua", group_index = 2 },
 				},
 				snippet = {
 					expand = function(args)
@@ -33,11 +59,17 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 					["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<Enter>"] = nil,
-					["<Tab>"] = nil,
+					-- ["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<C-Space>"] = nil,
 					["<S-Tab>"] = nil,
+					["<Tab>"] = nil,
+					-- ["<Tab>"] = vim.schedule_wrap(function(fallback)
+					-- 	if cmp.visible() and has_words_before() then
+					-- 		cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+					-- 	else
+					-- 		fallback()
+					-- 	end
+					-- end),
 				}),
 			})
 

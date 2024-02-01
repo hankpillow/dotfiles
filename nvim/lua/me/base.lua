@@ -96,6 +96,8 @@ let g:clipboard = {
 ]])
 
 vim.cmd([[
+set grepprg=rg\ --vimgrep
+set grepformat=%f:%l:%c:%m
 augroup MyAutoGroup
   autocmd!
   autocmd BufRead,BufNewFile *.mdx setlocal filetype=jsx
