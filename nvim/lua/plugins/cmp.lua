@@ -21,7 +21,10 @@ return {
 		config = function()
 			-- Copilot setup
 			require("copilot").setup({
+				cmd = "Copilot",
+				event = "InsertEnter",
 				suggestion = { enabled = false },
+				auto_trigger = false,
 				panel = { enabled = false },
 				filetypes = {
 					["*"] = false,
@@ -30,6 +33,7 @@ return {
 					python = true,
 					lua = true,
 					sh = true,
+					fish = true,
 					markdown = true,
 					html = true,
 					css = true,
@@ -38,31 +42,33 @@ return {
 			})
 
 			require("copilot_cmp").setup()
+
 			local cmp = require("cmp")
 			cmp.setup({
 				sources = {
-					{ name = "copilot", group_index = 2 },
-					{ name = "nvim_lsp", group_index = 2 },
-					{ name = "buffer", group_index = 2 },
-					{ name = "path", group_index = 2 },
-					{ name = "nvim_lua", group_index = 2 },
+					{ name = "copilot" },
+					{ name = "nvim_lsp" },
+					{ name = "path" },
+					{ name = "nvim_lua" },
+					{ name = "buffer" },
 				},
 				snippet = {
-					expand = function(args)
-						require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-					end,
+					-- expand = function(args)
+					-- 	require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+					-- end,
 				},
 				window = {
 					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
+					-- documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
 					["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-					-- ["<CR>"] = cmp.mapping.confirm({ select = true }),
-					["<C-Space>"] = nil,
+					["<C-Space>"] = cmp.mapping.confirm({ select = true }),
+					["<CR>"] = nil,
 					["<S-Tab>"] = nil,
 					["<Tab>"] = nil,
+					-- ["<CR>"] = cmp.mapping.confirm({ select = true }),
 					-- ["<Tab>"] = vim.schedule_wrap(function(fallback)
 					-- 	if cmp.visible() and has_words_before() then
 					-- 		cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })

@@ -101,7 +101,9 @@ return {
 				},
 			})
 
-			lspconfig.pyright.setup({})
+			lspconfig.pyright.setup({
+                capabilities = capabilities,
+            })
 
 			local function organize_imports()
 				local params = {
