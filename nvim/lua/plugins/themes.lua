@@ -76,6 +76,10 @@ return {
 	"zSnails/cityscape.nvim", -- https://github.com/zSnails/cityscape.nvim
 	"iagorrr/noctis-hc.nvim", -- https://github.com/iagorrr/noctis-hc.nvim
 	"NLKNguyen/papercolor-theme", -- https://github.com/NLKNguyen/papercolor-theme
+	{
+		"dracula/vim", -- https://draculatheme.com/vim
+		name = "dracula",
+	},
 }
 -- "sonph/onehalf", -- https://github.com/sonph/onehalf/tree/master/vim
 -- "jnurmine/Zenburn", -- https://github.com/jnurmine/Zenburn

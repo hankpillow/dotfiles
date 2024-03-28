@@ -53,6 +53,11 @@ return {
 				-- end
 			end)
 
+            lspconfig.cssls.setup({
+                capabilities = capabilities,
+                autostart = true,
+            })
+
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 				settings = {
@@ -102,8 +107,8 @@ return {
 			})
 
 			lspconfig.pyright.setup({
-                capabilities = capabilities,
-            })
+				capabilities = capabilities,
+			})
 
 			local function organize_imports()
 				local params = {
@@ -116,6 +121,12 @@ return {
 
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
+				init_options = {
+					preferences = {
+						importModuleSpecifierPreference = "relative",
+						importModuleSpecifierEnding = "minimal",
+					},
+				},
 				commands = {
 					OrganizeImports = {
 						organize_imports,
