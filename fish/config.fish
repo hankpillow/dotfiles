@@ -12,7 +12,7 @@ set -gx PATH ~/.cargo/bin $PATH
 
 # export lua lsp
 if test -f ~/workspace/lua-language-server/bin/lua-language-server
-	set -gx PATH ~/workspace/lua-language-server/bin $PATH
+        set -gx PATH ~/workspace/lua-language-server/bin $PATH
 end
 
 set -gx DISPLAY_NUMBER "0.0"
@@ -53,6 +53,11 @@ function tmc ; tmux -2 new -s $argv; end
 function tma ; tmux attach-session -t $argv; end
 function tmk ; tmux kill-session -t $argv; end
 
+function mkcd
+    mkdir -pv $argv
+    cd $argv
+end
+
 function gtree
     git co -b $argv
     set -l slug (string replace -r -a '/' '-' $argv)
@@ -73,13 +78,19 @@ end
 
 ## config asdf autocomplete
 if not test -f ~/.config/fish/completions/asdf.fish
-	mkdir -p ~/.config/fish/completions; 
-	ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
+    mkdir -p ~/.config/fish/completions;
+    ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 end
 
 # export asdf
 if test -f ~/.asdf/asdf.fish
-	source ~/.asdf/asdf.fish
+    source ~/.asdf/asdf.fish
+end
+
+# load workspace env variable
+if test -f ~/.env
+    source ~/.env
+    echo "local env vars loaded"
 end
 
 # start starship as promp
@@ -91,3 +102,4 @@ end
 
 mkdir -p ~/.config/fish/functions/
 echo fzf_key_bindings > ~/.config/fish/functions/fish_user_key_bindings.fish
+
