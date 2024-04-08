@@ -53,6 +53,11 @@ function tmc ; tmux -2 new -s $argv; end
 function tma ; tmux attach-session -t $argv; end
 function tmk ; tmux kill-session -t $argv; end
 
+function mkcd
+    mkdir -pv $argv
+    cd $argv
+end
+
 function gtree
     git co -b $argv
     set -l slug (string replace -r -a '/' '-' $argv)
@@ -80,6 +85,12 @@ end
 # export asdf
 if test -f ~/.asdf/asdf.fish
 	source ~/.asdf/asdf.fish
+end
+
+# load workspace env variable 
+if test -f ~/.env
+	source ~/.env
+    echo "local env vars loaded"
 end
 
 # start starship as promp
