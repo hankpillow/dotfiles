@@ -8,6 +8,7 @@ return {
 			ts_update()
 		end,
 		config = function()
+			vim.treesitter.language.register("markdown", "mdx")
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = {
 					"bash",

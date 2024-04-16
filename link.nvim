@@ -8,3 +8,4 @@ fi
 mkdir -p ~/.config/nvim
 ln -vs $PWD/nvim/init.lua ~/.config/nvim/init.lua
 ln -vs $PWD/nvim/lua ~/.config/nvim/lua
+ln -vs $PWD/nvim/after ~/.config/nvim/after

@@ -20,6 +20,11 @@ autocmd("InsertLeave", { pattern = "*", command = "set nopaste" })
 
 vim.cmd("autocmd!")
 
+vim.filetype.add({
+	extension = {
+		mdx = "mdx",
+	},
+})
 vim.g.python3_host_prog = vim.fn.expand("/usr/bin/python3") -- set Python3 interpreter path
 vim.g.netrw_browsex_viewer = "xdg-open" -- set default file browser on Linux
 -- vim.g.netrw_browse_split = 0 -- open file browser in a new tab instead of a split
@@ -97,13 +102,19 @@ let g:clipboard = {
 
 vim.cmd([[
 set grepprg=rg\ --vimgrep
-set grepformat=%f:%l:%c:%m
-augroup MyAutoGroup
-  autocmd!
-  autocmd BufRead,BufNewFile *.mdx setlocal filetype=jsx
-augroup END
-augroup quickfix_group
-    autocmd!
-    autocmd filetype qf setlocal errorformat+=%f\|%l\ col\ %c\|%m
+function! Grep(...)
+	return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
+endfunction
+
+command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
+command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
+
+cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() ==# 'grep')  ? 'Grep'  : 'grep'
+cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'LGrep' : 'lgrep'
+
+augroup quickfix
+	autocmd!
+	autocmd QuickFixCmdPost cgetexpr cwindow
+	autocmd QuickFixCmdPost lgetexpr lwindow
 augroup END
 ]])
