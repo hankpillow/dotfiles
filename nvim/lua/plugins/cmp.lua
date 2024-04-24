@@ -39,6 +39,7 @@ return {
 				filetypes = {
 					["*"] = false,
 					javascript = true,
+					typescriptreact = true,
 					typescript = true,
 					python = true,
 					lua = true,

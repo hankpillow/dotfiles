@@ -9,14 +9,7 @@ set -gx EDITOR nvim
 set -gx PATH ~/workspace/node_modules/.bin $PATH
 set -gx PATH ~/.local/bin $PATH
 set -gx PATH ~/.cargo/bin $PATH
-
-# export lua lsp
-if test -f ~/workspace/lua-language-server/bin/lua-language-server
-	set -gx PATH ~/workspace/lua-language-server/bin $PATH
-end
-
 set -gx DISPLAY_NUMBER "0.0"
-set -gx DISPLAY (grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):$DISPLAY_NUMBER
 
 alias cp "cp -iv"
 alias mv "mv -iv"
@@ -28,7 +21,6 @@ alias gb 'git branch | grep "*" | sed "s/* //"'
 alias grep "grep --color=auto"
 alias l "exa -1a"
 alias ll "exa --icons --git -lau"
-# alias ll "ls -alhp --color"
 alias myip4 "dig @resolver1.opendns.com ANY myip.opendns.com +short -4"
 alias myip6 "dig @resolver1.opendns.com ANY myip.opendns.com +short"
 alias myip "curl ifconfig.co"
@@ -39,6 +31,7 @@ alias sudo "sudo "
 alias open "explorer.exe"
 alias ex "exa --long --git -a"
 alias groot "cd (git rev-parse --show-toplevel)"
+
 # program aliases
 alias vi "nvim"
 alias fim "nvim (fzf)"
@@ -76,6 +69,11 @@ function gtree-init
     npm run build:tokens
 end
 
+# export lua lsp
+if test -f ~/workspace/lua-language-server/bin/lua-language-server
+	set -gx PATH ~/workspace/lua-language-server/bin $PATH
+end
+
 ## config asdf autocomplete
 if not test -f ~/.config/fish/completions/asdf.fish
 	mkdir -p ~/.config/fish/completions; 
@@ -85,6 +83,12 @@ end
 # export asdf
 if test -f ~/.asdf/asdf.fish
 	source ~/.asdf/asdf.fish
+end
+
+if not test -f /etc/resolv.conf
+    print "missing /etc/resolv.conf"
+else 
+    set -gx DISPLAY (grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):$DISPLAY_NUMBER
 end
 
 # load workspace env variable 

@@ -101,7 +101,7 @@ let g:clipboard = {
 ]])
 
 vim.cmd([[
-set grepprg=rg\ --vimgrep
+set grepprg=rg\ --vimgrep 
 function! Grep(...)
 	return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
 endfunction
