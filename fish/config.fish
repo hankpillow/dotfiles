@@ -20,7 +20,7 @@ alias g git
 alias gb 'git branch | grep "*" | sed "s/* //"'
 alias grep "grep --color=auto"
 alias l "exa -1a"
-alias ll "exa --icons --git -lau"
+alias ll "exa --git -lau"
 alias myip4 "dig @resolver1.opendns.com ANY myip.opendns.com +short -4"
 alias myip6 "dig @resolver1.opendns.com ANY myip.opendns.com +short"
 alias myip "curl ifconfig.co"
@@ -32,6 +32,7 @@ alias open "explorer.exe"
 alias ex "exa --long --git -a"
 alias groot "cd (git rev-parse --show-toplevel)"
 alias untar "tar zxvf "
+alias lazy "lazygit"
 
 # program aliases
 alias vi "nvim"
