@@ -63,21 +63,21 @@ return {
 	},
 	{
 		"zootedb0t/citruszest.nvim",
-		-- config = function()
-		-- 	vim.cmd([[
-		-- colorscheme citruszest
-		-- highlight ColorColumn ctermbg=0 guibg=black
-		-- ]])
-		-- end,
+		config = function()
+			vim.cmd([[
+		colorscheme citruszest
+		highlight ColorColumn ctermbg=0 guibg=black
+		]])
+		end,
 	}, -- https://github.com/zootedb0t/citruszest.nvim
 	{
 		"NLKNguyen/papercolor-theme",
 		-- https://github.com/NLKNguyen/papercolor-theme
-		config = function()
-			vim.cmd([[
-            colorscheme PaperColor
-		]])
-		end,
+		-- config = function()
+		-- 	vim.cmd([[
+		-- colorscheme PaperColor
+		-- ]])
+		-- end,
 	},
 	{
 		"dracula/vim", -- https://draculatheme.com/vim

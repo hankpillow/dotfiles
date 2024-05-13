@@ -53,10 +53,10 @@ return {
 				-- end
 			end)
 
-            lspconfig.cssls.setup({
-                capabilities = capabilities,
-                autostart = true,
-            })
+			lspconfig.cssls.setup({
+				capabilities = capabilities,
+				autostart = true,
+			})
 
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,

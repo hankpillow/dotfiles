@@ -31,6 +31,7 @@ alias sudo "sudo "
 alias open "explorer.exe"
 alias ex "exa --long --git -a"
 alias groot "cd (git rev-parse --show-toplevel)"
+alias untar "tar zxvf "
 
 # program aliases
 alias vi "nvim"
