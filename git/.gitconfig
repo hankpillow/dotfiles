@@ -13,13 +13,9 @@
 	amend = commit --amend -v -m
 	co = checkout
 	ci = commit  -m
-    cif = commit --no-verify -m
 	ca = commit -a -m
-	caf = commit --no-verify -a -m
 	st = status --short --branch
 	br = branch
-    pu = push -u origin HEAD
-    puf = push --no-verify -u origin HEAD
 	branches = "for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ "
 	ft = fetch --all --prune
 	ls = log --format=format:\"%C(yellow)%h%C(red)%d %C(reset)%s%C(blue) <%an>%C(reset)\"
@@ -27,7 +23,6 @@
 	inline = log --pretty=format:'%C(auto)%h%Creset%C(auto)%d%Creset %s %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'
 	staged = diff --cached
 	tags = log --tags --simplify-by-decoration --pretty=\"format:%h %D\"
-	tagss = log --tags --simplify-by-decoration --pretty=\"format:%aI %Cblue%h %Cgreen%d %Creset%ce - %s\"
 	unmerged = ls-files -u
 	unstage = reset HEAD --
 	conflicts = diff --name-only --diff-filter=U

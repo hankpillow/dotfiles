@@ -12,7 +12,7 @@ keymap.set("n", "<leader>wqa", ":wqa!<CR>") -- write
 keymap.set("n", "<leader>cd", ":lcd %:p:h<CR>", { desc = "Me: Me: Change path to files path" })
 keymap.set("n", "<leader>cw", function()
 	local root = vim.lsp.buf.list_workspace_folders()[1]
-    print("Changing path to:" .. root)
+	print("Changing path to:" .. root)
 	vim.cmd(":lcd " .. root)
 end, { desc = "Me: Change path to workspace directory" })
 keymap.set("n", "-", vim.cmd.Ex, { desc = "Me: Open netrw" })
@@ -57,10 +57,25 @@ keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Me: Center cursor after traversing
 keymap.set("n", "*", "*Nzz", { desc = "Me: Select next match and center line vertically" })
 
 ---- toggles
+keymap.set("n", "<leader>ti", function()
+	-- toggle inlay hint
+	if vim.lsp.inlay_hint.is_enabled({ 0 }) then
+		vim.lsp.inlay_hint.enable(false)
+	else
+		vim.lsp.inlay_hint.enable()
+	end
+end, { desc = "Me: Toggle inlay hints" })
 keymap.set("n", "<leader>ts", ":set invspell<CR>", { desc = "Me: Toggle spell check" })
 keymap.set("n", "<leader>tl", ":set list!<CR>", { desc = "Me: Toggle list (invisible)" })
 keymap.set("n", "<leader>tw", ":set wrap!<CR>", { desc = "Me: Toggle wrap" })
 keymap.set("n", "<leader>tp", "<F12>'+P<F12>", { desc = "Me: Toggle paste mode" })
+keymap.set("n", "<leader>tc", function()
+	if vim.opt.conceallevel:get() == 2 then
+		vim.opt.conceallevel = 0
+	else
+		vim.opt.conceallevel = 2
+	end
+end, { desc = "Me: Toggle conceallevel" })
 
 -- copy and paste
 keymap.set({ "n", "x" }, "Y", "yy", { desc = "Me: Copy (yank) full line" })

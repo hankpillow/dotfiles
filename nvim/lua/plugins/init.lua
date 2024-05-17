@@ -18,7 +18,7 @@ return {
 			)
 		end,
 	},
-	"tpope/vim-commentary", -- https://github.com/tpope/vim-commentary
+	-- "tpope/vim-commentary", -- https://github.com/tpope/vim-commentary
 	"tpope/vim-surround", -- https://github.com/tpope/vim-surround
 	"tpope/vim-unimpaired", -- https://github.com/tpope/vim-unimpaired
 	{

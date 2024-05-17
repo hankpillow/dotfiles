@@ -38,7 +38,7 @@ return {
 			lsp.on_attach(function(client, bufnr)
 				local opts = { buffer = bufnr, remap = false }
 				vim.keymap.set("n", "<F12>", vim.lsp.buf.definition, opts)
-				vim.keymap.set("n", "<A-h>", vim.lsp.buf.hover, opts)
+				-- vim.keymap.set("n", "<A-h>", vim.lsp.buf.hover, opts)
 				vim.keymap.set("n", "<C-h>", vim.diagnostic.open_float, opts)
 				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 				-- local active_clients = vim.lsp.get_active_clients()
@@ -121,6 +121,33 @@ return {
 
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
+				settings = {
+					typescript = {
+						inlayHints = {
+							-- taken from https://github.com/typescript-language-server/typescript-language-server#workspacedidchangeconfiguration
+							includeInlayEnumMemberValueHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayParameterNameHints = "all",
+							includeInlayParameterNameHintsWhenArgumentMatchesName = true, -- false
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayVariableTypeHints = true,
+							includeInlayVariableTypeHintsWhenTypeMatchesName = true, -- false
+						},
+					},
+					javascript = {
+						inlayHints = {
+							includeInlayEnumMemberValueHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayParameterNameHints = "all",
+							includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayVariableTypeHints = true,
+							includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+						},
+					},
+				},
 				init_options = {
 					preferences = {
 						importModuleSpecifierPreference = "relative",
