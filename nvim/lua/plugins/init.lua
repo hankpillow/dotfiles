@@ -34,12 +34,18 @@ return {
 	{
 		"windwp/nvim-ts-autotag", -- https://github.com/windwp/nvim-ts-autotag
 		config = function()
-			require("nvim-ts-autotag").setup({
-				filetypes = { "html", "xml", "mdx", "htm", "jsx", "tsx" },
-				enable = true,
+			local cfg = {
 				enable_rename = true,
 				enable_close = true,
 				enable_close_on_slash = true,
+			}
+			require("nvim-ts-autotag").setup({
+				per_filetype = {
+					["html"] = cfg,
+					["xml"] = cfg,
+					["mdx"] = cfg,
+					["markdown"] = cfg,
+				},
 			})
 		end,
 	},

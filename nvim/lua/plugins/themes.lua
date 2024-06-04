@@ -16,6 +16,28 @@ return {
 		end,
 	},
 	{
+		"diegoulloao/neofusion.nvim",
+		config = function()
+			require("neofusion").setup({
+				terminal_colors = true,
+				undercurl = true,
+				underline = true,
+				bold = true,
+				strikethrough = true,
+				invert_selection = false,
+				invert_signs = false,
+				invert_tabline = false,
+				invert_intend_guides = false,
+				inverse = true, -- invert background for search, diffs, statuslines and errors
+				palette_overrides = {},
+				overrides = {},
+				dim_inactive = false,
+				transparent_mode = false,
+			})
+			vim.cmd("colorscheme neofusion")
+		end,
+	},
+	{
 		"nvim-lualine/lualine.nvim", -- https://github.com/nvim-lualine/lualine.nvim
 		config = function()
 			require("lualine").setup({
@@ -63,12 +85,12 @@ return {
 	},
 	{
 		"zootedb0t/citruszest.nvim",
-		config = function()
-			vim.cmd([[
-		colorscheme citruszest
-		highlight ColorColumn ctermbg=0 guibg=black
-		]])
-		end,
+		-- config = function()
+		-- 	vim.cmd([[
+		-- colorscheme citruszest
+		-- highlight ColorColumn ctermbg=0 guibg=black
+		-- ]])
+		-- end,
 	}, -- https://github.com/zootedb0t/citruszest.nvim
 	{
 		"NLKNguyen/papercolor-theme",
