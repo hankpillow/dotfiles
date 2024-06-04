@@ -1,20 +1,20 @@
 #!/bin/bash
 
-if [[ $(which npm) ]];
-then
-    npm i -g \
-        @angular/language-server\
-        @johnnymorganz/stylua-bin\
-        corepack\
-        eslint\
-        http-server\
-        vscode-langservers-extracted\
-        neovim\
-        node-gyp\
-        prettier\
-        tree-sitter-cli\
-        tree-sitter\
-        typescript-language-server\
-        typescript
-fi
+npm i -g \
+    @angular/language-server\
+    corepack\
+    eslint\
+    http-server\
+    npm\
+    neovim\
+    neovim\
+    node-gyp\
+    prettier\
+    source-map-explorer\
+    typescript\
+    typescript-language-server\
+    vscode-langservers-extracted
 
+    # @johnnymorganz/stylua-bin\
+    # tree-sitter-cli\
+    # tree-sitter\
