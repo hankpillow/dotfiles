@@ -1,13 +1,6 @@
 return {
 	"nvim-lua/plenary.nvim", -- https://github.com/nvim-lua/plenary.nvim
 	{
-		"moll/vim-bbye", --- https://github.com/moll/vim-bbye
-		config = function()
-			vim.keymap.set("n", "<leader>d", ":Bdelete<CR>", { desc = "Delete current buffer" })
-			vim.keymap.set("n", "<leader>D", ":bufdo :Bdelete<CR>", { desc = "Delete all buffers" })
-		end,
-	},
-	{
 		"romainl/vim-qf", -- https://github.com/romainl/vim-qf"
 		config = function()
 			vim.keymap.set(

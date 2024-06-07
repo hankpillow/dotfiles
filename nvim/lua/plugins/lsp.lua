@@ -85,7 +85,7 @@ return {
 
 			lspconfig.angularls.setup({
 				capabilities = capabilities,
-				autostart = true,
+				autostart = false,
 				root_dir = require("lspconfig.util").root_pattern("angular.json"),
 				on_attach = function(client)
 					-- Avoid conflict with tsserver rename

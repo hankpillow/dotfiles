@@ -11,10 +11,11 @@ npm i -g \
     node-gyp\
     prettier\
     source-map-explorer\
+    stylelint\
     typescript\
     typescript-language-server\
-    vscode-langservers-extracted
+    vscode-langservers-extracted\
+    tree-sitter\
 
     # @johnnymorganz/stylua-bin\
     # tree-sitter-cli\
-    # tree-sitter\

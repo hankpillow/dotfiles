@@ -1,46 +1,17 @@
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-
-function _G.MyFold()
-	return "..." .. vim.fn.getline(vim.v.foldstart)
-end
-
-autocmd("TextYankPost", {
-	group = augroup("HighlightYank", {}),
-	pattern = "*",
-	callback = function()
-		vim.highlight.on_yank({
-			higroup = "IncSearch",
-			timeout = 40,
-		})
-	end,
-})
-
-autocmd("InsertLeave", { pattern = "*", command = "set nopaste" })
-
-vim.cmd("autocmd!")
-
-vim.filetype.add({
-	extension = {
-		mdx = "mdx",
-	},
-})
 vim.g.python3_host_prog = vim.fn.expand("/usr/bin/python3") -- set Python3 interpreter path
 vim.g.netrw_browsex_viewer = "xdg-open" -- set default file browser on Linux
--- vim.g.netrw_browse_split = 0 -- open file browser in a new tab instead of a split
--- vim.g.netrw_winsize = 15 -- set the file browser window size
 vim.g.netrw_banner = 0 -- disable the netrw banner
-vim.o.foldmethod = "indent" -- Set the foldmethod to indent
-vim.o.foldlevelstart = 99 -- Set the foldlevelstart to 99
-vim.opt.background = "dark" -- set dark background
+
 vim.opt.backup = false -- disable backups
+vim.opt.confirm = true -- Confirm to save changes before exiting modified buffer
 vim.opt.colorcolumn = { 100 } -- highlight the 100th column
+vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.cursorline = true -- highlight the current line
 vim.opt.encoding = "utf-8" -- set encoding to UTF-8
 vim.opt.expandtab = true -- convert tabs to spaces
 vim.opt.fileencoding = "utf-8" -- set file encoding to UTF-8
-vim.opt.fillchars:append({ fold = " " }) -- Append a space character to the fold fill character
-vim.opt.foldtext = "v:lua.MyFold()" -- Set the foldtext to the MyFold function in Lua
+vim.opt.grepformat = "%f:%l:%c:%m"
+vim.opt.grepprg = "rg --vimgrep"
 vim.opt.hidden = true -- allow hidden buffers
 vim.opt.hlsearch = true -- highlight search results
 vim.opt.incsearch = true -- show search results incrementally
@@ -84,7 +55,34 @@ vim.opt.wildignore = { -- ignore these files when completing
 	"**/node_modules/**",
 	"**/cache/**",
 }
+
+-- Folding
+vim.opt.foldlevel = 99
+vim.opt.fillchars = {
+  foldopen = "",
+  foldclose = "",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
+}
+if vim.fn.has("nvim-0.10") == 1 then
+  vim.opt.smoothscroll = true
+  vim.opt.foldexpr = "v:lua.require'me.util'.foldexpr()"
+  vim.opt.foldmethod = "expr"
+  -- vim.opt.foldtext = "󰇘" ..  vim.fn.getline(vim.v.foldstart)
+else
+  vim.opt.foldmethod = "indent"
+  vim.opt.foldtext = "v:lua.require'me.util'.foldtext()"
+end
+
 vim.scriptencoding = "utf-8" -- set script encoding to UTF-8
+vim.filetype.add({
+	extension = {
+		mdx = "mdx",
+	},
+})
+
 vim.cmd([[ 
 let g:clipboard = {
 \   'name': 'WslClipboard',
@@ -101,11 +99,6 @@ let g:clipboard = {
 ]])
 
 vim.cmd([[
-"set grepprg=rg\ --vimgrep 
-"function! Grep(...)
-"	return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
-"endfunction
-
 command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
 command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
 
@@ -118,3 +111,20 @@ augroup quickfix
 	autocmd QuickFixCmdPost lgetexpr lwindow
 augroup END
 ]])
+
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd("TextYankPost", {
+	group = augroup("HighlightYank", {}),
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "IncSearch",
+			timeout = 40,
+		})
+	end,
+})
+
+autocmd("InsertLeave", { pattern = "*", command = "set nopaste" })
+
