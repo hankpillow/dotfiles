@@ -9,7 +9,8 @@ return {
 		end,
 	},
 	{
-		"goolord/alpha-nvim", -- https://github.com/goolord/alpha-nvim (start window)
+		-- https://github.com/goolord/alpha-nvim (start window)
+		"goolord/alpha-nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("alpha").setup(require("alpha.themes.startify").config)
@@ -17,38 +18,39 @@ return {
 	},
 	{
 		"diegoulloao/neofusion.nvim",
-		config = function()
-			require("neofusion").setup({
-				terminal_colors = true,
-				undercurl = true,
-				underline = true,
-				bold = true,
-				strikethrough = true,
-				invert_selection = false,
-				invert_signs = false,
-				invert_tabline = false,
-				invert_intend_guides = false,
-				inverse = true, -- invert background for search, diffs, statuslines and errors
-				palette_overrides = {},
-				overrides = {},
-				dim_inactive = false,
-				transparent_mode = false,
-			})
-			vim.cmd("colorscheme neofusion")
-		end,
+		-- config = function()
+		--           require("neofusion").setup({
+		-- 		terminal_colors = true,
+		-- 		undercurl = true,
+		-- 		underline = true,
+		-- 		bold = true,
+		-- 		strikethrough = true,
+		-- 		invert_selection = false,
+		-- 		invert_signs = false,
+		-- 		invert_tabline = false,
+		-- 		invert_intend_guides = false,
+		-- 		inverse = true, -- invert background for search, diffs, statuslines and errors
+		-- 		palette_overrides = {},
+		-- 		overrides = {},
+		-- 		dim_inactive = false,
+		-- 		transparent_mode = false,
+		-- 	})
+		-- 	vim.cmd("colorscheme neofusion")
+		-- end,
 	},
 	{
-		"nvim-lualine/lualine.nvim", -- https://github.com/nvim-lualine/lualine.nvim
+		-- https://github.com/nvim-lualine/lualine.nvim
+		"nvim-lualine/lualine.nvim",
 		config = function()
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
-					theme = "PaperColor",
+					theme = "citruszest",
 					section_separators = "",
 					component_separators = "",
 				},
 				sections = {
-					lualine_a = { "mode", "branch" },
+					lualine_a = { "mode", "branch", "filesize" },
 					lualine_b = { { "filename", path = 1 } },
 					lualine_c = {},
 					lualine_x = {},
@@ -85,12 +87,12 @@ return {
 	},
 	{
 		"zootedb0t/citruszest.nvim",
-		-- config = function()
-		-- 	vim.cmd([[
-		-- colorscheme citruszest
-		-- highlight ColorColumn ctermbg=0 guibg=black
-		-- ]])
-		-- end,
+		config = function()
+			vim.cmd([[
+		colorscheme citruszest
+		highlight ColorColumn ctermbg=0 guibg=black
+		]])
+		end,
 	}, -- https://github.com/zootedb0t/citruszest.nvim
 	{
 		"NLKNguyen/papercolor-theme",

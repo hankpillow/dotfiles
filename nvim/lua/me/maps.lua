@@ -17,6 +17,43 @@ keymap.set("n", "<leader>w", ":w<CR>", { desc = "Me: Save" })
 keymap.set("n", "<leader>wq", ":wq<CR>", { desc = "Me: Save qna quit" })
 keymap.set("n", "<leader>d", ":lua require'me.util'.bufremove()<cr>", { desc = "Delete Buffer" })
 
+-- Move up and down
+keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Me: Down", expr = true, silent = true })
+keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Me: Down", expr = true, silent = true })
+keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Me: Up", expr = true, silent = true })
+keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Me: Up", expr = true, silent = true })
+
+keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Me: Escape and Clear hlsearch" })
+
+-- Move to window using the <ctrl> hjkl keys
+keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
+keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
+keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
+keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
+
+-- Move horizontally
+keymap.set({ "n", "x" }, "E", "g_", { desc = "Me: go to the end of the line" })
+keymap.set({ "n", "x" }, "B", "^", { desc = "Me: go to the start of the line" })
+
+keymap.set({ "n", "x" }, "]j", "g,", { desc = "Me: next jump list" })
+keymap.set({ "n", "x" }, "[j", "g;", { desc = "Me: prev jump list" })
+
+keymap.set("n", "]v", "'>", { desc = "Me: jump to next visual selection" })
+keymap.set("n", "[v", "'<", { desc = "Me: jump to next visual selection" })
+
+-- Join lines
+keymap.set("n", "J", "mzJ`z", { desc = "Me: Keep the cursor while joining the lines", noremap = true })
+keymap.set("i", "<C-Del>", "<C-o>dW", { desc = "Me: Delete word under cursor", noremap = true })
+
+-- Create new lines
+keymap.set("n", "<leader>o", "i<CR><ESC>g;", { desc = "Me: Create line break and return previous position" })
+keymap.set(
+	{ "n", "v" },
+	"<A-o>",
+	"i<CR><CR><Up>",
+	{ noremap = true, desc = "Me: Insert line break at cursor and change to insert mode" }
+)
+
 ---- utils
 keymap.set("n", "<leader>cd", ":lcd %:p:h<CR>", { desc = "Me: Change path to files path" })
 keymap.set("n", "-", vim.cmd.Ex, { desc = "Me: Open netrw" })
@@ -39,26 +76,9 @@ keymap.set(
 	{ noremap = true, silent = true, desc = "Me: List npm scripts" }
 )
 
----- Move
-keymap.set({ "n", "x" }, "]j", "g,", { desc = "Me: next jump list" })
-keymap.set({ "n", "x" }, "[j", "g;", { desc = "Me: prev jump list" })
-keymap.set("n", "]v", "'>", { desc = "Me: jump to next visual selection" })
-keymap.set("n", "[v", "'<", { desc = "Me: jump to next visual selection" })
-keymap.set({ "n", "x" }, "E", "g_", s_opts) -- end of line
-keymap.set({ "n", "x" }, "B", "^", s_opts) -- start of line
-keymap.set("n", "J", "mzJ`z", { desc = "Me: Keep the cursor while joining the lines" })
-keymap.set("i", "<C-Del>", "<C-o>dW", { desc = "Me: Delete word under cursor" })
-keymap.set("n", "<leader>o", "i<CR><ESC>g;", { desc = "Me: Create line break and return previous position" })
-keymap.set(
-	{ "n", "v" },
-	"<A-o>",
-	"i<CR><CR><Up>",
-	{ noremap = true, desc = "Me: Insert line break at cursor and change to insert mode" }
-)
-
 -- better indenting
-keymap.set("v", "<", "<gv", { desc = "Indent line" })
-keymap.set("v", ">", ">gv", { desc = "Indent line" })
+keymap.set("v", "<", "<gv", { desc = "Me: Indent backward" })
+keymap.set("v", ">", ">gv", { desc = "Me: Indent forward" })
 
 ---- nav
 keymap.set("n", "n", "nzz", { desc = "Me: Center cursor after traversing search" })
@@ -68,12 +88,11 @@ keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Me: Center cursor after traversing
 keymap.set("n", "*", "*Nzz", { desc = "Me: Select next match and center line vertically" })
 
 ---- toggles
-keymap.set("n", "<leader>ti", ":lua require'me.util'.toggle.inlay_hint()<cr>", { desc = "Me: Toggle inlay hints" })
 keymap.set("n", "<leader>ts", ":set invspell<CR>", { desc = "Me: Toggle spell check" })
 keymap.set("n", "<leader>tl", ":set list!<CR>", { desc = "Me: Toggle list (invisible)" })
 keymap.set("n", "<leader>tw", ":set wrap!<CR>", { desc = "Me: Toggle wrap" })
 keymap.set("n", "<leader>tp", "<F12>'+P<F12>", { desc = "Me: Toggle paste mode" })
-keymap.set("n", "<leader>tc", ":lua require'me.util'.toggle.conceallevel()<br>", { desc = "Me: Toggle conceallevel" })
+keymap.set("n", "<leader>tc", ":lua require'me.util'.toggle.conceallevel()<CR>", { desc = "Me: Toggle conceallevel" })
 
 -- copy and paste
 keymap.set({ "n", "x" }, "Y", "yy", { desc = "Me: Copy (yank) full line" })
@@ -94,6 +113,7 @@ keymap.set("v", "K", "k")
 keymap.set("n", "<M-]>", ">>")
 keymap.set("n", "<M-[>", "<<")
 
+-- Inoke search/replace
 keymap.set(
 	"n",
 	"<leader>r",

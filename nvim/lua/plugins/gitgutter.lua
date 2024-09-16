@@ -1,5 +1,7 @@
+-- https://github.com/airblade/vim-gitgutter
 return {
-	"airblade/vim-gitgutter", -- https://github.com/airblade/vim-gitgutter
+	"airblade/vim-gitgutter",
+    events = "VeryLazy",
 	config = function()
 		vim.g.gitgutter_enabled = 0
 		vim.keymap.set("n", "<leader>tgg", vim.cmd.GitGutterToggle, { desc = "Toggle gitgutter" })

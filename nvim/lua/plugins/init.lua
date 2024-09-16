@@ -1,51 +1,37 @@
-return {
-	"nvim-lua/plenary.nvim", -- https://github.com/nvim-lua/plenary.nvim
-	{
-		"romainl/vim-qf", -- https://github.com/romainl/vim-qf"
-		config = function()
-			vim.keymap.set(
-				"n",
-				"<leader>tq",
-				"<Plug>(qf_qf_toggle)",
-				{ desc = "Toggle quickfix window", noremap = true }
-			)
-		end,
-	},
-	-- "tpope/vim-commentary", -- https://github.com/tpope/vim-commentary
-	"tpope/vim-surround", -- https://github.com/tpope/vim-surround
-	"tpope/vim-unimpaired", -- https://github.com/tpope/vim-unimpaired
-	{
-		"tpope/vim-fugitive", -- https://github.com/tpope/vim-fugitive
-		-- set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%y\ %(%l,%c%)\ %k%q
-		config = function()
-			vim.cmd([[
-            nnoremap <leader>gs :G<CR>
-            nnoremap <leader>gw :Gwrite<CR>
-            ]])
-		end,
-	},
-	{
-		"windwp/nvim-ts-autotag", -- https://github.com/windwp/nvim-ts-autotag
-		config = function()
-			local cfg = {
-				enable_rename = true,
-				enable_close = true,
-				enable_close_on_slash = true,
-			}
-			require("nvim-ts-autotag").setup({
-				per_filetype = {
-					["html"] = cfg,
-					["xml"] = cfg,
-					["mdx"] = cfg,
-					["markdown"] = cfg,
-				},
-			})
-		end,
-	},
-	{
-		"andythigpen/nvim-coverage", -- https://github.com/andythigpen/nvim-coverage
-		config = function()
-			require("coverage").setup()
-		end,
-	},
-}
+return { }
+-- {
+-- 	"romainl/vim-qf", -- https://github.com/romainl/vim-qf"
+-- 	config = function()
+-- 		vim.keymap.set(
+-- 			"n",
+-- 			"<leader>tq",
+-- 			"<Plug>(qf_qf_toggle)",
+-- 			{ desc = "Toggle quickfix window", noremap = true }
+-- 		)
+-- 	end,
+-- },
+-- {
+-- 	"windwp/nvim-ts-autotag", -- https://github.com/windwp/nvim-ts-autotag
+-- 	config = function()
+-- 		local cfg = {
+-- 			enable_rename = true,
+-- 			enable_close = true,
+-- 			enable_close_on_slash = true,
+-- 		}
+-- 		require("nvim-ts-autotag").setup({
+-- 			did_setup = true,
+-- 			per_filetype = {
+-- 				["html"] = cfg,
+-- 				["xml"] = cfg,
+-- 				["mdx"] = cfg,
+-- 				["markdown"] = cfg,
+-- 			},
+-- 		})
+-- 	end,
+-- },
+-- {
+-- 	"andythigpen/nvim-coverage", -- https://github.com/andythigpen/nvim-coverage
+-- 	config = function()
+-- 		require("coverage").setup()
+-- 	end,
+-- },

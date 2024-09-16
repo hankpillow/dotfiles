@@ -2,8 +2,8 @@
 return {
 	"stevearc/conform.nvim",
 	config = function()
-		local frontend_code = { { "prettier", "eslint" } }
-		local frontend_style = { { "prettier", "stylelint" } }
+		local frontend_code = { { "prettier" } }
+		local frontend_style = { { "prettier" } }
 		local conform = require("conform")
 		conform.setup({
 			log_level = vim.log.levels.ALL,
