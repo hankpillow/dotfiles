@@ -78,24 +78,28 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "path" },
-				}, {
 					{ name = "buffer" },
+				}, {
 					{ name = "nvim_lua" },
 				}),
-				formatting = {
-					format = function(_, item)
-						if kinds[item.kind] then
-							item.kind = kinds[item.kind] .. item.kind
-						end
-						return item
-					end,
-				},
-				experimental = {
-					ghost_text = {
-						hl_group = "CmpGhostText",
-					},
-				},
+				-- formatting = {
+				-- 	format = function(_, item)
+				-- 		if kinds[item.kind] then
+				-- 			item.kind = kinds[item.kind] .. item.kind
+				-- 		end
+				-- 		return item
+				-- 	end,
+				-- },
+				-- experimental = {
+				-- 	ghost_text = {
+				-- 		hl_group = "CmpGhostText",
+				-- 	},
+				-- },
 				sorting = defaults.sorting,
+				window = {
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
+				},
 			}
 		end,
 		--- @param opts cmp.ConfigSchema | {auto_brackets?: string[]}

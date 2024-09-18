@@ -1,10 +1,15 @@
 
 set fish_greeting ""
-set -gx FZF_DEFAULT_OPTS "--height 40% --layout=reverse --border --inline-info"
-set -gx FZF_DEFAULT_COMMAND "fd --hidden -E .git -E node_modules"
-set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+#set -g FZF_DEFAULT_OPTS "--height 40% --layout=reverse --border --inline-info"
+#set -g FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"
+#set -g FZF_CTRL_T_COMMAND "command find -L \$dir -type f 2> /dev/null | sed '1d; s#^\./##'"
+#set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+#set -gx FZF_DEFAULT_COMMAND "fd --hidden -E .git -E node_modules"
+
 set -gx TERM xterm
+
 # set -gx TERM screen-256color
+
 set -gx EDITOR nvim
 set -gx PATH ~/workspace/node_modules/.bin $PATH
 set -gx PATH ~/.local/bin $PATH
@@ -107,4 +112,4 @@ else
 end
 
 mkdir -p ~/.config/fish/functions/
-echo fzf_key_bindings > ~/.config/fish/functions/fish_user_key_bindings.fish
+

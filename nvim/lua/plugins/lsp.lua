@@ -85,7 +85,7 @@ return {
 
 			lsp.preset("recommended")
 			lsp.ensure_installed({
-				"tsserver",
+				"ts_ls",
 				"vtsls",
 				"angularls",
 				"bashls",
@@ -223,7 +223,7 @@ return {
 				capabilities = capabilities,
 			})
 
-			lspconfig.tsserver.setup({
+			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 				settings = {
 					typescript = {

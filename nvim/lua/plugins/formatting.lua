@@ -2,8 +2,8 @@
 return {
 	"stevearc/conform.nvim",
 	config = function()
-		local frontend_code = { { "prettier" } }
-		local frontend_style = { { "prettier" } }
+		local frontend_code = { { "prettier", stop_after_first = true } }
+		local frontend_style = { { "prettier", stop_after_first = true } }
 		local conform = require("conform")
 		conform.setup({
 			log_level = vim.log.levels.ALL,
@@ -15,8 +15,8 @@ return {
 				html = frontend_style,
 				scss = frontend_style,
 				css = frontend_style,
-				lua = { { "stylua" } },
-				python = { { "black" } },
+				lua = { "stylua" },
+				python = { "black" },
 				-- ["*"] = { { "codespell" } },
 			},
 			notify_on_error = true,
