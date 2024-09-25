@@ -50,14 +50,6 @@ return {
 			"hrsh7th/cmp-buffer", -- http://github.com/hrsh7th/cmp-buffer
 			"hrsh7th/cmp-cmdline", -- https://github.com/hrsh7th/cmp-cmdline
 			"hrsh7th/cmp-nvim-lua", -- https://github.com/hrsh7th/cmp-nvim-lua
-			-- "L3MON4D3/LuaSnip", -- https://github.com/L3MON4D3/LuaSnip
-			-- {
-			-- 	"zbirenbaum/copilot.lua", -- https://github.com/zbirenbaum/copilot.lua
-			-- 	cmd = "Copilot",
-			-- 	build = ":Copilot auth",
-			-- 	-- event = "InsertEnter",
-			-- },
-			-- "zbirenbaum/copilot-cmp", -- https://github.com/zbirenbaum/copilot-cmp
 		},
 		opts = function()
 			vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
@@ -77,24 +69,11 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
-					{ name = "path" },
 					{ name = "buffer" },
 				}, {
+					{ name = "path" },
 					{ name = "nvim_lua" },
 				}),
-				-- formatting = {
-				-- 	format = function(_, item)
-				-- 		if kinds[item.kind] then
-				-- 			item.kind = kinds[item.kind] .. item.kind
-				-- 		end
-				-- 		return item
-				-- 	end,
-				-- },
-				-- experimental = {
-				-- 	ghost_text = {
-				-- 		hl_group = "CmpGhostText",
-				-- 	},
-				-- },
 				sorting = defaults.sorting,
 				window = {
 					completion = cmp.config.window.bordered(),
@@ -102,6 +81,7 @@ return {
 				},
 			}
 		end,
+
 		--- @param opts cmp.ConfigSchema | {auto_brackets?: string[]}
 		config = function(_, opts)
 			for _, source in pairs(opts.sources) do
@@ -128,66 +108,6 @@ return {
 					{ name = "cmdline" },
 				}),
 			})
-
-			-- cmp.event:on("menu_opened", function()
-			-- 	vim.b.copilot_suggestion_hidden = true
-			-- end)
-			-- --
-			-- cmp.event:on("menu_closed", function()
-			-- 	vim.b.copilot_suggestion_hidden = false
-			-- end)
 		end,
 	},
 }
--- require("copilot_cmp").setup()
-
--- local cmp = require("cmp")
--- cmp.setup({
--- 	sources = {
--- 		{ name = "copilot" },
--- 		{ name = "nvim_lsp" },
--- 		{ name = "path" },
--- 		{ name = "nvim_lua" },
--- 		{
--- 			name = "buffer",
--- 			option = {
--- 				get_bufnrs = function()
--- 					local bufs = {}
--- 					for _, win in ipairs(vim.api.nvim_list_wins()) do
--- 						bufs[vim.api.nvim_win_get_buf(win)] = true
--- 					end
--- 					return vim.tbl_keys(bufs)
--- 				end,
--- 			},
--- 		},
--- 	},
--- 	snippet = {
--- 		-- expand = function(args)
--- 		-- 	require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
--- 		-- end,
--- 	},
--- 	window = {
--- 		completion = cmp.config.window.bordered(),
--- 		-- documentation = cmp.config.window.bordered(),
--- 	},
--- 	mapping = cmp.mapping.preset.insert({
--- 		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
--- 		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
--- 		["<C-Space>"] = cmp.mapping.confirm({ select = true }),
--- 		["<CR>"] = nil,
--- 		["<S-Tab>"] = nil,
--- 		-- ["<Tab>"] = nil,
--- 		-- ["<CR>"] = cmp.mapping.confirm({ select = true }),
--- 		-- ["<Tab>"] = cmp.mapping(function(fallback)
--- 		-- 	if cmp.visible() then
--- 		-- 		cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = true })
--- 		-- 	elseif require("copilot.suggestion").is_visible() then
--- 		-- 		require("copilot.suggestion").accept()
--- 		-- 	elseif has_words_before() then
--- 		-- 		cmp.complete()
--- 		-- 	else
--- 		-- 		fallback()
--- 		-- 	end
--- 		-- end, { "i", "s" }),
--- 	}),
--- })

@@ -1,5 +1,6 @@
 
 set fish_greeting ""
+set -U FZF_FIND_FILE_COMMAND "fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"
 #set -g FZF_DEFAULT_OPTS "--height 40% --layout=reverse --border --inline-info"
 #set -g FZF_DEFAULT_COMMAND "fd --type f --strip-cwd-prefix --hidden --follow --exclude .git"
 #set -g FZF_CTRL_T_COMMAND "command find -L \$dir -type f 2> /dev/null | sed '1d; s#^\./##'"
@@ -74,6 +75,11 @@ function gtree-init
     ln -s ../../../src/core/node_modules/ node_modules
     cd -
     npm run build:tokens
+end
+
+function git-delete-merged
+    git fetch 
+    git branch -vv | rg gone | awk '{print $1}' | xargs git branch -D
 end
 
 # export lua lsp

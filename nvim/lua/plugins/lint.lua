@@ -1,6 +1,7 @@
 -- https://github.com/mfussenegger/nvim-lint
 return {
 	"mfussenegger/nvim-lint",
+	event = "BufEnter",
 	config = function()
 		local lint = require("lint")
 		lint.linters_by_ft = {

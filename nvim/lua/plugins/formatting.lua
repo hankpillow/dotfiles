@@ -1,6 +1,8 @@
 -- https://github.com/stevearc/conform.nvim
 return {
 	"stevearc/conform.nvim",
+	event = "BufEnter",
+	ft = { "html", "xml", "json", "typescript", "css", "sass", "typescriptreact", "lua", "python" },
 	config = function()
 		local frontend_code = { { "prettier", stop_after_first = true } }
 		local frontend_style = { { "prettier", stop_after_first = true } }
@@ -25,7 +27,8 @@ return {
 		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 		vim.keymap.set({ "n", "v" }, "<A-F>", function()
-			conform.format({ async = true, lsp_fallback = false, quiet = false })
+			-- conform.format({ async = true, lsp_fallback = false, quiet = false })
+			conform.format({ async = true, quiet = false })
 		end, { noremap = true, silent = false })
 	end,
 }

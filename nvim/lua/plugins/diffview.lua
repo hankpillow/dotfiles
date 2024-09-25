@@ -1,6 +1,7 @@
 -- https://github.com/sindrets/diffview.nvim
 return {
 	"sindrets/diffview.nvim",
+	event = "BufEnter",
 	config = function()
 		vim.keymap.set("n", "<leader>do", vim.cmd.DiffviewOpen)
 		vim.keymap.set("n", "<leader>dc", vim.cmd.DiffviewClose)
