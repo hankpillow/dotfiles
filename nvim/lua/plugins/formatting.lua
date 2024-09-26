@@ -27,8 +27,8 @@ return {
 		vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 		vim.keymap.set({ "n", "v" }, "<A-F>", function()
-			-- conform.format({ async = true, lsp_fallback = false, quiet = false })
-			conform.format({ async = true, quiet = false })
+			conform.format()
+			-- conform.format({ async = true, quiet = false })
 		end, { noremap = true, silent = false })
 	end,
 }

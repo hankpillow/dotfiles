@@ -79,8 +79,10 @@ keymap.set(
 -- better indenting
 -- keymap.set("v", "<", "<gv", { desc = "Me: Indent backward" })
 -- keymap.set("v", ">", ">gv", { desc = "Me: Indent forward" })
-keymap.set("v", "<S-Tab>", "<gv", { desc = "Me: Indent backward" })
-keymap.set("v", "<Tab>", ">gv", { desc = "Me: Indent forward" })
+keymap.set({ "v" }, "<S-Tab>", "<gv", { desc = "Me: Indent backward" })
+keymap.set({ "v" }, "<Tab>", ">gv", { desc = "Me: Indent forward" })
+keymap.set({ "n" }, "<S-Tab>", "<<", { desc = "Me: Indent backward" })
+keymap.set({ "n" }, "<Tab>", ">>", { desc = "Me: Indent forward" })
 
 ---- nav
 keymap.set("n", "n", "nzz", { desc = "Me: Center cursor after traversing search" })

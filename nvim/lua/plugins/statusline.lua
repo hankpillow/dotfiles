@@ -11,12 +11,11 @@ return {
 			},
 			sections = {
 				lualine_a = { "filename" },
-				lualine_b = { "branch" },
-				-- lualine_b = { { "filename", path = 1 } },
+				lualine_b = {},
 				lualine_c = {},
-				lualine_x = { "mode" },
-				lualine_y = { "filesize", "location" },
-				lualine_z = { "encoding", { "filetype", icons_enabled = false } },
+				lualine_x = {},
+				lualine_y = { "filesize", { "filetype", icons_enabled = false } },
+				lualine_z = { "branch" },
 			},
 			inactive_sections = {
 				lualine_a = { "filename" },
@@ -30,3 +29,6 @@ return {
 		})
 	end,
 }
+-- lualine_x = { "mode" },
+-- lualine_y = { "filesize", "location" },
+-- lualine_z = { "encoding", { "filetype", icons_enabled = false } },
