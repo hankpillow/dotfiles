@@ -1,2 +1,0 @@
-#!/bin/bash
-rsync -ravh --delete nvim/** ~/.config/nvim  
