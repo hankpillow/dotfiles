@@ -26,10 +26,10 @@ keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Me: Up",
 keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Me: Escape and Clear hlsearch" })
 
 -- Move to window using the <ctrl> hjkl keys
-keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
-keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
-keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
-keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
+-- keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
+-- keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
+-- keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
+-- keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
 -- Move horizontally
 keymap.set({ "n", "x" }, "E", "g_", { desc = "Me: go to the end of the line" })
