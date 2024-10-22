@@ -19,7 +19,6 @@ return {
 		---@class PluginLspOpts
 		opts = function()
 			return {
-				-- options for vim.diagnostic.config()
 				---@type vim.diagnostic.Opts
 				diagnostics = {
 					underline = true,
@@ -94,42 +93,32 @@ return {
 			})
 
 			-- diagnostics signs
-			if vim.fn.has("nvim-0.10.0") == 1 then
-				-- code lens
-				if opts.codelens.enabled and vim.lsp.codelens then
-					me.on_supports_method("textDocument/codeLens", function(client, buffer)
-						vim.lsp.codelens.refresh()
-						vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-							buffer = buffer,
-							callback = vim.lsp.codelens.refresh,
-						})
-					end)
-				end
-				if
-					type(opts.diagnostics.virtual_text) == "table"
-					and opts.diagnostics.virtual_text.prefix == "icons"
-				then
-					opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
-						or function(diagnostic)
-							local icons = opts.diagnostics.signs.text
-							for d, icon in pairs(icons) do
-								if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
-									return icon
-								end
-							end
-						end
-				end
-			end
+			-- code lens
+			-- if opts.codelens.enabled and vim.lsp.codelens then
+			-- 	me.on_supports_method("textDocument/codeLens", function(client, buffer)
+			-- 		vim.lsp.codelens.refresh()
+			-- 		vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+			-- 			buffer = buffer,
+			-- 			callback = vim.lsp.codelens.refresh,
+			-- 		})
+			-- 	end)
+			-- end
+			--
+			-- if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
+			-- 	opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
+			-- 		or function(diagnostic)
+			-- 			local icons = opts.diagnostics.signs.text
+			-- 			for d, icon in pairs(icons) do
+			-- 				if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
+			-- 					return icon
+			-- 				end
+			-- 			end
+			-- 		end
+			-- end
 
 			vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
 			lsp.on_attach(function(client, bufnr)
-				vim.keymap.set(
-					"n",
-					"gS",
-					":FzfLua lsp_document_symbols<cr>",
-					{ desc = "Me: lsp document symbols", buffer = bufnr, remap = false }
-				)
 				vim.keymap.set(
 					"n",
 					"<C-h>",
@@ -138,20 +127,8 @@ return {
 				)
 				vim.keymap.set(
 					"n",
-					"<leader>ca",
-					vim.lsp.buf.code_action,
-					{ desc = "Me: show code actions", buffer = bufnr, remap = false }
-				)
-				vim.keymap.set(
-					"n",
 					"<leader>ti",
 					":lua require'me.util'.toggle.inlay_hint()<cr>",
-					{ desc = "Me: Toggle inlay hints" }
-				)
-				vim.keymap.set(
-					"n",
-					"<leader>td",
-					":FzfLua diagnostics_document<cr>",
 					{ desc = "Me: Toggle inlay hints" }
 				)
 				-- local active_clients = vim.lsp.get_active_clients()
@@ -168,7 +145,7 @@ return {
 
 			lspconfig.cssls.setup({
 				capabilities = capabilities,
-				autostart = true,
+				-- autostart = true,
 			})
 
 			lspconfig.lua_ls.setup({
@@ -193,7 +170,7 @@ return {
 			lspconfig.stylelint_lsp.setup({
 				capabilities = capabilities,
 				autostart = false,
-				filetypes = { "css", "html", "less", "sass" },
+				filetypes = { "css", "less", "sass" },
 			})
 
 			-- lspconfig.angularls.setup({
@@ -208,6 +185,7 @@ return {
 
 			lspconfig.eslint.setup({
 				capabilities = capabilities,
+				autostart = false,
 				filetypes = {
 					"json",
 					"javascript",

@@ -31,6 +31,10 @@ return {
 				fzf.git_files(no_preview)
 			end, { noremap = true, silent = true, desc = "Me: Find git files" })
 
+			vim.keymap.set("n", "<leader>ca", function()
+				fzf.lsp_code_actions()
+			end, { noremap = true, silent = true, desc = "Me: LSP code actions" })
+
 			vim.keymap.set("n", "<A-p>", function()
 				fzf.files(no_preview)
 			end, { noremap = true, silent = true, desc = "Me: Find files" })

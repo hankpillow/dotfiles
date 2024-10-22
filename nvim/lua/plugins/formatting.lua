@@ -2,23 +2,22 @@
 return {
 	"stevearc/conform.nvim",
 	event = "BufEnter",
-	ft = { "html", "xml", "json", "typescript", "css", "sass", "typescriptreact", "lua", "python" },
+	ft = { "html", "htmlangular", "xml", "json", "typescript", "css", "sass", "typescriptreact", "lua" },
 	config = function()
-		local frontend_code = { { "prettier", stop_after_first = true } }
-		local frontend_style = { { "prettier", stop_after_first = true } }
+		local format_prettier = { "prettier" }
 		local conform = require("conform")
 		conform.setup({
 			log_level = vim.log.levels.ALL,
 			formatters_by_ft = {
-				javascript = frontend_code,
-				typescript = frontend_code,
-				typescriptreact = frontend_code,
-				xml = frontend_code,
-				html = frontend_style,
-				scss = frontend_style,
-				css = frontend_style,
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+				javascriptreact = { "prettier" },
+				typescriptreact = { "prettier" },
+				xml = { "prettier" },
+				html = { "prettier" },
+				scss = { "stylelint" },
+				css = { "stylelint" },
 				lua = { "stylua" },
-				python = { "black" },
 				-- ["*"] = { { "codespell" } },
 			},
 			notify_on_error = true,
@@ -28,7 +27,6 @@ return {
 
 		vim.keymap.set({ "n", "v" }, "<A-F>", function()
 			conform.format()
-			-- conform.format({ async = true, quiet = false })
 		end, { noremap = true, silent = false })
 	end,
 }
