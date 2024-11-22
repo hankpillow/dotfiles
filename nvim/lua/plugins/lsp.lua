@@ -1,4 +1,3 @@
-local me = require("me.util")
 local function organize_imports()
 	local params = {
 		command = "_typescript.organizeImports",
@@ -62,16 +61,6 @@ return {
 		end,
 		config = function(_, opts)
 			local lsp = require("lsp-zero")
-			local lspconfig = require("lspconfig")
-			local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-			local capabilities = vim.tbl_deep_extend(
-				"force",
-				{},
-				vim.lsp.protocol.make_client_capabilities(),
-				has_cmp and cmp_nvim_lsp.default_capabilities() or {},
-				opts.capabilities or {}
-			)
-
 			lsp.preset("recommended")
 			lsp.ensure_installed({
 				"ts_ls",
@@ -82,6 +71,16 @@ return {
 				"eslint",
 			})
 
+			local lspconfig = require("lspconfig")
+			local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+			local capabilities = vim.tbl_deep_extend(
+				"force",
+				{},
+				vim.lsp.protocol.make_client_capabilities(),
+				has_cmp and cmp_nvim_lsp.default_capabilities() or {},
+				opts.capabilities or {}
+			)
+
 			vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
 			lsp.on_attach(function(client, bufnr)
@@ -91,16 +90,6 @@ return {
 					vim.diagnostic.open_float,
 					{ desc = "Me: open fload diagnostic", buffer = bufnr, remap = false }
 				)
-				-- local active_clients = vim.lsp.get_active_clients()
-				-- if client.name == "angularls" then
-				-- 	for _, client_ in pairs(active_clients) do
-				-- 		-- stop tsserver if denols is already active
-				-- 		if client_.name == "tsserver" then
-				-- 			print("stopping tsserver in favor of angularls")
-				-- 			client_.stop()
-				-- 		end
-				-- 	end
-				-- end
 			end)
 
 			lspconfig.cssls.setup({
@@ -129,16 +118,6 @@ return {
 				capabilities = capabilities,
 				filetypes = { "css", "less", "sass" },
 			})
-
-			-- lspconfig.angularls.setup({
-			-- 	capabilities = capabilities,
-			-- 	autostart = false,
-			-- 	root_dir = require("lspconfig.util").root_pattern("angular.json"),
-			-- 	on_attach = function(client)
-			-- 		-- Avoid conflict with tsserver rename
-			-- 		client.server_capabilities.renameProvider = false
-			-- 	end,
-			-- })
 
 			lspconfig.eslint.setup({
 				capabilities = capabilities,
@@ -190,7 +169,7 @@ return {
 				commands = {
 					OrganizeImports = {
 						organize_imports,
-						description = "Organize Imports",
+						description = "Me: Organize Imports",
 					},
 				},
 			})

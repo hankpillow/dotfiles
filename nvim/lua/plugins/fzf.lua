@@ -27,13 +27,13 @@ return {
 				fzf.commands()
 			end, { noremap = true, silent = true, desc = "Me: neovim commands" })
 
-			vim.keymap.set("n", "<C-p>", function()
-				fzf.git_files(no_preview)
-			end, { noremap = true, silent = true, desc = "Me: Find git files" })
-
 			vim.keymap.set("n", "<leader>ca", function()
 				fzf.lsp_code_actions(no_preview)
 			end, { noremap = true, silent = true, desc = "Me: LSP code actions" })
+
+			vim.keymap.set("n", "<C-p>", function()
+				fzf.git_files(no_preview)
+			end, { noremap = true, silent = true, desc = "Me: Find git files" })
 
 			vim.keymap.set("n", "<A-p>", function()
 				fzf.files(no_preview)
@@ -48,12 +48,8 @@ return {
 			end, { noremap = true, silent = true, desc = "Me: Grep project" })
 
 			vim.keymap.set("n", "<A-g>", function()
-				fzf.grep_cWORD()
+				fzf.grep_cword()
 			end, { noremap = true, silent = true, desc = "Me: Grep current word" })
-
-			vim.keymap.set("n", "<space>?", function()
-				fzf.oldfiles({ preview_opts = "hidden" })
-			end, { noremap = true, silent = true, desc = "Me: Find on history" })
 
 			vim.keymap.set({ "i" }, "<C-x><C-f>", function()
 				require("fzf-lua").complete_path()
