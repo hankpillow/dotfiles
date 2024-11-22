@@ -8,14 +8,13 @@
 -- CTRL-D    un-indent current line
 
 local keymap = vim.keymap
-local s_opts = { noremap = true, silent = true }
 
 -- Exit and save
 keymap.set("n", "<leader>q", ":q!<CR>", { desc = "Me: Quit without saving" })
 keymap.set("n", "<leader>Q", ":qa!<CR>", { desc = "Me: Quit all without saving" })
 keymap.set("n", "<leader>w", ":w<CR>", { desc = "Me: Save" })
 keymap.set("n", "<leader>wq", ":wq<CR>", { desc = "Me: Save qna quit" })
-keymap.set("n", "<leader>d", ":lua require'me.util'.bufremove()<cr>", { desc = "Delete Buffer" })
+-- keymap.set("n", "<leader>d", ":lua require'me.util'.bufremove()<cr>", { desc = "Delete Buffer" })
 
 -- Move up and down
 keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Me: Down", expr = true, silent = true })
@@ -57,12 +56,12 @@ keymap.set(
 ---- utils
 keymap.set("n", "<leader>cd", ":lcd %:p:h<CR>", { desc = "Me: Change path to files path" })
 keymap.set("n", "-", vim.cmd.Ex, { desc = "Me: Open netrw" })
-keymap.set(
-	"n",
-	"<leader>cw",
-	":lua require'me.util'.go_to_workspace()<cr>",
-	{ desc = "Me: Change path to workspace directory" }
-)
+-- keymap.set(
+-- 	"n",
+-- 	"<leader>cw",
+-- 	":lua require'me.util'.go_to_workspace()<cr>",
+-- 	{ desc = "Me: Change path to workspace directory" }
+-- )
 keymap.set(
 	"n",
 	"<F8>",
@@ -92,11 +91,11 @@ keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Me: Center cursor after traversing
 keymap.set("n", "*", "*Nzz", { desc = "Me: Select next match and center line vertically" })
 
 ---- toggles
-keymap.set("n", "<leader>ts", ":set invspell<CR>", { desc = "Me: Toggle spell check" })
-keymap.set("n", "<leader>tl", ":set list!<CR>", { desc = "Me: Toggle list (invisible)" })
-keymap.set("n", "<leader>tw", ":set wrap!<CR>", { desc = "Me: Toggle wrap" })
-keymap.set("n", "<leader>tp", "<F12>'+P<F12>", { desc = "Me: Toggle paste mode" })
-keymap.set("n", "<leader>tc", ":lua require'me.util'.toggle.conceallevel()<CR>", { desc = "Me: Toggle conceallevel" })
+-- keymap.set("n", "<leader>ts", ":set invspell<CR>", { desc = "Me: Toggle spell check" })
+-- keymap.set("n", "<leader>tl", ":set list!<CR>", { desc = "Me: Toggle list (invisible)" })
+-- keymap.set("n", "<leader>tw", ":set wrap!<CR>", { desc = "Me: Toggle wrap" })
+-- keymap.set("n", "<leader>tp", "<F12>'+P<F12>", { desc = "Me: Toggle paste mode" })
+-- keymap.set("n", "<leader>tc", ":lua require'me.util'.toggle.conceallevel()<CR>", { desc = "Me: Toggle conceallevel" })
 
 -- copy and paste
 keymap.set({ "n", "x" }, "Y", "yy", { desc = "Me: Copy (yank) full line" })

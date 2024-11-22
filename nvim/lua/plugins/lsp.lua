@@ -24,14 +24,6 @@ return {
 					underline = true,
 					update_in_insert = false,
 					virtual_text = false,
-					--  virtual_text = {
-					-- 	spacing = 4,
-					-- 	source = "if_many",
-					-- 	prefix = "●",
-					-- 	-- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-					-- 	-- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
-					-- 	-- prefix = "icons",
-					-- },
 					severity_sort = true,
 					signs = {
 						text = {
@@ -48,11 +40,9 @@ return {
 				codelens = {
 					enabled = false,
 				},
-				-- Enable lsp cursor word highlighting
 				document_highlight = {
 					enabled = true,
 				},
-				-- add any global capabilities here
 				capabilities = {
 					workspace = {
 						fileOperations = {
@@ -60,10 +50,10 @@ return {
 							willRename = true,
 						},
 					},
+					textDocument = {
+						completion = { completionItem = { snippetSupport = true } },
+					},
 				},
-				-- options for vim.lsp.buf.format
-				-- `bufnr` and `filter` is handled by the LazyVim formatter,
-				-- but can be also overridden when specified
 				format = {
 					formatting_options = nil,
 					timeout_ms = nil,
@@ -92,30 +82,6 @@ return {
 				"eslint",
 			})
 
-			-- diagnostics signs
-			-- code lens
-			-- if opts.codelens.enabled and vim.lsp.codelens then
-			-- 	me.on_supports_method("textDocument/codeLens", function(client, buffer)
-			-- 		vim.lsp.codelens.refresh()
-			-- 		vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-			-- 			buffer = buffer,
-			-- 			callback = vim.lsp.codelens.refresh,
-			-- 		})
-			-- 	end)
-			-- end
-			--
-			-- if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
-			-- 	opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
-			-- 		or function(diagnostic)
-			-- 			local icons = opts.diagnostics.signs.text
-			-- 			for d, icon in pairs(icons) do
-			-- 				if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
-			-- 					return icon
-			-- 				end
-			-- 			end
-			-- 		end
-			-- end
-
 			vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
 			lsp.on_attach(function(client, bufnr)
@@ -124,12 +90,6 @@ return {
 					"<C-h>",
 					vim.diagnostic.open_float,
 					{ desc = "Me: open fload diagnostic", buffer = bufnr, remap = false }
-				)
-				vim.keymap.set(
-					"n",
-					"<leader>ti",
-					":lua require'me.util'.toggle.inlay_hint()<cr>",
-					{ desc = "Me: Toggle inlay hints" }
 				)
 				-- local active_clients = vim.lsp.get_active_clients()
 				-- if client.name == "angularls" then
@@ -145,7 +105,6 @@ return {
 
 			lspconfig.cssls.setup({
 				capabilities = capabilities,
-				-- autostart = true,
 			})
 
 			lspconfig.lua_ls.setup({
@@ -159,7 +118,6 @@ return {
 							},
 						},
 						workspace = {
-							-- Make the server aware of Neovim runtime files
 							library = vim.api.nvim_get_runtime_file("", true),
 							checkThirdParty = false,
 						},
@@ -169,7 +127,6 @@ return {
 
 			lspconfig.stylelint_lsp.setup({
 				capabilities = capabilities,
-				autostart = false,
 				filetypes = { "css", "less", "sass" },
 			})
 
@@ -185,9 +142,7 @@ return {
 
 			lspconfig.eslint.setup({
 				capabilities = capabilities,
-				autostart = false,
 				filetypes = {
-					"json",
 					"javascript",
 					"javascriptreact",
 					"javascript.jsx",
@@ -195,10 +150,6 @@ return {
 					"typescriptreact",
 					"typescript.tsx",
 				},
-			})
-
-			lspconfig.pyright.setup({
-				capabilities = capabilities,
 			})
 
 			lspconfig.ts_ls.setup({

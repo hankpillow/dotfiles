@@ -16,6 +16,7 @@ npm i -g \
     typescript\
     typescript-language-server\
     vscode-langservers-extracted\
+    redhat-developer/yaml-language-server\
     tree-sitter\
 
     # @johnnymorganz/stylua-bin\

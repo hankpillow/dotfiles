@@ -4,7 +4,6 @@ return {
 	event = "BufEnter",
 	ft = { "html", "htmlangular", "xml", "json", "typescript", "css", "sass", "typescriptreact", "lua" },
 	config = function()
-		local format_prettier = { "prettier" }
 		local conform = require("conform")
 		conform.setup({
 			log_level = vim.log.levels.ALL,
@@ -15,10 +14,10 @@ return {
 				typescriptreact = { "prettier" },
 				xml = { "prettier" },
 				html = { "prettier" },
-				scss = { "stylelint" },
-				css = { "stylelint" },
+				scss = { "prettier" },
+				sass = { "prettier" },
+				css = { "prettier" },
 				lua = { "stylua" },
-				-- ["*"] = { { "codespell" } },
 			},
 			notify_on_error = true,
 		})

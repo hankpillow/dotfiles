@@ -32,7 +32,7 @@ return {
 			end, { noremap = true, silent = true, desc = "Me: Find git files" })
 
 			vim.keymap.set("n", "<leader>ca", function()
-				fzf.lsp_code_actions()
+				fzf.lsp_code_actions(no_preview)
 			end, { noremap = true, silent = true, desc = "Me: LSP code actions" })
 
 			vim.keymap.set("n", "<A-p>", function()
