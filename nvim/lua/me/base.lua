@@ -2,7 +2,6 @@ vim.g.python3_host_prog = vim.fn.expand("/usr/bin/python3") -- set Python3 inter
 vim.g.netrw_browsex_viewer = "xdg-open" -- set default file browser on Linux
 vim.g.netrw_banner = 0 -- disable the netrw banner
 
-vim.opt.backup = false -- disable backups
 vim.opt.confirm = true -- Confirm to save changes before exiting modified buffer
 vim.opt.colorcolumn = { 100 } -- highlight the 100th column
 vim.opt.completeopt = "menu,menuone,noselect"
@@ -59,22 +58,17 @@ vim.opt.wildignore = { -- ignore these files when completing
 -- Folding
 vim.opt.foldlevel = 99
 vim.opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
-  fold = " ",
-  foldsep = " ",
-  diff = "╱",
-  eob = " ",
+	foldopen = "",
+	foldclose = "",
+	fold = " ",
+	foldsep = " ",
+	diff = "╱",
+	eob = " ",
 }
-if vim.fn.has("nvim-0.10") == 1 then
-  vim.opt.smoothscroll = true
-  vim.opt.foldexpr = "v:lua.require'me.util'.foldexpr()"
-  vim.opt.foldmethod = "expr"
-  -- vim.opt.foldtext = "󰇘" ..  vim.fn.getline(vim.v.foldstart)
-else
-  vim.opt.foldmethod = "indent"
-  vim.opt.foldtext = "v:lua.require'me.util'.foldtext()"
-end
+vim.opt.smoothscroll = true
+vim.opt.foldexpr = "v:lua.require'me.util'.foldexpr()"
+vim.opt.foldmethod = "expr"
+-- vim.opt.foldtext = " "
 
 vim.scriptencoding = "utf-8" -- set script encoding to UTF-8
 vim.filetype.add({
@@ -127,4 +121,3 @@ autocmd("TextYankPost", {
 })
 
 autocmd("InsertLeave", { pattern = "*", command = "set nopaste" })
-

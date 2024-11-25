@@ -13,6 +13,7 @@ local keymap = vim.keymap
 keymap.set("n", "<leader>q", ":q!<CR>", { desc = "Me: Quit without saving" })
 keymap.set("n", "<leader>Q", ":qa!<CR>", { desc = "Me: Quit all without saving" })
 keymap.set("n", "<leader>w", ":w<CR>", { desc = "Me: Save" })
+keymap.set("n", "<leader>wa", ":wa<CR>", { desc = "Me: Save all buffers" })
 keymap.set("n", "<leader>wq", ":wq<CR>", { desc = "Me: Save qna quit" })
 -- keymap.set("n", "<leader>d", ":lua require'me.util'.bufremove()<cr>", { desc = "Delete Buffer" })
 
