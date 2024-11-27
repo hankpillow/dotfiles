@@ -5,22 +5,28 @@ return {
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				-- theme = "citruszest",
 				section_separators = "",
 				component_separators = "",
+				always_divide_middle = false,
+				globalstatus = true,
 			},
 			sections = {
-				lualine_a = { "filename" },
+				lualine_a = {
+					{
+						"buffers",
+						use_mode_colors = true,
+						hide_filename_extension = false,
+					},
+				},
 				lualine_b = {},
 				lualine_c = {},
-				lualine_x = {},
-				lualine_y = { "filesize", { "filetype", icons_enabled = false } },
-				lualine_z = { "branch" },
+				lualine_x = { "branch", "diff" },
+				lualine_y = { "filesize" },
+				lualine_z = {},
 			},
 			inactive_sections = {
-				lualine_a = { "filename" },
+				lualine_a = {},
 				lualine_b = {},
-				-- lualine_c = { "filename" },
 				lualine_c = {},
 				lualine_x = {},
 				lualine_y = {},
@@ -29,6 +35,3 @@ return {
 		})
 	end,
 }
--- lualine_x = { "mode" },
--- lualine_y = { "filesize", "location" },
--- lualine_z = { "encoding", { "filetype", icons_enabled = false } },

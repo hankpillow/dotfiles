@@ -34,7 +34,7 @@ return {
 			desc = "Delete Buffer",
 		},
 		{
-			"<leader>lz",
+			"<leader>gg",
 			function()
 				Snacks.lazygit()
 			end,
