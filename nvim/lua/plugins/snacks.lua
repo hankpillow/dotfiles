@@ -87,14 +87,13 @@ return {
 				-- Create some toggle mappings
 				Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>ts")
 				Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>tw")
-				Snacks.toggle.diagnostics():map("<leader>ud")
 				Snacks.toggle
 					.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
 					:map("<leader>tc")
 				Snacks.toggle.treesitter():map("<leader>tt")
 				Snacks.toggle.inlay_hints():map("<leader>ti")
 				Snacks.toggle.diagnostics():map("<leader>td")
-				Snacks.toggle.diagnostics():map("<leader>td")
+				Snacks.toggle.dim():map("<leader>di")
 			end,
 		})
 	end,

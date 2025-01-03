@@ -166,6 +166,30 @@ return {
 						importModuleSpecifierEnding = "minimal",
 					},
 				},
+				-- root_dir = function()
+				-- 	local dir = vim.fn.getcwd()
+				-- 	print("root for ts_ls:" .. dir)
+				-- 	print(
+				-- 		lspconfig.util.root_pattern(
+				-- 			"tsconfig.json",
+				-- 			"tsconfig.app.json",
+				-- 			"tsconfig.spec.json",
+				-- 			"tsconfig.lib.json",
+				-- 			"package.json",
+				-- 			".git"
+				-- 		)
+				-- 	)
+				-- 	return dir
+				-- end,
+				-- root_dir = lspconfig.util.root_pattern(
+				-- 	"tsconfig.json",
+				-- 	"tsconfig.app.json",
+				-- 	"tsconfig.spec.json",
+				-- 	"tsconfig.lib.json",
+				-- 	"package.json",
+				-- 	".git"
+				-- ),
+				-- single_file_support = false,
 				commands = {
 					OrganizeImports = {
 						organize_imports,
