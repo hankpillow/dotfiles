@@ -7,8 +7,8 @@ fi
 
 cd .cache
 
-VERSION="13.0.0"
-FILE="ripgrep_${VERSION}_amd64.deb"
+VERSION="14.1.0"
+FILE="ripgrep_14.1.0-1_amd64.deb"
 if [[ ! -f $FILE ]]
 then
     echo "+ download $FILE"

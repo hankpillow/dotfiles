@@ -1,7 +1,4 @@
-if [[ ! -d .cache ]]
-then
-    mkdir -vp .cache
-fi
+mkdir -vp .cache
 
 cd .cache
 

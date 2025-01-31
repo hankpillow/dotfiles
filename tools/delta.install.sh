@@ -1,13 +1,10 @@
 #!/bin/bash
 # https://github.com/dandavison/delta
-if [[ ! -d .cache ]]
-then
-    mkdir -vp .cache
-fi
+mkdir -vp .cache
 
 cd .cache
 
-VERSION="0.16.5"
+VERSION="0.18.2"
 FILE="git-delta_${VERSION}_amd64.deb"
 echo $FILE
 
