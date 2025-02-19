@@ -1,12 +1,13 @@
 return {
 	-- manual intall { "junegunn/fzf", build = "./install --bin" },
 	{
-		"ibhagwan/fzf-lua", -- https://github.com/ibhagwan/fzf-lua#installation
+        -- https://github.com/ibhagwan/fzf-lua#installation
+		"ibhagwan/fzf-lua", 
 		config = function()
 			local fzf = require("fzf-lua")
 
 			fzf.setup({
-				"fzf.vim",
+				"fzf-vim",
 				grep = {
 					multiprocess = true,
 					-- debug = true,
