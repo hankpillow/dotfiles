@@ -6,7 +6,7 @@ return {
 			local fzf = require("fzf-lua")
 
 			fzf.setup({
-				"fzf.vim",
+				"fzf-vim",
 				grep = {
 					multiprocess = true,
 					-- debug = true,
