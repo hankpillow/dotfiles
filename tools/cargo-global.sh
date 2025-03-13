@@ -1,1 +1,1 @@
-cargo install proca du-dust ytop hyperfine
+cargo install du-dust ytop hyperfine

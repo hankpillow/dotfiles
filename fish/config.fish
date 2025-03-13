@@ -15,6 +15,9 @@ set -gx EDITOR nvim
 set -gx PATH ~/workspace/node_modules/.bin $PATH
 set -gx PATH ~/.local/bin $PATH
 set -gx PATH ~/.cargo/bin $PATH
+set -gx PATH ~/.config/herd-lite/bin $PATH
+set -gx PHP_INI_SCAN_DIR ~/.config/herd-lite/bin
+
 set -gx DISPLAY_NUMBER "0.0"
 
 alias cp "cp -iv"
@@ -115,6 +118,10 @@ if type -q starship
     starship init fish | source
 else
     echo "install starship for better prompt"
+end
+
+if test -f ~/.cargo
+    . ~/.cargo/env
 end
 
 mkdir -p ~/.config/fish/functions/
