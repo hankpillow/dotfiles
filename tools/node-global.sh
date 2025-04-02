@@ -2,12 +2,10 @@
 
 npm i -g \
     @angular/language-server\
-    @vtsls/language-serve\
     corepack\
     eslint\
     http-server\
     npm\
-    neovim\
     neovim\
     node-gyp\
     prettier\
