@@ -1,8 +1,4 @@
-if [[ ! -d .cache ]]
-then
-    mkdir -vp .cache
-fi
-
+mkdir -vp .cache
 cd .cache
 
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": *"v\K[^"]*')
