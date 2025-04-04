@@ -1,11 +1,12 @@
 -- https://github.com/folke/snacks.nvim
 return {
+
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
 	opts = {
 		bigfile = { enabled = true },
-		notifier = { enabled = true },
+		-- notifier = { enabled = true },
 		quickfile = { enabled = true },
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
@@ -21,9 +22,16 @@ return {
 					limit = 10,
 					padding = 2,
 				},
-				{ icon = " ", title = "Projects", section = "projects", indent = 2, padding = 2 },
+				{
+					icon = " ",
+					title = "Projects",
+					section = "projects",
+					indent = 2,
+					padding = 2,
+				},
 			},
 		},
+		picker = {},
 	},
 	keys = {
 		{
@@ -69,6 +77,13 @@ return {
 				vim.cmd(":lcd " .. Snacks.git.get_root())
 			end,
 			desc = "Get the git root",
+		},
+		{
+			"<leader>-",
+			function()
+				Snacks.explorer()
+			end,
+			desc = "Show explorer",
 		},
 	},
 	init = function()
