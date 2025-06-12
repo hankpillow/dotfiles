@@ -113,6 +113,12 @@ if test -f ~/.env
     echo "local env vars loaded"
 end
 
+# load workspace env variable 
+if test -f ~/.user.fish
+	source ~/.user.fish
+    echo "loading user.fish"
+end
+
 # start starship as promp
 if type -q starship
     starship init fish | source

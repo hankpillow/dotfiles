@@ -11,10 +11,10 @@ return {
 	{
 		-- https://github.com/bluz71/vim-moonfly-colors
 		"bluz71/vim-moonfly-colors",
-		name = "moonfly",
-		config = function()
-			vim.cmd([[colorscheme moonfly]])
-		end,
+		-- name = "moonfly",
+		-- config = function()
+		-- 	vim.cmd([[colorscheme moonfly]])
+		-- end,
 	},
 	{
 		-- https://github.com/zootedb0t/citruszest.nvim
@@ -64,6 +64,30 @@ return {
 		-- 		transparent_mode = false,
 		-- 	})
 		-- 	vim.cmd("colorscheme neofusion")
+		-- end,
+	},
+	{
+		-- https://github.com/WTFox/jellybeans.nvim
+		"wtfox/jellybeans.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			style = "dark",
+			italic = false,
+			palette = nil,
+		},
+		init = function()
+			vim.cmd("colorscheme jellybeans")
+		end,
+	},
+	{
+		-- https://github.com/fnune/standard
+		"fnune/standard",
+		-- lazy = false,
+		-- priority = 1000,
+		-- config = function()
+		-- 	require("standard").setup({})
+		-- 	vim.cmd("colorscheme standard")
 		-- end,
 	},
 	-- https://github.com/NLKNguyen/papercolor-theme

@@ -9,6 +9,7 @@ return {
 				component_separators = "",
 				always_divide_middle = false,
 				globalstatus = true,
+				theme = "jellybeans",
 			},
 			sections = {
 				lualine_a = {
